@@ -1,0 +1,28 @@
+/*Dashboard progressbar*/
+
+.progress .progress-bar{
+    border-radius: 2px;
+    background-color: #007E33;
+}
+
+.progress-bar-striped {
+    background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%, transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%, transparent);
+
+    background-size: 1rem 1rem;
+    background-color: #437abd;
+}
+.progress-bar.active{
+    animation: reverse progress-bar-stripes 1s linear infinite, animate-positive 2s;
+}
+
+@-webkit-keyframes animate-positive{
+    0% { width: 0%; }
+}
+@keyframes animate-positive {
+    0% { width: 0%; }
+}
+/* End Dashboard Progressbar*/
