@@ -42,6 +42,13 @@
     color: green;
     -webkit-animation: rotation 2s infinite linear;
 }
+.didChangeRequest {
+    text-align: right;
+}
+.didChangeRequest .fas {
+    color: green;
+    -webkit-animation: rotation 2s infinite linear;
+}
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);

@@ -8,27 +8,67 @@ $statement = mysqli_query($conn, $sql_all);
 
 $row = mysqli_fetch_array($statement);
 
+//userdata
+//ansprechpartner
 $firstname = $row['Firstname'];
 $surname = $row['Surname'];
 $phone = $row['Phone'];
 $street = $row['Street'];
 $town = $row['Town'];
 $zip = $row['Zip'];
+//Anfrage
+$prodAbf = $row['ProdAbf'];
+$erzHae = $row['ErzHae'];
+$jato = $row['JaTo'];
+$producer = $row['Producer'];
+$wasteDescription = $row['WasteDescription'];
+$avv = $row['Avv'];
+$deliveryForm = $row['DeliveryForm'];
 
+//radiobuttons Check Db
+if ($prodAbf == "Produktstatus") {
+    $radioOnPro = "checked";
+} elseif ($prodAbf == "Abfall") {
+    $radioOnAbf = "checked";
+} else {
+    $radioOnPro = "";
+    $radioOnAbf = "";
+}
 
+if ($erzHae == "Erzeuger") {
+    $radioOnErz = "checked";
+} elseif ($erzHae == "Händler") {
+    $radioOnHae = "checked";
+} else {
+    $radioOnErz = "";
+    $radioOnHae = "";
+}
+
+//Überprüfen ob alle Daten in DB
 if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
-    $ansprechCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $contactPersCheckVar = 1;
 } else {
-    $ansprechCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+    $contactPersCheck = "<i class=\"far fa-times-circle red-text\"></i>";
     $contactPersCheckVar = 0;
 }
 
+if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $row['WasteDescription'] && $row['Avv'] && $row['DeliveryForm']) {
+    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $requestCheckVar = 1;
+} else {
+    $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+    $requestCheckVar = 0;
+}
+
 //Progressbar check
-if ($contactPersCheckVar == 1) {
+if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
     $progressBarValue = "100%";
     $progressValue = "100";
-} else {
+} elseif($contactPersCheckVar == 0 && $requestCheckVar == 1||$contactPersCheckVar == 1 && $requestCheckVar == 0 ){
+    $progressBarValue = "50%";
+    $progressValue = "50";
+}else {
     $progressBarValue = "0%";
     $progressValue = "0";
 }
@@ -115,7 +155,8 @@ include("components/header.php");
                                 <div class="progress-bar progress-bar-info progress-bar-striped active"
                                      style="width:<?php echo $progressBarValue ?>;"></div>
                             </div>
-                            <p class="card-text">Anfrage zu <span id="progressValue"><?php echo $progressValue?></span>% abgeschlossen</p>
+                            <p class="card-text">Anfrage zu <span id="progressValue"><?php echo $progressValue ?></span>%
+                                abgeschlossen</p>
                         </div>
                     </div>
                 </div>
@@ -219,33 +260,33 @@ include("components/header.php");
                                     Ansprechpartner
                                 </div>
                                 <div class="col-sm-4" id="contactPersCheck">
-                                    <?php echo $ansprechCheck ?>
+                                    <?php echo $contactPersCheck ?>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     Anfrage
                                 </div>
-                                <div class="col-md-4">
-                                    <i class="far fa-check-circle green-text"></i>
+                                <div class="col-sm-4" id="requestCheck">
+                                    <?php echo $requestCheck ?>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     Weitere Details
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <i class="far fa-check-circle green-text"></i>
                                 </div>
                             </div>
                             <hr>
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
                                     ...
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-sm-4">
                                     <i class="far fa-times-circle red-text"></i>
                                 </div>
                             </div>
@@ -262,89 +303,106 @@ include("components/header.php");
                     <div class="card">
                         <!--Card content-->
                         <div class="card-body">
+                            <form id="request_Form">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Anfrage</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="didChangeRequest" id="didChangeRequest"></span>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p>Worum gehts:</p>
+                                        <!-- Default unchecked -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" id="produkt"
+                                                   name="prodAbf" <?php echo $radioOnPro ?> value="Produktstatus">
+                                            <label class="custom-control-label" for="produkt">Produktstatus</label>
+                                        </div>
 
-                            <h4>Anfrage</h4>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <p>Worum gehts:</p>
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="produkt" name="proAbf">
-                                        <label class="custom-control-label" for="produkt">Produktstatus</label>
+                                        <!-- Default checked -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" id="abfall"
+                                                   name="prodAbf" value="Abfall" <?php echo $radioOnAbf ?>>
+                                            <label class="custom-control-label" for="abfall">Abfall</label>
+                                        </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <p>Sie sind:</p>
+                                        <!-- Default unchecked -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" id="erzeuger"
+                                                   name="erzHae" <?php echo $radioOnErz ?> value="Erzeuger">
+                                            <label class="custom-control-label" for="erzeuger">Erzeuger</label>
+                                        </div>
 
-                                    <!-- Default checked -->
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="abfall" name="proAbf">
-                                        <label class="custom-control-label" for="abfall">Abfall</label>
+                                        <!-- Default checked -->
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" class="custom-control-input" id="haendler"
+                                                   name="erzHae" <?php echo $radioOnHae ?> value="Händler">
+                                            <label class="custom-control-label" for="haendler">Händler</label>
+                                        </div>
+                                        <small id="smalltext" class="form-text text-muted mb-4">
+                                            Wenn Sie Händler sind, bitte den Erzeuger nennen:
+                                        </small>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p>Sie sind:</p>
-                                    <!-- Default unchecked -->
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="erzeuger" name="erzHae">
-                                        <label class="custom-control-label" for="erzeuger">Erzeuger</label>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-weight-hanging input-prefix"></i>
+                                            <input type="text" id="materialQuantity" class="form-control" name="jato"
+                                                   value="<?php echo $jato ?>">
+                                            <label for="materialQuantity">Menge in Tonnen</label>
+                                        </div>
                                     </div>
-
-                                    <!-- Default checked -->
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" class="custom-control-input" id="haendler" name="erzHae">
-                                        <label class="custom-control-label" for="haendler">Händler</label>
-                                    </div>
-                                    <small id="smalltext" class="form-text text-muted mb-4">
-                                        Wenn Sie Händler sind, bitte den Erzeuger nennen:
-                                    </small>
-                                </div>
-                            </div>
-                            <br>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="md-form input-with-post-icon">
-                                        <i class="fas fa-weight-hanging input-prefix"></i>
-                                        <input type="text" id="materialQuantity" class="form-control">
-                                        <label for="materialQuantity">Menge in Tonnen</label>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-user input-prefix"></i>
+                                            <input type="text" id="producer" class="form-control" name="producer"
+                                                   value="<?php echo $producer ?>">
+                                            <label for="producer">ggf. Erzeuger</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="md-form input-with-post-icon">
-                                        <i class="fas fa-user input-prefix"></i>
-                                        <input type="text" id="erzeugerHand" class="form-control">
-                                        <label for="erzeugerHand">ggf. Erzeuger</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-trash input-prefix"></i>
+                                            <input type="text" id="abfallbezeichnung" class="form-control" name="wasteDescription"
+                                                   value="<?php echo $wasteDescription ?>">
+                                            <label for="abfallbezeichnung">Abfallbezeichnung</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-trash input-prefix"></i>
+                                            <input type="text" id="avv" class="form-control" name="avv" value="<?php echo $avv ?>">
+                                            <label for="avv">AVV</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="md-form input-with-post-icon">
-                                        <i class="fas fa-trash input-prefix"></i>
-                                        <input type="text" id="abfallbezeichnung" class="form-control">
-                                        <label for="abfallbezeichnung">Abfallbezeichnung</label>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-truck-loading input-prefix"></i>
+                                            <input type="text" id="delivery" class="form-control" name="deliveryForm"
+                                                   value="<?php echo $deliveryForm ?>">
+                                            <label for="delivery">Anlieferform</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="md-form input-with-post-icon">
-                                        <i class="fas fa-trash input-prefix"></i>
-                                        <input type="text" id="avv" class="form-control">
-                                        <label for="avv">AVV</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="md-form input-with-post-icon">
-                                        <i class="fas fa-truck-loading input-prefix"></i>
-                                        <input type="text" id="delivery" class="form-control">
-                                        <label for="delivery">Anlieferform</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" id="sumbitAnfrage" name="sumbitAnfrage" class="btn btn-light-green">
-                                Speichern
-                            </button>
+                                <button type="submit" id="sumbitAnfrage" name="sumbitAnfrage"
+                                        class="btn btn-light-green">
+                                    Speichern
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -442,6 +500,9 @@ include("components/header.php");
 <!--script zur Formularverabeitung -->
 <script>
     var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
+    contactPersCheckVar = <?php echo $contactPersCheckVar?>;
+    requestCheckVar = <?php echo $requestCheckVar?>;
+
 
     $('#ansprech_Form').submit(function (event) {
         event.preventDefault(); //seitenreloud wird verhindert
@@ -456,8 +517,7 @@ include("components/header.php");
 
                 contactPersCheckVar = response.contactPersCheckVar;
 
-                showProgressBarValue(contactPersCheckVar);
-                $('#test').html(progressBarvalue);
+                showProgressBarValue(contactPersCheckVar, requestCheckVar);
                 //alert("Daten in Ansprechpartner geändert")
             }
         });
@@ -467,12 +527,38 @@ include("components/header.php");
         }, 1000);
     });
 
+    $('#request_Form').submit(function (event) {
+        event.preventDefault(); //seitenreloud wird verhindert
+        $('#didChangeRequest').html(rotateCircle);
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: 'components/updateRequest.php',
+            data: $(this).serialize(),
+            success: function (data) {
+                $('#requestCheck').html(data.requestCheck);
+
+                requestCheckVar = data.requestCheckVar;
+
+                showProgressBarValue(requestCheckVar, contactPersCheckVar);
+                //alert("Daten in Ansprechpartner geändert")
+            },
+        });
+        //set Timeout for showing Anderungen vorgenommen
+        setTimeout(function () {
+            $('#didChangeRequest').html('')
+        }, 1000);
+    });
+
 
     //Progressbar überprüfen
-    function showProgressBarValue(contactPersCheckVar) {
-        if (contactPersCheckVar == 1) {
+    function showProgressBarValue(contactPersCheckVar, requestCheckVar) {
+        if (contactPersCheckVar == 1 && requestCheckVar == 1) {
             $('.progress-bar').css('width', '100%');
             $('#progressValue').html('100');
+        } else if(contactPersCheckVar == 0 && requestCheckVar == 1 || contactPersCheckVar == 1 && requestCheckVar == 0){
+            $('.progress-bar').css('width', '50%');
+            $('#progressValue').html('50');
         } else {
             $('.progress-bar').css('width', '0%');
             $('#progressValue').html('0');

@@ -2,36 +2,39 @@
 session_start();
 include("config.php");
 
-if (isset($_POST['firstname']) && isset($_POST['surname'])) {
-    $firstname = htmlspecialchars($_POST['firstname']);
-    $surname = htmlspecialchars($_POST['surname']);
-    $street = htmlspecialchars($_POST['street']);
-    $town = htmlspecialchars($_POST['town']);
-    $zip = htmlspecialchars($_POST['zip']);
-    $userId = $_SESSION['userId'];
+$prodAbf = htmlspecialchars($_POST['prodAbf']);
+$erzHae = htmlspecialchars($_POST['erzHae']);
+$jato = htmlspecialchars($_POST['jato']);
+$producer = htmlspecialchars($_POST['producer']);
+$wasteDescription = htmlspecialchars($_POST['wasteDescription']);
+$avv = htmlspecialchars($_POST['avv']);
+$deliveryForm = htmlspecialchars($_POST['deliveryForm']);
 
-    $sql = "UPDATE userdata  SET Firstname = '$firstname', Surname = '$surname', Street = '$street', Town = '$town', Zip = '$zip' WHERE id = $userId";
+$userId = $_SESSION['userId'];
 
-    $statement = mysqli_query($conn, $sql);
+$sql = "UPDATE userdata SET ProdAbf = '$prodAbf', ErzHae = '$erzHae', Jato = '$jato', Producer = '$producer', WasteDescription = '$wasteDescription', Avv = '$avv', DeliveryForm = '$deliveryForm' WHERE id = $userId";
+
+$statement = mysqli_query($conn, $sql);
 
 
-    $sql_all = "SELECT * FROM userdata WHERE id = $userId";
-    $statement = mysqli_query($conn, $sql_all);
+$sql_all = "SELECT * FROM userdata WHERE id = $userId";
+$statement = mysqli_query($conn, $sql_all);
 
-    $data = mysqli_fetch_array($statement);
-    if ($data['Firstname'] && $data['Surname'] && $data['Street'] && $data['Town'] && $data['Zip']) {
-        $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
-        $contactPersCheckVar = 1;
-    } else {
-        $contactPersCheck = "<i class=\"far fa-times-circle red-text\"></i>";
-        $contactPersCheckVar = 0;
-    }
-
-    $jsonArray = array(
-        'contactPersCheck' => $contactPersCheck,
-        'contactPersCheckVar' => $contactPersCheckVar,
-    );
-    exit(json_encode($jsonArray));
+$data = mysqli_fetch_array($statement);
+if ($data['ProdAbf'] && $data['ErzHae'] && $data['JaTo'] && $data['Producer'] && $data['WasteDescription'] && $data['Avv'] && $data['DeliveryForm']) {
+    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $requestCheckVar = 1;
+} else {
+    $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+    $requestCheckVar = 0;
 }
+
+$jsonArray = array(
+    'requestCheck' => $requestCheck,
+    'requestCheckVar' => $requestCheckVar,
+);
+
+exit(json_encode($jsonArray));
+
 
 ?>
