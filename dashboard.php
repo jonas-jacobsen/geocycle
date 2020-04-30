@@ -18,8 +18,19 @@ $zip = $row['Zip'];
 
 if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
     $ansprechCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $contactPersCheckVar = 1;
 } else {
     $ansprechCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+    $contactPersCheckVar = 0;
+}
+
+//Progressbar check
+if ($contactPersCheckVar == 1) {
+    $progressBarValue = "100%";
+    $progressValue = "100";
+} else {
+    $progressBarValue = "0%";
+    $progressValue = "0";
 }
 
 
@@ -102,14 +113,16 @@ include("components/header.php");
                             <h2>Status der Anfrage</h2>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info progress-bar-striped active"
-                                     style="width:80%;"></div>
+                                     style="width:<?php echo $progressBarValue ?>;"></div>
                             </div>
-                            <p class="card-text">Anfrage zu 80% abgeschlossen</p>
+                            <p class="card-text">Anfrage zu <span id="progressValue"><?php echo $progressValue?></span>% abgeschlossen</p>
                         </div>
                     </div>
                 </div>
             </div>
 
+
+            <div class="test" id="test"></div>
 
             <div class="row wow fadeIn">
                 <!--Grid column-->
@@ -119,9 +132,14 @@ include("components/header.php");
                         <!--Card content-->
                         <div class="card-body">
                             <form id="ansprech_Form">
-
-                                <h4>Ansprechpartner<span class="didChangeContactPers" id="didChangeContactPers"></span>
-                                </h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>Ansprechpartner</h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="didChangeContactPers" id="didChangeContactPers"></span>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-4">
@@ -425,10 +443,9 @@ include("components/header.php");
 <script>
     var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
 
-    $('#didChangeContactPers').html('');
     $('#ansprech_Form').submit(function (event) {
         event.preventDefault(); //seitenreloud wird verhindert
-        $('#didChangeContactPers').append(rotateCircle);
+        $('#didChangeContactPers').html(rotateCircle);
         $.ajax({
             type: 'POST',
             dataType: 'json',
@@ -436,6 +453,11 @@ include("components/header.php");
             data: $(this).serialize(),
             success: function (response) {
                 $('#contactPersCheck').html(response.contactPersCheck);
+
+                contactPersCheckVar = response.contactPersCheckVar;
+
+                showProgressBarValue(contactPersCheckVar);
+                $('#test').html(progressBarvalue);
                 //alert("Daten in Ansprechpartner geändert")
             }
         });
@@ -444,6 +466,20 @@ include("components/header.php");
             $('#didChangeContactPers').html('')
         }, 1000);
     });
+
+
+    //Progressbar überprüfen
+    function showProgressBarValue(contactPersCheckVar) {
+        if (contactPersCheckVar == 1) {
+            $('.progress-bar').css('width', '100%');
+            $('#progressValue').html('100');
+        } else {
+            $('.progress-bar').css('width', '0%');
+            $('#progressValue').html('0');
+        }
+    }
+
+
 </script>
 </body>
 </html>

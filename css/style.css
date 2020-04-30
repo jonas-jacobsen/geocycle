@@ -35,6 +35,9 @@
 /* End Dashboard Progressbar*/
 
 /*Change Formular loader */
+.didChangeContactPers {
+    text-align: right;
+}
 .didChangeContactPers .fas  {
     color: green;
     -webkit-animation: rotation 2s infinite linear;
