@@ -16,9 +16,9 @@ if (isset($_POST['submit'])) {
             header('Location: dasboard.php');
         }
         $errorMessage = '<div class="alert alert-danger" role="alert">Nutzername oder Passwort falsch</div>';
-    } elseif ($_POST['email'] == "" && $_POST['password'] != ""){
+    } elseif ($_POST['email'] == "" && $_POST['password'] != "") {
         $errorMessage = '<div class="alert alert-danger" role="alert">Emailadresse eingeben</div>';
-    } elseif ($_POST['email'] != "" && $_POST['password'] == ""){
+    } elseif ($_POST['email'] != "" && $_POST['password'] == "") {
         $errorMessage = '<div class="alert alert-danger" role="alert">Passwort eingeben</div>';
     } else {
         $errorMessage = '<div class="alert alert-danger" role="alert">Nutzername und Passwort eingeben</div>';
@@ -32,12 +32,17 @@ if (isset($_POST['submitOne'])) {
         $result = mysqli_query($conn, $sql);
         $anzahl = mysqli_num_rows($result);
 
+        $company = htmlspecialchars($_POST['company']);
+        $email = htmlspecialchars($_POST['email']);
+        $password = htmlspecialchars($_POST['password']);
+        $phone = htmlspecialchars($_POST['phone']);
+
         if ($anzahl < 1) {
-            $sql = "INSERT INTO user SET Company='$_POST[company]', Fullname='$_POST[name]', Email='$_POST[email]', Password = '$_POST[password]'";
+            $sql = "INSERT INTO user SET Company='$company', Email='$email', Password = '$password', Phone ='$phone'";
             $result = mysqli_query($conn, $sql);
             $_SESSION['userId'] = mysqli_insert_id($conn);
 
-            $sql2 = "INSERT INTO userdata SET id = '$_SESSION[userId]'";
+            $sql2 = "INSERT INTO userdata SET id = '$_SESSION[userId]', Phone = '$phone'";
             $result2 = mysqli_query($conn, $sql2);
 
             header('Location: dashboard.php');
@@ -87,15 +92,17 @@ if (isset($_POST['submitOne'])) {
         </ul>
         -->
         <form action="" method="post" class="form-inline my-2 my-lg-0 ml-auto">
-            <input type="text" name="email" class="form-control" placeholder="Email-Adresse" aria-label="Login" style="margin-right: 1px; margin-left: 1px">
-            <input type="password" name="password" class="form-control" placeholder="Passwort" aria-label="Login" style="margin-right: 1px; margin-left: 1px">
-            <button type="submit" id="submit" name="submit" class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
+            <input type="text" name="email" class="form-control" placeholder="Email-Adresse" aria-label="Login"
+                   style="margin-right: 1px; margin-left: 1px">
+            <input type="password" name="password" class="form-control" placeholder="Passwort" aria-label="Login"
+                   style="margin-right: 1px; margin-left: 1px">
+            <button type="submit" id="submit" name="submit"
+                    class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
                 Login
             </button>
         </form>
     </div>
 </nav>
-
 
 
 <div class="container" style="margin-top: 80px">
@@ -105,26 +112,25 @@ if (isset($_POST['submitOne'])) {
 
         <p class="h4 mb-4">Dein Unternehmen neu registrieren</p>
 
-        <div class="form-row mb-4">
+        <!-- First name -->
+        <input type="text" id="company" name="company" class="form-control mb-4" placeholder="Unternehmen"
+               required>
+
+
+        <div class="form-row mb4">
             <div class="col">
-                <!-- First name -->
-                <input type="text" id="company" name="company" class="form-control" placeholder="Unternehmen GmbH" required>
+                <!-- E-mail -->
+                <input type="email" id="email" name="email" class="form-control mb-4" placeholder="E-mail" required>
             </div>
             <div class="col">
-                <!-- Last name -->
-                <input type="text" id="name" name="name" class="form-control" placeholder="Ansprechpartner" required>
+                <!-- Password -->
+                <input type="password" id="password" name="password" class="form-control" placeholder="Passwort"
+                       aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
+                <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                    Bitte denke daran ein sicheres Passwort zu wählen
+                </small>
             </div>
         </div>
-
-        <!-- E-mail -->
-        <input type="email" id="email" name="email" class="form-control mb-4" placeholder="E-mail" required>
-
-        <!-- Password -->
-        <input type="password" id="password" name="password" class="form-control" placeholder="Passwort"
-               aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
-        <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-            Bitte denke daran ein sicheres Passwort zu wählen
-        </small>
 
         <!-- Phone number -->
         <input type="text" id="phone" name="phone" class="form-control" placeholder="Telefonnummer"

@@ -1,19 +1,26 @@
 <?php
 session_start();
 include("components/session.php");
-include ("components/config.php");
+include("components/config.php");
 //check ob Daten vorhanden sind
 $sql_all = "SELECT * FROM userdata WHERE id = $_SESSION[userId]";
 $statement = mysqli_query($conn, $sql_all);
 
 $row = mysqli_fetch_array($statement);
 
-if($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
+$firstname = $row['Firstname'];
+$surname = $row['Surname'];
+$phone = $row['Phone'];
+$street = $row['Street'];
+$town = $row['Town'];
+$zip = $row['Zip'];
+
+
+if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
     $ansprechCheck = "<i class=\"far fa-check-circle green-text\"></i>";
 } else {
-    $ansprechCheck =  "<i class=\"far fa-times-circle red-text\"></i>";
+    $ansprechCheck = "<i class=\"far fa-times-circle red-text\"></i>";
 }
-
 
 
 include("components/header.php");
@@ -112,20 +119,33 @@ include("components/header.php");
                         <!--Card content-->
                         <div class="card-body">
                             <form id="ansprech_Form">
-                                <h4>Ansprechpartner</h4>
+
+                                <h4>Ansprechpartner<span class="didChangeContactPers" id="didChangeContactPers"></span>
+                                </h4>
+
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-user input-prefix"></i>
-                                            <input type="text" id="firstname" name="firstname" class="form-control">
+                                            <input type="text" id="firstname" name="firstname" class="form-control"
+                                                   value="<?php echo $firstname ?>">
                                             <label for="firstname">Vorname</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-user input-prefix"></i>
-                                            <input type="text" id="surname" name="surname" class="form-control">
+                                            <input type="text" id="surname" name="surname" class="form-control"
+                                                   value="<?php echo $surname ?>">
                                             <label for="surname">Nachname</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-user input-prefix"></i>
+                                            <input type="text" id="phone" name="phone" class="form-control"
+                                                   value="<?php echo $phone ?>">
+                                            <label for="phone">Telephonnummer</label>
                                         </div>
                                     </div>
                                 </div>
@@ -134,22 +154,25 @@ include("components/header.php");
                                     <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-home input-prefix"></i>
-                                            <input type="text" id="street" name="street" class="form-control">
+                                            <input type="text" id="street" name="street" class="form-control"
+                                                   value="<?php echo $street ?>">
                                             <label for="street">Straße und Hausnummer</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-home input-prefix"></i>
-                                            <input type="text" id="town" name="town" class="form-control">
-                                            <label for="town">Ort</label>
+                                            <input type="text" id="zipcode" name="zip" class="form-control"
+                                                   value="<?php echo $zip ?>">
+                                            <label for="zipcode">Postleitzahl</label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-home input-prefix"></i>
-                                            <input type="text" id="zipcode" name="zip" class="form-control">
-                                            <label for="zipcode">Postleitzahl</label>
+                                            <input type="text" id="town" name="town" class="form-control"
+                                                   value="<?php echo $town ?>">
+                                            <label for="town">Ort</label>
                                         </div>
                                     </div>
                                 </div>
@@ -177,8 +200,8 @@ include("components/header.php");
                                 <div class="col-sm-8">
                                     Ansprechpartner
                                 </div>
-                                <div class="col-sm-4" id="ansprechCheck">
-                                    <?php echo $ansprechCheck?>
+                                <div class="col-sm-4" id="contactPersCheck">
+                                    <?php echo $ansprechCheck ?>
                                 </div>
                             </div>
                             <hr>
@@ -400,18 +423,27 @@ include("components/header.php");
 
 <!--script zur Formularverabeitung -->
 <script>
-    $('#ansprech_Form').submit(function(event) {
+    var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
+
+    $('#didChangeContactPers').html('');
+    $('#ansprech_Form').submit(function (event) {
         event.preventDefault(); //seitenreloud wird verhindert
+        $('#didChangeContactPers').append(rotateCircle);
         $.ajax({
             type: 'POST',
-            url: 'components/insertDataAnsprech.php',
+            dataType: 'json',
+            url: 'components/updateDataContactPers.php',
             data: $(this).serialize(),
-            success: function(data) {
-                $('#ansprechCheck').html(data);
+            success: function (response) {
+                $('#contactPersCheck').html(response.contactPersCheck);
+                //alert("Daten in Ansprechpartner geändert")
             }
         });
+        //set Timeout for showing Anderungen vorgenommen
+        setTimeout(function () {
+            $('#didChangeContactPers').html('')
+        }, 1000);
     });
-
 </script>
 </body>
 </html>

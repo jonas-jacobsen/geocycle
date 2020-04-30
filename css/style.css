@@ -1,6 +1,6 @@
 /*Dashboard progressbar*/
 
-.progress .progress-bar{
+.progress .progress-bar {
     border-radius: 2px;
     background-color: #007E33;
 }
@@ -15,14 +15,35 @@
     background-size: 1rem 1rem;
     background-color: #437abd;
 }
-.progress-bar.active{
+
+.progress-bar.active {
     animation: reverse progress-bar-stripes 1s linear infinite, animate-positive 2s;
 }
 
-@-webkit-keyframes animate-positive{
-    0% { width: 0%; }
+@-webkit-keyframes animate-positive {
+    0% {
+        width: 0%;
+    }
 }
+
 @keyframes animate-positive {
-    0% { width: 0%; }
+    0% {
+        width: 0%;
+    }
 }
+
 /* End Dashboard Progressbar*/
+
+/*Change Formular loader */
+.didChangeContactPers .fas  {
+    color: green;
+    -webkit-animation: rotation 2s infinite linear;
+}
+@-webkit-keyframes rotation {
+    from {
+        -webkit-transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(365deg);
+    }
+}
