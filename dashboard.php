@@ -2,81 +2,8 @@
 session_start();
 include("components/session.php");
 include("components/config.php");
-//check ob Daten vorhanden sind
-$sql_all = "SELECT * FROM userdata WHERE id = $_SESSION[userId]";
-$statement = mysqli_query($conn, $sql_all);
-
-$row = mysqli_fetch_array($statement);
-
-//userdata
-//ansprechpartner
-$firstname = $row['Firstname'];
-$surname = $row['Surname'];
-$phone = $row['Phone'];
-$street = $row['Street'];
-$town = $row['Town'];
-$zip = $row['Zip'];
-//Anfrage
-$prodAbf = $row['ProdAbf'];
-$erzHae = $row['ErzHae'];
-$jato = $row['JaTo'];
-$producer = $row['Producer'];
-$wasteDescription = $row['WasteDescription'];
-$avv = $row['Avv'];
-$deliveryForm = $row['DeliveryForm'];
-
-//radiobuttons Check Db
-if ($prodAbf == "Produktstatus") {
-    $radioOnPro = "checked";
-} elseif ($prodAbf == "Abfall") {
-    $radioOnAbf = "checked";
-} else {
-    $radioOnPro = "";
-    $radioOnAbf = "";
-}
-
-if ($erzHae == "Erzeuger") {
-    $radioOnErz = "checked";
-} elseif ($erzHae == "Händler") {
-    $radioOnHae = "checked";
-} else {
-    $radioOnErz = "";
-    $radioOnHae = "";
-}
-
-//Überprüfen ob alle Daten in DB
-if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
-    $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
-    $contactPersCheckVar = 1;
-} else {
-    $contactPersCheck = "<i class=\"far fa-times-circle red-text\"></i>";
-    $contactPersCheckVar = 0;
-}
-
-if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $row['WasteDescription'] && $row['Avv'] && $row['DeliveryForm']) {
-    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
-    $requestCheckVar = 1;
-} else {
-    $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
-    $requestCheckVar = 0;
-}
-
-//Progressbar check
-if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
-    $progressBarValue = "100%";
-    $progressValue = "100";
-} elseif($contactPersCheckVar == 0 && $requestCheckVar == 1||$contactPersCheckVar == 1 && $requestCheckVar == 0 ){
-    $progressBarValue = "50%";
-    $progressValue = "50";
-}else {
-    $progressBarValue = "0%";
-    $progressValue = "0";
-}
-
-
+include("components/databaseScript.php");
 include("components/header.php");
-
-
 ?>
 <body>
 <div class="container-for-admin">
@@ -102,7 +29,7 @@ include("components/header.php");
                 <!-- Links -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-                    <!-- Left -->
+                    <!-- Left
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link waves-effect" href="#">
@@ -110,14 +37,21 @@ include("components/header.php");
                             </a>
                         </li>
                     </ul>
-
+                    -->
                     <!-- Right -->
-                    <ul class="navbar-nav nav-flex-icons">
+                    <ul class="navbar-nav ml-auto nav-flex-icons">
                         <li class="nav-item">
-                            <a href="https://twitter.com/MDBootstrap" class="nav-link waves-effect" target="_blank">
+                            <a href="#" class="nav-link waves-effect" target="_blank">
                                 <i class="fas fa-phone"></i>
                             </a>
                         </li>
+                        <br>
+                        <li class="nav-item">
+                            <a href="components/logout.php" class="nav-link waves-effect">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </li>
+                        <!-- Navbar dropdown
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false">
@@ -129,11 +63,9 @@ include("components/header.php");
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li>
+                        </li> <!-- End li nav item dropdown -->
                     </ul>
-
                 </div>
-
             </div>
         </nav>
         <!-- Navbar -->
@@ -161,9 +93,6 @@ include("components/header.php");
                     </div>
                 </div>
             </div>
-
-
-            <div class="test" id="test"></div>
 
             <div class="row wow fadeIn">
                 <!--Grid column-->
@@ -244,58 +173,58 @@ include("components/header.php");
                     <!--/.Card-->
                 </div>
                 <!--Grid column-->
+                <div class="sidebar">
+                    <!--Grid column (checkliste)-->
+                    <div class="col-md-4 mb-4">
+                        <!--Card-->
+                        <div class="sidecard mb-4">
+                            <!-- Card header -->
+                            <div class="sidecard-header">
+                            </div>
+                            <!--Card content-->
+                            <div class="sidecard-body">
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        Ansprechpartner
+                                    </div>
+                                    <div class="col-sm-4" id="contactPersCheck">
+                                        <?php echo $contactPersCheck ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        Anfrage
+                                    </div>
+                                    <div class="col-sm-4" id="requestCheck">
+                                        <?php echo $requestCheck ?>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        Weitere Details
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="far fa-check-circle green-text"></i>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-8">
+                                        ...
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="far fa-times-circle red-text"></i>
+                                    </div>
+                                </div>
+                            </div>
 
-                <!--Grid column (checkliste)-->
-                <div class="col-md-4 mb-4">
-                    <!--Card-->
-                    <div class="card mb-4">
-                        <!-- Card header -->
-                        <div class="card-header text-center">
-                            Checkliste
                         </div>
-                        <!--Card content-->
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    Ansprechpartner
-                                </div>
-                                <div class="col-sm-4" id="contactPersCheck">
-                                    <?php echo $contactPersCheck ?>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    Anfrage
-                                </div>
-                                <div class="col-sm-4" id="requestCheck">
-                                    <?php echo $requestCheck ?>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    Weitere Details
-                                </div>
-                                <div class="col-sm-4">
-                                    <i class="far fa-check-circle green-text"></i>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    ...
-                                </div>
-                                <div class="col-sm-4">
-                                    <i class="far fa-times-circle red-text"></i>
-                                </div>
-                            </div>
-                        </div>
-
+                        <!--/.Card-->
                     </div>
-                    <!--/.Card-->
-                </div>
-                <!--Grid column End (Checkliste)-->
+                    <!--Grid column End (Checkliste)-->
+                </div><!--End Sidebar -->
 
                 <!--Grid column (AnfrageDetails)-->
                 <div class="col-md-8 mb-4">
@@ -373,7 +302,8 @@ include("components/header.php");
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-trash input-prefix"></i>
-                                            <input type="text" id="abfallbezeichnung" class="form-control" name="wasteDescription"
+                                            <input type="text" id="abfallbezeichnung" class="form-control"
+                                                   name="wasteDescription"
                                                    value="<?php echo $wasteDescription ?>">
                                             <label for="abfallbezeichnung">Abfallbezeichnung</label>
                                         </div>
@@ -381,7 +311,8 @@ include("components/header.php");
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-trash input-prefix"></i>
-                                            <input type="text" id="avv" class="form-control" name="avv" value="<?php echo $avv ?>">
+                                            <input type="text" id="avv" class="form-control" name="avv"
+                                                   value="<?php echo $avv ?>">
                                             <label for="avv">AVV</label>
                                         </div>
                                     </div>
@@ -497,75 +428,12 @@ include("components/header.php");
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 
-<!--script zur Formularverabeitung -->
-<script>
-    var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
+<!-- Form verarbeiten -->
+<script type="text/javascript">
+    //Variablen für Prgressbar
     contactPersCheckVar = <?php echo $contactPersCheckVar?>;
     requestCheckVar = <?php echo $requestCheckVar?>;
-
-
-    $('#ansprech_Form').submit(function (event) {
-        event.preventDefault(); //seitenreloud wird verhindert
-        $('#didChangeContactPers').html(rotateCircle);
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: 'components/updateDataContactPers.php',
-            data: $(this).serialize(),
-            success: function (response) {
-                $('#contactPersCheck').html(response.contactPersCheck);
-
-                contactPersCheckVar = response.contactPersCheckVar;
-
-                showProgressBarValue(contactPersCheckVar, requestCheckVar);
-                //alert("Daten in Ansprechpartner geändert")
-            }
-        });
-        //set Timeout for showing Anderungen vorgenommen
-        setTimeout(function () {
-            $('#didChangeContactPers').html('')
-        }, 1000);
-    });
-
-    $('#request_Form').submit(function (event) {
-        event.preventDefault(); //seitenreloud wird verhindert
-        $('#didChangeRequest').html(rotateCircle);
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            url: 'components/updateRequest.php',
-            data: $(this).serialize(),
-            success: function (data) {
-                $('#requestCheck').html(data.requestCheck);
-
-                requestCheckVar = data.requestCheckVar;
-
-                showProgressBarValue(requestCheckVar, contactPersCheckVar);
-                //alert("Daten in Ansprechpartner geändert")
-            },
-        });
-        //set Timeout for showing Anderungen vorgenommen
-        setTimeout(function () {
-            $('#didChangeRequest').html('')
-        }, 1000);
-    });
-
-
-    //Progressbar überprüfen
-    function showProgressBarValue(contactPersCheckVar, requestCheckVar) {
-        if (contactPersCheckVar == 1 && requestCheckVar == 1) {
-            $('.progress-bar').css('width', '100%');
-            $('#progressValue').html('100');
-        } else if(contactPersCheckVar == 0 && requestCheckVar == 1 || contactPersCheckVar == 1 && requestCheckVar == 0){
-            $('.progress-bar').css('width', '50%');
-            $('#progressValue').html('50');
-        } else {
-            $('.progress-bar').css('width', '0%');
-            $('#progressValue').html('0');
-        }
-    }
-
-
 </script>
+<script type="text/javascript" src="js/formHandler.js"></script>
 </body>
 </html>

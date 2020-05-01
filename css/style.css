@@ -38,17 +38,21 @@
 .didChangeContactPers {
     text-align: right;
 }
-.didChangeContactPers .fas  {
+
+.didChangeContactPers .fas {
     color: green;
     -webkit-animation: rotation 2s infinite linear;
 }
+
 .didChangeRequest {
     text-align: right;
 }
+
 .didChangeRequest .fas {
     color: green;
     -webkit-animation: rotation 2s infinite linear;
 }
+
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
@@ -56,4 +60,68 @@
     to {
         -webkit-transform: rotate(365deg);
     }
+}
+
+/* Sidebar*/
+@media (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+    }
+    .sidecard {
+        width: 100%;
+        font-weight: 400;
+        border: 0;
+        -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+        position: relative;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0,0,0,.125);
+        border-radius: .25rem;
+    }
+    .sidecard-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+        padding: 1.25rem;
+    }
+    .sidecard-body .col-sm-4 {
+        text-align: right;
+    }
+}
+
+
+
+/* sticky Sidebar */
+@media (min-width: 767px) {
+    /* The sticky */
+    .sidebar {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 70px;
+    }
+
+    .sidebar {
+        z-index: 9999;
+    }
+
+    .sidecard {
+        width: 200px;
+        border: 0;
+
+    }
+
+    .sidecard-body {
+        flex: 1 1 auto;
+        min-height: 1px;
+    }
+    .sidecard-body .col-sm-4 {
+        text-align: right;
+    }
+
 }
