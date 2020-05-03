@@ -50,10 +50,33 @@ $('#request_Form').submit(function (event) {
     }, 1000);
 });
 
+$('#furtherInformationForm').submit(function (event) {
+    event.preventDefault(); //seitenreloud wird verhindert
+    $('#didChangeFurtherInfo').html(rotateCircle);
+    $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: 'components/updateFurtherInfo.php',
+        data: $(this).serialize(),
+        success: function (dataTwo) {
+            $('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);
+
+            furtherInfoCheckVar = dataTwo.furtherInfoCheckVar;
+
+            showProgressBarValue(requestCheckVar, contactPersCheckVar, furtherInfoCheckVar);
+            //alert("Daten in Ansprechpartner geändert")
+        },
+    });
+    //set Timeout for showing Anderungen vorgenommen
+    setTimeout(function () {
+        $('#didChangeFurtherInfo').html('')
+    }, 1000);
+});
+
 
 //Progressbar überprüfen bei Ajax-Caall
 function showProgressBarValue(contactPersCheckVar, requestCheckVar) {
-    if (contactPersCheckVar == 1 && requestCheckVar == 1) {
+    if (contactPersCheckVar == 1 && requestCheckVar == 1 && furtherInfoCheckVar == 1) {
         $('.progress-bar').css('width', '100%');
         $('#progressValue').html('100');
     } else if(contactPersCheckVar == 0 && requestCheckVar == 1 || contactPersCheckVar == 1 && requestCheckVar == 0){

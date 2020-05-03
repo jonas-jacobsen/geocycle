@@ -53,6 +53,15 @@
     -webkit-animation: rotation 2s infinite linear;
 }
 
+.didChangeFurtherInfo {
+    text-align: right;
+}
+
+.didChangeFurtherInfo .fas {
+    color: green;
+    -webkit-animation: rotation 2s infinite linear;
+}
+
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
@@ -133,7 +142,6 @@
     text-align: center;
 }
 #files{
-    border: 1px dotted #007E33;
     padding: 20px;
     width: 100% ;
     display: none;
@@ -142,3 +150,39 @@
     color: red;
     font-weight: lighter;
 }
+
+/*Files responsive anzeigen lassen */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(133px, 1fr));
+    gap: 10px;
+    grid-auto-flow: dense;
+}
+
+.gallery figure {
+    position: relative;
+    margin: 0;
+    /* figure hat sonst einen browsereigenen Abstand! */
+
+    counter-increment: posMarkup;
+}
+
+.gallery figure.landscape {
+    grid-column-end: span 2;
+}
+
+.gallery figure.panorama {
+    grid-column-end: span 3;
+}
+
+.gallery figure img {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+/*End Files responsive anzeigen lassen */
+
+
+

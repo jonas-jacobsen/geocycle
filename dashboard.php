@@ -205,8 +205,8 @@ include("components/header.php");
                                     <div class="col-sm-8">
                                         Weitere Details
                                     </div>
-                                    <div class="col-sm-4">
-                                        <i class="far fa-check-circle green-text"></i>
+                                    <div class="col-sm-4" id="furtherInfoCheck">
+                                        <?php echo $furtherInfoCheck ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -349,30 +349,40 @@ include("components/header.php");
                     <div class="card">
                         <!--Card content-->
                         <div class="card-body">
-                            <h4>Weitere Details</h4>
-                            <br>
-                            <p>Bitte beschrieben sie Kurz und so weier und so fort...</p>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="md-form">
-                                        <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="aktEnt" class="md-textarea form-control"
-                                                  rows="3"></textarea>
-                                        <label for="aktEnt">Aktueller Entsorgungsweg + Preis</label>
-                                    </div>
+                                    <h4>Weitere Infos</h4>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="md-form">
-                                        <i class="fas fa-pencil-alt prefix"></i>
-                                        <textarea id="processDescr" class="md-textarea form-control"
-                                                  rows="3"></textarea>
-                                        <label for="processDescr">Prozessbeschreibung</label>
-                                    </div>
+                                    <span class="didChangeFurtherInfo" id="didChangeFurtherInfo"></span>
                                 </div>
                             </div>
-                            <button type="submit" id="sumbitMoreData" name="sumbitMoreData" class="btn btn-light-green">
-                                Speichern
-                            </button>
+                            <br>
+                            <p>Bitte beschrieben sie Kurz und so weier und so fort...</p>
+                            <form id="furtherInformationForm">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <i class="fas fa-pencil-alt prefix"></i>
+                                            <textarea id="aktEnt" class="md-textarea form-control"
+                                                      rows="5" name="dispRoute"><?php echo $dispRoute ?></textarea>
+                                            <label for="aktEnt">Aktueller Entsorgungsweg + Preis</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form">
+                                            <i class="fas fa-pencil-alt prefix"></i>
+                                            <textarea id="processDescr" class="md-textarea form-control"
+                                                      rows="5" name="procDescr"><?php echo $procDescr ?></textarea>
+                                            <label for="processDescr">Prozessbeschreibung</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" id="sumbitFurtherInfo" name="sumbitMoreData"
+                                        class="btn btn-light-green">
+                                    Speichern
+                                </button>
+                            </form>
                             <br><br>
 
                             <h4>Benötigte Dokumente</h4>
@@ -386,17 +396,19 @@ include("components/header.php");
                                     </div>
                                     <small id="smalltext" class="form-text text-muted mb-4">Nicht älter als 12 Monate
                                     </small>
-                                    <p id="error"></p><br>
-                                    <p id="progess"></p><br>
-                                    <div id="files"></div>
+                                    <p id="error"></p>
+                                    <p id="progess"></p>
                                     <div class="existingFiles">
-                                        <?php showFiles($conn, $userId); ?>
+                                        <h4>Hochgeladene Dokumente</h4>
+                                        <div class="gallery">
+                                            <figure id="files"></figure>
+                                            <?php showFiles($conn, $userId); ?>
+                                        </div>
                                     </div>
 
                                 </div>
                                 <div class="col-md-6">
                                     <p> Zertifikate (ISO, EfB)/ Genehmigung</p>
-
                                 </div>
                             </div>
                         </div>
@@ -448,21 +460,21 @@ include("components/header.php");
             var fileName = data.originalFiles[0]['name'];
             var fileSize = data.originalFiles[0]['size'];
 
-            if(!fileTypeAllowed.test(fileName)){
+            if (!fileTypeAllowed.test(fileName)) {
                 $("#error").html("Dateityp nicht unterstützt");
-            }else if(fileSize > 5000000){
+            } else if (fileSize > 5000000) {
                 $("#error").html("Datei zu groß! Max 500 kb");
-            }else {
+            } else {
                 $("#error").html('');
                 data.submit();
             }
         }).on('fileuploaddone', function (e, data) {
             var status = data.jqXHR.responseJSON.status;
             var msg = data.jqXHR.responseJSON.msg;
-            if(status == 1){
+            if (status == 1) {
                 var path = data.jqXHR.responseJSON.path;
-                $("#files").fadeIn().append('<p><img style="width: 100%" src="'+path+'"/><p>');
-            }else {
+                $("#files").fadeIn().append('<p><img style="width: 100%" src="' + path + '"/><p>');
+            } else {
                 $("#error").html(msg);
             }
         }).on('fileuploadprogressall', function (e, data) {
@@ -477,6 +489,7 @@ include("components/header.php");
     //Variablen für Prgressbar
     contactPersCheckVar = <?php echo $contactPersCheckVar?>;
     requestCheckVar = <?php echo $requestCheckVar?>;
+    furtherInfoCheckVar = <?php echo $furtherInfoCheckVar ?>
 </script>
 <script type="text/javascript" src="js/formHandler.js"></script>
 

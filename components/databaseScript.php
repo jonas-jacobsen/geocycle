@@ -23,6 +23,9 @@ $producer = $row['Producer'];
 $wasteDescription = $row['WasteDescription'];
 $avv = $row['Avv'];
 $deliveryForm = $row['DeliveryForm'];
+//further Info
+$dispRoute = $row['DisposalRoute'];
+$procDescr = $row['ProcessDescription'];
 
 //radiobuttons Check Db
 $radioOnPro = "";
@@ -70,6 +73,17 @@ if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $ro
     $requestCheckVar = 0;
 }
 
+$furtherInfoCheck ="";
+$furtherInfoCheckVar = 0;
+
+if ($row['DisposalRoute'] && $row['ProcessDescription']) {
+    $furtherInfoCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $furtherInfoCheckVar = 1;
+} else {
+    $furtherInfoCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+    $furtherInfoCheckVar = 0;
+}
+
 //Progressbar check bei Seiten Reload
 $progressBarValue = "";
 $progressValue = "";
@@ -87,8 +101,13 @@ if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
 
 //Fileupload
 if (isset($_FILES['attachments'])) {
+    $folder = "uploads/".$userId . "/";
+    if (!file_exists($folder)) {
+        mkdir($folder);
+    }
+
     $msg = "";
-    $targetFile = "uploads/" . basename($_FILES['attachments']['name'][0]);
+    $targetFile = $folder.basename($_FILES['attachments']['name'][0]);
     if (file_exists($targetFile)) {
         $msg = array("status" => 0, "msg" => "Dokument existiert schon!");
     } elseif (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile)) {
@@ -106,7 +125,8 @@ function showFiles($conn, $userId){
     $statement_show_fiels = mysqli_query($conn, $sql_show_files);
     while($rowPath = mysqli_fetch_array($statement_show_fiels)){
         $filePath = $rowPath['Path'];
-        echo "<p><img style=\"width: 100%\" src=\".$filePath.\"/><p>";
+        echo "<figure><a href=\".$filePath.\" target='_blank'><img style=\"width: 100%\" src=\".$filePath.\"/></a></figure>";
+
     }
 }
 
