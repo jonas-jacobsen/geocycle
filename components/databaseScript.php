@@ -1,4 +1,5 @@
 <?php
+
 //check ob Daten vorhanden sind
 $sql_all = "SELECT * FROM userdata WHERE id = $_SESSION[userId]";
 $statement = mysqli_query($conn, $sql_all);
@@ -6,6 +7,7 @@ $statement = mysqli_query($conn, $sql_all);
 $row = mysqli_fetch_array($statement);
 
 //userdata
+$userId = $row['id'];
 //ansprechpartner
 $firstname = $row['Firstname'];
 $surname = $row['Surname'];
@@ -23,6 +25,8 @@ $avv = $row['Avv'];
 $deliveryForm = $row['DeliveryForm'];
 
 //radiobuttons Check Db
+$radioOnPro = "";
+$radioOnAbf = "";
 if ($prodAbf == "Produktstatus") {
     $radioOnPro = "checked";
 } elseif ($prodAbf == "Abfall") {
@@ -32,6 +36,8 @@ if ($prodAbf == "Produktstatus") {
     $radioOnAbf = "";
 }
 
+$radioOnErz = "";
+$radioOnHae = "";
 if ($erzHae == "Erzeuger") {
     $radioOnErz = "checked";
 } elseif ($erzHae == "Händler") {
@@ -42,6 +48,9 @@ if ($erzHae == "Erzeuger") {
 }
 
 //Überprüfen ob alle Daten in DB
+$contactPersCheck = "";
+$contactPersCheckVar = 0;
+
 if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
     $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $contactPersCheckVar = 1;
@@ -49,6 +58,9 @@ if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $r
     $contactPersCheck = "<i class=\"far fa-times-circle red-text\"></i>";
     $contactPersCheckVar = 0;
 }
+
+$requestCheck = "";
+$requestCheckVar = 0;
 
 if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $row['WasteDescription'] && $row['Avv'] && $row['DeliveryForm']) {
     $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
@@ -59,6 +71,8 @@ if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $ro
 }
 
 //Progressbar check bei Seiten Reload
+$progressBarValue = "";
+$progressValue = "";
 if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
     $progressBarValue = "100%";
     $progressValue = "100";
@@ -69,5 +83,33 @@ if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
     $progressBarValue = "0%";
     $progressValue = "0";
 }
+
+
+//Fileupload
+if (isset($_FILES['attachments'])) {
+    $msg = "";
+    $targetFile = "uploads/" . basename($_FILES['attachments']['name'][0]);
+    if (file_exists($targetFile)) {
+        $msg = array("status" => 0, "msg" => "Dokument existiert schon!");
+    } elseif (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile)) {
+        $msg = array("status" => 1, "msg" => "Dokument wurde hochgeladen", "path" => $targetFile);
+        //Insert Path of the File into db DocOne
+        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId'";
+        $result = mysqli_query($conn, $sql_insert_Doc);
+    }
+    exit(json_encode($msg));
+}
+
+//show Files
+function showFiles($conn, $userId){
+    $sql_show_files = "SELECT * FROM docOne WHERE UserId = $userId";
+    $statement_show_fiels = mysqli_query($conn, $sql_show_files);
+    while($rowPath = mysqli_fetch_array($statement_show_fiels)){
+        $filePath = $rowPath['Path'];
+        echo "<p><img style=\"width: 100%\" src=\".$filePath.\"/><p>";
+    }
+}
+
+
 
 ?>

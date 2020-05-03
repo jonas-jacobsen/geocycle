@@ -370,6 +370,10 @@ include("components/header.php");
                                     </div>
                                 </div>
                             </div>
+                            <button type="submit" id="sumbitMoreData" name="sumbitMoreData" class="btn btn-light-green">
+                                Speichern
+                            </button>
+                            <br><br>
 
                             <h4>Benötigte Dokumente</h4>
                             <br>
@@ -377,24 +381,24 @@ include("components/header.php");
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>Analytik/ SBA/ BA</p>
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now" class="file-upload"/>
+                                    <div id="dropZone">
+                                        <input type="file" id="fileupload" name="attachments[]" multiple>
                                     </div>
                                     <small id="smalltext" class="form-text text-muted mb-4">Nicht älter als 12 Monate
                                     </small>
+                                    <p id="error"></p><br>
+                                    <p id="progess"></p><br>
+                                    <div id="files"></div>
+                                    <div class="existingFiles">
+                                        <?php showFiles($conn, $userId); ?>
+                                    </div>
+
                                 </div>
                                 <div class="col-md-6">
                                     <p> Zertifikate (ISO, EfB)/ Genehmigung</p>
-                                    <div class="file-upload-wrapper">
-                                        <input type="file" id="input-file-now" class="file-upload"/>
-                                    </div>
+
                                 </div>
                             </div>
-
-                            <br>
-                            <button type="submit" id="sumbitMoreData" name="sumbitMoreData" class="btn btn-light-green">
-                                Speichern
-                            </button>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -427,6 +431,46 @@ include("components/header.php");
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+<!-- script für dragDrop file Input -->
+<script src="js/fileUpload/vendor/jquery.ui.widget.js" type="text/javascript"></script>
+<script src="js/fileUpload/jquery.iframe-transport.js" type="text/javascript"></script>
+<script src="js/fileUpload/jquery.fileupload.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        var files = $("#files");
+        $("#fileupload").fileupload({
+            url: 'dashboard.php',
+            dropZone: '#dropzone',
+            dataType: 'json',
+            autoUpload: false
+        }).on('fileuploadadd', function (e, data) {
+            var fileTypeAllowed = /.\.(jpg|png|jpeg|pdf)$/i;
+            var fileName = data.originalFiles[0]['name'];
+            var fileSize = data.originalFiles[0]['size'];
+
+            if(!fileTypeAllowed.test(fileName)){
+                $("#error").html("Dateityp nicht unterstützt");
+            }else if(fileSize > 5000000){
+                $("#error").html("Datei zu groß! Max 500 kb");
+            }else {
+                $("#error").html('');
+                data.submit();
+            }
+        }).on('fileuploaddone', function (e, data) {
+            var status = data.jqXHR.responseJSON.status;
+            var msg = data.jqXHR.responseJSON.msg;
+            if(status == 1){
+                var path = data.jqXHR.responseJSON.path;
+                $("#files").fadeIn().append('<p><img style="width: 100%" src="'+path+'"/><p>');
+            }else {
+                $("#error").html(msg);
+            }
+        }).on('fileuploadprogressall', function (e, data) {
+            var progress = parseInt(data.loaded / data.total * 100, 10);
+            $("#progess").html("Hochgeladen zu " + progress + "%");
+        });
+    });
+</script>
 
 <!-- Form verarbeiten -->
 <script type="text/javascript">
@@ -435,5 +479,6 @@ include("components/header.php");
     requestCheckVar = <?php echo $requestCheckVar?>;
 </script>
 <script type="text/javascript" src="js/formHandler.js"></script>
+
 </body>
 </html>

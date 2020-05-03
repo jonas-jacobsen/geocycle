@@ -123,5 +123,22 @@
     .sidecard-body .col-sm-4 {
         text-align: right;
     }
+}
 
+/*File Input DropZone*/
+#dropZone {
+    border: 1px dashed #007E33;
+    padding: 50px;
+    width: 100%;
+    text-align: center;
+}
+#files{
+    border: 1px dotted #007E33;
+    padding: 20px;
+    width: 100% ;
+    display: none;
+}
+#error{
+    color: red;
+    font-weight: lighter;
 }
