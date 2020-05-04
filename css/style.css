@@ -62,6 +62,14 @@
     -webkit-animation: rotation 2s infinite linear;
 }
 
+.didChangeFiles {
+    text-align: right;
+}
+.didChangeFiles .fas {
+    color: green;
+    -webkit-animation: rotation 2s infinite linear;
+}
+
 @-webkit-keyframes rotation {
     from {
         -webkit-transform: rotate(0deg);
@@ -143,7 +151,6 @@
 }
 #files{
     padding: 20px;
-    width: 100% ;
     display: none;
 }
 #error{
@@ -155,7 +162,7 @@
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(133px, 1fr));
-    gap: 10px;
+    gap: 20px;
     grid-auto-flow: dense;
 }
 
@@ -183,6 +190,8 @@
 }
 
 /*End Files responsive anzeigen lassen */
-
+#einbinden {
+    display: none;
+}
 
 

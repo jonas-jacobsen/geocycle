@@ -212,10 +212,10 @@ include("components/header.php");
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        ...
+                                        Dokumente
                                     </div>
-                                    <div class="col-sm-4">
-                                        <i class="far fa-times-circle red-text"></i>
+                                    <div class="col-sm-4" id="docOneCheck">
+                                        <?php echo $docOneCheck ?>
                                     </div>
                                 </div>
                             </div>
@@ -385,9 +385,14 @@ include("components/header.php");
                             </form>
                             <br><br>
 
-                            <h4>Benötigte Dokumente</h4>
-                            <br>
-
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Dokumente</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="didChangeFiles" id="didChangeFiles"></span>
+                                </div>
+                            </div><br>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>Analytik/ SBA/ BA</p>
@@ -401,7 +406,7 @@ include("components/header.php");
                                     <div class="existingFiles">
                                         <h4>Hochgeladene Dokumente</h4>
                                         <div class="gallery">
-                                            <figure id="files"></figure>
+                                            <div id="einbinden"></div>
                                             <?php showFiles($conn, $userId); ?>
                                         </div>
                                     </div>
@@ -447,50 +452,16 @@ include("components/header.php");
 <script src="js/fileUpload/vendor/jquery.ui.widget.js" type="text/javascript"></script>
 <script src="js/fileUpload/jquery.iframe-transport.js" type="text/javascript"></script>
 <script src="js/fileUpload/jquery.fileupload.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $(function () {
-        var files = $("#files");
-        $("#fileupload").fileupload({
-            url: 'dashboard.php',
-            dropZone: '#dropzone',
-            dataType: 'json',
-            autoUpload: false
-        }).on('fileuploadadd', function (e, data) {
-            var fileTypeAllowed = /.\.(jpg|png|jpeg|pdf)$/i;
-            var fileName = data.originalFiles[0]['name'];
-            var fileSize = data.originalFiles[0]['size'];
-
-            if (!fileTypeAllowed.test(fileName)) {
-                $("#error").html("Dateityp nicht unterstützt");
-            } else if (fileSize > 5000000) {
-                $("#error").html("Datei zu groß! Max 500 kb");
-            } else {
-                $("#error").html('');
-                data.submit();
-            }
-        }).on('fileuploaddone', function (e, data) {
-            var status = data.jqXHR.responseJSON.status;
-            var msg = data.jqXHR.responseJSON.msg;
-            if (status == 1) {
-                var path = data.jqXHR.responseJSON.path;
-                $("#files").fadeIn().append('<p><img style="width: 100%" src="' + path + '"/><p>');
-            } else {
-                $("#error").html(msg);
-            }
-        }).on('fileuploadprogressall', function (e, data) {
-            var progress = parseInt(data.loaded / data.total * 100, 10);
-            $("#progess").html("Hochgeladen zu " + progress + "%");
-        });
-    });
-</script>
 
 <!-- Form verarbeiten -->
 <script type="text/javascript">
     //Variablen für Prgressbar
     contactPersCheckVar = <?php echo $contactPersCheckVar?>;
     requestCheckVar = <?php echo $requestCheckVar?>;
-    furtherInfoCheckVar = <?php echo $furtherInfoCheckVar ?>
+    furtherInfoCheckVar = <?php echo $furtherInfoCheckVar?>;
+    docOneCheckVar = <?php echo $docOneCheckVar?>;
 </script>
+
 <script type="text/javascript" src="js/formHandler.js"></script>
 
 </body>
