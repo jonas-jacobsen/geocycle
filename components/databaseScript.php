@@ -101,36 +101,29 @@ if ($numbers > 0) {
 //Progressbar check bei Seiten Reload
 $progressBarValue = "";
 $progressValue = "";
+$buttonRequestFilledOut = "";
 $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar + $docOneCheckVar;
 if ($countNumbers == 4) {
     $progressBarValue = "100%";
     $progressValue = "100";
+    $buttonRequestFilledOut = '<button type="submit" id="requestFilledOut" name="submitAnsprech" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
 } elseif ($countNumbers == 3) {
     $progressBarValue = "75%";
     $progressValue = "75";
+    $buttonRequestFilledOut = "";
 } elseif ($countNumbers == 2) {
     $progressBarValue = "50%";
     $progressValue = "50";
+    $buttonRequestFilledOut = "";
 } elseif ($countNumbers == 1) {
     $progressBarValue = "25%";
     $progressValue = "25";
+    $buttonRequestFilledOut = "";
 } else {
     $progressBarValue = "0%";
     $progressValue = "0";
+    $buttonRequestFilledOut = "";
 }
-
-/*
-if ($contactPersCheckVar == 1 && $requestCheckVar == 1) {
-
-} elseif ($contactPersCheckVar == 0 && $requestCheckVar == 1 || $contactPersCheckVar == 1 && $requestCheckVar == 0) {
-    $progressBarValue = "50%";
-    $progressValue = "50";
-} else {
-    $progressBarValue = "0%";
-    $progressValue = "0";
-}
-*/
-
 
 //Fileupload
 if (isset($_FILES['attachments'])) {

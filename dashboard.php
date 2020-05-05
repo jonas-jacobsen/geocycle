@@ -218,6 +218,10 @@ include("components/header.php");
                                         <?php echo $docOneCheck ?>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row" id="filledOut">
+                                   <?php echo $buttonRequestFilledOut ?>
+                                </div>
                             </div>
 
                         </div>
