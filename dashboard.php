@@ -392,7 +392,8 @@ include("components/header.php");
                                 <div class="col-md-6">
                                     <span class="didChangeFiles" id="didChangeFiles"></span>
                                 </div>
-                            </div><br>
+                            </div>
+                            <br>
                             <div class="row">
                                 <div class="col-md-6">
                                     <p>Analytik/ SBA/ BA</p>
@@ -406,11 +407,10 @@ include("components/header.php");
                                     <div class="existingFiles">
                                         <h4>Hochgeladene Dokumente</h4>
                                         <div class="gallery">
-                                            <div id="einbinden"></div>
                                             <?php showFiles($conn, $userId); ?>
+                                            <div id="einbinden"></div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="col-md-6">
                                     <p> Zertifikate (ISO, EfB)/ Genehmigung</p>

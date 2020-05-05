@@ -188,7 +188,7 @@ function showFiles($conn, $userId)
         }
 
         echo '
-        <div>
+        <div id="'. $fileId .'">
             <div class="view overlay hm-green-slight">
                 <figure><a href="' . $filePath . '" target="_blank"><img style="width: 100%" src="assets/images/' . $icon . '"></a>
                     <div class="mask flex-center">
@@ -199,13 +199,11 @@ function showFiles($conn, $userId)
                 </figure>
             </div>
             <div style="text-align: center">
-                <p>' . $fileName[1] . '</p>
-                <form id="deleteFileForm">
-                    <input type="hidden" name="deleteFileId" value="' . $fileId . '">
-                    <button type="submit" id="deleteFile" class="btn btn-outline-danger waves-effect">
-                        <i class="far fa-trash-alt"></i>
-                    </button>
-                </form>
+                <p>' . $fileName[1] . '</p>  
+                <input type="hidden" name="deleteFileId" value="' . $fileId . '">
+                <button type="button" id="' . $fileId . '" name="delete" class="btn btn-outline-danger waves-effect delete">
+                <i class="far fa-trash-alt"></i>
+                </button>
             </div>  
         </div>
         ';

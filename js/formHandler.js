@@ -64,32 +64,30 @@ $('#furtherInformationForm').submit(function (event) {
     }, 1000);
 });
 
-$('#deleteFileForm').submit(function (event) {
-    event.preventDefault(); //seitenreloud wird verhindert
-    $('#didChangeFiles').html(rotateCircle);
+//dokumente mit ajax call löschen
+$(document).on("click", ".delete", function (){
+    alert("success");
+    var divFileId;
+    var id = $(this).attr("id");
     $.ajax({
         type: 'POST',
-        dataType: 'json',
+        dataType: 'text',
+        async:true,
         url: 'components/updateFilesAjax.php',
-        data: $(this).serialize(),
+        data: {id:id},
         success: function (dataThree) {
-            //$('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);
-            //furtherInfoCheckVar = dataTwo.furtherInfoCheckVar;
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
+            divFileId = dataThree;
+            $('#'+divFileId).hide();
         },
     });
-    //set Timeout for showing Anderungen vorgenommen
-    setTimeout(function () {
-        $('#didChangeFiles').html('')
-    }, 1000);
 });
-
 
 
 //FileUpload
 $(function () {
     var files = $("#files");
     $("#fileupload").fileupload({
+        type: 'POST',
         url: 'dashboard.php',
         dropZone: '#dropzone',
         dataType: 'json',
@@ -118,13 +116,12 @@ $(function () {
         if (status == 1) {
             var path = data.jqXHR.responseJSON.path;
             var newFileId = data.jqXHR.responseJSON.newFileId;
-            if(path.indexOf('.pdf') == -1){
+            if (path.indexOf('.pdf') == -1) {
                 icon = "imgIcon.png";
             } else {
                 icon = "pdfIcon.png";
             }
-        //<figure><a href="'+path+'" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><br><p style="text-align: center">'+fileName+'</p><figure>'
-            $("#einbinden").fadeIn().append('<div class="view overlay hm-green-slight"><figure><a href="'+path+'" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><div class="mask flex-center"><p class="white-text"><a href="'+path+'" target="_blank">Anzeigen</a></p></div></figure></div><div style="text-align: center"><p>'+fileName+'</p><form id="deleteFileForm"><input type="hidden" name="deleteFileId" value="'+newFileId+'"><button type="submit" id="deleteFile" class="btn btn-outline-danger waves-effect"><i class="far fa-trash-alt"></i></button></form></div>');
+            $("#einbinden").fadeIn().append('<div id="'+newFileId+'"><div class="view overlay hm-green-slight"><figure><a href="' + path + '" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><div class="mask flex-center"><p class="white-text"><a href="' + path + '" target="_blank">Anzeigen</a></p></div></figure></div><div style="text-align: center"><p>' + fileName + '</p><input type="hidden" name="deleteFileId" value="' + newFileId + '"><button type="button" id="'+newFileId+'" class="btn btn-outline-danger waves-effect delete"><i class="far fa-trash-alt"></i></button></div></div>');
         } else {
             $("#error").html(msg);
         }
