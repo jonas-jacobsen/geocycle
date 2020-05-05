@@ -6,6 +6,8 @@ include("components/databaseScript.php");
 include("components/header.php");
 ?>
 <body>
+<!--Modal anzeigenlassen -->
+<?php include("components/modal.php") ?>
 <div class="container-for-admin">
     <!--Main Navigation-->
     <header>
@@ -63,7 +65,7 @@ include("components/header.php");
                                 <a class="dropdown-item" href="#">Another action</a>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </div>
-                        </li> <!-- End li nav item dropdown -->
+                        </li> End li nav item dropdown -->
                     </ul>
                 </div>
             </div>
@@ -459,6 +461,13 @@ include("components/header.php");
 
 <!-- Form verarbeiten -->
 <script type="text/javascript">
+    //modal das erste mal anzeigen
+    var modalShow = <?php echo $modalShow?>;
+    $('#centralModalSuccess').modal('show');
+    if(modalShow == 0){
+        // $('#centralModalSuccess').modal('show');
+    }else{}
+
     //Variablen für Prgressbar
     contactPersCheckVar = <?php echo $contactPersCheckVar?>;
     requestCheckVar = <?php echo $requestCheckVar?>;

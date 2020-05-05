@@ -3,9 +3,16 @@
 //check ob Daten vorhanden sind
 $sql_all = "SELECT * FROM userdata WHERE id = $_SESSION[userId]";
 $statement = mysqli_query($conn, $sql_all);
-
 $row = mysqli_fetch_array($statement);
 
+//check ob das erste mal angemeldet
+$modalShow = $row['CheckIfNew'];
+if($modalShow == "0"){
+    $sqlChangeCheckIfNew = "UPDATE userdata SET CheckIfNew = 1 WHERE id = $row[id]";
+    mysqli_query($conn, $sqlChangeCheckIfNew);
+}else{
+
+}
 //userdata
 $userId = $row['id'];
 //ansprechpartner

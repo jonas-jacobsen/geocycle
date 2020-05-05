@@ -123,10 +123,6 @@
         top: 70px;
     }
 
-    .sidebar {
-        z-index: 9999;
-    }
-
     .sidecard {
         width: 200px;
         border: 0;
