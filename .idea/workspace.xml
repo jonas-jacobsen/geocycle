@@ -20,6 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/updateFilesAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateFilesAjax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -119,7 +121,7 @@
       <workItem from="1588507092083" duration="14998000" />
       <workItem from="1588575164043" duration="23247000" />
       <workItem from="1588623552837" duration="5265000" />
-      <workItem from="1588667465229" duration="14657000" />
+      <workItem from="1588667465229" duration="15410000" />
     </task>
     <servers />
   </component>

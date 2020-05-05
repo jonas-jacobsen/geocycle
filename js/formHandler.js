@@ -70,13 +70,18 @@ $(document).on("click", ".delete", function (){
     var id = $(this).attr("id");
     $.ajax({
         type: 'POST',
-        dataType: 'text',
+        dataType: 'json',
         async:true,
         url: 'components/updateFilesAjax.php',
-        data: {id:id},
+        data: {
+            id:id,
+        },
         success: function (dataThree) {
-            divFileId = dataThree;
+            divFileId = dataThree.fileId;
             $('#'+divFileId).hide();
+            $('#docOneCheck').html(dataThree.fileUploadCheck);
+            docOneCheckVar = dataThree.fileUploadCheckVar;
+            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
         },
     });
 });

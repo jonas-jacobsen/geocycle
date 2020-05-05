@@ -26,16 +26,19 @@ $sql_all_rows = "SELECT * FROM docOne WHERE UserId = $userId";
 $stmt = mysqli_query($conn, $sql_all_rows);
 $count = mysqli_num_rows($stmt);
 if ($count> 0){
-    $mitt =  "mehr als null vorhanden";
+    $fileUploadCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+    $fileUploadCheckVar = 1;
 } else {
-    $mitt =  "kein Dokument mehr vohanden";
+    $fileUploadCheck =  "<i class=\"far fa-times-circle red-text\"></i>";
+    $fileUploadCheckVar = 0;
 }
 
 $jsonArray = array(
-    'mit' => $mitt,
+    'fileUploadCheck' => $fileUploadCheck,
+    'fileUploadCheckVar' => $fileUploadCheckVar,
     'fileId' => $id,
 );
-exit($id);
+exit(json_encode($jsonArray));
 
 
 ?>
