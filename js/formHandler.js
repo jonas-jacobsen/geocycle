@@ -66,7 +66,6 @@ $('#furtherInformationForm').submit(function (event) {
 
 //dokumente mit ajax call löschen
 $(document).on("click", ".delete", function (){
-    alert("success");
     var divFileId;
     var id = $(this).attr("id");
     $.ajax({
