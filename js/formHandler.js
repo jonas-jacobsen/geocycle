@@ -92,7 +92,7 @@ $(function () {
     var files = $("#files");
     $("#fileupload").fileupload({
         type: 'POST',
-        url: 'dashboard.php',
+        url: 'request.php',
         dropZone: '#dropzone',
         dataType: 'json',
         autoUpload: false

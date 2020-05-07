@@ -1,20 +1,19 @@
 <?php
 
+If(isset($_POST['requestId'])){
+    $requestId = $_POST['requestId'];
+    $_SESSION['requestId'] = $requestId;
+} else {
+    $requestId = $_SESSION['requestId'];
+}
+
 //check ob Daten vorhanden sind
-$sql_all = "SELECT * FROM userdata WHERE id = $_SESSION[userId]";
+$sql_all = "SELECT * FROM userdata WHERE id = '$requestId'";
 $statement = mysqli_query($conn, $sql_all);
 $row = mysqli_fetch_array($statement);
 
-//check ob das erste mal angemeldet
-$modalShow = $row['CheckIfNew'];
-if($modalShow == "0"){
-    $sqlChangeCheckIfNew = "UPDATE userdata SET CheckIfNew = 1 WHERE id = $row[id]";
-    mysqli_query($conn, $sqlChangeCheckIfNew);
-}else{
-
-}
 //userdata
-$userId = $row['id'];
+$userId = $_SESSION['userId'];
 //ansprechpartner
 $firstname = $row['Firstname'];
 $surname = $row['Surname'];
@@ -94,7 +93,7 @@ if ($row['DisposalRoute'] && $row['ProcessDescription']) {
 $docOneCheck = "";
 $docOneCheckVar = 0;
 
-$sqlDocOne = "SELECT * FROM docOne WHERE UserId = $userId";
+$sqlDocOne = "SELECT * FROM docOne WHERE RequestId = '$requestId'";
 $result = mysqli_query($conn, $sqlDocOne);
 $numbers = mysqli_num_rows($result);
 if ($numbers > 0) {
@@ -138,7 +137,6 @@ if (isset($_FILES['attachments'])) {
     if (!file_exists($folder)) {
         mkdir($folder);
     }
-
     $msg = "";
     $targetFile = $folder . basename($_FILES['attachments']['name'][0]);
     if (file_exists($targetFile)) {
@@ -152,7 +150,7 @@ if (isset($_FILES['attachments'])) {
         $path = $targetFile;
         //$msg = array("status" => 1, "msg" => "Dokument wurde hochgeladen", "path" => $targetFile);
         //Insert Path of the File into db DocOne
-        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId'";
+        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId', RequestId = '$requestId'";
         $result = mysqli_query($conn, $sql_insert_Doc);
     }
     $sqlSelectUploadedId = "SELECT id FROM docOne ORDER BY id DESC LIMIT 1";
@@ -170,9 +168,9 @@ if (isset($_FILES['attachments'])) {
 }
 
 //show Files
-function showFiles($conn, $userId)
+function showFiles($conn, $requestId, $userId)
 {
-    $sql_show_files = "SELECT * FROM docOne WHERE UserId = $userId";
+    $sql_show_files = "SELECT * FROM docOne WHERE RequestId = $requestId";
     $statement_show_fiels = mysqli_query($conn, $sql_show_files);
     while ($rowPath = mysqli_fetch_array($statement_show_fiels)) {
         $filePath = $rowPath['Path'];
@@ -188,7 +186,7 @@ function showFiles($conn, $userId)
         }
 
         echo '
-        <div id="'. $fileId .'">
+        <div id="' . $fileId . '">
             <div class="view overlay hm-green-slight">
                 <figure><a href="' . $filePath . '" target="_blank"><img style="width: 100%" src="assets/images/' . $icon . '"></a>
                     <div class="mask flex-center">
@@ -209,6 +207,5 @@ function showFiles($conn, $userId)
         ';
     }
 }
-
 
 ?>

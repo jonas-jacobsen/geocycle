@@ -31,7 +31,7 @@
                 <!-- Right -->
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
-                        <a href="allUserRequests.php" class="nav-link waves-effect">
+                        <a href="userDashboard.php" class="nav-link waves-effect">
                             <i class="fas fa-file-upload"></i>
                         </a>
                     </li>

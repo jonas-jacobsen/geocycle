@@ -3,9 +3,6 @@ session_start();
 include("config.php");
 
 $id = $_POST['id'];
-if(isset($_POST['id'])){
-
-}
 $userId = $_SESSION['userId'];
 
 //file Pfad herausfinden

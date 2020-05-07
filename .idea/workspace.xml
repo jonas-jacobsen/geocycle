@@ -20,11 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/allUserRequests.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/userDashboardScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allUserRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/userDashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/databaseScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/footer.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateDataContactPersAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/updateFilesAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateFilesAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/updateFurtherInfoAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateFurtherInfoAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/updateRequestAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateRequestAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +132,7 @@
       <workItem from="1588575164043" duration="23247000" />
       <workItem from="1588623552837" duration="5265000" />
       <workItem from="1588667465229" duration="20886000" />
-      <workItem from="1588749458144" duration="2600000" />
+      <workItem from="1588749458144" duration="23685000" />
     </task>
     <servers />
   </component>
@@ -154,10 +162,10 @@
     </state>
     <state x="-2492" y="54" key="#SSH_Configurations/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588507067163" />
     <state x="34" y="52" key="#SSH_Configurations/0.23.1280.777@0.23.1280.777" timestamp="1588416540986" />
-    <state x="-1457" y="650" key="NewPhpFileDialog" timestamp="1588777081565">
+    <state x="-1457" y="650" key="NewPhpFileDialog" timestamp="1588856366942">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588777081565" />
+    <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588856366942" />
     <state x="-2260" y="102" key="SettingsEditor" timestamp="1588584490519">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
@@ -167,10 +175,10 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588506722621" />
-    <state x="-1573" y="707" width="638" height="548" key="find.popup" timestamp="1588779639461">
+    <state x="-1573" y="753" width="638" height="548" key="find.popup" timestamp="1588882226591">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1573" y="707" width="638" height="548" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588779639461" />
+    <state x="-1573" y="753" width="638" height="548" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588882226591" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

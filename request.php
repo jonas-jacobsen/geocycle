@@ -7,8 +7,6 @@ include("components/header.php");
 ?>
 
 <body>
-<!--Modal anzeigenlassen -->
-<?php include("components/modal.php") ?>
 <div class="container-for-admin">
     <!--Main Navigation-->
     <?php include("components/navbar.php") ?>
@@ -105,7 +103,8 @@ include("components/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" id="submitAnsprech" name="submitAnsprech" value="1"
+                                <input type="hidden" name="requestId" value="<?php $requestId?>">
+                                <button type="submit" id="submitAnsprech" name="submitAnsprech" value=""
                                         class="btn btn-light-green">Speichern
                                 </button>
                             </form>
@@ -352,7 +351,7 @@ include("components/header.php");
                                     <div class="existingFiles">
                                         <h4>Hochgeladene Dokumente</h4>
                                         <div class="gallery">
-                                            <?php showFiles($conn, $userId); ?>
+                                            <?php showFiles($conn, $requestId, $userId); ?>
                                             <div id="einbinden"></div>
                                         </div>
                                     </div>
@@ -373,15 +372,7 @@ include("components/header.php");
     <!--Main layout-->
 
 </div>
-<!-- Footer -->
-<footer class="page-footer font-small success-color-dark">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-        <a href="https://www.geocycle.com/"> Geocycle GmbH</a>
-    </div>
-    <!-- Copyright -->
-</footer>
-<!-- Footer -->
+<?php include("components/footer.php")?>
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -389,8 +380,7 @@ include("components/header.php");
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <!-- script für dragDrop file Input -->
@@ -400,14 +390,6 @@ include("components/header.php");
 
 <!-- Form verarbeiten -->
 <script type="text/javascript">
-    //modal das erste mal anzeigen
-    var modalShow = <?php echo $modalShow?>;
-    $('#centralModalSuccess').modal('show');
-    if (modalShow == 0) {
-        // $('#centralModalSuccess').modal('show');
-    } else {
-    }
-
     //Variablen für Prgressbar
     contactPersCheckVar = <?php echo $contactPersCheckVar?>;
     requestCheckVar = <?php echo $requestCheckVar?>;

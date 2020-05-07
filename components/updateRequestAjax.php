@@ -11,13 +11,14 @@ $avv = htmlspecialchars($_POST['avv']);
 $deliveryForm = htmlspecialchars($_POST['deliveryForm']);
 
 $userId = $_SESSION['userId'];
+$requestId = $_SESSION['requestId'];
 
-$sql = "UPDATE userdata SET ProdAbf = '$prodAbf', ErzHae = '$erzHae', Jato = '$jato', Producer = '$producer', WasteDescription = '$wasteDescription', Avv = '$avv', DeliveryForm = '$deliveryForm' WHERE id = $userId";
+$sql = "UPDATE userdata SET ProdAbf = '$prodAbf', ErzHae = '$erzHae', Jato = '$jato', Producer = '$producer', WasteDescription = '$wasteDescription', Avv = '$avv', DeliveryForm = '$deliveryForm' WHERE id = $requestId";
 
 $statement = mysqli_query($conn, $sql);
 
 
-$sql_all = "SELECT * FROM userdata WHERE id = $userId";
+$sql_all = "SELECT * FROM userdata WHERE id = $requestId";
 $statement = mysqli_query($conn, $sql_all);
 
 $data = mysqli_fetch_array($statement);

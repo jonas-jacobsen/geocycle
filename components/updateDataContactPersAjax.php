@@ -8,14 +8,16 @@ if (isset($_POST['firstname']) && isset($_POST['surname'])) {
     $street = htmlspecialchars($_POST['street']);
     $town = htmlspecialchars($_POST['town']);
     $zip = htmlspecialchars($_POST['zip']);
+    $phone = htmlspecialchars($_POST['phone']);
+    $requestId =  $_SESSION['requestId'];
     $userId = $_SESSION['userId'];
 
-    $sql = "UPDATE userdata  SET Firstname = '$firstname', Surname = '$surname', Street = '$street', Town = '$town', Zip = '$zip' WHERE id = $userId";
+    $sql = "UPDATE userdata  SET Firstname = '$firstname',Phone = '$phone', Surname = '$surname', Street = '$street', Town = '$town', Zip = '$zip' WHERE id = $requestId";
 
     $statement = mysqli_query($conn, $sql);
 
 
-    $sql_all = "SELECT * FROM userdata WHERE id = $userId";
+    $sql_all = "SELECT * FROM userdata WHERE id = $requestId";
     $statement = mysqli_query($conn, $sql_all);
 
     $data = mysqli_fetch_array($statement);

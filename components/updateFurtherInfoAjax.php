@@ -6,13 +6,14 @@ $dispRoute = htmlspecialchars($_POST['dispRoute']);
 $procDescr = htmlspecialchars($_POST['procDescr']);
 
 $userId = $_SESSION['userId'];
+$requestId = $_SESSION['requestId'];
 
-$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr' WHERE id = $userId";
+$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr' WHERE id = $requestId";
 
 $statement = mysqli_query($conn, $sql);
 
 
-$sql_all = "SELECT * FROM userdata WHERE id = $userId";
+$sql_all = "SELECT * FROM userdata WHERE id = $requestId";
 $statement = mysqli_query($conn, $sql_all);
 
 //Hier später noch überprüen ob File hochgeladen

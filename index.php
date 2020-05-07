@@ -13,7 +13,7 @@ if (isset($_POST['submit'])) {
             //mysqli_query($db, $sql);
             $row = mysqli_fetch_array($result);
             $_SESSION ['userId'] = $row['id'];
-            header('Location: dasboard.php');
+            header('Location: userDashboard.php');
         }
         $errorMessage = '<div class="alert alert-danger" role="alert">Nutzername oder Passwort falsch</div>';
     } elseif ($_POST['email'] == "" && $_POST['password'] != "") {
@@ -41,11 +41,7 @@ if (isset($_POST['submitOne'])) {
             $sql = "INSERT INTO user SET Company='$company', Email='$email', Password = '$password', Phone ='$phone'";
             $result = mysqli_query($conn, $sql);
             $_SESSION['userId'] = mysqli_insert_id($conn);
-
-            $sql2 = "INSERT INTO userdata SET id = '$_SESSION[userId]', Phone = '$phone'";
-            $result2 = mysqli_query($conn, $sql2);
-
-            header('Location: dashboard.php');
+            header('Location: userDashboard.php');
         } else {
             $errorMessage = '<div class="alert alert-danger" role="alert">Emailadresse schon vergeben. Bitte suche dir einen neuen Nutzernamen</div>';
         }
