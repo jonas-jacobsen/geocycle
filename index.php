@@ -146,8 +146,30 @@ if (isset($_POST['submitOne'])) {
             <a href="" target="_blank">Nutzungsbedingungen</a> einverstanden
 
     </form>
-
 </div>
+<!-- Frame Modal Bottom -->
+<div class="modal fade bottom" id="frameModalBottom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+
+    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
+    <div class="modal-dialog modal-frame modal-bottom" role="document">
+
+
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row d-flex justify-content-center align-items-center">
+
+                    <p class="pt-3 pr-2">We use cookies to improve your website experience
+                    </p>
+
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
+                    <a href="https://www.geocycle.com/cookies-policy" target="_blank"><button type="button" class="btn btn-outline-success waves-effect">Save changes</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Frame Modal Bottom -->
 <?php
 include("includes/footer.php");
 ?>
@@ -162,5 +184,8 @@ include("includes/footer.php");
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+<script type="text/javascript">
+    $('#frameModalBottom').modal('show');
+</script>
 </body>
 </html>

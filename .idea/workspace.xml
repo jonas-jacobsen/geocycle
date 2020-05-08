@@ -20,19 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/components/userDashboardScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allUserRequests.php" beforeDir="false" afterPath="$PROJECT_DIR$/userDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/databaseScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateDataContactPersAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/updateFilesAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateFilesAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/updateFurtherInfoAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateFurtherInfoAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/updateRequestAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/updateRequestAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,15 +88,15 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/js/fileUpload" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/assets/logo" />
       <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components" />
-      <recent name="$PROJECT_DIR$/js/fileUpload" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -132,7 +121,8 @@
       <workItem from="1588575164043" duration="23247000" />
       <workItem from="1588623552837" duration="5265000" />
       <workItem from="1588667465229" duration="20886000" />
-      <workItem from="1588749458144" duration="23685000" />
+      <workItem from="1588749458144" duration="24285000" />
+      <workItem from="1588929038693" duration="721000" />
     </task>
     <servers />
   </component>
