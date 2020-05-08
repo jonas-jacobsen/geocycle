@@ -1,5 +1,6 @@
 <?php
 
+//Prüfen ob neue oder Vorhandene, Neue, RequestId in SesssionV Variable. ALte RequestId in $_Post variable
 If(isset($_POST['requestId'])){
     $requestId = $_POST['requestId'];
     $_SESSION['requestId'] = $requestId;
@@ -133,17 +134,28 @@ if ($countNumbers == 4) {
 
 //Fileupload
 if (isset($_FILES['attachments'])) {
-    $folder = "uploads/" . $userId . "/";
+
+    //erstelle Folder für User id
+    $folderUser = "uploads/".$userId."/";
+
+    //erstelle Folder für Request
+    $folder = "uploads/".$userId."/".$requestId."/";
+
+    //Prüfen ob Ordner für User vorhanden ist
+    if (!file_exists($folderUser)) {
+        mkdir($folderUser);
+    }
+    //Prüfen ob Ordner für Request vorhanden ist
     if (!file_exists($folder)) {
         mkdir($folder);
     }
+
     $msg = "";
-    $targetFile = $folder . basename($_FILES['attachments']['name'][0]);
+    $targetFile = $folder.basename($_FILES['attachments']['name'][0]);
     if (file_exists($targetFile)) {
         $msg = "Dokument existiert schon!";
         $status = 0;
         $path = "";
-        //$msg = array("status" => 0, "msg" => "Dokument existiert schon!");
     } elseif (move_uploaded_file($_FILES['attachments']['tmp_name'][0], $targetFile)) {
         $msg = "Dokument wurde hochgeladen";
         $status = 1;
@@ -153,6 +165,8 @@ if (isset($_FILES['attachments'])) {
         $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId', RequestId = '$requestId'";
         $result = mysqli_query($conn, $sql_insert_Doc);
     }
+
+    //Neue FileId aus Datenbank ziehen für Ajax operationen
     $sqlSelectUploadedId = "SELECT id FROM docOne ORDER BY id DESC LIMIT 1";
     $stmt = mysqli_query($conn, $sqlSelectUploadedId);
     $row = mysqli_fetch_array($stmt);
@@ -174,7 +188,7 @@ function showFiles($conn, $requestId, $userId)
     $statement_show_fiels = mysqli_query($conn, $sql_show_files);
     while ($rowPath = mysqli_fetch_array($statement_show_fiels)) {
         $filePath = $rowPath['Path'];
-        $fileName = explode("uploads/$userId/", $filePath);
+        $fileName = explode("uploads/$userId/$requestId", $filePath);
         $fileId = $rowPath['id'];
         //untescheidung zwischen PDF oder bild
         //voschaubild

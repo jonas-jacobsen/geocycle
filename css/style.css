@@ -141,9 +141,11 @@
 /*File Input DropZone*/
 #dropZone {
     border: 1px dashed #007E33;
-    padding: 50px;
+    padding-left: 10px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 100%;
-    text-align: center;
 }
 #files{
     padding: 20px;
@@ -184,8 +186,8 @@
     width: 100%;
     height: 100%;
 }
-
 /*End Files responsive anzeigen lassen */
+
 #einbinden {
     display: none;
 }

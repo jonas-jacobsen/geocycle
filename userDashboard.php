@@ -8,8 +8,6 @@ include("components/header.php");
 
 <body>
 <div class="container-for-admin">
-    <!--Modal anzeigenlassen -->
-    <?php include("components/modal.php") ?>
     <!--Main Navigation-->
     <?php include("components/navbar.php") ?>
     <!--Main Navigation-->
@@ -98,6 +96,8 @@ include("components/header.php");
 </div>
 
 <?php include("components/footer.php") ?>
+<!--Modal anzeigenlassen -->
+<?php include("components/modal.php") ?>
 
 
 <!-- JQuery -->
@@ -119,9 +119,9 @@ include("components/header.php");
 
     //modal das erste mal anzeigen
     var modalShow = <?php echo $modalShow?>;
-    //$('#centralModalSuccess').modal('show');
+    $('#fullHeightModalRight').modal('show');
     if (modalShow == 0) {
-        // $('#centralModalSuccess').modal('show');
+        // $('#fullHeightModalRight').modal('show');
     } else {
     }
 </script>

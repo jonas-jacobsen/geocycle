@@ -4,6 +4,7 @@ include("components/session.php");
 include("components/config.php");
 include("components/databaseScript.php");
 include("components/header.php");
+
 ?>
 
 <body>
@@ -349,7 +350,7 @@ include("components/header.php");
                                     <p id="error"></p>
                                     <p id="progess"></p>
                                     <div class="existingFiles">
-                                        <h4>Hochgeladene Dokumente</h4>
+                                        <h5>Hochgeladene Dokumente</h5>
                                         <div class="gallery">
                                             <?php showFiles($conn, $requestId, $userId); ?>
                                             <div id="einbinden"></div>
