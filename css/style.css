@@ -156,6 +156,29 @@
     font-weight: lighter;
 }
 
+.showButton{
+    color: #2e2e2e !important;
+    background-color: #ffffff !important;
+    border: 2px solid #2e2e2e !important;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
+    font-size: .81rem;
+    position: relative;
+    overflow: hidden;
+    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+    vertical-align: middle;
+    font-weight: 400;
+    padding-top: 0.84rem;
+    padding-right: 1.14rem;
+    padding-bottom: 0.84rem;
+    padding-left: 1.14rem;
+}
+.showButton a {
+    text-decoration: none;
+}
+
 /*Files responsive anzeigen lassen */
 .gallery {
     display: grid;

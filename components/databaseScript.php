@@ -204,13 +204,12 @@ function showFiles($conn, $requestId, $userId)
             <div class="view overlay hm-green-slight">
                 <figure><a href="' . $filePath . '" target="_blank"><img style="width: 100%" src="assets/images/' . $icon . '"></a>
                     <div class="mask flex-center">
-                        <p class="white-text">
-                            <a href="' . $filePath . '" target="_blank">Anzeigen </a>
-                        </p>
+                        <a type="button" href="' . $filePath . '" target="_blank" class="showButton">Anzeigen</a>
                     </div>
                 </figure>
             </div>
             <div style="text-align: center">
+            <br>
                 <p>' . $fileName[1] . '</p>  
                 <input type="hidden" name="deleteFileId" value="' . $fileId . '">
                 <button type="button" id="' . $fileId . '" name="delete" class="btn btn-outline-danger waves-effect delete">
