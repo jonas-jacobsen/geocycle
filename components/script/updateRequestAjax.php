@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("config.php");
+include("../config.php");
 
 $prodAbf = htmlspecialchars($_POST['prodAbf']);
 $erzHae = htmlspecialchars($_POST['erzHae']);

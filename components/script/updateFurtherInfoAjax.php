@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("config.php");
+include("../config.php");
 
 $dispRoute = htmlspecialchars($_POST['dispRoute']);
 $procDescr = htmlspecialchars($_POST['procDescr']);

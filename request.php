@@ -2,7 +2,7 @@
 session_start();
 include("components/session.php");
 include("components/config.php");
-include("components/databaseScript.php");
+include("components/script/databaseScript.php");
 include("components/header.php");
 
 ?>
@@ -104,7 +104,7 @@ include("components/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <input type="hidden" name="requestId" value="<?php $requestId?>">
+                                <input type="hidden" name="requestId" value="<?php $requestId ?>">
                                 <button type="submit" id="submitAnsprech" name="submitAnsprech" value=""
                                         class="btn btn-light-green">Speichern
                                 </button>
@@ -160,9 +160,12 @@ include("components/header.php");
                                     </div>
                                 </div>
                                 <hr>
-                                <div class="row" id="filledOut">
-                                    <?php echo $buttonRequestFilledOut ?>
-                                </div>
+                                <form id="requestFilledOut" action="userDashboard.php" method="post">
+                                    <input type="hidden" name="requestId" value="<?php echo $requestId ?>">
+                                    <div class="row" id="filledOut">
+                                        <?php echo $buttonRequestFilledOut ?>
+                                    </div>
+                                </form>
                             </div>
 
                         </div>
@@ -373,7 +376,7 @@ include("components/header.php");
     <!--Main layout-->
 
 </div>
-<?php include("components/footer.php")?>
+<?php include("components/footer.php") ?>
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -381,7 +384,8 @@ include("components/header.php");
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <!-- script für dragDrop file Input -->

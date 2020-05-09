@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("config.php");
+include("../config.php");
 
 $id = $_POST['id'];
 $userId = $_SESSION['userId'];
@@ -12,7 +12,7 @@ $row = mysqli_fetch_array($statement);
 
 //File Löschen
 $filePath = $row['Path'];
-unlink("../".$filePath);
+unlink("../../".$filePath);
 
 //path aus DB löscjen
 $sql = "DELETE FROM docOne WHERE id = $id";
@@ -28,8 +28,9 @@ if ($count> 0){
 } else {
     $fileUploadCheck =  "<i class=\"far fa-times-circle red-text\"></i>";
     $fileUploadCheckVar = 0;
+    //$deletePath = "../../uploads/".$userId."/".$_SESSION["requestId"];
+    //rmdir($deletePath);
 }
-
 $jsonArray = array(
     'fileUploadCheck' => $fileUploadCheck,
     'fileUploadCheckVar' => $fileUploadCheckVar,

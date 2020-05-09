@@ -105,14 +105,10 @@ if (isset($_POST['submitOne'])) {
     <?php echo $errorMessage ?>
     <!-- Default form register -->
     <form action="" method="post" class="text-center border border-light p-5">
-
         <p class="h4 mb-4">Dein Unternehmen neu registrieren</p>
-
         <!-- First name -->
         <input type="text" id="company" name="company" class="form-control mb-4" placeholder="Unternehmen"
                required>
-
-
         <div class="form-row mb4">
             <div class="col">
                 <!-- E-mail -->
@@ -134,12 +130,10 @@ if (isset($_POST['submitOne'])) {
         <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
             Optional - für Zwei-Faktor-Authentisierung
         </small>
-
         <!-- Sign up button -->
         <button type="submit" id="submitOne" name="submitOne" value="1" class="btn btn-dark-green my-4 btn-block">
             Registrieren
         </button>
-
         <!-- Terms of service -->
         <p>Beim Klicken auf
             <em>Registrieren</em> bist du mit unseren
@@ -150,20 +144,15 @@ if (isset($_POST['submitOne'])) {
 <!-- Frame Modal Bottom -->
 <div class="modal fade bottom" id="frameModalBottom" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
      aria-hidden="true">
-
-    <!-- Add class .modal-frame and then add class .modal-bottom (or other classes from list above) to set a position to the modal -->
     <div class="modal-dialog modal-frame modal-bottom" role="document">
-
-
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row d-flex justify-content-center align-items-center">
-
-                    <p class="pt-3 pr-2">We use cookies to improve your website experience
-                    </p>
-
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Close</button>
-                    <a href="https://www.geocycle.com/cookies-policy" target="_blank"><button type="button" class="btn btn-outline-success waves-effect">Save changes</button></a>
+                    <p class="pt-3 pr-2">Wir nutzen Cookies für unsere Webseite</p>
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Schließen</button>
+                    <a href="https://www.geocycle.com/cookies-policy" target="_blank">
+                        <button type="button" class="btn btn-outline-success waves-effect">Weitere Infos</button>
+                    </a>
                 </div>
             </div>
         </div>

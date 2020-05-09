@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("config.php");
+include("../config.php");
 
 if (isset($_POST['firstname']) && isset($_POST['surname'])) {
     $firstname = htmlspecialchars($_POST['firstname']);

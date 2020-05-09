@@ -9,7 +9,7 @@ $('#ansprech_Form').submit(function (event) {
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: 'components/updateDataContactPersAjax.php',
+        url: 'components/script/updateDataContactPersAjax.php',
         data: $(this).serialize(),
         success: function (response) {
             $('#contactPersCheck').html(response.contactPersCheck);
@@ -29,7 +29,7 @@ $('#request_Form').submit(function (event) {
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: 'components/updateRequestAjax.php',
+        url: 'components/script/updateRequestAjax.php',
         data: $(this).serialize(),
         success: function (data) {
             $('#requestCheck').html(data.requestCheck);
@@ -50,7 +50,7 @@ $('#furtherInformationForm').submit(function (event) {
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        url: 'components/updateFurtherInfoAjax.php',
+        url: 'components/script/updateFurtherInfoAjax.php',
         data: $(this).serialize(),
         success: function (dataTwo) {
             $('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);
@@ -65,20 +65,20 @@ $('#furtherInformationForm').submit(function (event) {
 });
 
 //dokumente mit ajax call löschen
-$(document).on("click", ".delete", function (){
+$(document).on("click", ".delete", function () {
     var divFileId;
     var id = $(this).attr("id");
     $.ajax({
         type: 'POST',
         dataType: 'json',
-        async:true,
-        url: 'components/updateFilesAjax.php',
+        async: true,
+        url: 'components/script/updateFilesAjax.php',
         data: {
-            id:id,
+            id: id,
         },
         success: function (dataThree) {
             divFileId = dataThree.fileId;
-            $('#'+divFileId).hide();
+            $('#' + divFileId).hide();
             $('#docOneCheck').html(dataThree.fileUploadCheck);
             docOneCheckVar = dataThree.fileUploadCheckVar;
             showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
@@ -125,7 +125,7 @@ $(function () {
             } else {
                 icon = "pdfIcon.png";
             }
-            $("#einbinden").fadeIn().append('<div id="'+newFileId+'"><div class="view overlay hm-green-slight"><figure><a href="' + path + '" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><div class="mask flex-center"><p class="white-text"><a href="' + path + '" target="_blank">Anzeigen</a></p></div></figure></div><div style="text-align: center"><p>' + fileName + '</p><input type="hidden" name="deleteFileId" value="' + newFileId + '"><button type="button" id="'+newFileId+'" class="btn btn-outline-danger waves-effect delete"><i class="far fa-trash-alt"></i></button></div></div>');
+            $("#einbinden").fadeIn().append('<div id="' + newFileId + '"><div class="view overlay hm-green-slight"><figure><a href="' + path + '" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><div class="mask flex-center"><p class="white-text"><a href="' + path + '" target="_blank">Anzeigen</a></p></div></figure></div><div style="text-align: center"><p>' + fileName + '</p><input type="hidden" name="deleteFileId" value="' + newFileId + '"><button type="button" id="' + newFileId + '" class="btn btn-outline-danger waves-effect delete"><i class="far fa-trash-alt"></i></button></div></div>');
         } else {
             $("#error").html(msg);
         }
@@ -143,7 +143,7 @@ function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoC
     if (countNumber == 4) {
         $('.progress-bar').css('width', '100%');
         $('#progressValue').html('100');
-        $('#filledOut').html('<button type="submit" id="requestFilledOut" name="submitAnsprech" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
+        $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
     } else if (countNumber == 3) {
         $('.progress-bar').css('width', '75%');
         $('#progressValue').html('75');

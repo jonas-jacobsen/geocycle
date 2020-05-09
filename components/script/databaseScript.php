@@ -1,5 +1,4 @@
 <?php
-
 //Prüfen ob neue oder Vorhandene, Neue, RequestId in SesssionV Variable. ALte RequestId in $_Post variable
 If(isset($_POST['requestId'])){
     $requestId = $_POST['requestId'];
@@ -113,7 +112,7 @@ $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar +
 if ($countNumbers == 4) {
     $progressBarValue = "100%";
     $progressValue = "100";
-    $buttonRequestFilledOut = '<button type="submit" id="requestFilledOut" name="submitAnsprech" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+    $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
 } elseif ($countNumbers == 3) {
     $progressBarValue = "75%";
     $progressValue = "75";

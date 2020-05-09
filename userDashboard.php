@@ -2,7 +2,7 @@
 session_start();
 include("components/session.php");
 include("components/config.php");
-include("components/userDashboardScript.php");
+include("components/script/userDashboardScript.php");
 include("components/header.php");
 ?>
 
@@ -14,8 +14,8 @@ include("components/header.php");
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
+            <?php echo $msgModalSendRequest?>
             <form action="" method="post">
-
                 <button type="submit" id="newRequest" name="newRequest" value="1"
                         class="btn btn-outline-success waves-effect">Neue Anfrage Erstellen
                 </button>
@@ -27,31 +27,7 @@ include("components/header.php");
                     <div class="card">
                         <div class="card-body">
                             <h2>Offene Anfragen</h2>
-                            <table id="dtBasicExample" class="table" width="100%">
-                                <thead>
-                                <tr>
-                                    <th class="th-sm">Anfrage ID
-                                    </th>
-                                    <th class="th-sm">Name
-                                    </th>
-                                    <th class="th-sm">Ort
-                                    </th>
-                                    <th class="th-sm">Menge
-                                    </th>
-                                    <th class="th-sm">AVV
-                                    </th>
-                                    <th class="th-sm">Anlieferform
-                                    </th>
-                                    <th class="th-sm">Erzeuger
-                                    </th>
-                                    <th class="th-sm">
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php showOpenRequest($conn, $userId) ?>
-                                </tbody>
-                            </table>
+                            <?php showOpenRequest($conn, $userId) ?>
                         </div>
                     </div>
                 </div>
@@ -61,31 +37,7 @@ include("components/header.php");
                     <div class="card">
                         <div class="card-body">
                             <h2>Abgeschickte Anfragen</h2>
-                            <table id="dtBasicExample" class="table" width="100%">
-                                <thead>
-                                <tr>
-                                    <th class="th-sm">Anfrage ID
-                                    </th>
-                                    <th class="th-sm">Name
-                                    </th>
-                                    <th class="th-sm">Ort
-                                    </th>
-                                    <th class="th-sm">Menge
-                                    </th>
-                                    <th class="th-sm">AVV
-                                    </th>
-                                    <th class="th-sm">Anlieferform
-                                    </th>
-                                    <th class="th-sm">Erzeuger
-                                    </th>
-                                    <th class="th-sm">
-                                    </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php showCloseRequest($conn, $userId) ?>
-                                </tbody>
-                            </table>
+                            <?php showCloseRequest($conn, $userId) ?>
                         </div>
                     </div>
                 </div>
@@ -98,8 +50,6 @@ include("components/header.php");
 <?php include("components/footer.php") ?>
 <!--Modal anzeigenlassen -->
 <?php include("components/modal.php") ?>
-
-
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
@@ -119,7 +69,7 @@ include("components/header.php");
 
     //modal das erste mal anzeigen
     var modalShow = <?php echo $modalShow?>;
-    $('#fullHeightModalRight').modal('show');
+    //$('#fullHeightModalRight').modal('show');
     if (modalShow == 0) {
         // $('#fullHeightModalRight').modal('show');
     } else {
