@@ -25,6 +25,76 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
                     <div class="card">
                         <div class="card-body">
                             <h2>Anfrage <?php echo $rowRequest['id']?></h2>
+                            <div class="row wow fadeIn">
+                                <!--Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Vorname</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Firstname']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Nachname</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Surname']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Vorname</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Phone']?></p>
+                                </div> <!-- End Grid column-->
+                            </div><!-- End row-->
+                            <div class="row wow fadeIn">
+                                <!--Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Straße</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Street']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Ort</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Town']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-4">
+                                    <h4>Postleitzahl</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Zip']?></p>
+                                </div> <!-- End Grid column-->
+                            </div><!-- End row-->
+                            <hr>
+                            <div class="row wow fadeIn mt-5">
+                                <!--Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Typ</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['ProdAbf']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Kunde ist</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['ErzHae']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Erzeuger</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Producer']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Abfallbeschreibung</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['WasteDescription']?></p>
+                                </div> <!-- End Grid column-->
+                            </div><!-- End row-->
+                            <div class="row wow fadeIn">
+                                <!--Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Menge</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['JaTo']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>Anlieferform</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['DeliveryForm']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4>AVV</h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['Avv']?></p>
+                                </div> <!-- End Grid column-->
+                                <div class="col-sm-3">
+                                    <h4></h4>
+                                    <p class="text-muted mb-4"><?php echo $rowRequest['']?></p>
+                                </div> <!-- End Grid column-->
+                            </div><!-- End row-->
+
 
                         </div><!--End card body-->
                     </div><!--End Card-->
@@ -42,19 +112,10 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
-<!-- script for Charts -->
-<script type="text/javascript" src="js/charts/charts.js"></script>
-<!-- Script for Datatable-->
-<script type="text/javascript" src="js/addons/datatables.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#dtBasicExample').DataTable( {
-            "scrollX": true
-        } );
-    } );
-</script>
+
 </body>
 </html>

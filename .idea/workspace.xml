@@ -20,10 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/selectedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +126,7 @@
       <workItem from="1588667465229" duration="20886000" />
       <workItem from="1588749458144" duration="24285000" />
       <workItem from="1588929038693" duration="25115000" />
-      <workItem from="1589183409156" duration="1011000" />
+      <workItem from="1589183409156" duration="2450000" />
     </task>
     <servers />
   </component>
@@ -172,10 +171,10 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588506722621" />
-    <state x="-1574" y="469" width="1136" height="971" key="find.popup" timestamp="1589184480782">
+    <state x="-1574" y="514" width="1136" height="926" key="find.popup" timestamp="1589186070591">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1574" y="469" width="1136" height="971" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1589184480782" />
+    <state x="-1574" y="514" width="1136" height="926" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1589186070591" />
     <state x="493" y="252" width="568" height="548" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1589034477862" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
       <screen x="0" y="23" width="1280" height="777" />

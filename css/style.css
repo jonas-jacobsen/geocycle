@@ -218,3 +218,9 @@
 .msg {
     margin-top: -40px;
 }
+
+
+/*Admin Dashboard*/
+.pagination .page-item.active .page-link {
+    background-color: green !important;
+}
