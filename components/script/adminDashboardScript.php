@@ -21,8 +21,8 @@ function showAllRequest($conn) {
             <td>'.$deliveryForm.'</td>
             <td>'.$producer.'</td>
             <td>
-                <form id="'.$requestId.'" method="post" action="request.php">
-                    <input type="hidden" name="requestId" value="'.$requestId.'">
+                <form id="'.$requestId.'" method="post" action="selectedRequest.php">
+                    <input type="hidden" name="selectedRequest" value="'.$requestId.'">
                     <button type="submit" id="btn'.$requestId.'" name="submitOne" value="0" class="btn btn-light-green">Anzeigen</button>
                 </form>
             </td>
