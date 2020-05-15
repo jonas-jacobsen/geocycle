@@ -52,44 +52,8 @@ include("components/headerAdmin.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Neue Anfragen</h2>
-                            <table id="dtBasicExample" class="table" width="100%" style="margin-bottom: 0px;">
-                                <thead>
-                                <tr>
-                                    <th class="th-sm">Anfrage ID
-                                    </th>
-                                    <th class="th-sm">Name
-                                    </th>
-                                    <th class="th-sm">Ort
-                                    </th>
-                                    <th class="th-sm">Menge
-                                    </th>
-                                    <th class="th-sm">AVV
-                                    </th>
-                                    <th class="th-sm">Anlieferform
-                                    </th>
-                                    <th class="th-sm">Erzeuger
-                                    </th>
-                                    <th class="th-sm">Zuweisen an</th>
-                                    <th class="th-sm"></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <?php showNewRequest($conn) ?>
-                                </tbody>
-                            </table>
-                        </div><!--End card body-->
-                    </div><!--End Card-->
-                </div><!--End col md -->
-            </div><!--End row-->
-
-            <!--Grid row-->
-            <div class="row wow fadeIn">
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h2>Alle Anfragen in Arbeit</h2>
-                            <table id="allRequests" class="table" width="100%"style="margin-bottom: 0px;">
+                            <h2>Alle Anfragen für Team 1</h2>
+                            <table id="dtBasicExample" class="table" width="100%"style="margin-bottom: 0px;">
                                 <thead>
                                 <tr>
                                     <th class="th-sm">Anfrage ID
@@ -110,7 +74,7 @@ include("components/headerAdmin.php");
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php showAllRequest($conn) ?>
+                                    <?php showAllRequestForTeamOne($conn) ?>
                                 </tbody>
                             </table>
                         </div><!--End card body-->
@@ -118,57 +82,54 @@ include("components/headerAdmin.php");
                 </div><!--End col md -->
             </div><!--End row-->
 
-            <!--Section: Content-->
-            <section class="white-text green p-5 rounded mb-4">
-                <div class="row">
 
-                    <div class="col-md-4 mb-4">
-                        <div class="row">
-                            <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="250"
-                                    data-time="2000">42</h4>
-                            </div>
+                <!--Section: Content-->
+                <section class="white-text green p-5 rounded mb-4">
+                    <div class="row">
 
-                            <div class="col-6">
-                                <p class="text-uppercase font-weight-normal mb-1">Offene Anfragen</p>
-                                <p class="mb-0"><i class="fas fa-briefcase fa-2x mb-0"></i></p>
-                            </div>
-                        </div>
-                    </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="row">
+                                <div class="col-6 pr-0">
+                                    <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="250" data-time="2000">42</h4>
+                                </div>
 
-                    <div class="col-md-4 mb-4">
-                        <div class="row">
-                            <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right mb-0 count1" data-from="0" data-to="50"
-                                    data-time="2000">3,500</h4>
-                            </div>
-
-                            <div class="col-6">
-                                <p class="text-uppercase font-weight-normal mb-1">Kunden</p>
-                                <p class="mb-0"><i class="fas fa-user fa-2x mb-0"></i></p>
+                                <div class="col-6">
+                                    <p class="text-uppercase font-weight-normal mb-1">Offene Anfragen</p>
+                                    <p class="mb-0"><i class="fas fa-briefcase fa-2x mb-0"></i></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-md-4 mb-4">
-                        <div class="row">
-                            <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right"><span class="d-flex justify-content-end"><span
-                                                class="count2" data-from="0" data-to="85"
-                                                data-time="2000">0</span> %</span></h4>
-                            </div>
+                        <div class="col-md-4 mb-4">
+                            <div class="row">
+                                <div class="col-6 pr-0">
+                                    <h4 class="display-4 text-right mb-0 count1" data-from="0" data-to="50" data-time="2000">3,500</h4>
+                                </div>
 
-                            <div class="col-6">
-                                <p class="text-uppercase font-weight-normal mb-1">Erfolgreich angenommen</p>
-                                <p class="mb-0"><i class="fas fa-smile fa-2x mb-0"></i></p>
+                                <div class="col-6">
+                                    <p class="text-uppercase font-weight-normal mb-1">Kunden</p>
+                                    <p class="mb-0"><i class="fas fa-user fa-2x mb-0"></i></p>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="col-md-4 mb-4">
+                            <div class="row">
+                                <div class="col-6 pr-0">
+                                    <h4 class="display-4 text-right"><span class="d-flex justify-content-end"><span class="count2" data-from="0" data-to="85" data-time="2000">0</span> %</span></h4>
+                                </div>
+
+                                <div class="col-6">
+                                    <p class="text-uppercase font-weight-normal mb-1">Erfolgreich angenommen</p>
+                                    <p class="mb-0"><i class="fas fa-smile fa-2x mb-0"></i></p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
-                </div>
-
-            </section>
-            <!--Section: Content-->
+                </section>
+                <!--Section: Content-->
 
         </div><!--container-fluid mt-5-->
     </main>
@@ -182,31 +143,24 @@ include("components/headerAdmin.php");
 <!-- Bootstrap tooltips -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <!-- script for Charts -->
 <script type="text/javascript" src="js/charts/charts.js"></script>
 <!-- Script for Datatable-->
 <script type="text/javascript" src="js/addons/datatables.min.js"></script>
-
-<!--Script for Ajaxcalls -->
-<script type="text/javascript" src="js/adminScript.js"></script>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('#dtBasicExample').DataTable({
+    $(document).ready(function() {
+        $('#dtBasicExample').DataTable( {
             "scrollX": true
-        });
-        $('#allRequests').DataTable({
-            "scrollX": true
-        });
-    });
+        } );
+    } );
 
 
     //counter
-    (function ($) {
-        $.fn.counter = function () {
+    (function ($){
+        $.fn.counter = function() {
             const $this = $(this),
                 numberFrom = parseInt($this.attr('data-from')),
                 numberTo = parseInt($this.attr('data-to')),
@@ -216,21 +170,21 @@ include("components/headerAdmin.php");
                 changeTime = 10;
 
             let currentNumber = numberFrom,
-                value = delta * changeTime / time;
+                value = delta*changeTime/time;
             var interval1;
             const changeNumber = () => {
                 currentNumber += value;
                 //checks if currentNumber reached numberTo
-                (deltaPositive && currentNumber >= numberTo) || (!deltaPositive && currentNumber <= numberTo) ? currentNumber = numberTo : currentNumber;
+                (deltaPositive && currentNumber >= numberTo) || (!deltaPositive &&currentNumber<= numberTo) ? currentNumber=numberTo : currentNumber;
                 this.text(parseInt(currentNumber));
                 currentNumber == numberTo ? clearInterval(interval1) : currentNumber;
             }
 
-            interval1 = setInterval(changeNumber, changeTime);
+            interval1 = setInterval(changeNumber,changeTime);
         }
     }(jQuery));
 
-    $(document).ready(function () {
+    $(document).ready(function(){
 
         $('.count-up').counter();
         $('.count1').counter();

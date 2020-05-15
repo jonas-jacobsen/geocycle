@@ -66,13 +66,13 @@ include("components/header.php");
 <script src="js/fileUpload/jquery.fileupload.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-
     //modal das erste mal anzeigen
     var modalShow = <?php echo $modalShow?>;
     //$('#fullHeightModalRight').modal('show');
     if (modalShow == 0) {
         // $('#fullHeightModalRight').modal('show');
     } else {
+
     }
 </script>
 </body>

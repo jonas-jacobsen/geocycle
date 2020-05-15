@@ -6,7 +6,7 @@ $msgModalSendRequest = "";
 if(isset($_POST['requestIsFilledOut'])){
     if($_POST['requestIsFilledOut'] == 1){
     $requestIdFilledOut = $_POST['requestId'];
-    echo $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1 WHERE id = $requestIdFilledOut";
+    $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1 WHERE id = $requestIdFilledOut";
     mysqli_query($conn, $sqlChangeFromOpenToClose);
     $msgModalSendRequest = '<div class="alert alert-success msg" role="alert">
                               Deine Anfrage mit der Id '.$requestIdFilledOut.' wurde erfolgreich angenommen!

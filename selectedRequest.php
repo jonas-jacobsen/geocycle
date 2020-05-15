@@ -1,121 +1,180 @@
 <?php
-session_start();
-include("components/session.php");
+//session_start();
+//include("components/session.php");
 include("components/config.php");
 include("components/headerAdmin.php");
 
-$requestId = $_POST['selectedRequest'];
+$requestId = $_GET['selectedRequest'];
 $sqlSelectRequest = "SELECT * FROM userdata WHERE id = $requestId";
 $stmtSelectRequest = mysqli_query($conn, $sqlSelectRequest);
 $rowRequest = mysqli_fetch_array($stmtSelectRequest);
+$RequestIdFromUser = $rowRequest['id'];
+$userIdFromRequest = $rowRequest['userId'];
+
+//alle dokuemnte Anzeigen
+function showFiles($conn, $requestId, $userId)
+{
+    $sql_show_files = "SELECT * FROM docOne WHERE RequestId = $requestId";
+    $statement_show_fiels = mysqli_query($conn, $sql_show_files);
+    while ($rowPath = mysqli_fetch_array($statement_show_fiels)) {
+        $filePath = $rowPath['Path'];
+        $fileName = explode("uploads/$userId/$requestId", $filePath);
+        $fileId = $rowPath['id'];
+        //untescheidung zwischen PDF oder bild
+        //voschaubild
+        //mit a href link
+        if (stristr($filePath, '.pdf') == true) {
+            $icon = "pdfIcon.png";
+        } else {
+            $icon = "imgIcon.png";
+        }
+
+        echo '
+        <div id="' . $fileId . '">
+            <div class="view overlay hm-green-slight">
+                <figure><a href="' . $filePath . '" target="_blank"><img style="width: 100%" src="assets/images/' . $icon . '"></a>
+                    <div class="mask flex-center">
+                        <a type="button" href="' . $filePath . '" target="_blank" class="showButton">Anzeigen</a>
+                    </div>
+                </figure>
+            </div>
+            <div style="text-align: center">
+            <br>
+                <p>' . $fileName[1] . '</p>  
+                <input type="hidden" name="deleteFileId" value="' . $fileId . '">
+            </div>  
+        </div>
+        ';
+    }
+}
 
 ?>
-
-<body>
 <div class="container-for-admin">
     <!--Main Navigation-->
     <?php include("components/navbarAdmin.php") ?>
     <!--Main Navigation-->
+
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
             <!--Grid row-->
+
             <div class="row wow fadeIn">
-                <div class="col-md-12 mb-4">
+                <!--Grid column-->
+                <div class="col-md-8 mb-4">
+                    <!--Card-->
                     <div class="card">
+                        <!--Card content-->
                         <div class="card-body">
-                            <h2>Anfrage <?php echo $rowRequest['id']?></h2>
-                            <div class="row wow fadeIn">
-                                <!--Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Vorname</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Firstname']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Nachname</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Surname']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Vorname</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Phone']?></p>
-                                </div> <!-- End Grid column-->
-                            </div><!-- End row-->
-                            <div class="row wow fadeIn">
-                                <!--Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Straße</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Street']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Ort</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Town']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-4">
-                                    <h4>Postleitzahl</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Zip']?></p>
-                                </div> <!-- End Grid column-->
-                            </div><!-- End row-->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h4>Anfrage <?php echo $rowRequest['id'] ?></h4>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <h5>Status:</h5>
+                                    <?php echo $rowRequest['ProdAbf'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Erzeuger/Händler: </h5>
+                                    <?php echo $rowRequest['ErzHae'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Gewicht: </h5>
+                                    <?php echo $rowRequest['JaTo'] ?> Jato
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <h5>Produzent:</h5>
+                                    <?php echo $rowRequest['Producer'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Abfallbezeichnung:</h5>
+                                    <?php echo $rowRequest['WasteDescription'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>AVV: </h5>
+                                    <?php echo $rowRequest['Avv'] ?>
+                                </div>
+                            </div>
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <h5>Anlieferform: </h5>
+                                    <?php echo $rowRequest['DeliveryForm'] ?>
+                                </div>
+                            </div>
                             <hr>
-                            <div class="row wow fadeIn mt-5">
-                                <!--Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Typ</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['ProdAbf']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Kunde ist</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['ErzHae']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Erzeuger</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Producer']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Abfallbeschreibung</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['WasteDescription']?></p>
-                                </div> <!-- End Grid column-->
-                            </div><!-- End row-->
-                            <div class="row wow fadeIn">
-                                <!--Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Menge</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['JaTo']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>Anlieferform</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['DeliveryForm']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4>AVV</h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['Avv']?></p>
-                                </div> <!-- End Grid column-->
-                                <div class="col-sm-3">
-                                    <h4></h4>
-                                    <p class="text-muted mb-4"><?php echo $rowRequest['']?></p>
-                                </div> <!-- End Grid column-->
-                            </div><!-- End row-->
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <h5>Aktueller Entsorgungsweg: </h5>
+                                    <?php echo $rowRequest['DisposalRoute'] ?>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Prozessbeschreibung: </h5>
+                                    <?php echo $rowRequest['ProcessDescription'] ?>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="existingFiles">
+                                <h5>Dokumente</h5><br>
+                                <div class="gallery">
+                                    <?php showFiles($conn, $RequestIdFromUser, $userIdFromRequest); ?>
+                                    <div id="einbinden"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--Grid column-->
 
-
-                        </div><!--End card body-->
-                    </div><!--End Card-->
-                </div><!--End col md -->
-            </div><!--End row-->
-        </div><!--container-fluid mt-5-->
+                <!--Grid column (checkliste)-->
+                <div class="col-md-4 mb-4">
+                    <div class="sidebar">
+                        <!--Card-->
+                        <div class="sidecard mb-4">
+                            <!-- Card header -->
+                            <div class="sidecard-header">
+                            </div>
+                            <!--Card content-->
+                            <div class="sidecard-body">
+                                <i class="fas fa-user"></i> Ansprechpartner<br>
+                                <?php echo $rowRequest['Firstname'] . " " . $rowRequest['Surname'] ?>
+                                <hr>
+                                <i class="fas fa-user"></i> Telefonnummer<br>
+                                <?php echo $rowRequest['Phone'] ?>
+                                <hr>
+                                <i class="fas fa-user"></i> Emailadresse<br>
+                                <?php echo $rowRequest['Phone'] ?>
+                                <hr>
+                                <i class="fas fa-home"></i> Addresse<br>
+                                <?php echo $rowRequest['Street'] . " " . $rowRequest['Zip'] . " " . $rowRequest['Town'] ?>
+                            </div>
+                        </div>
+                        <!--/.Card-->
+                    </div><!--End Sidebar -->
+                </div>
+                <!--Grid column End (Checkliste)-->
+            </div>
+        </div> <!-- End Container Float -->
+        <!--Grid row-->
     </main>
-</div>
+    <!--Main layout-->
 
-<!-- Footer anzeigen -->
+</div>
 <?php include("components/footer.php") ?>
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
-
 </body>
 </html>

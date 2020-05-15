@@ -224,3 +224,33 @@
 .pagination .page-item.active .page-link {
     background-color: green !important;
 }
+.buttonChangeCategory {
+    color: green !important;
+    background-color: transparent !important;
+    border: 1px solid green !important;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    white-space: normal;
+    transition: color 0.15s ease-in-out,background-color 0.15s ease-in-out,border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out,-webkit-box-shadow 0.15s ease-in-out;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    text-align: center;
+    vertical-align: middle;
+    isplay: inline-block;
+    font-weight: 400;
+}
+.buttonChangeCategory:hover{
+    border: 1px solid #8bc34a !important;
+}
+
+/*Table Styles*/
+.angenommen {
+    background-color: #00800030;
+}
+.abgelehnt {
+    background-color: #f4433652;
+}
+
+.table td, .table th {
+    vertical-align: middle !important;
+}
