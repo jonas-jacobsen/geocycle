@@ -1,9 +1,11 @@
 <?php
 date_default_timezone_set('Europe/Berlin');
 
-ini_set("error_reporting",E_ALL);
-Ini_set("display_errors", 0);
+/*
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
+*/
 
 $host_name = 'db5000208389.hosting-data.io';
 $database = 'dbs203272';

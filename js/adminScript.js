@@ -64,7 +64,7 @@ $('#furtherInformationForm').submit(function (event) {
     }, 1000);
 });
 
-//dokumente mit ajax call löschen
+//Anfragen mit ajax call zuweisen und zugewiesene Zeile verschwinden lassen
 $(document).on("click", ".buttonChangeCategory", function () {
     var id = $(this).attr("id");
     var value = $(this).attr("value");
@@ -81,10 +81,9 @@ $(document).on("click", ".buttonChangeCategory", function () {
             value: value,
         },
         success: function (data) {
-            console.log(data.requestNb);
-            console.log("neuerWert: "+data.neuerWert);
             requestId = data.requestNb;
             $('#rowWithId' + requestId).hide();
+            $('#allocationValue' + requestId).html(value);
         },
     });
 });

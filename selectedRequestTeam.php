@@ -48,31 +48,15 @@ function showFiles($conn, $requestId, $userId)
     }
 }
 
-//Formular verarbeiten
-$errorMessage= "";
-if(isset($_POST['buttonSubmit'])){
-    if($_POST['buttonSubmit'] == 1){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 2 WHERE id = '$requestId'";
-        $errorMessage = "Anfrage mit der Id '$requestId' wurde erfolgreich angenommen";
-    }if($_POST['buttonSubmit'] == 0){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 3 WHERE id = '$requestId'";
-        $errorMessage = "Anfrage mit der Id '$requestId' wurde  abgelehnt";
-    }else {
-    }
-    $stmt = mysqli_query($conn, $sql);
-}
-
 ?>
 <div class="container-for-admin">
     <!--Main Navigation-->
-    <?php include("components/navbarAdmin.php") ?>
+    <?php include("components/adminTeamNavbar.php") ?>
     <!--Main Navigation-->
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
-            <?php echo $errorMessage ?>
             <!--Grid row-->
-
             <div class="row wow fadeIn">
                 <!--Grid column-->
                 <div class="col-md-8 mb-4">
@@ -140,7 +124,7 @@ if(isset($_POST['buttonSubmit'])){
                             </div>
                             <hr>
                             <h4>Anfrage beantworten</h4>
-                            <form method="post" action="#">
+                            <form action="adminDashboardTeam.php" method="post">
                                 <div class="row mb-4">
                                     <div class="col-sm-6">
                                         <div class="custom-control custom-radio">
@@ -205,15 +189,16 @@ if(isset($_POST['buttonSubmit'])){
                                     </div>
                                 </div>
                                 <div class="row mb-4">
-                                    <div class="col-md-6" style="text-align: left">
+                                    <div class="col-6" style="text-align: left">
                                         <button type="submit" name="buttonSubmit" value="1" class="btn btn-outline-success waves-effect">Annehmen
                                         </button>
                                     </div>
-                                    <div class="col-md-6" style="text-align: right">
+                                    <div class="col-6" style="text-align: right">
                                         <button type="submit" name="buttonSubmit" value="0" class="btn btn-outline-danger waves-effect">Ablehnen
                                         </button>
                                     </div>
                                 </div>
+                                <input type="hidden" name="requestId" value="<?php echo $requestId?>">
                             </form>
                         </div>
                     </div>

@@ -1,6 +1,7 @@
 <?php
-function showNewRequest($conn) {
-    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 0";
+//TeamDatatables
+function showAllRequestForTeamOne($conn) {
+    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 1 AND AdminWorkInProgress = 1";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
         $requestId = $dataAllRequest['id'];
@@ -10,43 +11,6 @@ function showNewRequest($conn) {
         $avv = $dataAllRequest['Avv'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $producer = $dataAllRequest['Producer'];
-        echo '
-        <tr id="rowWithId'.$requestId.'">
-            <td>'.$requestId.'</td>
-            <td>'.$name.'</td>
-            <td>'.$town.'</td>
-            <td>'.$weight.'</td>
-            <td>'.$avv.'</td>
-            <td>'.$deliveryForm.'</td>
-            <td>'.$producer.'</td>
-            <td>
-                <div style="width: 100px; text-align: center">
-                    <button class="buttonChangeCategory" id="'.$requestId.'" value="1" type="button">1</button>
-                    <button class="buttonChangeCategory" id="'.$requestId.'" value="2" type="button">2</button>
-                    <button class="buttonChangeCategory" id="'.$requestId.'" value="3" type="button">3</button>
-                </div>
-            </td>
-            <td>
-                <form id="'.$requestId.'" method="get" action="selectedRequest.php">
-                    <input type="hidden" name="selectedRequest" value="'.$requestId.'">
-                    <button type="submit" id="btn'.$requestId.'" class="btn btn-light-green">Anzeigen</button>
-                </form>
-            </td>
-        </tr>';
-    }
-}
-
-function showAllRequest($conn) {
-    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1";
-    $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
-    while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
-        $requestId = $dataAllRequest['id'];
-        $name = $dataAllRequest['Surname'];
-        $town = $dataAllRequest['Town'];
-        $weight = $dataAllRequest['JaTo'];
-        $avv = $dataAllRequest['Avv'];
-        $deliveryForm = $dataAllRequest['DeliveryForm'];
-        $allocation = $dataAllRequest['Allocation'];
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
         $backgroudstyle = "";
@@ -65,9 +29,9 @@ function showAllRequest($conn) {
             <td>'.$weight.'</td>
             <td>'.$avv.'</td>
             <td>'.$deliveryForm.'</td>
-            <td id="allocationValue'.$requestId.'">'.$allocation.'</td>
+            <td>'.$producer.'</td>
             <td>
-                <form id="shoeAll'.$requestId.'" method="get" action="selectedRequest.php">
+                <form id="shoeAll'.$requestId.'" method="get" action="selectedRequestTeam.php">
                     <input type="hidden" name="selectedRequest" value="'.$requestId.'">
                     <button type="submit" id="btnShowAll'.$requestId.'" class="btn btn-light-green">Anzeigen</button>
                 </form>
@@ -75,4 +39,65 @@ function showAllRequest($conn) {
         </tr>';
     }
 }
+
+function showAllAcceptedRequestForTeamOne($conn) {
+    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 1 AND AdminWorkInProgress = 2";
+    $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
+    while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
+        $requestId = $dataAllRequest['id'];
+        $name = $dataAllRequest['Surname'];
+        $town = $dataAllRequest['Town'];
+        $weight = $dataAllRequest['JaTo'];
+        $avv = $dataAllRequest['Avv'];
+        $deliveryForm = $dataAllRequest['DeliveryForm'];
+        $producer = $dataAllRequest['Producer'];
+        $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
+        //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
+        $backgroudstyle = "";
+        if ($adminWorkInprogress == 2){
+            $backgroudstyle = "angenommen";
+        } elseif ($adminWorkInprogress == 3){
+            $backgroudstyle = "abgelehnt";
+        }else{
+            $backgroudstyle = "";
+        }
+        echo '
+        <tr class="'.$backgroudstyle.'">
+            <td>'.$requestId.'</td>
+            <td>'.$name.'</td>
+            <td>'.$town.'</td>
+            <td>'.$weight.'</td>
+            <td>'.$avv.'</td>
+            <td>'.$deliveryForm.'</td>
+            <td>'.$producer.'</td>
+            <td>
+                <form id="shoeAll'.$requestId.'" method="get" action="selectedRequestTeam.php">
+                    <input type="hidden" name="selectedRequest" value="'.$requestId.'">
+                    <button type="submit" id="btnShowAll'.$requestId.'" class="btn btn-light-green">Anzeigen</button>
+                </form>
+            </td>
+        </tr>';
+    }
+}
+
+//Formular verarbeiten
+$errorShow = "";
+if(isset($_POST['buttonSubmit'])){
+    $requestId = $_POST['requestId'];
+    if($_POST['buttonSubmit'] == 1){
+        $sql = "UPDATE userdata SET AdminWorkInProgress = 2 WHERE id = '$requestId'";
+        $stmt = mysqli_query($conn, $sql);
+        $errorShow = "<div class=\"alert alert-success msg\" role=\"alert\">
+                              Die Anfrage wurde erfolgreich angenommen!
+                            </div>";
+    }if($_POST['buttonSubmit'] == 0){
+        $sql = "UPDATE userdata SET AdminWorkInProgress = 3 WHERE id = '$requestId'";
+        $stmt = mysqli_query($conn, $sql);
+        $errorShow = "<div class=\"alert error msg\" role=\"alert\">
+                              Die Anfrage wurde abgelehnt!
+                            </div>";
+    }else {
+    }
+}
+
 ?>

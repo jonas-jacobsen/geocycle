@@ -104,7 +104,7 @@ include("components/headerAdmin.php");
                                     </th>
                                     <th class="th-sm">Anlieferform
                                     </th>
-                                    <th class="th-sm">Erzeuger
+                                    <th class="th-sm">Zugewiesen an
                                     </th>
                                     <th class="th-sm"></th>
                                 </tr>
