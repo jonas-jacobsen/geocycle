@@ -8,7 +8,7 @@ if(isset($_POST['requestIsFilledOut'])){
     $requestIdFilledOut = $_POST['requestId'];
     $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1 WHERE id = $requestIdFilledOut";
     mysqli_query($conn, $sqlChangeFromOpenToClose);
-    $msgModalSendRequest = '<div class="alert alert-success msg" role="alert">
+    $msgModalSendRequest = '<div class="alert alert-success msg mt-5" role="alert">
                               Deine Anfrage mit der Id '.$requestIdFilledOut.' wurde erfolgreich abgeschickt!
                             </div>';
     }

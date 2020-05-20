@@ -1,7 +1,19 @@
 <?php
 //TeamDatatables
-function showAllRequestForTeamOne($conn) {
-    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 1 AND AdminWorkInProgress = 1";
+$allocation = "";
+$teamname = "";
+$getAllocation = $_SESSION['teamAllocation'];
+if($getAllocation == 2){
+    $allocation = 1;
+}elseif ($getAllocation == 3){
+    $allocation = 2;
+}elseif ($getAllocation == 4){
+    $allocation = 3;
+}
+$teamname = $allocation;
+
+function showAllRequestForTeam($conn, $allocation) {
+    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 1";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
         $requestId = $dataAllRequest['id'];
@@ -40,8 +52,8 @@ function showAllRequestForTeamOne($conn) {
     }
 }
 
-function showAllAcceptedRequestForTeamOne($conn) {
-    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 1 AND AdminWorkInProgress = 2";
+function showAllAcceptedRequestForTeam($conn, $allocation) {
+    $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 2";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
         $requestId = $dataAllRequest['id'];
@@ -87,13 +99,13 @@ if(isset($_POST['buttonSubmit'])){
     if($_POST['buttonSubmit'] == 1){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 2 WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
-        $errorShow = "<div class=\"alert alert-success msg\" role=\"alert\">
+        $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
     }if($_POST['buttonSubmit'] == 0){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 3 WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
-        $errorShow = "<div class=\"alert error msg\" role=\"alert\">
+        $errorShow = "<div class=\"alert alert-danger msg mt-5\" role=\"alert\">
                               Die Anfrage wurde abgelehnt!
                             </div>";
     }else {

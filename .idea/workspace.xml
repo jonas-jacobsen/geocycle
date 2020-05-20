@@ -20,17 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/components/adminTeamNavbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/selectedRequestTeam.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/sessionAdmin.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/loginTeam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminDashboardTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboardTeam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/userDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/userDashboardScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/adminScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/adminScript.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,25 +88,25 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/components/script" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/components" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/script" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/components" />
-      <recent name="$PROJECT_DIR$/js" />
-      <recent name="$PROJECT_DIR$/js/fileUpload" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/js/addons" />
       <recent name="$PROJECT_DIR$/css/addons" />
       <recent name="$PROJECT_DIR$/components/script" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/components/script" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/js" />
+      <recent name="$PROJECT_DIR$/js/fileUpload" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -139,7 +136,8 @@
       <workItem from="1589183409156" duration="2777000" />
       <workItem from="1589195469300" duration="6523000" />
       <workItem from="1589360009904" duration="437000" />
-      <workItem from="1589528226584" duration="14786000" />
+      <workItem from="1589528226584" duration="17469000" />
+      <workItem from="1589968643621" duration="3618000" />
     </task>
     <servers />
   </component>
@@ -171,15 +169,24 @@
     <state x="-2492" y="54" key="#SSH_Configurations/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588507067163" />
     <state x="34" y="30" key="#SSH_Configurations/0.0.1280.800@0.0.1280.800" timestamp="1589040084417" />
     <state x="34" y="52" key="#SSH_Configurations/0.23.1280.777@0.23.1280.777" timestamp="1588416540986" />
-    <state x="-1457" y="650" key="NewPhpFileDialog" timestamp="1588856366942">
-      <screen x="-2560" y="0" width="2560" height="1440" />
+    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589968708492">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1589968708492" />
+    <state x="552" y="361" key="NewPhpFileDialog" timestamp="1589968727783">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588856366942" />
+    <state x="552" y="361" key="NewPhpFileDialog/0.0.1280.800@0.0.1280.800" timestamp="1589968727783" />
     <state x="-2260" y="102" key="SettingsEditor" timestamp="1588584490519">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-2260" y="102" key="SettingsEditor/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584490519" />
     <state x="150" y="78" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588416898217" />
+    <state x="380" y="221" width="540" height="524" key="StructurePopup" timestamp="1589662212712">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="380" y="221" width="540" height="524" key="StructurePopup/0.0.1280.800@0.0.1280.800" timestamp="1589662212712" />
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588506722621">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>

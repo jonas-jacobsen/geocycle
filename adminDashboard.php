@@ -1,6 +1,6 @@
 <?php
-//session_start();
-//include("components/session.php");
+session_start();
+include("components/sessionAdmin.php");
 include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");

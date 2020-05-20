@@ -1,6 +1,6 @@
 <?php
-//session_start();
-//include("components/session.php");
+session_start();
+include("components/sessionAdmin.php");
 include("components/config.php");
 include("components/script/adminDashboardTeamScript.php");
 include("components/headerAdmin.php");
@@ -11,9 +11,9 @@ include("components/headerAdmin.php");
     <!--Main Navigation-->
     <?php include("components/adminTeamNavbar.php") ?>
     <!--Main Navigation-->
+
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
-
         <?php echo $errorShow ?>
         <div class="container-fluid mt-5">
             <!--Grid row-->
@@ -54,7 +54,7 @@ include("components/headerAdmin.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Alle Anfragen für Team 1</h2>
+                            <h2>Alle Anfragen für Team <?php echo $teamname ?></h2>
                             <table id="dtBasicExample" class="table" width="100%" style="margin-bottom: 0px;">
                                 <thead>
                                 <tr>
@@ -76,7 +76,7 @@ include("components/headerAdmin.php");
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php showAllRequestForTeamOne($conn) ?>
+                                <?php showAllRequestForTeam($conn, $allocation) ?>
                                 </tbody>
                             </table>
                         </div><!--End card body-->
@@ -89,7 +89,7 @@ include("components/headerAdmin.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Alle angenommenen Anfragen für Team 1</h2>
+                            <h2>Alle angenommenen Anfragen für Team  <?php echo $teamname ?></h2>
                             <table id="acceptedRequest" class="table" width="100%" style="margin-bottom: 0px;">
                                 <thead>
                                 <tr>
@@ -111,7 +111,7 @@ include("components/headerAdmin.php");
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php showAllAcceptedRequestForTeamOne($conn) ?>
+                                <?php showAllAcceptedRequestForTeam($conn, $allocation) ?>
                                 </tbody>
                             </table>
                         </div><!--End card body-->
