@@ -3,13 +3,14 @@ $userId = $_SESSION['userId'];
 $msgModalSendRequest = "";
 
 //Anfrage wurde abgesendet, wird von Offen in abgeshlossen umgewandelt
-if(isset($_POST['requestIsFilledOut'])){
-    if($_POST['requestIsFilledOut'] == 1){
-    $requestIdFilledOut = $_POST['requestId'];
-    $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1 WHERE id = $requestIdFilledOut";
-    mysqli_query($conn, $sqlChangeFromOpenToClose);
-    $msgModalSendRequest = '<div class="alert alert-success msg mt-5" role="alert">
-                              Deine Anfrage mit der Id '.$requestIdFilledOut.' wurde erfolgreich abgeschickt!
+if (isset($_POST['requestIsFilledOut'])) {
+    if ($_POST['requestIsFilledOut'] == 1) {
+        //datum abfragen
+        $requestIdFilledOut = $_POST['requestId'];
+        $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1, Allocation = 0, IncomingRequestDate = CURRENT_DATE WHERE id = $requestIdFilledOut";
+        mysqli_query($conn, $sqlChangeFromOpenToClose);
+        $msgModalSendRequest = '<div class="alert alert-success msg mt-5" role="alert">
+                              Deine Anfrage mit der Id ' . $requestIdFilledOut . ' wurde erfolgreich abgeschickt!
                             </div>';
     }
 }
@@ -29,8 +30,8 @@ if ($modalShow == 0) {
 
 }
 //Button neue Anfrage
-if(isset($_POST['newRequest'])){
-    $sqlNewRequest = "INSERT INTO userdata SET UserId = $userId";
+if (isset($_POST['newRequest'])) {
+    $sqlNewRequest = "INSERT INTO userdata SET UserId = $userId, OpenRequest = 0";
     $stmtNewRequest = mysqli_query($conn, $sqlNewRequest);
     $sqlNewRequestId = "SELECT id FROM userdata WHERE userId = $userId ORDER BY id DESC LIMIT 1";
     $stmtNewRequestId = mysqli_query($conn, $sqlNewRequestId);
@@ -45,9 +46,9 @@ function showOpenRequest($conn, $userId)
     $sqlOpenRequest = "SELECT * FROM userdata WHERE userId = $userId && OpenRequest = 0";
     $stmtOpenRequest = mysqli_query($conn, $sqlOpenRequest);
     //text falls keine Anfragen vorhanden sind
-    if(mysqli_num_rows($stmtOpenRequest)< 1){
+    if (mysqli_num_rows($stmtOpenRequest) < 1) {
         echo "<p>Keine Anfragen vorhanden</p>";
-    }else {
+    } else {
         echo '
     <div class="table-responsive">
         <table id="dtBasicExample" class="table" width="100%">
@@ -112,10 +113,10 @@ function showCloseRequest($conn, $userId)
     $stmtCloseRequest = mysqli_query($conn, $sqlCloseRequest);
 
     //text falls keine Anfragen vorhanden sind
-    if(mysqli_num_rows($stmtCloseRequest)< 1){
+    if (mysqli_num_rows($stmtCloseRequest) < 1) {
         echo "<p>Keine Abgeschlossen Anfragen vorhanden</p>";
-    }else {
-        echo'
+    } else {
+        echo '
     <div class="table-responsive">
         <table id="dtBasicExample" class="table" width="100%">
             <thead>
@@ -141,7 +142,7 @@ function showCloseRequest($conn, $userId)
         <tbody>
     ';
 
-        while($dataCloseRequest = mysqli_fetch_array($stmtCloseRequest)){
+        while ($dataCloseRequest = mysqli_fetch_array($stmtCloseRequest)) {
             $requestId = $dataCloseRequest['id'];
             $name = $dataCloseRequest['Surname'];
             $town = $dataCloseRequest['Town'];
@@ -150,18 +151,18 @@ function showCloseRequest($conn, $userId)
             $deliveryForm = $dataCloseRequest['DeliveryForm'];
             $producer = $dataCloseRequest['Producer'];
 
-            echo'
+            echo '
                 <tr>
-                    <td>'.$requestId.'</td>
-                    <td>'.$name.'</td>
-                    <td>'.$town.'</td>
-                    <td>'.$weight.'</td>
-                    <td>'.$avv.'</td>
-                    <td>'.$deliveryForm.'</td>
-                    <td>'.$producer.'</td>
+                    <td>' . $requestId . '</td>
+                    <td>' . $name . '</td>
+                    <td>' . $town . '</td>
+                    <td>' . $weight . '</td>
+                    <td>' . $avv . '</td>
+                    <td>' . $deliveryForm . '</td>
+                    <td>' . $producer . '</td>
                     <td>
                         <form id="1" method="post" action="request.php">
-                            <input type="hidden" name="requestId" value="'.$requestId.'">
+                            <input type="hidden" name="requestId" value="' . $requestId . '">
                             <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">Anzeigen</button>
                         </form>
                     </td>

@@ -9,6 +9,7 @@ function showNewRequest($conn) {
         $weight = $dataAllRequest['JaTo'];
         $avv = $dataAllRequest['Avv'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
+        $requestDate = $dataAllRequest['IncomingRequestDate'];
         $producer = $dataAllRequest['Producer'];
         echo '
         <tr id="rowWithId'.$requestId.'">
@@ -18,7 +19,7 @@ function showNewRequest($conn) {
             <td>'.$weight.'</td>
             <td>'.$avv.'</td>
             <td>'.$deliveryForm.'</td>
-            <td>'.$producer.'</td>
+            <td>'.$requestDate.'</td>
             <td>
                 <div style="width: 100px; text-align: center">
                     <button class="buttonChangeCategory" id="'.$requestId.'" value="1" type="button">1</button>
@@ -46,6 +47,7 @@ function showAllRequest($conn) {
         $weight = $dataAllRequest['JaTo'];
         $avv = $dataAllRequest['Avv'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
+        $requestDate = $dataAllRequest['IncomingRequestDate'];
         $allocation = $dataAllRequest['Allocation'];
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
@@ -64,7 +66,7 @@ function showAllRequest($conn) {
             <td>'.$town.'</td>
             <td>'.$weight.'</td>
             <td>'.$avv.'</td>
-            <td>'.$deliveryForm.'</td>
+            <td>'.$requestDate.'</td>
             <td id="allocationValue'.$requestId.'">'.$allocation.'</td>
             <td>
                 <form id="shoeAll'.$requestId.'" method="get" action="selectedRequest.php">

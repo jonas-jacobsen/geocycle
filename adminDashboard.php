@@ -68,7 +68,7 @@ include("components/headerAdmin.php");
                                     </th>
                                     <th class="th-sm">Anlieferform
                                     </th>
-                                    <th class="th-sm">Erzeuger
+                                    <th class="th-sm">Anfrageeingang
                                     </th>
                                     <th class="th-sm">Zuweisen an</th>
                                     <th class="th-sm"></th>
@@ -102,7 +102,7 @@ include("components/headerAdmin.php");
                                     </th>
                                     <th class="th-sm">AVV
                                     </th>
-                                    <th class="th-sm">Anlieferform
+                                    <th class="th-sm">Anfrageeingang
                                     </th>
                                     <th class="th-sm">Zugewiesen an
                                     </th>

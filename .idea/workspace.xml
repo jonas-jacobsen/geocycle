@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/components/sessionAdmin.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/loginTeam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminDashboardTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboardTeam.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/logout.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/userDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/userDashboardScript.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +133,7 @@
       <workItem from="1589195469300" duration="6523000" />
       <workItem from="1589360009904" duration="437000" />
       <workItem from="1589528226584" duration="17469000" />
-      <workItem from="1589968643621" duration="3618000" />
+      <workItem from="1589968643621" duration="7292000" />
     </task>
     <servers />
   </component>
