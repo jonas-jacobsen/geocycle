@@ -150,9 +150,19 @@ function showCloseRequest($conn, $userId)
             $avv = $dataCloseRequest['Avv'];
             $deliveryForm = $dataCloseRequest['DeliveryForm'];
             $producer = $dataCloseRequest['Producer'];
+            $adminWorkInprogress = $dataCloseRequest['AdminWorkInProgress'];
 
+            //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
+            $backgroudstyle = "";
+            if ($adminWorkInprogress == 2){
+                $backgroudstyle = "angenommen";
+            } elseif ($adminWorkInprogress == 3){
+                $backgroudstyle = "abgelehnt";
+            }else{
+                $backgroudstyle = "";
+            }
             echo '
-                <tr>
+                <tr class="'.$backgroudstyle.'">
                     <td>' . $requestId . '</td>
                     <td>' . $name . '</td>
                     <td>' . $town . '</td>

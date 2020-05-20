@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/userDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/userDashboardScript.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,7 +131,7 @@
       <workItem from="1589195469300" duration="6523000" />
       <workItem from="1589360009904" duration="437000" />
       <workItem from="1589528226584" duration="17469000" />
-      <workItem from="1589968643621" duration="7767000" />
+      <workItem from="1589968643621" duration="8567000" />
     </task>
     <servers />
   </component>
