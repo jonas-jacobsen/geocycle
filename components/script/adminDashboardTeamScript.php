@@ -97,13 +97,13 @@ $errorShow = "";
 if(isset($_POST['buttonSubmit'])){
     $requestId = $_POST['requestId'];
     if($_POST['buttonSubmit'] == 1){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 2 WHERE id = '$requestId'";
+        $sql = "UPDATE userdata SET AdminWorkInProgress = 2, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
         $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
     }if($_POST['buttonSubmit'] == 0){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 3 WHERE id = '$requestId'";
+        $sql = "UPDATE userdata SET AdminWorkInProgress = 3, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
         $errorShow = "<div class=\"alert alert-danger msg mt-5\" role=\"alert\">
                               Die Anfrage wurde abgelehnt!
