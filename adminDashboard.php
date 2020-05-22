@@ -88,7 +88,7 @@ include("components/headerAdmin.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Alle Anfragen in Arbeit</h2>
+                            <h2>Alle Anfragen</h2>
                             <table id="allRequests" class="table" width="100%"style="margin-bottom: 0px;">
                                 <thead>
                                 <tr>

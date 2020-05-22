@@ -1,76 +1,8 @@
-<!--script zur Formularverabeitung -->
-
-//wenn Button geklickt wird, rotierender pfeil
-var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
-
-$('#ansprech_Form').submit(function (event) {
-    event.preventDefault(); //seitenreloud wird verhindert
-    $('#didChangeContactPers').html(rotateCircle);
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: 'components/script/updateDataContactPersAjax.php',
-        data: $(this).serialize(),
-        success: function (response) {
-            $('#contactPersCheck').html(response.contactPersCheck);
-            contactPersCheckVar = response.contactPersCheckVar;
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
-        }
-    });
-    //set Timeout for showing Anderungen vorgenommen
-    setTimeout(function () {
-        $('#didChangeContactPers').html('')
-    }, 1000);
-});
-
-$('#request_Form').submit(function (event) {
-    event.preventDefault(); //seitenreloud wird verhindert
-    $('#didChangeRequest').html(rotateCircle);
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: 'components/script/updateRequestAjax.php',
-        data: $(this).serialize(),
-        success: function (data) {
-            $('#requestCheck').html(data.requestCheck);
-            requestCheckVar = data.requestCheckVar;
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
-            //alert("Daten in Ansprechpartner geändert")
-        },
-    });
-    //set Timeout for showing Anderungen vorgenommen
-    setTimeout(function () {
-        $('#didChangeRequest').html('')
-    }, 1000);
-});
-
-$('#furtherInformationForm').submit(function (event) {
-    event.preventDefault(); //seitenreloud wird verhindert
-    $('#didChangeFurtherInfo').html(rotateCircle);
-    $.ajax({
-        type: 'POST',
-        dataType: 'json',
-        url: 'components/script/updateFurtherInfoAjax.php',
-        data: $(this).serialize(),
-        success: function (dataTwo) {
-            $('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);
-            furtherInfoCheckVar = dataTwo.furtherInfoCheckVar;
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
-        },
-    });
-    //set Timeout for showing Anderungen vorgenommen
-    setTimeout(function () {
-        $('#didChangeFurtherInfo').html('')
-    }, 1000);
-});
-
 //Anfragen mit ajax call zuweisen und zugewiesene Zeile verschwinden lassen
 $(document).on("click", ".buttonChangeCategory", function () {
     var id = $(this).attr("id");
     var value = $(this).attr("value");
     var requestId;
-    console.log(id);
-    console.log(value);
     $.ajax({
         type: 'POST',
         dataType: 'json',
@@ -87,3 +19,39 @@ $(document).on("click", ".buttonChangeCategory", function () {
         },
     });
 });
+
+
+//Überprüfen ob Anfrage bearbeitet wurde und sich der Status geändert hat
+
+$(document).ready(function () {
+    function updateProcessingStatus() {
+        var backgroundColor;
+        $.ajax({
+            url: 'components/script/updateProcessingStatus.php',
+            method: "POST",
+            dataType: "json",
+            success: function (responseData) {
+                for(var i = 0; i < responseData.length; i++) {
+                    var obj = responseData[i];
+                    console.log(obj.id);
+                    console.log(obj.requestId);
+                    console.log(obj.status);
+                    console.log(" ");
+
+                    if(obj.status == 1){
+                        backgroundColor = "";
+                    }else if (obj.status == 2){
+                        backgroundColor = "#00800030";
+                    }else if (obj.status == 3){
+                        backgroundColor = "#f4433652";
+                    }
+                    $('.rowId'+obj.requestId).css("background-color", backgroundColor);
+                }
+            }
+        })
+    }
+    setInterval(function () {
+        updateProcessingStatus();
+
+    }, 1000);
+})

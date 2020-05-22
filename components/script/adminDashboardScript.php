@@ -60,7 +60,7 @@ function showAllRequest($conn) {
             $backgroudstyle = "";
         }
         echo '
-        <tr class="'.$backgroudstyle.'">
+        <tr class="rowId'.$requestId.' '.$backgroudstyle.'">
             <td>'.$requestId.'</td>
             <td>'.$name.'</td>
             <td>'.$town.'</td>
