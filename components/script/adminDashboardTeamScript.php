@@ -97,6 +97,7 @@ function showAllAcceptedRequestForTeam($conn, $allocation) {
 $errorShow = "";
 if(isset($_POST['buttonSubmit'])){
     $requestId = $_POST['requestId'];
+    $textfield = $_POST['textfield'];
     if($_POST['buttonSubmit'] == 1){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 2, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
@@ -104,7 +105,7 @@ if(isset($_POST['buttonSubmit'])){
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
         //antwortemail an User senden
-        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "angenommen");
+        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "angenommen", $textfield);
     }if($_POST['buttonSubmit'] == 0){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 3, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
@@ -112,7 +113,7 @@ if(isset($_POST['buttonSubmit'])){
                               Die Anfrage wurde abgelehnt!
                             </div>";
         //antwortemail an User senden
-        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "abgelehnt");
+        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "abgelehnt", $textfield);
     }else {
     }
 }

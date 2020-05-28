@@ -183,7 +183,7 @@ function showFiles($conn, $requestId, $userId)
                                     <div class="col-md-12">
                                         <!--Material textarea-->
                                         <div class="md-form">
-                                            <textarea id="form7" class="md-textarea form-control" rows="5"></textarea>
+                                            <textarea id="form7" class="md-textarea form-control" rows="5" name="textfield"></textarea>
                                             <label for="form7">Freitext für Zu- oder Absage</label>
                                         </div>
                                     </div>

@@ -26,12 +26,12 @@ function sendMailToTeamAdmin($to, $from){
     return $mail -> send();
 }
 
-function sendMailToTeamUser($to, $from, $msg){
+function sendMailToTeamUser($to, $from, $msg, $textfield){
     $mail = new PHPMailer();
     $mail ->setFrom($from);
     $mail ->addAddress($to);
     $mail ->Subject = 'Ihre Anfrage bei uns';
-    $mail ->Body = '<h2>Status&auml;nderung </h2><p>Der Status deiner Anfrage hat sich ge&auml;ndert</p><p>Ihre Anfrage wurde '.$msg.'</p>';
+    $mail ->Body = '<h2>Status&auml;nderung </h2><p>Der Status deiner Anfrage hat sich ge&auml;ndert</p><p>Ihre Anfrage wurde '.$msg.'<br><h4>Grund:</h4>'.$textfield.'</p>';
     $mail ->isHTML(true);
     return $mail -> send();
 }
