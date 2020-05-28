@@ -4,6 +4,7 @@ include("components/sessionAdmin.php");
 include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");
+
 ?>
 
 <body>
@@ -193,6 +194,8 @@ include("components/headerAdmin.php");
 
 <!--Script for Ajaxcalls -->
 <script type="text/javascript" src="js/adminScript.js"></script>
+
+<!-- datatables anzeigen-->
 <script type="text/javascript">
     $(document).ready(function () {
         $('#dtBasicExample').DataTable({

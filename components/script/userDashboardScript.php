@@ -1,4 +1,6 @@
 <?php
+include("components/script/email.php");
+
 $userId = $_SESSION['userId'];
 $msgModalSendRequest = "";
 
@@ -12,6 +14,8 @@ if (isset($_POST['requestIsFilledOut'])) {
         $msgModalSendRequest = '<div class="alert alert-success msg mt-5" role="alert">
                               Deine Anfrage mit der Id ' . $requestIdFilledOut . ' wurde erfolgreich abgeschickt!
                             </div>';
+
+        sendMailToAdmin("jonas.jacobsen1992@hotmail.de", "geocycle@adminpanel.de");
     }
 }
 

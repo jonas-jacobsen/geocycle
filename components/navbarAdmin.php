@@ -31,14 +31,14 @@
                 <!-- Right -->
                 <ul class="navbar-nav ml-auto nav-flex-icons">
                     <li class="nav-item">
-                        <a href="userDashboard.php" class="nav-link waves-effect">
+                        <a href="adminDashboard.php" class="nav-link waves-effect">
                             <i class="fas fa-folder-open"></i>
                         </a>
                     </li>
                     <br>
                     <li class="nav-item">
-                        <a href="#" class="nav-link waves-effect">
-                            <i class="fas fa-phone"></i>
+                        <a href="settings.php" class="nav-link waves-effect">
+                            <i class="fas fa-cog"></i>
                         </a>
                     </li>
                     <br>

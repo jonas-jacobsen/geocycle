@@ -32,7 +32,10 @@ if (isset($_POST['submit'])) {
 }
 /*Registrierung */
 //Für das neu registrieren Code notwendig
-$verificationCode = "unserteamistdasbeste";
+$sqlfetchSecCode =  "SELECT SecCode AS SecCode FROM adminuser WHERE TeamAllocation = 1";
+$stmtfetchCode = mysqli_query($conn, $sqlfetchSecCode);
+$row = mysqli_fetch_array($stmtfetchCode);
+$verificationCode = $row['SecCode'];
 
 if (isset($_POST['submitOne'])) {
     if ($_POST['email'] != "" && $_POST['password'] != "") {

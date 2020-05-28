@@ -21,9 +21,8 @@ $(document).on("click", ".buttonChangeCategory", function () {
 });
 
 
-//Überprüfen ob Anfrage bearbeitet wurde und sich der Status geändert hat
-
 $(document).ready(function () {
+    //Überprüfen ob Anfrage bearbeitet wurde und sich der Status geändert hat (adminDashboard)
     function updateProcessingStatus() {
         var backgroundColor;
         $.ajax({
@@ -33,11 +32,6 @@ $(document).ready(function () {
             success: function (responseData) {
                 for(var i = 0; i < responseData.length; i++) {
                     var obj = responseData[i];
-                    console.log(obj.id);
-                    console.log(obj.requestId);
-                    console.log(obj.status);
-                    console.log(" ");
-
                     if(obj.status == 1){
                         backgroundColor = "";
                     }else if (obj.status == 2){
@@ -52,6 +46,5 @@ $(document).ready(function () {
     }
     setInterval(function () {
         updateProcessingStatus();
-
     }, 1000);
 })

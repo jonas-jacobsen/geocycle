@@ -1,4 +1,5 @@
 <?php
+include("components/script/email.php");
 //TeamDatatables
 $allocation = "";
 $teamname = "";
@@ -34,7 +35,7 @@ function showAllRequestForTeam($conn, $allocation) {
             $backgroudstyle = "";
         }
         echo '
-        <tr class="'.$backgroudstyle.'">
+        <tr>
             <td>'.$requestId.'</td>
             <td>'.$name.'</td>
             <td>'.$town.'</td>
@@ -102,12 +103,16 @@ if(isset($_POST['buttonSubmit'])){
         $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
+        //antwortemail an User senden
+        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "angenommen");
     }if($_POST['buttonSubmit'] == 0){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 3, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
         $errorShow = "<div class=\"alert alert-danger msg mt-5\" role=\"alert\">
                               Die Anfrage wurde abgelehnt!
                             </div>";
+        //antwortemail an User senden
+        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "abgelehnt");
     }else {
     }
 }

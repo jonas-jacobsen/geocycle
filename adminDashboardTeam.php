@@ -75,7 +75,7 @@ include("components/headerAdmin.php");
                                     <th class="th-sm"></th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="tbodyNewRows">
                                 <?php showAllRequestForTeam($conn, $allocation) ?>
                                 </tbody>
                             </table>
@@ -191,6 +191,11 @@ include("components/headerAdmin.php");
 <script type="text/javascript" src="js/charts/charts.js"></script>
 <!-- Script for Datatable-->
 <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+<!--Script for Ajaxcalls -->
+<script type="text/javascript" src="js/adminTeamScript.js"></script>
+
+<!-- Datatables anzeigen lassen-->
 <script type="text/javascript">
     $(document).ready(function () {
         $('#dtBasicExample').DataTable({
