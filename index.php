@@ -107,7 +107,7 @@ if (isset($_POST['submitOne'])) {
     <form action="" method="post" class="text-center border border-light p-5">
         <p class="h4 mb-4"><?php echo $lang['indexFormTitle']?></p>
         <!-- First name -->
-        <input type="text" id="company" name="company" class="form-control mb-4" placeholder="Unternehmen"
+        <input type="text" id="company" name="company" class="form-control mb-4" placeholder="<?php echo $lang['indexCompany'] ?>"
                required>
         <div class="form-row mb4">
             <div class="col">
@@ -119,20 +119,20 @@ if (isset($_POST['submitOne'])) {
                 <input type="password" id="password" name="password" class="form-control" placeholder="Passwort"
                        aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                    Bitte denke daran ein sicheres Passwort zu wählen
+                    <?php echo $lang['indexSecPass'] ?>
                 </small>
             </div>
         </div>
 
         <!-- Phone number -->
-        <input type="text" id="phone" name="phone" class="form-control" placeholder="Telefonnummer"
+        <input type="text" id="phone" name="phone" class="form-control" placeholder="<?php echo $lang['indexPhone'] ?>"
                aria-describedby="defaultRegisterFormPhoneHelpBlock">
         <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-            Optional - für Zwei-Faktor-Authentisierung
+            <?php echo $lang['indexTwoFactor']?>
         </small>
         <!-- Sign up button -->
         <button type="submit" id="submitOne" name="submitOne" value="1" class="btn btn-dark-green my-4 btn-block">
-            Registrieren
+            <?php echo $lang['indexRegister'] ?>
         </button>
         <!-- Terms of service -->
         <p><?php echo $lang['indexTermsAndCondition']?></p>
@@ -145,10 +145,10 @@ if (isset($_POST['submitOne'])) {
         <div class="modal-content">
             <div class="modal-body">
                 <div class="row d-flex justify-content-center align-items-center">
-                    <p class="pt-3 pr-2">Wir nutzen Cookies für unsere Webseite</p>
-                    <button type="button" class="btn btn-success" data-dismiss="modal">Schließen</button>
+                    <p class="pt-3 pr-2"><?php echo $lang['indexCookie'] ?></p>
+                    <button type="button" class="btn btn-success" data-dismiss="modal"><?php echo $lang['indexCookieClose'] ?></button>
                     <a href="https://www.geocycle.com/cookies-policy" target="_blank">
-                        <button type="button" class="btn btn-outline-success waves-effect">Weitere Infos</button>
+                        <button type="button" class="btn btn-outline-success waves-effect"><?php echo $lang['indexCookieFurtherInfo'] ?></button>
                     </a>
                 </div>
             </div>
