@@ -105,7 +105,7 @@ if (isset($_POST['submitOne'])) {
     <?php echo $errorMessage ?>
     <!-- Default form register -->
     <form action="" method="post" class="text-center border border-light p-5">
-        <p class="h4 mb-4">Dein Unternehmen neu registrieren</p>
+        <p class="h4 mb-4"><?php echo $lang['indexFormTitle']?></p>
         <!-- First name -->
         <input type="text" id="company" name="company" class="form-control mb-4" placeholder="Unternehmen"
                required>
@@ -135,10 +135,7 @@ if (isset($_POST['submitOne'])) {
             Registrieren
         </button>
         <!-- Terms of service -->
-        <p>Beim Klicken auf
-            <em>Registrieren</em> bist du mit unseren
-            <a href="" target="_blank">Nutzungsbedingungen</a> einverstanden
-
+        <p><?php echo $lang['indexTermsAndCondition']?></p>
     </form>
 </div>
 <!-- Frame Modal Bottom -->
