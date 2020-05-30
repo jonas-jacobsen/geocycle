@@ -30,6 +30,7 @@
                 -->
                 <!-- Right -->
                 <ul class="navbar-nav ml-auto nav-flex-icons">
+
                     <li class="nav-item">
                         <a href="userDashboard.php" class="nav-link waves-effect">
                             <i class="fas fa-folder-open"></i>
@@ -47,7 +48,18 @@
                             <i class="fas fa-sign-out-alt"></i>
                         </a>
                     </li>
-                    <!-- Navbar dropdown
+                    <!-- Dropdown -->
+                    <div class="chooseLang">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false"><span class="lang"><?php echo $lang['indexLangButton'] ?></span></a>
+                            <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="<?php echo $lang['userDashboardLangLink'] ?>"><?php echo $lang['indexLangButtonHover'] ?></a>
+                            </div>
+                        </li>
+                    </div>
+
+                    <!--
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false">
@@ -59,7 +71,8 @@
                             <a class="dropdown-item" href="#">Another action</a>
                             <a class="dropdown-item" href="#">Something else here</a>
                         </div>
-                    </li> End li nav item dropdown -->
+                    </li>
+                    -->
                 </ul>
             </div>
         </div>

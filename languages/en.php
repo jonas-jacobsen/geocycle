@@ -1,5 +1,4 @@
 <?php
-$de = "\"de\"";
 $lang = array (
     "indexFormTitle" => "Register your company",
     "indexTermsAndCondition" => "By clicking <em>Register</em> you agree to our <a href=\'\' target=\"_blank\">terms of use</a>",
@@ -11,13 +10,15 @@ $lang = array (
     "indexSecPass" => "Please remember to choose a secure password",
     "indexCompany" => "Company",
     "indexPhone" => "Phone",
+    "indexPassword" => "Password",
+    "indexLangButton" => "EN",
+    "indexLangButtonHover" => "Deutsch",
+    "indexLangLink" => "index.php?lang=de",
     "userDashboardOpenRequest" => "Open Request",
     "userDashboardSendRequest" => "Sent Requests",
     "userDashboardCreateNewRequest" => "Create new Request",
     "userDashboardViewRequest" => "View",
-    "indexLangButton" => "EN",
-    "indexLangButtonHover" => "Deutsch",
-    "indexLangLink" => "index.php?lang=de",
+    "userDashboardLangLink" => "userdashboard.php?lang=de",
 
 );
 ?>

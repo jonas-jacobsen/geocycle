@@ -81,6 +81,17 @@ if (isset($_POST['submitOne'])) {
 
         <ul class="navbar-nav ml-auto">
 
+            <form action="" method="post" class="form-inline my-2 my-lg-0 ml-auto">
+                <input type="text" name="email" class="form-control" placeholder="E-Mail" aria-label="Login"
+                       style="margin-right: 1px; margin-left: 1px">
+                <input type="password" name="password" class="form-control" placeholder="<?php echo $lang['indexPassword'] ?>" aria-label="Login"
+                       style="margin-right: 1px; margin-left: 1px">
+                <button type="submit" id="submit" name="submit"
+                        class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
+                    Login
+                </button>
+            </form>
+
             <!-- Dropdown -->
             <div class="chooseLang">
                 <li class="nav-item dropdown">
@@ -91,17 +102,6 @@ if (isset($_POST['submitOne'])) {
                     </div>
                 </li>
             </div>
-
-            <form action="" method="post" class="form-inline my-2 my-lg-0 ml-auto">
-                <input type="text" name="email" class="form-control" placeholder="Email-Adresse" aria-label="Login"
-                       style="margin-right: 1px; margin-left: 1px">
-                <input type="password" name="password" class="form-control" placeholder="Passwort" aria-label="Login"
-                       style="margin-right: 1px; margin-left: 1px">
-                <button type="submit" id="submit" name="submit"
-                        class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
-                    Login
-                </button>
-            </form>
         </ul>
     </div>
 </nav>
@@ -123,7 +123,7 @@ if (isset($_POST['submitOne'])) {
             </div>
             <div class="col">
                 <!-- Password -->
-                <input type="password" id="password" name="password" class="form-control" placeholder="Passwort"
+                <input type="password" id="password" name="password" class="form-control" placeholder="<?php echo $lang['indexPassword'] ?>"
                        aria-describedby="defaultRegisterFormPasswordHelpBlock" required>
                 <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
                     <?php echo $lang['indexSecPass'] ?>
