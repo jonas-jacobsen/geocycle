@@ -5,9 +5,15 @@ $userId = $_SESSION['userId'];
 $msgModalSendRequest = "";
 
 //Anfrage wurde abgesendet, wird von Offen in abgeshlossen umgewandelt
-if (isset($_POST['requestIsFilledOut'])) {
+//hier noch prüfen ob es sich um eine erneute, abgewandelte Anfrage handelt (Vorhandene Daten aus anderer Anfrage)
+$requestIsFilledOutAgain = $_POST['requestIsFilledOutAgain'];
+if($requestIsFilledOutAgain == "1"){
+    $sqlRequestAgain = "INSERT INTO userdata SET UserId = $userId, OpenRequest = 0";
+    mysqli_query($conn, $sqlRequestAgain);
+} else if (isset($_POST['requestIsFilledOut'])) {
     if ($_POST['requestIsFilledOut'] == 1) {
-        //datum abfragen
+
+        //komplet neue Anfrage
         $requestIdFilledOut = $_POST['requestId'];
         $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1, Allocation = 0, IncomingRequestDate = CURRENT_DATE WHERE id = $requestIdFilledOut";
         mysqli_query($conn, $sqlChangeFromOpenToClose);
@@ -45,7 +51,7 @@ if (isset($_POST['newRequest'])) {
     header('Location: request.php');
 }
 
-function showOpenRequest($conn, $userId)
+function showOpenRequest($conn, $userId, $lang)
 {
     $sqlOpenRequest = "SELECT * FROM userdata WHERE userId = $userId && OpenRequest = 0";
     $stmtOpenRequest = mysqli_query($conn, $sqlOpenRequest);
@@ -99,7 +105,7 @@ function showOpenRequest($conn, $userId)
                     <td>
                         <form id="1" method="post" action="request.php">
                             <input type="hidden" name="requestId" value="' . $requestId . '">
-                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">Anzeigen</button>
+                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">'.$lang['userDashboardViewRequest'].'</button>
                         </form>
                     </td>
                 </tr>';
@@ -111,7 +117,7 @@ function showOpenRequest($conn, $userId)
     }
 }
 
-function showCloseRequest($conn, $userId)
+function showCloseRequest($conn, $userId, $lang)
 {
     $sqlCloseRequest = "SELECT * FROM userdata WHERE userId = $userId && OpenRequest = 1";
     $stmtCloseRequest = mysqli_query($conn, $sqlCloseRequest);
@@ -177,7 +183,7 @@ function showCloseRequest($conn, $userId)
                     <td>
                         <form id="1" method="post" action="request.php">
                             <input type="hidden" name="requestId" value="' . $requestId . '">
-                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">Anzeigen</button>
+                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">'.$lang['userDashboardViewRequest'].'</button>
                         </form>
                     </td>
                 </tr>';

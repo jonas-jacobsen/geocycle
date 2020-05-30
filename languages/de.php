@@ -9,6 +9,13 @@ $lang = array (
     "indexTwoFactor" => "Optional - für Zwei-Faktor-Authentisierung",
     "indexSecPass" => "Bitte denke daran ein sicheres Passwort zu wählen",
     "indexCompany" => "Unternehmen",
-    "indexPhone" => "Telefonnummer"
-);
+    "indexPhone" => "Telefonnummer",
+    "userDashboardOpenRequest" => "Offene Anfragen",
+    "userDashboardSendRequest" => "Abgeschickte Anfragen",
+    "userDashboardCreateNewRequest" => "Neue Anfrage erstellen",
+    "userDashboardViewRequest" => "Anzeigen",
+    "indexLangButton" => "DE",
+    "indexLangButtonHover" => "Englisch",
+    "indexLangLink" => "index.php?lang=en",
+ );
 ?>

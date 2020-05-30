@@ -112,7 +112,11 @@ $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar +
 if ($countNumbers == 4) {
     $progressBarValue = "100%";
     $progressValue = "100";
-    $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+    if($row['OpenRequest'] == 1){
+        $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
+    }else{
+        $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+    }
 } elseif ($countNumbers == 3) {
     $progressBarValue = "75%";
     $progressValue = "75";

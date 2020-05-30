@@ -1,7 +1,7 @@
 <?php
-
-function showNewRequest($conn)
+function showNewRequest($conn, $lang)
 {
+
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 0";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {

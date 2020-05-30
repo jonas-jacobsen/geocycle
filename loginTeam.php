@@ -194,7 +194,7 @@ if (isset($_POST['submitOne'])) {
 </div>
 <!-- Frame Modal Bottom -->
 <?php
-include("includes/footer.php");
+include("components/footer.php");
 ?>
 
 <!-- JQuery -->

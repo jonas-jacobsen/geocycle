@@ -78,25 +78,31 @@ if (isset($_POST['submitOne'])) {
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <!--
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
+
+        <ul class="navbar-nav ml-auto">
+
+            <!-- Dropdown -->
+            <div class="chooseLang">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false"><span class="lang"><?php echo $lang['indexLangButton'] ?></span></a>
+                    <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="<?php echo $lang['indexLangLink'] ?>"><?php echo $lang['indexLangButtonHover'] ?></a>
+                    </div>
+                </li>
+            </div>
+
+            <form action="" method="post" class="form-inline my-2 my-lg-0 ml-auto">
+                <input type="text" name="email" class="form-control" placeholder="Email-Adresse" aria-label="Login"
+                       style="margin-right: 1px; margin-left: 1px">
+                <input type="password" name="password" class="form-control" placeholder="Passwort" aria-label="Login"
+                       style="margin-right: 1px; margin-left: 1px">
+                <button type="submit" id="submit" name="submit"
+                        class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
+                    Login
+                </button>
+            </form>
         </ul>
-        -->
-        <form action="" method="post" class="form-inline my-2 my-lg-0 ml-auto">
-            <input type="text" name="email" class="form-control" placeholder="Email-Adresse" aria-label="Login"
-                   style="margin-right: 1px; margin-left: 1px">
-            <input type="password" name="password" class="form-control" placeholder="Passwort" aria-label="Login"
-                   style="margin-right: 1px; margin-left: 1px">
-            <button type="submit" id="submit" name="submit"
-                    class="btn btn-outline-success waves-effect btn-md my-2 my-sm-0 ml-3">
-                Login
-            </button>
-        </form>
     </div>
 </nav>
 
@@ -105,9 +111,10 @@ if (isset($_POST['submitOne'])) {
     <?php echo $errorMessage ?>
     <!-- Default form register -->
     <form action="" method="post" class="text-center border border-light p-5">
-        <p class="h4 mb-4"><?php echo $lang['indexFormTitle']?></p>
+        <p class="h4 mb-4"><?php echo $lang['indexFormTitle'] ?></p>
         <!-- First name -->
-        <input type="text" id="company" name="company" class="form-control mb-4" placeholder="<?php echo $lang['indexCompany'] ?>"
+        <input type="text" id="company" name="company" class="form-control mb-4"
+               placeholder="<?php echo $lang['indexCompany'] ?>"
                required>
         <div class="form-row mb4">
             <div class="col">
@@ -128,14 +135,14 @@ if (isset($_POST['submitOne'])) {
         <input type="text" id="phone" name="phone" class="form-control" placeholder="<?php echo $lang['indexPhone'] ?>"
                aria-describedby="defaultRegisterFormPhoneHelpBlock">
         <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-            <?php echo $lang['indexTwoFactor']?>
+            <?php echo $lang['indexTwoFactor'] ?>
         </small>
         <!-- Sign up button -->
         <button type="submit" id="submitOne" name="submitOne" value="1" class="btn btn-dark-green my-4 btn-block">
             <?php echo $lang['indexRegister'] ?>
         </button>
         <!-- Terms of service -->
-        <p><?php echo $lang['indexTermsAndCondition']?></p>
+        <p><?php echo $lang['indexTermsAndCondition'] ?></p>
     </form>
 </div>
 <!-- Frame Modal Bottom -->
@@ -146,19 +153,28 @@ if (isset($_POST['submitOne'])) {
             <div class="modal-body">
                 <div class="row d-flex justify-content-center align-items-center">
                     <p class="pt-3 pr-2"><?php echo $lang['indexCookie'] ?></p>
-                    <button type="button" class="btn btn-success" data-dismiss="modal"><?php echo $lang['indexCookieClose'] ?></button>
+                    <button type="button" class="btn btn-success"
+                            data-dismiss="modal"><?php echo $lang['indexCookieClose'] ?></button>
                     <a href="https://www.geocycle.com/cookies-policy" target="_blank">
-                        <button type="button" class="btn btn-outline-success waves-effect"><?php echo $lang['indexCookieFurtherInfo'] ?></button>
+                        <button type="button"
+                                class="btn btn-outline-success waves-effect"><?php echo $lang['indexCookieFurtherInfo'] ?></button>
                     </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Frame Modal Bottom -->
-<?php
-include("includes/footer.php");
-?>
+<!-- Frame Modal Bottom End -->
+
+<!-- Footer -->
+<footer class="page-footer font-small success-color-dark fixed-bottom">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://www.geocycle.com/"> Geocycle GmbH</a> | <a href="index.php?lang=de">Deutsch </a><a href="index.php?lang=en">Englisch</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer End-->
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

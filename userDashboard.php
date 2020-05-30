@@ -17,7 +17,7 @@ include("components/header.php");
             <?php echo $msgModalSendRequest?>
             <form action="" method="post">
                 <button type="submit" id="newRequest" name="newRequest" value="1"
-                        class="btn btn-outline-success waves-effect">Neue Anfrage Erstellen
+                        class="btn btn-outline-success waves-effect"><?php echo $lang['userDashboardCreateNewRequest']?>
                 </button>
             </form>
             <br><br>
@@ -26,8 +26,8 @@ include("components/header.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Offene Anfragen</h2>
-                            <?php showOpenRequest($conn, $userId) ?>
+                            <h2><?php echo $lang['userDashboardOpenRequest']?></h2>
+                            <?php showOpenRequest($conn, $userId, $lang) ?>
                         </div>
                     </div>
                 </div>
@@ -36,8 +36,8 @@ include("components/header.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Abgeschickte Anfragen</h2>
-                            <?php showCloseRequest($conn, $userId) ?>
+                            <h2><?php echo $lang['userDashboardSendRequest']?></h2>
+                            <?php showCloseRequest($conn, $userId, $lang) ?>
                         </div>
                     </div>
                 </div>

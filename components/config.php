@@ -24,7 +24,7 @@ if(!isset($_SESSION['lang'])){
         $_SESSION['lang'] = "en";
     }
 }
-require_once "languages/".$_SESSION['lang'].".php";
+require_once $_SERVER['DOCUMENT_ROOT']."/Projekte/geocycle/languages/".$_SESSION['lang'].".php";
 
 /*
 if (mysqli_connect_errno()) {
