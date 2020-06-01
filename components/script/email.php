@@ -35,3 +35,14 @@ function sendMailToTeamUser($to, $from, $msg, $textfield){
     $mail ->isHTML(true);
     return $mail -> send();
 }
+
+function sendSecCodeToNewMember($to, $secCode){
+    $mail = new PHPMailer();
+    $mail ->CharSet = 'UTF-8';
+    $mail ->setFrom("admin@geocycle.com");
+    $mail ->addAddress($to);
+    $mail ->Subject = 'Geocycle - Einladungslink';
+    $mail ->Body = "<body><h2>Einladung</h2><p>Hallo, Sie wurden authoriesiert sich auf dem Geocycle-Anfrageportal anzumelden.</p><p>Bitte geben Sie auf der <a href='https://www.come-prima.de/projekte/geocycle/loginTeam.php'> Regristrieungsseite</a> folgenden Code ein:</p><p>Securitycode: <em>$secCode</em></p><p>Bitte benutzen Sie bei der registrierung die Geocycle Email und wählen Sie ein sicheres Passwort.</p><p>Viele Grüße <br>Ihr Admin</p></body>";
+    $mail ->isHTML(true);
+    return $mail -> send();
+}

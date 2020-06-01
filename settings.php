@@ -13,6 +13,7 @@ include("components/headerAdmin.php");
     <!--Main Navigation-->
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
+        <?php echo $errorShow ?>
         <div class="container-fluid mt-5">
             <!--Grid row-->
             <div class="row wow fadeIn">
@@ -54,6 +55,7 @@ include("components/headerAdmin.php");
                             </form>
                             <h6 class="mt-5">Security Code verschicken:</h6>
                             <form class="form-inline md-form mr-auto mb-4" id="SendSecCode" method="post">
+                                <input type="hidden" name="securCode" value="<?php showSecCode($conn);?>">
                                 <input class="form-control mr-sm-4" name="emailSecCode" type="text" placeholder="maxmustermann@gmx.de" aria-label="maxmustermann@gmx.de">
                                 <button class="btn" name="sendSecCode" type="submit">Senden</button>
                             </form>

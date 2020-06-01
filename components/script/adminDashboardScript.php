@@ -1,7 +1,8 @@
 <?php
-function showNewRequest($conn, $lang)
-{
+include("components/script/email.php");
 
+function showNewRequest($conn)
+{
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = 0";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {
@@ -90,38 +91,66 @@ function showAllTeammembers($conn)
         $id = $dataAllMembers['id'];
         $email = $dataAllMembers['Email'];
         $allocation = $dataAllMembers['TeamAllocation'];
-        if($allocation == 1){
-            $teamAllocation = 0;
-        } elseif ($allocation == 2){
-            $teamAllocation = 1;
-        } elseif ($allocation == 3){
-            $teamAllocation = 2;
-        } elseif ($allocation == 4){
-            $teamAllocation = 3;
+        if ($allocation == 1) {
+            $teamAllocation = "Admin";
+        } elseif ($allocation == 2) {
+            $teamAllocation = "Team 1";
+        } elseif ($allocation == 3) {
+            $teamAllocation = "Team 2";
+        } elseif ($allocation == 4) {
+            $teamAllocation = "Team 3";
         }
         echo '
-        <tr class="' . $id . '">
-            <td>' . $id . '</td>
-            <td>' . $email . '</td>
-            <td>' . $teamAllocation . '</td>
-            <td>
-                <button type="submit" id="delete' . $id . '" class="btn btn-light-red">Löschen</button>
-            </td>
-        </tr>';
+        <form method="post" action="">
+            <tr class="' . $id . '">
+                <td>' . $id . '</td>
+                <td>' . $email . '</td>
+                <td>' . $teamAllocation . '</td>
+                <td>
+                <input type="hidden" name="teamMemberId" value="' . $id . '">
+                    <button type="submit" id="delete' . $id . '" name="deleteTeamMember" class="btn btn-light-red">Löschen</button>
+                </td>
+            </tr>
+        </form>';
     }
 }
 
-function showSecCode($conn){
+function showSecCode($conn)
+{
     $sqlSecCode = "SELECT SecCode AS SecCode FROM adminuser WHERE TeamAllocation = 1";
     $stmtSecCode = mysqli_query($conn, $sqlSecCode);
     $row = mysqli_fetch_array($stmtSecCode);
     echo $secCode = $row['SecCode'];
 }
 
-if(isset($_POST['changeSecCode'])){
-    $secCode =  $_POST['secCode'];
+if (isset($_POST['changeSecCode'])) {
+    $secCode = $_POST['secCode'];
     $sqlChangeSecCode = "UPDATE adminuser SET SecCode = '$secCode' WHERE TeamAllocation = 1";
     mysqli_query($conn, $sqlChangeSecCode);
+}
+
+//teammitglied löschen
+if(isset($_POST['deleteTeamMember'])){
+    if(isset($_POST['teamMemberId'])){
+        $id = $_POST['teamMemberId'];
+        $sqlDeleteMember = "DELETE FROM adminuser WHERE id = $id";
+        mysqli_query($conn, $sqlDeleteMember);
+        $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
+                              Das Teammitglied wurde erfolgreich entfernt!
+                            </div>";
+    }
+}
+
+//Securitycode verschicken
+if(isset($_POST['sendSecCode'])){
+    if(isset($_POST['securCode'])){
+        $secCode = $_POST['securCode'];
+        $email = $_POST['emailSecCode'];
+        sendSecCodeToNewMember($email, $secCode);
+        $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
+                              Der Securitycode wurde erfolgreich verschickt!
+                            </div>";
+    }
 }
 
 ?>
