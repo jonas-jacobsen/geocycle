@@ -35,5 +35,4 @@ if (isset($_POST['firstname']) && isset($_POST['surname'])) {
     );
     exit(json_encode($jsonArray));
 }
-
 ?>

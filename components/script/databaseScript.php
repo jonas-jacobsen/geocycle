@@ -96,12 +96,18 @@ $docOneCheckVar = 0;
 $sqlDocOne = "SELECT * FROM docOne WHERE RequestId = '$requestId'";
 $result = mysqli_query($conn, $sqlDocOne);
 $numbers = mysqli_num_rows($result);
-if ($numbers > 0) {
+
+if ($row['ProdAbf'] == 'Abfall'){
     $docOneCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $docOneCheckVar = 1;
-} else {
-    $docOneCheck = "<i class=\"far fa-times-circle red-text\"></i>";
-    $docOneCheckVar = 0;
+} else{
+    if ($numbers > 0) {
+        $docOneCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+        $docOneCheckVar = 1;
+    } else {
+        $docOneCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+        $docOneCheckVar = 0;
+    }
 }
 
 //Progressbar check bei Seiten Reload
@@ -193,6 +199,7 @@ function showFiles($conn, $requestId, $userId)
         $filePath = $rowPath['Path'];
         $fileName = explode("uploads/$userId/$requestId", $filePath);
         $fileId = $rowPath['id'];
+        $requestId = $rowPath['RequestId'];
         //untescheidung zwischen PDF oder bild
         //voschaubild
         //mit a href link

@@ -20,9 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/js/requestJs/analysis.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/requestJs/autocomplete.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/requestJs/facliity.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/requestJs/waste_state.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/adminDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/updateFilesAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateFilesAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/requestBackup.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/settings.php" beforeDir="false" afterPath="$PROJECT_DIR$/settings.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +44,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -92,19 +99,19 @@
     <property name="settings.editor.selected.configurable" value="web.server" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/script" />
-      <recent name="$PROJECT_DIR$/js/addons" />
-      <recent name="$PROJECT_DIR$/css/addons" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/components" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/components/script" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/js/fileUpload" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/script" />
+      <recent name="$PROJECT_DIR$/js/addons" />
+      <recent name="$PROJECT_DIR$/css/addons" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -136,7 +143,7 @@
       <workItem from="1589360009904" duration="437000" />
       <workItem from="1589528226584" duration="17469000" />
       <workItem from="1589968643621" duration="40810000" />
-      <workItem from="1590701976835" duration="27931000" />
+      <workItem from="1590701976835" duration="43248000" />
     </task>
     <servers />
   </component>

@@ -4,6 +4,7 @@ include("components/session.php");
 include("components/config.php");
 include("components/script/databaseScript.php");
 include("components/header.php");
+
 ?>
 
 <body>
@@ -183,7 +184,6 @@ include("components/header.php");
                                 <div class="row">
                                     <div class="col-md-6">
                                         <h4>Anfrage</h4>
-                                        <p>a. Typ-Spezifizierung</p>
                                     </div>
                                     <div class="col-md-6">
                                         <span class="didChangeRequest" id="didChangeRequest"></span>
@@ -192,102 +192,43 @@ include("components/header.php");
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>Worum geht es:</p>
+                                        <p>Worum gehts:</p>
+                                        <!-- Default unchecked -->
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="produkt"
-                                                   name="prodAbf" value="Produktstatus" <?php echo $radioOnPro ?>>
+                                                   name="prodAbf" <?php echo $radioOnPro ?> value="Produktstatus">
                                             <label class="custom-control-label" for="produkt">Produktstatus</label>
                                         </div>
+
+                                        <!-- Default checked -->
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="abfall"
                                                    name="prodAbf" value="Abfall" <?php echo $radioOnAbf ?>>
                                             <label class="custom-control-label" for="abfall">Abfall</label>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="abfallstatus">
-                                            <div class="md-form input-with-post-icon">
-                                                <i class="fas fa-trash input-prefix"></i>
-                                                <input type="text" id="abfallbezeichnung" class="form-control"
-                                                       name="wasteDescription"
-                                                       value="<?php echo $wasteDescription ?>">
-                                                <label for="abfallbezeichnung">Abfallbezeichnung</label>
-                                            </div>
-                                            <div class="md-form input-with-post-icon">
-                                                <i class="fas fa-trash input-prefix"></i>
-                                                <input type="text" id="avv" class="form-control" name="avv"
-                                                       value="<?php echo $avv ?>">
-                                                <label for="avv">AVV</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="produktstatus">
-                                    <br>
-                                    <span class="didChangeFiles" id="didChangeFiles"></span>
-                                    <p>Bitte laden Sie ein Zertifikat hoch, das den Produktstatus belegt:
-                                        Das kann eine <u>REACH Zertifizierung</u> sein, eine <u>behördliche Genehmigung
-                                        </u>oder ein <u>Produktdatenblatt</u></p>
-                                    <div id="dropZone">
-                                        <input type="file" id="fileupload" name="attachments[]" multiple>
-                                    </div>
-                                    <small id="smalltext" class="form-text text-muted mb-4">Nicht älter als 12
-                                        Monate
-                                    </small>
-                                    <p id="error"></p>
-                                    <p id="progess"></p>
-                                    <div class="existingFiles">
-                                        <p>Hochgeladene Dokumente:</p>
-                                        <div class="gallery">
-                                            <?php showFiles($conn, $requestId, $userId); ?>
-                                            <div id="einbinden"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <br>
-                                <hr>
-                                <br>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <p>Sie sind:</p>
+                                        <!-- Default unchecked -->
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="erzeuger"
                                                    name="erzHae" <?php echo $radioOnErz ?> value="Erzeuger">
                                             <label class="custom-control-label" for="erzeuger">Erzeuger</label>
                                         </div>
+
+                                        <!-- Default checked -->
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="haendler"
                                                    name="erzHae" <?php echo $radioOnHae ?> value="Händler">
                                             <label class="custom-control-label" for="haendler">Händler</label>
                                         </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="erzeuger">
-                                            <div class="md-form input-with-post-icon">
-                                                <i class="fas fa-user input-prefix"></i>
-                                                <input type="text" id="producer" class="form-control" name="producer"
-                                                       value="<?php echo $producer ?>">
-                                                <label for="producer">Erzeuger</label>
-                                            </div>
-                                        </div>
-                                        <div class="haendler">
-
-                                        </div>
+                                        <small id="smalltext" class="form-text text-muted mb-4">
+                                            Wenn Sie Händler sind, bitte den Erzeuger nennen:
+                                        </small>
                                     </div>
                                 </div>
                                 <br>
-                                <hr>
-                                <br>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="md-form input-with-post-icon">
-                                            <i class="fas fa-truck-loading input-prefix"></i>
-                                            <input type="text" id="delivery" class="form-control" name="deliveryForm"
-                                                   value="<?php echo $deliveryForm ?>">
-                                            <label for="delivery">Anlieferform</label>
-                                        </div>
-                                    </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-weight-hanging input-prefix"></i>
@@ -296,8 +237,46 @@ include("components/header.php");
                                             <label for="materialQuantity">Menge in Tonnen</label>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-user input-prefix"></i>
+                                            <input type="text" id="producer" class="form-control" name="producer"
+                                                   value="<?php echo $producer ?>">
+                                            <label for="producer">ggf. Erzeuger</label>
+                                        </div>
+                                    </div>
                                 </div>
-
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-trash input-prefix"></i>
+                                            <input type="text" id="abfallbezeichnung" class="form-control"
+                                                   name="wasteDescription"
+                                                   value="<?php echo $wasteDescription ?>">
+                                            <label for="abfallbezeichnung">Abfallbezeichnung</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-trash input-prefix"></i>
+                                            <input type="text" id="avv" class="form-control" name="avv"
+                                                   value="<?php echo $avv ?>">
+                                            <label for="avv">AVV</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-truck-loading input-prefix"></i>
+                                            <input type="text" id="delivery" class="form-control" name="deliveryForm"
+                                                   value="<?php echo $deliveryForm ?>">
+                                            <label for="delivery">Anlieferform</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <button type="submit" id="sumbitAnfrage" name="sumbitAnfrage"
                                         class="btn btn-light-green">
                                     Speichern
@@ -353,6 +332,38 @@ include("components/header.php");
                                 </button>
                             </form>
                             <br><br>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Dokumente</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="didChangeFiles" id="didChangeFiles"></span>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p>Analytik/ SBA/ BA</p>
+                                    <div id="dropZone">
+                                        <input type="file" id="fileupload" name="attachments[]" multiple>
+                                    </div>
+                                    <small id="smalltext" class="form-text text-muted mb-4">Nicht älter als 12 Monate
+                                    </small>
+                                    <p id="error"></p>
+                                    <p id="progess"></p>
+                                    <div class="existingFiles">
+                                        <h5>Hochgeladene Dokumente</h5>
+                                        <div class="gallery">
+                                            <?php showFiles($conn, $requestId, $userId); ?>
+                                            <div id="einbinden"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p> Zertifikate (ISO, EfB)/ Genehmigung</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -389,63 +400,6 @@ include("components/header.php");
     requestCheckVar = <?php echo $requestCheckVar?>;
     furtherInfoCheckVar = <?php echo $furtherInfoCheckVar?>;
     docOneCheckVar = <?php echo $docOneCheckVar?>;
-</script>
-
-<script>
-    $(document).ready(function () {
-
-        //prüfung welcher Radio button ausgewählt ist: Prd/Abfall
-        $("#produkt").ready(function () {
-            if ($("#produkt:checked").val() == "Produktstatus") {
-                $(".produktstatus").show();
-                $(".abfallstatus").hide();
-            }
-        });
-        $("#abfall").ready(function () {
-            if ($("#abfall:checked").val() == "Abfall") {
-                $(".abfallstatus").show();
-                $(".produktstatus").hide();
-            }
-        });
-        $("#produkt").click(function () {
-            if ($("#produkt:checked").val() == "Produktstatus") {
-                $(".produktstatus").show();
-                $(".abfallstatus").hide();
-            }
-        });
-        $("#abfall").click(function () {
-            if ($("#abfall:checked").val() == "Abfall") {
-                $(".abfallstatus").show();
-                $(".produktstatus").hide();
-            }
-        });
-        //prüfung welcher Radio button ausgewählt ist: Erz/Händl
-        $("#erzeuger").ready(function () {
-            if ($("#erzeuger:checked").val() == "Erzeuger") {
-                $(".haendler").show();
-                $(".erzeuger").hide();
-            }
-        });
-        $("#haendler").ready(function () {
-            if ($("#haendler:checked").val() == "Händler") {
-                $(".erzeuger").show();
-                $(".haendler").hide();
-            }
-        });
-        $("#erzeuger").click(function () {
-            if ($("#erzeuger:checked").val() == "Erzeuger") {
-                $(".haendler").show();
-                $(".erzeuger").hide();
-            }
-        });
-        $("#haendler").click(function () {
-            if ($("#haendler:checked").val() == "Händler") {
-                $(".erzeuger").show();
-                $(".haendler").hide();
-            }
-        });
-
-    });
 </script>
 
 <script type="text/javascript" src="js/formHandler.js"></script>

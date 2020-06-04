@@ -57,7 +57,7 @@ include("components/headerAdmin.php");
                             <form class="form-inline md-form mr-auto mb-4" id="SendSecCode" method="post">
                                 <input type="hidden" name="securCode" value="<?php showSecCode($conn);?>">
                                 <input class="form-control mr-sm-4" name="emailSecCode" type="text" placeholder="maxmustermann@gmx.de" aria-label="maxmustermann@gmx.de">
-                                <button class="btn" name="sendSecCode" type="submit">Senden</button>
+                                <button class="btn" name="sendSecCode" value="buttonclicket" type="submit">Senden</button>
                             </form>
                         </div>
                     </div><!--End card body-->

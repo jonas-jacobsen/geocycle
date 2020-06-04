@@ -142,7 +142,7 @@ if(isset($_POST['deleteTeamMember'])){
 }
 
 //Securitycode verschicken
-if(isset($_POST['sendSecCode'])){
+if(isset($_POST['sendSecCode']) && $_POST['sendSecCode'] == "buttonclicket"){
     if(isset($_POST['securCode'])){
         $secCode = $_POST['securCode'];
         $email = $_POST['emailSecCode'];

@@ -9,7 +9,7 @@ $userId = $_SESSION['userId'];
 $sql_all = "SELECT * FROM docOne WHERE UserId = $userId && id = $id";
 $statement = mysqli_query($conn, $sql_all);
 $row = mysqli_fetch_array($statement);
-
+$delRequestId = $row['RequestId'];
 //File Löschen
 $filePath = $row['Path'];
 unlink("../../".$filePath);
@@ -19,7 +19,7 @@ $sql = "DELETE FROM docOne WHERE id = $id";
 $statement = mysqli_query($conn, $sql);
 
 //anzahl der noch vorhanden dokumente herausfinden
-$sql_all_rows = "SELECT * FROM docOne WHERE UserId = $userId";
+$sql_all_rows = "SELECT * FROM docOne WHERE UserId = $userId AND RequestId = $delRequestId";
 $stmt = mysqli_query($conn, $sql_all_rows);
 $count = mysqli_num_rows($stmt);
 if ($count> 0){
