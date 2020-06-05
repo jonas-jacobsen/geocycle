@@ -141,21 +141,23 @@ include("components/header.php");
                                     </div>
                                 </div>
                                 <hr>
+                                <div id="checkIsHidden">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            Dokumente
+                                        </div>
+                                        <div class="col-sm-4" id="docOneCheck">
+                                            <?php echo $docOneCheck ?>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </div>
                                 <div class="row">
                                     <div class="col-sm-8">
                                         Weitere Details
                                     </div>
                                     <div class="col-sm-4" id="furtherInfoCheck">
                                         <?php echo $furtherInfoCheck ?>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-8">
-                                        Dokumente
-                                    </div>
-                                    <div class="col-sm-4" id="docOneCheck">
-                                        <?php echo $docOneCheck ?>
                                     </div>
                                 </div>
                                 <hr>
@@ -268,7 +270,7 @@ include("components/header.php");
                                                 <i class="fas fa-user input-prefix"></i>
                                                 <input type="text" id="producer" class="form-control" name="producer"
                                                        value="<?php echo $producer ?>">
-                                                <label for="producer">Erzeuger</label>
+                                                <label for="producer">Bitte nennen Sie den Erzeuger</label>
                                             </div>
                                         </div>
                                         <div class="haendler">
@@ -281,12 +283,17 @@ include("components/header.php");
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="md-form input-with-post-icon">
-                                            <i class="fas fa-truck-loading input-prefix"></i>
-                                            <input type="text" id="delivery" class="form-control" name="deliveryForm"
-                                                   value="<?php echo $deliveryForm ?>">
-                                            <label for="delivery">Anlieferform</label>
-                                        </div>
+                                        <label for="incoterms">Bitte wählen Sie die Lieferbedingungen als Incoterm:</label>
+                                        <select class="form-control" id="incoterms" name="deliveryForm">
+                                            <option value="EXW" <?php echo $deliveryFormEXW ?>>EXW</option>
+                                            <option value="FCA" <?php echo $deliveryFormFCA ?>>FCA</option>
+                                            <option value="CPT" <?php echo $deliveryFormCPT ?>>CPT</option>
+                                            <option value="CIP" <?php echo $deliveryFormCIP ?>>CIP</option>
+                                            <option value="DAP" <?php echo $deliveryFormDAP ?>>DAP</option>
+                                            <option value="DAT" <?php echo $deliveryFormDAT ?>>DAT</option>
+                                        </select>
+                                        <br>
+                                        <i>Hier finden Sie eine <a href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806" target="_blank">Liste aller Incoterms</a> inklusive kurzer Erklärung.</i>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
@@ -391,62 +398,8 @@ include("components/header.php");
     docOneCheckVar = <?php echo $docOneCheckVar?>;
 </script>
 
-<script>
-    $(document).ready(function () {
+<script type="text/javascript" src="js/requestJs/radioSelection.js"></script>
 
-        //prüfung welcher Radio button ausgewählt ist: Prd/Abfall
-        $("#produkt").ready(function () {
-            if ($("#produkt:checked").val() == "Produktstatus") {
-                $(".produktstatus").show();
-                $(".abfallstatus").hide();
-            }
-        });
-        $("#abfall").ready(function () {
-            if ($("#abfall:checked").val() == "Abfall") {
-                $(".abfallstatus").show();
-                $(".produktstatus").hide();
-            }
-        });
-        $("#produkt").click(function () {
-            if ($("#produkt:checked").val() == "Produktstatus") {
-                $(".produktstatus").show();
-                $(".abfallstatus").hide();
-            }
-        });
-        $("#abfall").click(function () {
-            if ($("#abfall:checked").val() == "Abfall") {
-                $(".abfallstatus").show();
-                $(".produktstatus").hide();
-            }
-        });
-        //prüfung welcher Radio button ausgewählt ist: Erz/Händl
-        $("#erzeuger").ready(function () {
-            if ($("#erzeuger:checked").val() == "Erzeuger") {
-                $(".haendler").show();
-                $(".erzeuger").hide();
-            }
-        });
-        $("#haendler").ready(function () {
-            if ($("#haendler:checked").val() == "Händler") {
-                $(".erzeuger").show();
-                $(".haendler").hide();
-            }
-        });
-        $("#erzeuger").click(function () {
-            if ($("#erzeuger:checked").val() == "Erzeuger") {
-                $(".haendler").show();
-                $(".erzeuger").hide();
-            }
-        });
-        $("#haendler").click(function () {
-            if ($("#haendler:checked").val() == "Händler") {
-                $(".erzeuger").show();
-                $(".haendler").hide();
-            }
-        });
-
-    });
-</script>
 
 <script type="text/javascript" src="js/formHandler.js"></script>
 

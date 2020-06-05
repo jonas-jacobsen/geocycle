@@ -1,5 +1,5 @@
 <!--script zur Formularverabeitung -->
-
+console.log(docOneCheckVar);
 //wenn Button geklickt wird, rotierender pfeil
 var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
 
@@ -34,8 +34,10 @@ $('#request_Form').submit(function (event) {
         success: function (data) {
             $('#requestCheck').html(data.requestCheck);
             requestCheckVar = data.requestCheckVar;
+            docOneCheckVar = data.docOneCheckVar;
             showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
             //alert("Daten in Ansprechpartner geändert")
+            console.log(docOneCheckVar);
         },
     });
     //set Timeout for showing Anderungen vorgenommen
@@ -139,26 +141,48 @@ $(function () {
 //Progressbar überprüfen bei Ajax-Caall
 
 function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar) {
-    countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar + docOneCheckVar;
-    if (countNumber == 4) {
-        $('.progress-bar').css('width', '100%');
-        $('#progressValue').html('100');
-        $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
-    } else if (countNumber == 3) {
-        $('.progress-bar').css('width', '75%');
-        $('#progressValue').html('75');
-        $('#filledOut').html("");
-    } else if (countNumber == 2) {
-        $('.progress-bar').css('width', '50%');
-        $('#progressValue').html('50');
-        $('#filledOut').html("");
-    } else if (countNumber == 1) {
-        $('.progress-bar').css('width', '25%');
-        $('#progressValue').html('25');
-        $('#filledOut').html("");
-    } else {
-        $('.progress-bar').css('width', '0%');
-        $('#progressValue').html('0');
-        $('#filledOut').html("");
+
+    if(docOneCheckVar == 3){
+        countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar;
+        if (countNumber == 3) {
+            $('.progress-bar').css('width', '100%');
+            $('#progressValue').html('100');
+            $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
+        } else if (countNumber == 2) {
+            $('.progress-bar').css('width', '66%');
+            $('#progressValue').html('66');
+            $('#filledOut').html("");
+        } else if (countNumber == 1) {
+            $('.progress-bar').css('width', '33%');
+            $('#progressValue').html('33');
+            $('#filledOut').html("");
+        } else {
+            $('.progress-bar').css('width', '0%');
+            $('#progressValue').html('0');
+            $('#filledOut').html("");
+        }
+    }else{
+        countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar + docOneCheckVar;
+        if (countNumber == 4) {
+            $('.progress-bar').css('width', '100%');
+            $('#progressValue').html('100');
+            $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
+        } else if (countNumber == 3) {
+            $('.progress-bar').css('width', '75%');
+            $('#progressValue').html('75');
+            $('#filledOut').html("");
+        } else if (countNumber == 2) {
+            $('.progress-bar').css('width', '50%');
+            $('#progressValue').html('50');
+            $('#filledOut').html("");
+        } else if (countNumber == 1) {
+            $('.progress-bar').css('width', '25%');
+            $('#progressValue').html('25');
+            $('#filledOut').html("");
+        } else {
+            $('.progress-bar').css('width', '0%');
+            $('#progressValue').html('0');
+            $('#filledOut').html("");
+        }
     }
 }

@@ -83,6 +83,7 @@
 @media (max-width: 767px) {
     .sidebar {
         width: 100%;
+        z-index: 99999;
     }
 
     .sidecard {
@@ -123,6 +124,7 @@
         position: -webkit-sticky;
         position: sticky;
         top: 70px;
+        z-index: 99999;
     }
 
     .sidecard {

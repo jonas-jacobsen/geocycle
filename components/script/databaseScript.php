@@ -1,6 +1,6 @@
 <?php
 //Prüfen ob neue oder Vorhandene, Neue, RequestId in SesssionV Variable. ALte RequestId in $_Post variable
-If(isset($_POST['requestId'])){
+if (isset($_POST['requestId'])) {
     $requestId = $_POST['requestId'];
     $_SESSION['requestId'] = $requestId;
 } else {
@@ -28,7 +28,32 @@ $jato = $row['JaTo'];
 $producer = $row['Producer'];
 $wasteDescription = $row['WasteDescription'];
 $avv = $row['Avv'];
+
+//deliveryform herausfinden welche ausgewählt:
+$deliveryFormEXW = "";
+$deliveryFormFCA = "";
+$deliveryFormCPT = "";
+$deliveryFormCIP = "";
+$deliveryFormDAP = "";
+$deliveryFormDAT = "";
 $deliveryForm = $row['DeliveryForm'];
+
+if ($deliveryForm == "EXW") {
+    $deliveryFormEXW = "selected";
+} elseif ($deliveryForm == "FCA") {
+    $deliveryFormFCA = "selected";
+} elseif ($deliveryForm == "CPT") {
+    $deliveryFormCPT = "selected";
+} elseif ($deliveryForm == "CIP") {
+    $deliveryFormCIP = "selected";
+} elseif ($deliveryForm == "DAP") {
+    $deliveryFormDAP = "selected";
+} elseif ($deliveryForm == "DAT") {
+    $deliveryFormDAT = "selected";
+} else {
+    $deliveryFormEXW = "selected";
+}
+
 //further Info
 $dispRoute = $row['DisposalRoute'];
 $procDescr = $row['ProcessDescription'];
@@ -71,13 +96,46 @@ if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $r
 $requestCheck = "";
 $requestCheckVar = 0;
 
-if ($row['ProdAbf'] && $row['ErzHae'] && $row['JaTo'] && $row['Producer'] && $row['WasteDescription'] && $row['Avv'] && $row['DeliveryForm']) {
-    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
-    $requestCheckVar = 1;
-} else {
+if ($row['ProdAbf']) {
+    if ($row['ProdAbf'] == "Produktstatus") {
+        if ($row['ErzHae']) {
+            if ($row['ErzHae'] == "Erzeuger" || $row['ErzHae'] == "Händler") {
+                if ($row['JaTo'] && $row['DeliveryForm']) {
+                    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+                    $requestCheckVar = 1;
+                } else {
+                    $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+                    $requestCheckVar = 0;
+                }
+            } else {
+                $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+                $requestCheckVar = 0;
+            }
+        }
+    } else {
+        if ($row['ErzHae']) {
+            if ($row['ErzHae'] == "Erzeuger" || $row['ErzHae'] == "Händler") {
+                if ($row['JaTo'] && $row['DeliveryForm'] && $row['WasteDescription'] && $row['Avv']) {
+                    $requestCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+                    $requestCheckVar = 1;
+                } else {
+                    $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+                    $requestCheckVar = 0;
+                }
+            } else {
+                $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+                $requestCheckVar = 0;
+            }
+        }else{
+            $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+            $requestCheckVar = 0;
+        }
+    }
+}else{
     $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
     $requestCheckVar = 0;
 }
+
 
 $furtherInfoCheck = "";
 $furtherInfoCheckVar = 0;
@@ -90,65 +148,99 @@ if ($row['DisposalRoute'] && $row['ProcessDescription']) {
     $furtherInfoCheckVar = 0;
 }
 
+
+
 $docOneCheck = "";
 $docOneCheckVar = 0;
+if($row['ProdAbf'] == "Abfall"){
+    $docOneCheckVar = 3;
+}else{
+    $sqlDocOne = "SELECT * FROM docOne WHERE RequestId = '$requestId'";
+    $result = mysqli_query($conn, $sqlDocOne);
+    $numbers = mysqli_num_rows($result);
 
-$sqlDocOne = "SELECT * FROM docOne WHERE RequestId = '$requestId'";
-$result = mysqli_query($conn, $sqlDocOne);
-$numbers = mysqli_num_rows($result);
-
-if ($row['ProdAbf'] == 'Abfall'){
-    $docOneCheck = "<i class=\"far fa-check-circle green-text\"></i>";
-    $docOneCheckVar = 1;
-} else{
-    if ($numbers > 0) {
+    if ($row['ProdAbf'] == 'Abfall') {
         $docOneCheck = "<i class=\"far fa-check-circle green-text\"></i>";
         $docOneCheckVar = 1;
     } else {
-        $docOneCheck = "<i class=\"far fa-times-circle red-text\"></i>";
-        $docOneCheckVar = 0;
+        if ($numbers > 0) {
+            $docOneCheck = "<i class=\"far fa-check-circle green-text\"></i>";
+            $docOneCheckVar = 1;
+        } else {
+            $docOneCheck = "<i class=\"far fa-times-circle red-text\"></i>";
+            $docOneCheckVar = 0;
+        }
     }
 }
+
 
 //Progressbar check bei Seiten Reload
 $progressBarValue = "";
 $progressValue = "";
 $buttonRequestFilledOut = "";
-$countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar + $docOneCheckVar;
-if ($countNumbers == 4) {
-    $progressBarValue = "100%";
-    $progressValue = "100";
-    if($row['OpenRequest'] == 1){
-        $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
-    }else{
-        $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+
+if($row['ProdAbf'] == "Abfall"){
+    $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar;
+    if ($countNumbers == 3) {
+        $progressBarValue = "100%";
+        $progressValue = "100";
+        if ($row['OpenRequest'] == 1) {
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
+        } else {
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+        }
+    } elseif ($countNumbers == 2) {
+        $progressBarValue = "66%";
+        $progressValue = "66";
+        $buttonRequestFilledOut = "";
+    } elseif ($countNumbers == 1) {
+        $progressBarValue = "33%";
+        $progressValue = "33";
+        $buttonRequestFilledOut = "";
+    } else {
+        $progressBarValue = "0%";
+        $progressValue = "0";
+        $buttonRequestFilledOut = "";
     }
-} elseif ($countNumbers == 3) {
-    $progressBarValue = "75%";
-    $progressValue = "75";
-    $buttonRequestFilledOut = "";
-} elseif ($countNumbers == 2) {
-    $progressBarValue = "50%";
-    $progressValue = "50";
-    $buttonRequestFilledOut = "";
-} elseif ($countNumbers == 1) {
-    $progressBarValue = "25%";
-    $progressValue = "25";
-    $buttonRequestFilledOut = "";
-} else {
-    $progressBarValue = "0%";
-    $progressValue = "0";
-    $buttonRequestFilledOut = "";
+}else{
+    $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar + $docOneCheckVar;
+    if ($countNumbers == 4) {
+        $progressBarValue = "100%";
+        $progressValue = "100";
+        if ($row['OpenRequest'] == 1) {
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
+        } else {
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+        }
+    } elseif ($countNumbers == 3) {
+        $progressBarValue = "75%";
+        $progressValue = "75";
+        $buttonRequestFilledOut = "";
+    } elseif ($countNumbers == 2) {
+        $progressBarValue = "50%";
+        $progressValue = "50";
+        $buttonRequestFilledOut = "";
+    } elseif ($countNumbers == 1) {
+        $progressBarValue = "25%";
+        $progressValue = "25";
+        $buttonRequestFilledOut = "";
+    } else {
+        $progressBarValue = "0%";
+        $progressValue = "0";
+        $buttonRequestFilledOut = "";
+    }
 }
+
+
 
 //Fileupload
 if (isset($_FILES['attachments'])) {
 
     //erstelle Folder für User id
-    $folderUser = "uploads/".$userId."/";
+    $folderUser = "uploads/" . $userId . "/";
 
     //erstelle Folder für Request
-    $folder = "uploads/".$userId."/".$requestId."/";
+    $folder = "uploads/" . $userId . "/" . $requestId . "/";
 
     //Prüfen ob Ordner für User vorhanden ist
     if (!file_exists($folderUser)) {
@@ -160,7 +252,7 @@ if (isset($_FILES['attachments'])) {
     }
 
     $msg = "";
-    $targetFile = $folder.basename($_FILES['attachments']['name'][0]);
+    $targetFile = $folder . basename($_FILES['attachments']['name'][0]);
     if (file_exists($targetFile)) {
         $msg = "Dokument existiert schon!";
         $status = 0;
