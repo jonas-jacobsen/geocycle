@@ -3,12 +3,13 @@ session_start();
 include("../config.php");
 
 $dispRoute = htmlspecialchars($_POST['dispRoute']);
-$procDescr = htmlspecialchars($_POST['procDescr']);
+$procDescr = htmlspecialchars($_POST['procDesc']);
+$json = $_POST['listJson'];
 
 $userId = $_SESSION['userId'];
 $requestId = $_SESSION['requestId'];
 
-$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr' WHERE id = $requestId";
+$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr', ParameterList = '$json' WHERE id = $requestId";
 
 $statement = mysqli_query($conn, $sql);
 

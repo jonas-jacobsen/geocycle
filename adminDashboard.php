@@ -5,6 +5,8 @@ include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");
 
+include("components/script/analyse/analyse.php");
+
 ?>
 
 <body>
@@ -31,6 +33,8 @@ include("components/headerAdmin.php");
                     <!--/.Card-->
                 </div>
                 <!--Grid column-->
+
+                <?php showAnalysis(31, $conn); ?>
 
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-6 mb-4">

@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Geocycle - Adminpanel</title>
+    <link rel="shortcut icon" href="https://www.geocycle.com/sites/geocycle/files/geo_favicon.ico" type="image/vnd.microsoft.icon" />
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">

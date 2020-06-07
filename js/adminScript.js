@@ -44,7 +44,7 @@ $(document).ready(function () {
             }
         })
     }
-    setInterval(function () {
-        updateProcessingStatus();
-    }, 1000);
+    //setInterval(function () {
+     //   updateProcessingStatus();
+   // }, 1000);
 })

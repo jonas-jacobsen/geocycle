@@ -1,8 +1,8 @@
 <?php
-$lang = array (
+$lang = array(
     "indexFormTitle" => "Dein Unternehmen neu Registrieren",
     "indexTermsAndCondition" => "<em>Registrieren</em> bist du mit unseren<a href=\"\" target=\"_blank\">Nutzungsbedingungen</a> einverstanden",
-    "indexCookie"=>"Wir nutzen Cookies für unsere Webseite",
+    "indexCookie" => "Wir nutzen Cookies für unsere Webseite",
     "indexCookieClose" => "Schließen",
     "indexCookieFurtherInfo" => "Weitere Infos",
     "indexRegister" => "Registrieren",
@@ -20,5 +20,19 @@ $lang = array (
     "userDashboardViewRequest" => "Anzeigen",
     "userDashboardLangLink" => "userdashboard.php?lang=en",
 
- );
+    "requestStatusRequest" => "Status der Anfrage",
+    "requestContactPerson" => "Ansprechpartner",
+    "requestCompanyAddress" => "Unternehmensadresse",
+    "requestRequest" => "Anfrage",
+    "requestSpecifyRequest" => "Typ-Spezifizierung",
+    "requestWhatsAbout" => "Worum geht es",
+    "requestLoadCertificate" => "Bitte laden Sie ein Zertifikat hoch, das den Produktstatus belegt: Das kann eine <u>REACH Zertifizierung</u> sein, eine <u>behördliche Genehmigung</u> oder ein <u>Produktdatenblatt</u>",
+    "requestYouAre" => "Sie sind",
+    "requestFurtherInformationTitle" => "Weitere Anfragedetails",
+    "requestFurtherInformationSubtitle" => "Analysedaten",
+    "requestFurthInfWriteData" => "Bitte tragen Sie die aufgeführten Analysewerte ein",
+    "requestInfoParaList" => "<u>Hinweis</u>: Diese Analyse-Parameter müssen für eine Beurteilung unsererseits in jedem Falle angegeben werden. In dem Sie diese bereits bei der Anfrage eintragen, beschleunigen Sie den Analyseprozess erheblich!<br>Sie können bereits in wenigen Tagenmit einer Antwort rechnen. Bitte werfen Sie auch einen Blick auf die von uns <a href=\"\">ausgeschlossenen Abfälle</a>",
+    "requestParamIsWhat" => "Es handelt sich um einen",
+
+);
 ?>

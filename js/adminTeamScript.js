@@ -16,7 +16,7 @@ $(document).ready(function () {
             }
         })
     }
-    setInterval(function () {
-        //showNewAllocatedRequest();
-    }, 1000);
+    //setInterval(function () {
+    //showNewAllocatedRequest();
+    //}, 1000);
 })

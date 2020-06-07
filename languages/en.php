@@ -20,5 +20,19 @@ $lang = array (
     "userDashboardViewRequest" => "View",
     "userDashboardLangLink" => "userdashboard.php?lang=de",
 
+    "requestStatusRequest" => "",
+    "requestContactPerson" => "",
+    "requestCompanyAddress" => "",
+    "requestRequest" => "",
+    "requestSpecifyRequest" => "",
+    "requestWhatsAbout" => "",
+    "requestLoadCertificate" => "",
+    "requestYouAre" => "",
+    "requestFurtherInformationTitle" => "",
+    "requestFurtherInformationSubtitle" => "",
+    "requestFurthInfWriteData" => "",
+    "requestInfoParaList" => "",
+    "requestParamIsWhat" => "",
+
 );
 ?>

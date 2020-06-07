@@ -10,7 +10,6 @@ $wasteDescription = htmlspecialchars($_POST['wasteDescription']);
 $avv = htmlspecialchars($_POST['avv']);
 $deliveryForm = htmlspecialchars($_POST['deliveryForm']);
 
-//variable $docOneheckVar auf 3 setzen wenn die Anfrage Abfallstatus hat
 
 $userId = $_SESSION['userId'];
 $requestId = $_SESSION['requestId'];

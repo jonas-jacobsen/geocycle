@@ -80,6 +80,44 @@ if ($erzHae == "Erzeuger") {
     $radioOnErz = "";
     $radioOnHae = "";
 }
+//parameterliste verabeitung auf requestSeite
+//ab hier json verarbeitung
+$paramJson = json_decode($row['ParameterList']);
+
+$unterHo = "";
+$wassergehalt = "";
+$aschegehalt = "";
+$chlor = "";
+$schwefel = "";
+$quecksilber = "";
+$calcium ="";
+$silicium = "";
+$eisen = "";
+$magnesium = "";
+$kalium = "";
+$natrium = "";
+$aluminium = "";
+
+$unterHo = $paramJson[0]->value;
+$wassergehalt = $paramJson[1]->value;
+$aschegehalt = $paramJson[2]->value;
+$chlor = $paramJson[3]->value;
+$schwefel = $paramJson[4]->value;
+$quecksilber = $paramJson[5]->value;
+$calcium = $paramJson[6]->value;
+$silicium = $paramJson[7]->value;
+$eisen = $paramJson[8]->value;
+$magnesium = $paramJson[9]->value;
+$kalium = $paramJson[10]->value;
+$natrium = $paramJson[11]->value;
+$aluminium = $paramJson[12]->value;
+$rowContent = "";
+$countJsonParam = count($paramJson);
+
+
+for($i = 13; $i<$countJsonParam;$i++){
+    $rowContent .= '<div class="ing-row" id="row'.$i.'"><input style="margin-right: 9px" type="text" name="param" placeholder="Parameter" value="'.$paramJson[$i]->param.'" disabled=""/><input type="text" name="value" placeholder="Messwert"  value="'.$paramJson[$i]->value.'" autocomplete="off" required pattern="[0-9<>,]{1,}" title="Nur \'1-9\', \',\' und \'< >\'"/><select style="margin-left: 5px" name="unit" disabled=""><option selected="">'.$paramJson[$i]->units.'</option></select></div>'; // inner HTML of blank row
+}
 
 //Überprüfen ob alle Daten in DB
 $contactPersCheck = "";
