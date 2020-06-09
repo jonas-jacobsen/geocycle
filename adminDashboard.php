@@ -5,8 +5,6 @@ include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");
 
-include("components/script/analyse/analyse.php");
-
 ?>
 
 <body>
@@ -17,6 +15,7 @@ include("components/script/analyse/analyse.php");
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
+
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->
@@ -33,8 +32,6 @@ include("components/script/analyse/analyse.php");
                     <!--/.Card-->
                 </div>
                 <!--Grid column-->
-
-                <?php showAnalysis(31, $conn); ?>
 
                 <!--Grid column-->
                 <div class="col-lg-6 col-md-6 mb-4">

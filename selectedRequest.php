@@ -3,6 +3,8 @@
 //include("components/session.php");
 include("components/config.php");
 include("components/headerAdmin.php");
+include("components/script/analyse/analyse.php");
+
 
 $requestId = $_GET['selectedRequest'];
 $sqlSelectRequest = "SELECT * FROM userdata WHERE id = $requestId";
@@ -82,9 +84,13 @@ if(isset($_POST['buttonSubmit'])){
                         <div class="card-body">
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <h4>Anfrage <?php echo $rowRequest['id'] ?></h4>
+                                    <h1>Anfrage <?php echo $rowRequest['id'] ?></h1>
+                                </div>
+                                <div class="col-md-6" style="text-align: right">
+                                    <button onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
                                 </div>
                             </div>
+                            <?php showAnalysis($requestId, $conn)?>
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <h5>Status:</h5>
@@ -146,21 +152,21 @@ if(isset($_POST['buttonSubmit'])){
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked1"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked1">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked1">Standard Absage
                                                 Nr.
                                                 1</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked2"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked2">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked2">Standard Absage
                                                 Nr.
                                                 2</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked3"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked3">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked3">Standard Absage
                                                 Nr.
                                                 3</label>
                                         </div>
@@ -175,21 +181,21 @@ if(isset($_POST['buttonSubmit'])){
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked4"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked4">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked4">Standard Absage
                                                 Nr.
                                                 4</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked5"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked5">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked5">Standard Absage
                                                 Nr.
                                                 5</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked6"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked6">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked6">Standard Absage
                                                 Nr.
                                                 6</label>
                                         </div>

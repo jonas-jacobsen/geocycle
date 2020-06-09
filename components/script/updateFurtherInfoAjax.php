@@ -6,10 +6,19 @@ $dispRoute = htmlspecialchars($_POST['dispRoute']);
 $procDescr = htmlspecialchars($_POST['procDesc']);
 $json = $_POST['listJson'];
 
+$priceCondition = $_POST['priceCondition'];
+
+if ($priceCondition == "0"){
+    $offeredPrice = floatval($_POST['offeredPrice']);
+}else{
+    $offeredPrice = floatval(-$_POST['offeredPrice']);
+}
+
+
 $userId = $_SESSION['userId'];
 $requestId = $_SESSION['requestId'];
 
-$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr', ParameterList = '$json' WHERE id = $requestId";
+$sql = "UPDATE userdata SET DisposalRoute = '$dispRoute', ProcessDescription = '$procDescr', OfferedPrice='$offeredPrice', ParameterList = '$json' WHERE id = $requestId";
 
 $statement = mysqli_query($conn, $sql);
 

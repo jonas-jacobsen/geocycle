@@ -66,6 +66,7 @@ function checkHu() {
         $(".brennstoff").css("height", "auto");
         $(".rohstoff:not(.brennstoff) input[name='value']").val(0);
         $(".brennstoff input[value='']").val("");
+        $( ".brennstoff input[value='0']").val("");
 
     } else if (huValue < 10) {
         huResult.innerHTML = "ROHSTOFF";
@@ -76,6 +77,7 @@ function checkHu() {
         $(".rohstoff").css("height", "auto");
         $(".brennstoff:not(.rohstoff) input[name='value']").val(0);
         $(".rohstoff input[value='']").val("");
+        $( ".rohstoff input[value='0']").val("");
 
     } else {
         huResult.innerHTML = "Hu Undefiniert";
@@ -83,6 +85,7 @@ function checkHu() {
     }
 }
 
+//einmaliges prüfen bei Datenbankabfrage
 function initCheckHu(){
     let huValue = huInput.value;
     huValue = huValue.replace(/,/gi, '.');
@@ -161,6 +164,8 @@ $('#furtherInformationForm').submit(function (event) {
     //variablen der beiden Textareas
     var dispRoute = $('textarea[name="dispRoute"]').val();
     var procDesc = $('textarea[name="procDescr"]').val();
+    var priceCondition = $('#priceCondition').val();
+    var offeredPrice = $('#offeredPrice').val();
 
     $('#didChangeFurtherInfo').html(rotateCircle);
     $.ajax({
@@ -171,6 +176,8 @@ $('#furtherInformationForm').submit(function (event) {
             dispRoute: dispRoute,
             procDesc: procDesc,
             listJson: listJson,
+            priceCondition: priceCondition,
+            offeredPrice: offeredPrice,
         },
         success: function (dataTwo) {
             $('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);

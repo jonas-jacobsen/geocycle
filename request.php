@@ -21,7 +21,7 @@ include("components/header.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2><?php echo $lang['requestStatusRequest']?></h2>
+                            <h2><?php echo $lang['requestStatusRequest'] ?></h2>
                             <div class="progress">
                                 <div class="progress-bar progress-bar-info progress-bar-striped active"
                                      style="width:<?php echo $progressBarValue ?>;"></div>
@@ -43,7 +43,7 @@ include("components/header.php");
                             <form id="ansprech_Form">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4><?php echo $lang['requestContactPerson']?></h4>
+                                        <h4><?php echo $lang['requestContactPerson'] ?></h4>
                                     </div>
                                     <div class="col-md-6">
                                         <span class="didChangeContactPers" id="didChangeContactPers"></span>
@@ -76,7 +76,7 @@ include("components/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <h4><?php echo $lang['requestCompanyAddress']?></h4>
+                                <h4><?php echo $lang['requestCompanyAddress'] ?></h4>
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
@@ -184,8 +184,8 @@ include("components/header.php");
                             <form id="request_Form">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4><?php echo $lang['requestRequest']?></h4>
-                                        <p>a. <?php echo $lang['requestSpecifyRequest']?></p>
+                                        <h4><?php echo $lang['requestRequest'] ?></h4>
+                                        <p>a. <?php echo $lang['requestSpecifyRequest'] ?></p>
                                     </div>
                                     <div class="col-md-6">
                                         <span class="didChangeRequest" id="didChangeRequest"></span>
@@ -194,7 +194,7 @@ include("components/header.php");
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><?php echo $lang['requestWhatsAbout']?>:</p>
+                                        <p><?php echo $lang['requestWhatsAbout'] ?>:</p>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="produkt"
                                                    name="prodAbf" value="Produktstatus" <?php echo $radioOnPro ?>>
@@ -228,7 +228,7 @@ include("components/header.php");
                                 <div class="produktstatus">
                                     <br>
                                     <span class="didChangeFiles" id="didChangeFiles"></span>
-                                    <p><?php echo $lang['requestLoadCertificate']?></p>
+                                    <p><?php echo $lang['requestLoadCertificate'] ?></p>
                                     <div id="dropZone">
                                         <input type="file" id="fileupload" name="attachments[]" multiple>
                                     </div>
@@ -250,7 +250,7 @@ include("components/header.php");
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p><?php echo $lang['requestYouAre']?>:</p>
+                                        <p><?php echo $lang['requestYouAre'] ?>:</p>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="erzeuger"
                                                    name="erzHae" <?php echo $radioOnErz ?> value="Erzeuger">
@@ -330,249 +330,262 @@ include("components/header.php");
                             <form id="furtherInformationForm">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <h4><?php echo $lang['requestFurtherInformationTitle']?></h4>
-                                        <p>b. <?php echo $lang['requestFurtherInformationSubtitle']?></p>
+                                        <h4><?php echo $lang['requestFurtherInformationTitle'] ?></h4>
+                                        <p>b. <?php echo $lang['requestFurtherInformationSubtitle'] ?></p>
                                     </div>
                                     <div class="col-md-6">
                                         <span class="didChangeFurtherInfo" id="didChangeFurtherInfo"></span>
                                     </div>
                                 </div>
-                                <p><?php echo $lang['requestFurthInfWriteData']?>:</p>
-                                <p><?php echo $lang['requestInfoParaList']?>!</>
+                                <p><?php echo $lang['requestFurthInfWriteData'] ?>:</p>
+                                <p><?php echo $lang['requestInfoParaList'] ?>!</>
                                 <br>
 
-                                <p><?php echo $lang['requestParamIsWhat']?>: <span style="font-weight: 600" id="huResult"></span></p>
+                                <p><?php echo $lang['requestParamIsWhat'] ?>: <span style="font-weight: 600"
+                                                                                    id="huResult"></span></p>
                                 <div class="anfrage-wrapper">
-                                        <div id="param-div">
-                                            <!-- PFLICHT FELDER -->
-                                            <!-- Unterer Heizwert -->
-                                            <div class="ing-row" id="row0">
-                                                <input type="text" name="param" value="Unterer Heizwert" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $unterHo ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option>mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option selected="">mj/kg</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Wassergehalt -->
-                                            <div class="ing-row brennstoff rohstoff" id="row1">
-                                                <input type="text" name="param" value="Wassergehalt" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $wassergehalt ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option>mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option selected="">% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Aschegehalt -->
-                                            <div class="ing-row brennstoff" id="row2">
-                                                <input type="text" name="param" value="Aschegehalt" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $aschegehalt ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option>mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option selected="">% TS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Chlor -->
-                                            <div class="ing-row brennstoff rohstoff" id="row3">
-                                                <input type="text" name="param" value="Chlor" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $chlor ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option>mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option selected="">% TS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Schwefel -->
-                                            <div class="ing-row brennstoff rohstoff" id="row4">
-                                                <input type="text" name="param" value="Schwefel" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $schwefel ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option>mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option selected="">% TS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Quecksilber -->
-                                            <div class="ing-row brennstoff rohstoff" id="row5">
-                                                <input type="text" name="param" value="Quecksilber" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $quecksilber ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-
-
-                                            <!-- Calcium -->
-                                            <div class="ing-row rohstoff" id="row6">
-                                                <input type="text" name="param" value="Calcium" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $calcium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Silizium -->
-                                            <div class="ing-row rohstoff" id="row7">
-                                                <input type="text" name="param" value="Silizium" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $silicium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-
-                                            <!-- Eisen -->
-                                            <div class="ing-row rohstoff" id="row8">
-                                                <input type="text" name="param" value="Eisen" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $eisen ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Magnesium -->
-                                            <div class="ing-row rohstoff" id="row9">
-                                                <input type="text" name="param" value="Magnesium" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $magnesium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Kaliumoxid -->
-                                            <div class="ing-row rohstoff" id="row10">
-                                                <input type="text" name="param" value="Kaliumoxid" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $kalium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Natriumoxid -->
-                                            <div class="ing-row rohstoff" id="row11">
-                                                <input type="text" name="param" value="Natriumoxid" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $natrium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-                                            <!-- Aluminium -->
-                                            <div class="ing-row rohstoff" id="row12">
-                                                <input type="text" name="param" value="Aluminium" disabled=""/>
-                                                <input type="text" name="value" placeholder="Messwert" value="<?php echo $aluminium ?>"
-                                                       autocomplete="off"
-                                                       required pattern="[0-9<>,]{1,}"
-                                                       title="Nur '1-9', ',' und '< >'"/>
-                                                <select name="unit" disabled="">
-                                                    <option selected="">mg/kg</option>
-                                                    <option>ng/kg</option>
-                                                    <option>µg/g</option>
-                                                    <option>mj/kg</option>
-                                                    <option>% TS</option>
-                                                    <option>% OS</option>
-                                                </select>
-                                            </div>
-
-
-                                            <?php echo $rowContent?>
+                                    <div id="param-div">
+                                        <!-- PFLICHT FELDER -->
+                                        <!-- Unterer Heizwert -->
+                                        <div class="ing-row" id="row0">
+                                            <input type="text" name="param" value="Unterer Heizwert" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $unterHo ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option>mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option selected="">mj/kg</option>
+                                            </select>
                                         </div>
 
-                                        <input id="analysisString" type="hidden" name="analysisString"
-                                               placeholder="Json String of analysis-input" disabled="">
-                                        <button type="button" id="addRowButton" class="btn addParam">+ Wert hinzufügen
-                                        </button>
-                                        <br>
-                                    <!-- für entwicklungszwecke<?php  echo "parameterlistenlänge: ".$countJsonParam ?>-->
+                                        <!-- Wassergehalt -->
+                                        <div class="ing-row brennstoff rohstoff" id="row1">
+                                            <input type="text" name="param" value="Wassergehalt" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $wassergehalt ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option>mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option selected="">% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Aschegehalt -->
+                                        <div class="ing-row brennstoff" id="row2">
+                                            <input type="text" name="param" value="Aschegehalt" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $aschegehalt ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option>mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option selected="">% TS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Chlor -->
+                                        <div class="ing-row brennstoff rohstoff" id="row3">
+                                            <input type="text" name="param" value="Chlor" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $chlor ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option>mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option selected="">% TS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Schwefel -->
+                                        <div class="ing-row brennstoff rohstoff" id="row4">
+                                            <input type="text" name="param" value="Schwefel" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $schwefel ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option>mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option selected="">% TS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Quecksilber -->
+                                        <div class="ing-row brennstoff rohstoff" id="row5">
+                                            <input type="text" name="param" value="Quecksilber" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $quecksilber ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">mg/kg</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+
+                                        <!-- Calcium -->
+                                        <div class="ing-row rohstoff" id="row6">
+                                            <input type="text" name="param" value="Calcium" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $calcium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Silizium -->
+                                        <div class="ing-row rohstoff" id="row7">
+                                            <input type="text" name="param" value="Silizium" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $silicium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+
+                                        <!-- Eisen -->
+                                        <div class="ing-row rohstoff" id="row8">
+                                            <input type="text" name="param" value="Eisen" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $eisen ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Magnesium -->
+                                        <div class="ing-row rohstoff" id="row9">
+                                            <input type="text" name="param" value="Magnesium" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $magnesium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Kaliumoxid -->
+                                        <div class="ing-row rohstoff" id="row10">
+                                            <input type="text" name="param" value="Kaliumoxid" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $kalium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Natriumoxid -->
+                                        <div class="ing-row rohstoff" id="row11">
+                                            <input type="text" name="param" value="Natriumoxid" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $natrium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+                                        <!-- Aluminium -->
+                                        <div class="ing-row rohstoff" id="row12">
+                                            <input type="text" name="param" value="Aluminium" disabled=""/>
+                                            <input type="text" name="value" placeholder="Messwert"
+                                                   value="<?php echo $aluminium ?>"
+                                                   autocomplete="off"
+                                                   required pattern="[0-9<>,]{1,}"
+                                                   title="Nur '1-9', ',' und '< >'"/>
+                                            <select name="unit" disabled="">
+                                                <option selected="">% OS</option>
+                                                <option>ng/kg</option>
+                                                <option>µg/g</option>
+                                                <option>mj/kg</option>
+                                                <option>% TS</option>
+                                                <option>% OS</option>
+                                            </select>
+                                        </div>
+
+
+                                        <?php echo $rowContent ?>
+                                    </div>
+
+                                    <input id="analysisString" type="hidden" name="analysisString"
+                                           placeholder="Json String of analysis-input" disabled="">
+                                    <button type="button" id="addRowButton" class="btn addParam">+ Wert hinzufügen
+                                    </button>
+                                    <br>
+                                    <!-- für entwicklungszwecke<?php echo "parameterlistenlänge: " . $countJsonParam ?>-->
 
 
                                 </div>
@@ -580,6 +593,24 @@ include("components/header.php");
                                 <hr>
                                 <br>
 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="priceCondition">Zuzahlung oder Kosten</label>
+                                        <select class="form-control" id="priceCondition" name="priceCondition">
+                                            <option value="0" <?php echo $preisForUser?>>Zuzahlung an Geocycle</option>
+                                            <option value="1" <?php echo $preisForGeo?>>Kosten für Geocycle</option>
+                                        </select>
+                                        <br>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-weight-hanging input-prefix"></i>
+                                            <input type="text" id="offeredPrice" class="form-control" name="offeredPrice"
+                                                   value="<?php echo $offeredPrice ?>">
+                                            <label for="offeredPrice">Preis/Tonne</label>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="md-form">

@@ -29,6 +29,16 @@ $producer = $row['Producer'];
 $wasteDescription = $row['WasteDescription'];
 $avv = $row['Avv'];
 
+$offeredPrice = floatval($row['OfferedPrice']);
+$preisForGeo = "";
+$preisForUser = "";
+if($offeredPrice < 0){
+    $offeredPrice = abs($offeredPrice);
+    $preisForGeo = "selected";
+}else{
+    $preisForUser = "selected";
+}
+
 //deliveryform herausfinden welche ausgewählt:
 $deliveryFormEXW = "";
 $deliveryFormFCA = "";
