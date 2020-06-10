@@ -1,67 +1,40 @@
 [
   {
-    "param": "Unterer Heizwert",
-    "units": "mj/kg",
-    "value": "3"
+    "name": "Quecksilber",
+    "value": "0.5",
+    "check": "1",
+    "unit": "mg\/kg",
+    "comment": ""
   },
   {
-    "param": "Wassergehalt",
-    "units": "% OS",
-    "value": "6"
+    "name": "Wassergehalt",
+    "value": "0.5",
+    "check": "1",
+    "unit": "%",
+    "comment": ""
   },
   {
-    "param": "Aschegehalt",
-    "units": "% TS",
-    "value": "0"
+    "name": "Aschegehalt",
+    "value": "7",
+    "check": "1",
+    "unit": "%",
+    "comment": ""
   },
   {
-    "param": "Chlor",
-    "units": "% TS",
-    "value": "6"
+    "name": "Chlorgehalt",
+    "value": "7",
+    "check": "0",
+    "unit": "%",
+    "comment": ""
   },
   {
-    "param": "Schwefel",
-    "units": "% TS",
-    "value": "6"
+    "name": "Schwefelgehalt",
+    "value": "0.5",
+    "check": "1",
+    "unit": "%",
+    "comment": ""
   },
   {
-    "param": "Quecksilber",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Calcium",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Silizium",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Eisen",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Magnesium",
-    "units": "mg/kg",
-    "value": "7"
-  },
-  {
-    "param": "Kaliumoxid",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Natriumoxid",
-    "units": "mg/kg",
-    "value": "6"
-  },
-  {
-    "param": "Aluminium",
-    "units": "mg/kg",
-    "value": "6"
+    "oneValueTooHigh": 1
   }
 ]

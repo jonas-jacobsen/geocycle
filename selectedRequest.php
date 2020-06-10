@@ -13,6 +13,14 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
 
+//Preisberechnung Zuzahlung für Geo oder User
+$offeredPrice = $rowRequest['OfferedPrice'];
+if($offeredPrice < 0){
+    $offeredPriceHtml = "Kosten für Geo: ".abs($offeredPrice)."€";
+}else{
+    $offeredPriceHtml = "Kosten für Kunden: ".$offeredPrice."€";
+}
+
 //alle dokuemnte Anzeigen
 function showFiles($conn, $requestId, $userId)
 {
@@ -90,7 +98,7 @@ if(isset($_POST['buttonSubmit'])){
                                     <button onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
                                 </div>
                             </div>
-                            <?php showAnalysis($requestId, $conn)?>
+                            <?php analyse($requestId, $conn)?>
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <h5>Status:</h5>
@@ -123,6 +131,10 @@ if(isset($_POST['buttonSubmit'])){
                                 <div class="col-md-4">
                                     <h5>Anlieferform: </h5>
                                     <?php echo $rowRequest['DeliveryForm'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Preis: </h5>
+                                    <?php echo  $offeredPriceHtml?>
                                 </div>
                             </div>
                             <hr>
@@ -273,5 +285,7 @@ if(isset($_POST['buttonSubmit'])){
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+
+
 </body>
 </html>

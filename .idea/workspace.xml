@@ -21,12 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateFurtherInfoAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateFurtherInfoAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/selectedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
     </list>
@@ -142,7 +137,7 @@
       <workItem from="1589528226584" duration="17469000" />
       <workItem from="1589968643621" duration="40810000" />
       <workItem from="1590701976835" duration="43855000" />
-      <workItem from="1591307303666" duration="62479000" />
+      <workItem from="1591307303666" duration="90225000" />
     </task>
     <servers />
   </component>
@@ -178,10 +173,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1589968708492" />
-    <state x="552" y="361" key="NewPhpFileDialog" timestamp="1591532720414">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1457" y="650" key="NewPhpFileDialog" timestamp="1591774138537">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591368661983" />
+    <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591774138537" />
     <state x="552" y="361" key="NewPhpFileDialog/0.0.1280.800@0.0.1280.800" timestamp="1591532720414" />
     <state x="-1695" y="77" key="SettingsEditor" timestamp="1591571017507">
       <screen x="-1920" y="0" width="1920" height="1080" />
@@ -193,24 +188,25 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="380" y="221" width="540" height="524" key="StructurePopup/0.0.1280.800@0.0.1280.800" timestamp="1589662212712" />
-    <state width="812" height="445" key="SwitcherDM" timestamp="1591632225344">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state width="1083" height="594" key="SwitcherDM" timestamp="1591712327171">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state width="812" height="445" key="SwitcherDM/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632225344" />
+    <state width="1083" height="594" key="SwitcherDM/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591712327171" />
     <state x="-1680" y="460" key="Vcs.Push.Dialog.v2" timestamp="1591303085163">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1680" y="460" key="Vcs.Push.Dialog.v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591303085163" />
-    <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591357608168">
+    <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591783693090">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591357608168" />
+    <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591783693090" />
     <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1590675362817" />
-    <state x="0" y="252" width="1136" height="548" key="find.popup" timestamp="1591635577099">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-2560" y="528" width="2272" height="912" key="find.popup" timestamp="1591804907067">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632031652" />
-    <state x="-2560" y="453" width="2272" height="980" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591366930151" />
+    <state x="-2560" y="528" width="2272" height="912" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591804907067" />
     <state x="0" y="252" width="1136" height="548" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1591635577099" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
       <screen x="0" y="23" width="1280" height="777" />
@@ -228,11 +224,11 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1615" y="345" key="run.anything.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584507328" />
-    <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup" timestamp="1591632608619">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1591802483244">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632608619" />
-    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1590489503728" />
+    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591802483244" />
     <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1591539036884" />
   </component>
 </project>
