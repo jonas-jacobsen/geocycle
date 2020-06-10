@@ -1,40 +1,72 @@
 [
   {
-    "name": "Quecksilber",
-    "value": "0.5",
-    "check": "1",
-    "unit": "mg\/kg",
-    "comment": ""
+    "param": "Unterer Heizwert",
+    "units": "mj\/kg",
+    "value": "2"
   },
   {
-    "name": "Wassergehalt",
-    "value": "0.5",
-    "check": "1",
-    "unit": "%",
-    "comment": ""
+    "param": "Wassergehalt",
+    "units": "% OS",
+    "value": "1"
   },
   {
-    "name": "Aschegehalt",
-    "value": "7",
-    "check": "1",
-    "unit": "%",
-    "comment": ""
+    "param": "Aschegehalt",
+    "units": "% TS",
+    "value": "0"
   },
   {
-    "name": "Chlorgehalt",
-    "value": "7",
-    "check": "0",
-    "unit": "%",
-    "comment": ""
+    "param": "Chlor",
+    "units": "% TS",
+    "value": "3"
   },
   {
-    "name": "Schwefelgehalt",
-    "value": "0.5",
-    "check": "1",
-    "unit": "%",
-    "comment": ""
+    "param": "Schwefel",
+    "units": "% TS",
+    "value": "4"
   },
   {
-    "oneValueTooHigh": 1
+    "param": "Quecksilber",
+    "units": "mg\/kg",
+    "value": "5"
+  },
+  {
+    "param": "Calcium",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Silizium",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Eisen",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Magnesium",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Kaliumoxid",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Natriumoxid",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Aluminium",
+    "units": "% OS",
+    "value": "6"
+  },
+  {
+    "param": "Flour",
+    "units": "mg\/kg",
+    "value": "6"
   }
 ]

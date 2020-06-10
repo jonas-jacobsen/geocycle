@@ -21,26 +21,34 @@ function analyse($requestId, $conn)
 
     /*Testing*/
     if ($materialOrBurn == "Rohstoff") {
-
+        $paramEval = checkParamMaterial($paramJson);
+        buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount);
     } else {
         $paramEval = checkParamBurn($paramJson);
-        buildHTMLForBurn($paramEval, $amount, $offeredPrice);
+        buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert);
     }
 }
 
-function buildHTMLForBurn($paramEval, $amount, $offeredPrice)
+function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert)
 {
     $table = "";
     $fazit = "";
+
+    //Heizwert überprüfen Oveneinlauf oder Hauptbrenner
+    if ($untererHeizwert > 20) {
+        $burnForWhat = "Brennstoff für Hauptbrenner";
+    } else {
+        $burnForWhat = "Brennstoff für Ofeneinlauf";
+    }
 
     //Menge Überprüfen
     $checkIsAmountGood = checkAmount($amount);
     if ($checkIsAmountGood == 1) {
         $htmlAmount = "Die Menge ist in Ordnung";
-        $iconCheckAmount = "<i style='color: green' class=\"far fa-check-circle\"></i>";
+        $iconCheckAmount = iconChecker(1);
     } else {
         $htmlAmount = "Die Menge ist zu gering";
-        $iconCheckAmount = "<i style='color: red' class=\"far fa-times-circle\"></i>";
+        $iconCheckAmount = iconChecker(0);
     }
 
     //Json  Liste Objekte zählen
@@ -48,19 +56,20 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice)
     $paramEvalAll = $paramEval[$countJson - 1]["oneValueTooHigh"];
 
     if ($paramEvalAll == 1) {
-        $oneParamTooHight = "<li>Mindestens ein Parameter zu hoch</li>";
+        $oneParamTooHight = "Mindestens ein Parameter zu hoch";
     } else {
-        $oneParamTooHight = "<li>Alle Parameter im guten Bereich</li>";
+        $oneParamTooHight = "Alle Parameter im guten Bereich";
     }
 
     //Prüfen pb wirtschaftlich gut
     $isEconomic = checkEconomicConditionBurn($offeredPrice);
     if ($isEconomic == 1) {
-        $economicHtml = "<li>Wirtschaftlich interessant, da der Brennstoff günstiger als Kohle ist</li>";
+        $economicHtml = "Wirtschaftlich interessant, da der Brennstoff günstiger als Kohle ist";
     } else {
-        $economicHtml = "<li>Wirtschaftlich nicht interessant, da der Brennstoff teurer als Kohle ist</li>";
+        $economicHtml = "Wirtschaftlich nicht interessant, da der Brennstoff teurer als Kohle ist";
     }
     echo "<h4>Brennstoff</h4>";
+    echo "<div class='row'><div class='col-3'>Heizwert</div><div class='col-3'>$untererHeizwert mj</div><div class='col-1'></div><div class='col-4'>$burnForWhat</div></div><br>";
     echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div>";
     for ($i = 0; $i < $countJson - 1; $i++) {
         $name = $paramEval[$i]["name"];
@@ -71,9 +80,9 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice)
 
         $iconCheck = "";
         if ($check == "0") {
-            $iconCheck = "<i style='color: red' class=\"far fa-times-circle\"></i>";
+            $iconCheck = iconChecker(0);
         } else {
-            $iconCheck = "<i style='color: green' class=\"far fa-check-circle\"></i>";
+            $iconCheck = iconChecker(1);
         }
         //$test = $paramEvalName[$i];
         echo "<div class='row'><div class='col-3'>$name</div><div class='col-3'>$value $unit</div><div class='col-1'>$iconCheck</div><div class='col-4'>$comment</div></div>";
@@ -82,15 +91,74 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice)
     echo "<span>Annehmen / Ablehen</span><br>";
     echo "<span>Begründung:</span>";
     echo "<ul>";
-    echo $oneParamTooHight;
-    echo $economicHtml;
+    echo "<li>" . $oneParamTooHight . "</li>";
+    echo "<li>" . $economicHtml . "</li>";
     echo "</ul>";
     echo "<hr>";
 }
 
-function buildHTMLForMaterial()
+function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount)
 {
+    $isEconomic = checkEconomicConditionMaterial($offeredPrice, $paramEval[0], $paramEval[1]);
+    $preisProTonne = $isEconomic[1];
+    $vergleichsPreis = $isEconomic[2];
+    $isEconomic = $isEconomic[0];
 
+    switch ($isEconomic) {
+        //0 = dann größter Stoff hauptbestandteil aber Wirtschaftlich nicht interessant
+        //1 = dann größter Stoff hauptbestandteil und wirtschaftlich interessant
+        //2 = kein Hauptbestandteil aber wirtschaftlich interessant
+        //3 = kein Hauptbestandteil und wirtschaftlich nicht interessant
+        case 0:
+            $isEconomicHtml = "Stoff ist Hauptbestandteil aber wirtschaftlich nicht interessant, da der $paramEval[0]preis mit " . abs($preisProTonne) . "€/Tonne teurer ist als der Vergleichspreis von $vergleichsPreis €/Tonne";
+            break;
+        case 1:
+            $isEconomicHtml = "Stoff ist Hauptbestandteil und wirtschaftlich interessant, da der $paramEval[0]preis mit ".abs($preisProTonne)."€/Tonne günstiger ist als der Vergleichspreis von $vergleichsPreis €/Tonne";
+            break;
+        case 2:
+            $isEconomicHtml = "Stoff ist kein Hauptbestandteil aber wirtschaftlich interessant, da die Zuzahlung an Geocycle mit ".abs($offeredPrice)."€/Tonne über 10€ liegt";
+            break;
+        case 3:
+            if($offeredPrice > 0){
+                $isEconomicHtml = "Stoff ist kein Hauptbestandteil und wirtschaftlich nicht interessant, da die Zuzahlung an Geocycle mit ".abs($offeredPrice)."€/Tonne zu gering ist";
+            }else{
+                $isEconomicHtml = "Stoff ist kein Hauptbestandteil und wirtschaftlich nicht interessant, da keine Zuzahlung an Geocycle geboten wird";
+            }
+            break;
+        default:
+    };
+
+    $countJson = count($paramJson);
+
+    //Menge Überprüfen
+    $checkIsAmountGood = checkAmount($amount);
+    if ($checkIsAmountGood == 1) {
+        $htmlAmount = "Die Menge ist in Ordnung";
+        $iconCheckAmount = iconChecker(1);
+    } else {
+        $htmlAmount = "Die Menge ist zu gering";
+        $iconCheckAmount = iconChecker(0);
+    }
+
+    echo "<h4>Rohstoff</h4>";
+    echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div><br>";
+    for ($i = 0; $i < $countJson; $i++) {
+        $name = $paramJson[$i]->param;
+        $value = $paramJson[$i]->value;
+        $unit = $paramJson[$i]->units;
+        $comment = "";
+        if($value == 0){
+        }else{
+            echo "<div class='row'><div class='col-3'>$name</div><div class='col-3'>$value $unit</div><div class='col-1'></div><div class='col-4'>$comment</div></div>";
+        }
+    }
+    echo "<br><h4>Empfehlung:</h4>";
+    echo "<span>Annehmen / Ablehen</span><br>";
+    echo "<span>Begründung:</span>";
+    echo "<ul>";
+    echo "<li>" . $isEconomicHtml . "</li>";
+    echo "</ul>";
+    echo "<hr>";
 }
 
 function evalComment()
@@ -158,42 +226,42 @@ function checkParamBurn($paramJson)
     $paramEval = array();
     $checkIfOneTooHigh = 0;
     if ($quecksilbergehalt <= $paramLimit["quecksilber"]) {
-        $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "1", "unit" => "mg/kg", "comment" => "");
+        $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "1", "unit" => "mg / kg", "comment" => "");
         array_push($paramEval, $tmp);
     } else {
-        $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "0", "unit" => "mg/kg", "comment" => "");
+        $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "0", "unit" => "mg / kg", "comment" => "");
         array_push($paramEval, $tmp);
         $checkIfOneTooHigh = 1;
     }
     if ($wassergehalt <= $paramLimit["wasser"]) {
-        $tmp = array("name" => "Wassergehalt", "value" => "$wassergehalt", "check" => "1", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Wassergehalt", "value" => "$wassergehalt", "check" => "1", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
     } else {
-        $tmp = array("name" => "Wassergehalt", "value" => "$wassergehalt", "check" => "0", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Wassergehalt", "value" => "$wassergehalt", "check" => "0", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
         $checkIfOneTooHigh = 1;
     }
     if ($aschegehalt <= $paramLimit["asche"]) {
-        $tmp = array("name" => "Aschegehalt", "value" => "$aschegehalt", "check" => "1", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Aschegehalt", "value" => "$aschegehalt", "check" => "1", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
     } else {
-        $tmp = array("name" => "Aschegehalt", "value" => "$aschegehalt", "check" => "0", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Aschegehalt", "value" => "$aschegehalt", "check" => "0", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
         $checkIfOneTooHigh = 1;
     }
     if ($chlorgehalt <= $paramLimit["chlor"]) {
-        $tmp = array("name" => "Chlorgehalt", "value" => "$chlorgehalt", "check" => "1", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Chlorgehalt", "value" => "$chlorgehalt", "check" => "1", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
     } else {
-        $tmp = array("name" => "Chlorgehalt", "value" => "$chlorgehalt", "check" => "0", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Chlorgehalt", "value" => "$chlorgehalt", "check" => "0", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
         $checkIfOneTooHigh = 1;
     }
     if ($schwefelgehalt <= $paramLimit["schwefel"]) {
-        $tmp = array("name" => "Schwefelgehalt", "value" => "$schwefelgehalt", "check" => "1", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Schwefelgehalt", "value" => "$schwefelgehalt", "check" => "1", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
     } else {
-        $tmp = array("name" => "Schwefelgehalt", "value" => "$schwefelgehalt", "check" => "0", "unit" => "%", "comment" => "");
+        $tmp = array("name" => "Schwefelgehalt", "value" => "$schwefelgehalt", "check" => "0", "unit" => " % ", "comment" => "");
         array_push($paramEval, $tmp);
         $checkIfOneTooHigh = 1;
     }
@@ -247,12 +315,13 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
     $verglPreisSilizium = -7;
     $verglPreisAluminium = -26;
     $verglPreisCalcium = 25;
-
+    $vergleichsPreis = 0;
     $preisProTonne = $offeredPrice / ($highestValue / 100);
 
     $isEconomic = 0;
     switch ($highestParam) {
         case "Eisen":
+            $vergleichsPreis = $verglPreisEisen;
             if ($preisProTonne > $verglPreisEisen) {
                 $isEconomic = 1;
             } else {
@@ -260,6 +329,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
             };
             break;
         case "Silizium":
+            $vergleichsPreis = $verglPreisSilizium;
             if ($preisProTonne > $verglPreisSilizium) {
                 $isEconomic = 1;
             } else {
@@ -267,6 +337,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
             };
             break;
         case "Aluminium":
+            $vergleichsPreis = $verglPreisAluminium;
             if ($preisProTonne > $verglPreisAluminium) {
                 $isEconomic = 1;
             } else {
@@ -274,6 +345,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
             };
             break;
         case "Calcium":
+            $vergleichsPreis = $verglPreisCalcium;
             if ($preisProTonne > $verglPreisCalcium) {
                 $isEconomic = 1;
             } else {
@@ -281,7 +353,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
             };
         default:
             //Preis muss 2-Stellig sein weil kein Hauptbestandteil
-            if ($preisProTonne >= 10) {
+            if ($offeredPrice >= 10) {
                 $isEconomic = 2;
             } else {
                 $isEconomic = 3;
@@ -292,7 +364,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
     //1 = dann größter Stoff hauptbestandteil und wirtschaftlich interessant
     //2 = kein Hauptbestandteil aber wirtschaftlich interessant
     //3 = kein Hauptbestandteil und wirtschaftlich nicht interessant
-    return $isEconomic;
+    return [$isEconomic, $preisProTonne, $vergleichsPreis];
 }
 
 function checkEconomicConditionBurn($offeredPrice)
@@ -327,5 +399,12 @@ function checkBurnOrMaterial($untererHeizwert)
     return $materialOrBurn;
 }
 
+function iconChecker($result){
+    if($result == 1){
+        return "<i style='color: green' class=\"far fa-check-circle\"></i>";
+    }else {
+        return "<i style='color: red' class=\"far fa-times-circle\"></i>";
+    }
+}
 
 ?>

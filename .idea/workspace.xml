@@ -22,7 +22,6 @@
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,7 +136,7 @@
       <workItem from="1589528226584" duration="17469000" />
       <workItem from="1589968643621" duration="40810000" />
       <workItem from="1590701976835" duration="43855000" />
-      <workItem from="1591307303666" duration="90225000" />
+      <workItem from="1591307303666" duration="95247000" />
     </task>
     <servers />
   </component>
@@ -188,11 +187,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="380" y="221" width="540" height="524" key="StructurePopup/0.0.1280.800@0.0.1280.800" timestamp="1589662212712" />
-    <state width="1083" height="594" key="SwitcherDM" timestamp="1591712327171">
+    <state width="1083" height="594" key="SwitcherDM" timestamp="1591808360722">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state width="812" height="445" key="SwitcherDM/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632225344" />
-    <state width="1083" height="594" key="SwitcherDM/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591712327171" />
+    <state width="1083" height="594" key="SwitcherDM/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591808360722" />
     <state x="-1680" y="460" key="Vcs.Push.Dialog.v2" timestamp="1591303085163">
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
