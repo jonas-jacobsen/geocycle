@@ -54,7 +54,7 @@
                             <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown"
                                aria-haspopup="true" aria-expanded="false"><span class="lang"><?php echo $lang['indexLangButton'] ?></span></a>
                             <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="<?php echo $lang['userDashboardLangLink'] ?>"><?php echo $lang['indexLangButtonHover'] ?></a>
+                                <a class="dropdown-item" href="<?php echo $lang['userDashboardLangLinkRequestSite'] ?>"><?php echo $lang['indexLangButtonHover'] ?></a>
                             </div>
                         </li>
                     </div>

@@ -29,6 +29,7 @@ function analyse($requestId, $conn)
     }
 }
 
+//Funktion zum HTML-Aufbau der der Analyse für Brennstoff
 function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert)
 {
     $table = "";
@@ -97,6 +98,7 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert)
     echo "<hr>";
 }
 
+//Funktion zum HTML-Aufbau der der Analyse für Rohstoff
 function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount)
 {
     $isEconomic = checkEconomicConditionMaterial($offeredPrice, $paramEval[0], $paramEval[1]);
@@ -161,11 +163,13 @@ function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount)
     echo "<hr>";
 }
 
+//Funktion zur Evaluierung der Kommentare der Beurteilung sein
 function evalComment()
 {
 
 }
 
+//Funktion zur Aufbereitung der Parameterlist für Brennstoff
 function checkParamBurn($paramJson)
 {
 
@@ -278,6 +282,7 @@ function checkParamBurn($paramJson)
     return $paramEval;
 }
 
+//Funktion zur Aufbereitung der Parameterlist für Rohstoff
 function checkParamMaterial($paramJson)
 {
     $countJsonParam = count($paramJson);
@@ -295,6 +300,7 @@ function checkParamMaterial($paramJson)
     return $highestParamArray;
 }
 
+//Funktion zur Überprüfung ob Zuzahlung für Geocycle oder Kunden
 function checkPriceCondition($offeredPrice)
 {
     //Überprüfen ob zuzahlung oder Kosten für Geoocycle
@@ -309,6 +315,7 @@ function checkPriceCondition($offeredPrice)
     return $priceCondition;
 }
 
+//funktion zur Überprüfung ob sich der Rohstoff wirtschaftlich lohnt
 function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestValue)
 {
     $verglPreisEisen = -20;
@@ -367,6 +374,7 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
     return [$isEconomic, $preisProTonne, $vergleichsPreis];
 }
 
+//funktion zur Überprüfung ob sich der Brennstoff wirtschaftlich lohnt
 function checkEconomicConditionBurn($offeredPrice)
 {
     $kohleVergPreis = 4;
@@ -375,6 +383,7 @@ function checkEconomicConditionBurn($offeredPrice)
     return $isEconomic;
 }
 
+//Funktion zur Überprüfung ob die Menge im gewünschten Bereich
 function checkAmount($amount)
 {
     $amountEval = 0;
@@ -399,6 +408,7 @@ function checkBurnOrMaterial($untererHeizwert)
     return $materialOrBurn;
 }
 
+//funktion zur überprüfung des Icons (green or Red)
 function iconChecker($result){
     if($result == 1){
         return "<i style='color: green' class=\"far fa-check-circle\"></i>";

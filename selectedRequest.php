@@ -12,6 +12,13 @@ $stmtSelectRequest = mysqli_query($conn, $sqlSelectRequest);
 $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
+if($rowRequest['Producer'] == ""){
+    $producer = "Anfragender ist Produzent";
+}else{
+    $producer = $rowRequest['Producer'];
+}
+
+
 
 //Preisberechnung Zuzahlung für Geo oder User
 $offeredPrice = $rowRequest['OfferedPrice'];
@@ -116,7 +123,7 @@ if(isset($_POST['buttonSubmit'])){
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <h5>Produzent:</h5>
-                                    <?php echo $rowRequest['Producer'] ?>
+                                    <?php echo $producer ?>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Abfallbezeichnung:</h5>

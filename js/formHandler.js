@@ -268,6 +268,7 @@ $(function () {
 function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar) {
 
     if (docOneCheckVar == 3) {
+        docOneCheckVar = docOneCheckVar - 2;
         countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar;
         if (countNumber == 3) {
             $('.progress-bar').css('width', '100%');

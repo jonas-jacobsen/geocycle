@@ -26,8 +26,8 @@ include("components/header.php");
                                 <div class="progress-bar progress-bar-info progress-bar-striped active"
                                      style="width:<?php echo $progressBarValue ?>;"></div>
                             </div>
-                            <p class="card-text">Anfrage zu <span id="progressValue"><?php echo $progressValue ?></span>%
-                                abgeschlossen</p>
+                            <p class="card-text"><?php echo $lang['requestFilledOutToo'] ?><span id="progressValue"><?php echo $progressValue ?></span>%
+                                <?php echo $lang['requestFilledOutTooFine'] ?></p>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ include("components/header.php");
                                             <i class="fas fa-user input-prefix"></i>
                                             <input type="text" id="firstname" name="firstname" class="form-control"
                                                    value="<?php echo $firstname ?>">
-                                            <label for="firstname">Vorname</label>
+                                            <label for="firstname"><?php echo $lang['requestFirstname'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -64,7 +64,7 @@ include("components/header.php");
                                             <i class="fas fa-user input-prefix"></i>
                                             <input type="text" id="surname" name="surname" class="form-control"
                                                    value="<?php echo $surname ?>">
-                                            <label for="surname">Nachname</label>
+                                            <label for="surname"><?php echo $lang['requestSurname'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -72,7 +72,7 @@ include("components/header.php");
                                             <i class="fas fa-user input-prefix"></i>
                                             <input type="text" id="phone" name="phone" class="form-control"
                                                    value="<?php echo $phone ?>">
-                                            <label for="phone">Telephonnummer</label>
+                                            <label for="phone"><?php echo $lang['requestPhoneNumber'] ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +83,7 @@ include("components/header.php");
                                             <i class="fas fa-home input-prefix"></i>
                                             <input type="text" id="street" name="street" class="form-control"
                                                    value="<?php echo $street ?>">
-                                            <label for="street">Straße und Hausnummer</label>
+                                            <label for="street"><?php echo $lang['requestStreetAndNumber'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -91,7 +91,7 @@ include("components/header.php");
                                             <i class="fas fa-home input-prefix"></i>
                                             <input type="text" id="zipcode" name="zip" class="form-control"
                                                    value="<?php echo $zip ?>">
-                                            <label for="zipcode">Postleitzahl</label>
+                                            <label for="zipcode"><?php echo $lang['requestZip'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -99,13 +99,13 @@ include("components/header.php");
                                             <i class="fas fa-home input-prefix"></i>
                                             <input type="text" id="town" name="town" class="form-control"
                                                    value="<?php echo $town ?>">
-                                            <label for="town">Ort</label>
+                                            <label for="town"><?php echo $lang['requestTown'] ?></label>
                                         </div>
                                     </div>
                                 </div>
                                 <input type="hidden" name="requestId" value="<?php $requestId ?>">
                                 <button type="submit" id="submitAnsprech" name="submitAnsprech" value=""
-                                        class="btn btn-light-green">Speichern
+                                        class="btn btn-light-green"><?php echo $lang['requestContactInformationButton'] ?>
                                 </button>
                             </form>
                         </div>
@@ -125,7 +125,7 @@ include("components/header.php");
                             <div class="sidecard-body">
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        Ansprechpartner
+                                        <?php echo $lang['requestChecklistContactPerson'] ?>
                                     </div>
                                     <div class="col-sm-4" id="contactPersCheck">
                                         <?php echo $contactPersCheck ?>
@@ -134,7 +134,7 @@ include("components/header.php");
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        Anfrage
+                                        <?php echo $lang['requestChecklistRequest'] ?>
                                     </div>
                                     <div class="col-sm-4" id="requestCheck">
                                         <?php echo $requestCheck ?>
@@ -144,7 +144,7 @@ include("components/header.php");
                                 <div id="checkIsHidden">
                                     <div class="row">
                                         <div class="col-sm-8">
-                                            Dokumente
+                                            <?php echo $lang['requestChecklistDocuments'] ?>
                                         </div>
                                         <div class="col-sm-4" id="docOneCheck">
                                             <?php echo $docOneCheck ?>
@@ -154,7 +154,7 @@ include("components/header.php");
                                 </div>
                                 <div class="row">
                                     <div class="col-sm-8">
-                                        Weitere Details
+                                        <?php echo $lang['requestChecklistFurtherInfo'] ?>
                                     </div>
                                     <div class="col-sm-4" id="furtherInfoCheck">
                                         <?php echo $furtherInfoCheck ?>
@@ -214,13 +214,13 @@ include("components/header.php");
                                                 <input type="text" id="abfallbezeichnung" class="form-control"
                                                        name="wasteDescription"
                                                        value="<?php echo $wasteDescription ?>">
-                                                <label for="abfallbezeichnung">Abfallbezeichnung</label>
+                                                <label for="abfallbezeichnung"><?php echo $lang['requestWasteDescription'] ?></label>
                                             </div>
                                             <div class="md-form input-with-post-icon">
                                                 <i class="fas fa-trash input-prefix"></i>
                                                 <input type="text" id="avv" class="form-control" name="avv"
                                                        value="<?php echo $avv ?>">
-                                                <label for="avv">AVV</label>
+                                                <label for="avv"><?php echo $lang['requestWasteDescriptionAVV'] ?></label>
                                             </div>
                                         </div>
                                     </div>
@@ -232,13 +232,12 @@ include("components/header.php");
                                     <div id="dropZone">
                                         <input type="file" id="fileupload" name="attachments[]" multiple>
                                     </div>
-                                    <small id="smalltext" class="form-text text-muted mb-4">Nicht älter als 12
-                                        Monate
+                                    <small id="smalltext" class="form-text text-muted mb-4"><?php echo $lang['requestDocMutedText'] ?>
                                     </small>
                                     <p id="error"></p>
                                     <p id="progess"></p>
                                     <div class="existingFiles">
-                                        <p>Hochgeladene Dokumente:</p>
+                                        <p><?php echo $lang['requestDocLoadDoc'] ?>:</p>
                                         <div class="gallery">
                                             <?php showFiles($conn, $requestId, $userId); ?>
                                             <div id="einbinden"></div>
@@ -254,12 +253,12 @@ include("components/header.php");
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="erzeuger"
                                                    name="erzHae" <?php echo $radioOnErz ?> value="Erzeuger">
-                                            <label class="custom-control-label" for="erzeuger">Erzeuger</label>
+                                            <label class="custom-control-label" for="erzeuger"><?php echo $lang['requestProducer'] ?></label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="haendler"
                                                    name="erzHae" <?php echo $radioOnHae ?> value="Händler">
-                                            <label class="custom-control-label" for="haendler">Händler</label>
+                                            <label class="custom-control-label" for="haendler"><?php echo $lang['requestDealer'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -268,7 +267,7 @@ include("components/header.php");
                                                 <i class="fas fa-user input-prefix"></i>
                                                 <input type="text" id="producer" class="form-control" name="producer"
                                                        value="<?php echo $producer ?>">
-                                                <label for="producer">Bitte nennen Sie den Erzeuger</label>
+                                                <label for="producer"><?php echo $lang['requestNameProducer'] ?></label>
                                             </div>
                                         </div>
                                         <div class="haendler">
@@ -281,8 +280,7 @@ include("components/header.php");
                                 <br>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="incoterms">Bitte wählen Sie die Lieferbedingungen als
-                                            Incoterm:</label>
+                                        <label for="incoterms"><?php echo $lang['requestLableIncoterm'] ?>:</label>
                                         <select class="form-control" id="incoterms" name="deliveryForm">
                                             <option value="EXW" <?php echo $deliveryFormEXW ?>>EXW</option>
                                             <option value="FCA" <?php echo $deliveryFormFCA ?>>FCA</option>
@@ -292,24 +290,23 @@ include("components/header.php");
                                             <option value="DAT" <?php echo $deliveryFormDAT ?>>DAT</option>
                                         </select>
                                         <br>
-                                        <i>Hier finden Sie eine <a
+                                        <i><?php echo $lang['requestIcotermsDescription'] ?><a
                                                     href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806"
-                                                    target="_blank">Liste aller Incoterms</a> inklusive kurzer
-                                            Erklärung.</i>
+                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?></a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>.</i>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-weight-hanging input-prefix"></i>
                                             <input type="text" id="materialQuantity" class="form-control" name="jato"
                                                    value="<?php echo $jato ?>">
-                                            <label for="materialQuantity">Menge in Tonnen</label>
+                                            <label for="materialQuantity"><?php echo $lang['requestLableAmountTonne'] ?></label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <button type="submit" id="sumbitAnfrage" name="sumbitAnfrage"
                                         class="btn btn-light-green">
-                                    Speichern
+                                    <?php echo $lang['requestRequestButtonSave'] ?>
                                 </button>
                             </form>
                         </div>
@@ -582,7 +579,7 @@ include("components/header.php");
 
                                     <input id="analysisString" type="hidden" name="analysisString"
                                            placeholder="Json String of analysis-input" disabled="">
-                                    <button type="button" id="addRowButton" class="btn addParam">+ Wert hinzufügen
+                                    <button type="button" id="addRowButton" class="btn addParam">+ <?php echo $lang['requestAddParam'] ?>
                                     </button>
                                     <br>
                                     <!-- für entwicklungszwecke<?php echo "parameterlistenlänge: " . $countJsonParam ?>-->
@@ -595,19 +592,19 @@ include("components/header.php");
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <label for="priceCondition">Zuzahlung oder Kosten</label>
+                                        <label for="priceCondition"><?php echo $lang['requestFurtherInfLabelGeoOrUser'] ?></label>
                                         <select class="form-control" id="priceCondition" name="priceCondition">
-                                            <option value="0" <?php echo $preisForUser?>>Zuzahlung an Geocycle</option>
-                                            <option value="1" <?php echo $preisForGeo?>>Kosten für Geocycle</option>
+                                            <option value="0" <?php echo $preisForUser?>><?php echo $lang['requestFurtherInfpaymentUser'] ?></option>
+                                            <option value="1" <?php echo $preisForGeo?>><?php echo $lang['requestFurtherInfpaymentGeo'] ?></option>
                                         </select>
                                         <br>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-weight-hanging input-prefix"></i>
-                                            <input type="text" id="offeredPrice" class="form-control" name="offeredPrice"
+                                            <input type="number" id="offeredPrice" class="form-control" name="offeredPrice"
                                                    value="<?php echo $offeredPrice ?>">
-                                            <label for="offeredPrice">Preis/Tonne</label>
+                                            <label for="offeredPrice"><?php echo $lang['requestFurtherInfPriceTonn'] ?></label>
                                         </div>
                                     </div>
                                 </div>
@@ -617,7 +614,7 @@ include("components/header.php");
                                             <i class="fas fa-pencil-alt prefix"></i>
                                             <textarea id="aktEnt" class="md-textarea form-control" id="dispRoute"
                                                       rows="5" name="dispRoute"><?php echo $dispRoute ?></textarea>
-                                            <label for="aktEnt">Aktueller Entsorgungsweg + Preis</label>
+                                            <label for="aktEnt"><?php echo $lang['requestFurtherInfWasteway'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -625,13 +622,13 @@ include("components/header.php");
                                             <i class="fas fa-pencil-alt prefix"></i>
                                             <textarea id="processDescr" class="md-textarea form-control" id="procDescr"
                                                       rows="5" name="procDescr"><?php echo $procDescr ?></textarea>
-                                            <label for="processDescr">Prozessbeschreibung</label>
+                                            <label for="processDescr"><?php echo $lang['requestFurtherInfProcessDescription'] ?></label>
                                         </div>
                                     </div>
                                 </div>
                                 <button type="submit" id="sumbitFurtherInfo" name="sumbitMoreData"
                                         class="btn btn-light-green">
-                                    Speichern
+                                    <?php echo $lang['requestFurtherInfSave'] ?>
                                 </button>
                             </form>
                             <br><br>

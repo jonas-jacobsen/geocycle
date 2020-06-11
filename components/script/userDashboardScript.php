@@ -1,4 +1,5 @@
 <?php
+
 include("components/script/email.php");
 
 $userId = $_SESSION['userId'];
@@ -64,19 +65,19 @@ function showOpenRequest($conn, $userId, $lang)
         <table id="dtBasicExample" class="table" width="100%">
             <thead>
                 <tr>
-                    <th class="th-sm">Anfrage ID
+                    <th class="th-sm">'.$lang["userTableRequestId"].'
                     </th>
-                    <th class="th-sm">Name
+                    <th class="th-sm">'.$lang["userTableRequestName"].'
                     </th>
-                    <th class="th-sm">Ort
+                    <th class="th-sm">'.$lang["userTableRequestTown"].'
                     </th>
-                    <th class="th-sm">Menge
+                    <th class="th-sm">'.$lang["userTableRequestAmount"].'
                     </th>
-                    <th class="th-sm">AVV
+                    <th class="th-sm">'.$lang["userTableRequestAVV"].'
                     </th>
-                    <th class="th-sm">Anlieferform
+                    <th class="th-sm">'.$lang["userTableRequestDeliveryForm"].'
                     </th>
-                    <th class="th-sm">Erzeuger
+                    <th class="th-sm">'.$lang["userTableRequestProducer"].'
                     </th>
                     <th class="th-sm">
                     </th>
@@ -131,19 +132,19 @@ function showCloseRequest($conn, $userId, $lang)
         <table id="dtBasicExample" class="table" width="100%">
             <thead>
                 <tr>
-                    <th class="th-sm">Anfrage ID
+                    <th class="th-sm">'.$lang["userTableRequestId"].'
                     </th>
-                    <th class="th-sm">Name
+                    <th class="th-sm">'.$lang["userTableRequestName"].'
                     </th>
-                    <th class="th-sm">Ort
+                    <th class="th-sm">'.$lang["userTableRequestTown"].'
                     </th>
-                    <th class="th-sm">Menge
+                    <th class="th-sm">'.$lang["userTableRequestAmount"].'
                     </th>
-                    <th class="th-sm">AVV
+                    <th class="th-sm">'.$lang["userTableRequestAVV"].'
                     </th>
-                    <th class="th-sm">Anlieferform
+                    <th class="th-sm">'.$lang["userTableRequestDeliveryForm"].'
                     </th>
-                    <th class="th-sm">Erzeuger
+                    <th class="th-sm">'.$lang["userTableRequestProducer"].'
                     </th>
                     <th class="th-sm">
                     </th>

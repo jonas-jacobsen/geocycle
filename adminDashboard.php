@@ -127,7 +127,7 @@ include("components/headerAdmin.php");
                     <div class="col-md-4 mb-4">
                         <div class="row">
                             <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="250"
+                                <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="2"
                                     data-time="2000">42</h4>
                             </div>
 

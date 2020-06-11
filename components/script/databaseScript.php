@@ -1,5 +1,5 @@
 <?php
-//Prüfen ob neue oder Vorhandene, Neue, RequestId in SesssionV Variable. ALte RequestId in $_Post variable
+//Prüfen ob neue oder Vorhandene RequestId in SesssionV Variable. ALte RequestId in $_Post variable
 if (isset($_POST['requestId'])) {
     $requestId = $_POST['requestId'];
     $_SESSION['requestId'] = $requestId;
@@ -12,7 +12,7 @@ $sql_all = "SELECT * FROM userdata WHERE id = '$requestId'";
 $statement = mysqli_query($conn, $sql_all);
 $row = mysqli_fetch_array($statement);
 
-//userdata
+//userdata - Requestdata
 $userId = $_SESSION['userId'];
 //ansprechpartner
 $firstname = $row['Firstname'];
@@ -32,14 +32,14 @@ $avv = $row['Avv'];
 $offeredPrice = floatval($row['OfferedPrice']);
 $preisForGeo = "";
 $preisForUser = "";
-if($offeredPrice < 0){
+if ($offeredPrice < 0) {
     $offeredPrice = abs($offeredPrice);
     $preisForGeo = "selected";
-}else{
+} else {
     $preisForUser = "selected";
 }
 
-//deliveryform herausfinden welche ausgewählt:
+//deliveryform: Prüfen welche ausgewählt:
 $deliveryFormEXW = "";
 $deliveryFormFCA = "";
 $deliveryFormCPT = "";
@@ -68,7 +68,7 @@ if ($deliveryForm == "EXW") {
 $dispRoute = $row['DisposalRoute'];
 $procDescr = $row['ProcessDescription'];
 
-//radiobuttons Check Db
+//radiobuttons Check wich one is choosen
 $radioOnPro = "";
 $radioOnAbf = "";
 if ($prodAbf == "Produktstatus") {
@@ -94,13 +94,14 @@ if ($erzHae == "Erzeuger") {
 //ab hier json verarbeitung
 $paramJson = json_decode($row['ParameterList']);
 
+//Variablen Initalisieren
 $unterHo = "";
 $wassergehalt = "";
 $aschegehalt = "";
 $chlor = "";
 $schwefel = "";
 $quecksilber = "";
-$calcium ="";
+$calcium = "";
 $silicium = "";
 $eisen = "";
 $magnesium = "";
@@ -125,8 +126,8 @@ $rowContent = "";
 $countJsonParam = count($paramJson);
 
 
-for($i = 13; $i<$countJsonParam;$i++){
-    $rowContent .= '<div class="ing-row" id="row'.$i.'"><input style="margin-right: 9px" type="text" name="param" placeholder="Parameter" value="'.$paramJson[$i]->param.'" disabled=""/><input type="text" name="value" placeholder="Messwert"  value="'.$paramJson[$i]->value.'" autocomplete="off" required pattern="[0-9<>,]{1,}" title="Nur \'1-9\', \',\' und \'< >\'"/><select style="margin-left: 5px" name="unit" disabled=""><option selected="">'.$paramJson[$i]->units.'</option></select></div>'; // inner HTML of blank row
+for ($i = 13; $i < $countJsonParam; $i++) {
+    $rowContent .= '<div class="ing-row" id="row' . $i . '"><input style="margin-right: 9px" type="text" name="param" placeholder="Parameter" value="' . $paramJson[$i]->param . '" disabled=""/><input type="text" name="value" placeholder="Messwert"  value="' . $paramJson[$i]->value . '" autocomplete="off" required pattern="[0-9<>,]{1,}" title="Nur \'1-9\', \',\' und \'< >\'"/><select style="margin-left: 5px" name="unit" disabled=""><option selected="">' . $paramJson[$i]->units . '</option></select></div>'; // inner HTML of blank row
 }
 
 //Überprüfen ob alle Daten in DB
@@ -174,12 +175,12 @@ if ($row['ProdAbf']) {
                 $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
                 $requestCheckVar = 0;
             }
-        }else{
+        } else {
             $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
             $requestCheckVar = 0;
         }
     }
-}else{
+} else {
     $requestCheck = "<i class=\"far fa-times-circle red-text\"></i>";
     $requestCheckVar = 0;
 }
@@ -197,12 +198,11 @@ if ($row['DisposalRoute'] && $row['ProcessDescription']) {
 }
 
 
-
 $docOneCheck = "";
 $docOneCheckVar = 0;
-if($row['ProdAbf'] == "Abfall"){
+if ($row['ProdAbf'] == "Abfall") {
     $docOneCheckVar = 3;
-}else{
+} else {
     $sqlDocOne = "SELECT * FROM docOne WHERE RequestId = '$requestId'";
     $result = mysqli_query($conn, $sqlDocOne);
     $numbers = mysqli_num_rows($result);
@@ -227,15 +227,15 @@ $progressBarValue = "";
 $progressValue = "";
 $buttonRequestFilledOut = "";
 
-if($row['ProdAbf'] == "Abfall"){
+if ($row['ProdAbf'] == "Abfall") {
     $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar;
     if ($countNumbers == 3) {
         $progressBarValue = "100%";
         $progressValue = "100";
         if ($row['OpenRequest'] == 1) {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">'.$lang["requestChecklistButtonAgain"].'</button>';
         } else {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">'.$lang["requestChecklistButton"].'</button>';
         }
     } elseif ($countNumbers == 2) {
         $progressBarValue = "66%";
@@ -250,7 +250,7 @@ if($row['ProdAbf'] == "Abfall"){
         $progressValue = "0";
         $buttonRequestFilledOut = "";
     }
-}else{
+} else {
     $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar + $docOneCheckVar;
     if ($countNumbers == 4) {
         $progressBarValue = "100%";
@@ -278,7 +278,6 @@ if($row['ProdAbf'] == "Abfall"){
         $buttonRequestFilledOut = "";
     }
 }
-
 
 
 //Fileupload
