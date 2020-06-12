@@ -163,7 +163,7 @@ function showCloseRequest($conn, $userId, $lang)
             $producer = $dataCloseRequest['Producer'];
             $adminWorkInprogress = $dataCloseRequest['AdminWorkInProgress'];
 
-            //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
+            //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, Angenommen: Grün, Abgelehnt: Rot
             $backgroudstyle = "";
             if ($adminWorkInprogress == 2){
                 $backgroudstyle = "angenommen";

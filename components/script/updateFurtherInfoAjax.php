@@ -29,7 +29,7 @@ $statement = mysqli_query($conn, $sql_all);
 //Hier später noch überprüen ob File hochgeladen
 
 $data = mysqli_fetch_array($statement);
-if ($data['DisposalRoute'] && $data['ProcessDescription']) {
+if ($data['DisposalRoute'] && $data['ProcessDescription'] && $data['OfferedPrice']) {
     $furtherInfoCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $furtherInfoCheckVar = 1;
 } else {

@@ -179,9 +179,9 @@ $('#furtherInformationForm').submit(function (event) {
             priceCondition: priceCondition,
             offeredPrice: offeredPrice,
         },
-        success: function (dataTwo) {
-            $('#furtherInfoCheck').html(dataTwo.furtherInfoCheck);
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
+        success: function (dataFurthInfo) {
+            $('#furtherInfoCheck').html(dataFurthInfo.furtherInfoCheck);
+            showProgressBarValue(contactPersCheckVar, requestCheckVar, dataFurthInfo.furtherInfoCheckVar, docOneCheckVar);
         },
     });
     //set Timeout for showing Anderungen vorgenommen
@@ -266,9 +266,8 @@ $(function () {
 //Progressbar überprüfen bei Ajax-Caall
 
 function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar) {
-
+    docOneCheckVarTmp = 0;
     if (docOneCheckVar == 3) {
-        docOneCheckVar = docOneCheckVar - 2;
         countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar;
         if (countNumber == 3) {
             $('.progress-bar').css('width', '100%');

@@ -189,7 +189,7 @@ if ($row['ProdAbf']) {
 $furtherInfoCheck = "";
 $furtherInfoCheckVar = 0;
 
-if ($row['DisposalRoute'] && $row['ProcessDescription']) {
+if ($row['DisposalRoute'] && $row['ProcessDescription'] && $offeredPrice) {
     $furtherInfoCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $furtherInfoCheckVar = 1;
 } else {
