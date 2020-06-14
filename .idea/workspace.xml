@@ -21,10 +21,13 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateFurtherInfoAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateFurtherInfoAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/userDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/userDashboardScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/requestJs/autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/requestJs/autocomplete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginTeam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,22 +93,23 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
-    <property name="settings.editor.selected.configurable" value="web.server" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/script" />
+      <recent name="$PROJECT_DIR$/composer" />
+      <recent name="$PROJECT_DIR$/js/addons" />
+      <recent name="$PROJECT_DIR$/css/addons" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/components/script" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/js/fileUpload" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/script" />
-      <recent name="$PROJECT_DIR$/js/addons" />
-      <recent name="$PROJECT_DIR$/css/addons" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/components" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -139,7 +143,8 @@
       <workItem from="1589968643621" duration="40810000" />
       <workItem from="1590701976835" duration="43855000" />
       <workItem from="1591307303666" duration="106498000" />
-      <workItem from="1591951300430" duration="2541000" />
+      <workItem from="1591951300430" duration="3737000" />
+      <workItem from="1592038656485" duration="22026000" />
     </task>
     <servers />
   </component>
@@ -159,6 +164,11 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="228" y="76" key="#CLI_Interpreters" timestamp="1592043653627">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="228" y="76" key="#CLI_Interpreters/0.0.1280.800@0.0.1280.800" timestamp="1592043653627" />
+    <state x="228" y="97" key="#CLI_Interpreters/0.23.1280.777@0.23.1280.777" timestamp="1592039595333" />
     <state x="240" y="56" key="#Deployment" timestamp="1589040095861">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -171,21 +181,26 @@
     <state x="-2492" y="54" key="#SSH_Configurations/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588507067163" />
     <state x="34" y="30" key="#SSH_Configurations/0.0.1280.800@0.0.1280.800" timestamp="1589040084417" />
     <state x="34" y="52" key="#SSH_Configurations/0.23.1280.777@0.23.1280.777" timestamp="1588416540986" />
-    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589968708492">
+    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592045323257">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1589968708492" />
-    <state x="-1457" y="650" key="NewPhpFileDialog" timestamp="1591774138537">
-      <screen x="-2560" y="0" width="2560" height="1440" />
+    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1592045323257" />
+    <state x="396" y="289" width="488" height="293" key="ComposerInitDialogKey" timestamp="1592043655089">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="396" y="289" width="488" height="293" key="ComposerInitDialogKey/0.0.1280.800@0.0.1280.800" timestamp="1592043655089" />
+    <state x="396" y="304" key="ComposerInitDialogKey/0.23.1280.777@0.23.1280.777" timestamp="1592039086209" />
+    <state x="552" y="361" key="NewPhpFileDialog" timestamp="1592057162367">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591774138537" />
-    <state x="552" y="361" key="NewPhpFileDialog/0.0.1280.800@0.0.1280.800" timestamp="1591532720414" />
-    <state x="-1695" y="77" key="SettingsEditor" timestamp="1591571017507">
-      <screen x="-1920" y="0" width="1920" height="1080" />
+    <state x="552" y="361" key="NewPhpFileDialog/0.0.1280.800@0.0.1280.800" timestamp="1592057162367" />
+    <state x="150" y="78" key="SettingsEditor" timestamp="1592039596365">
+      <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="-1695" y="77" key="SettingsEditor/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591571017507" />
     <state x="-2260" y="102" key="SettingsEditor/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584490519" />
-    <state x="150" y="78" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1588416898217" />
+    <state x="150" y="78" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1592039596365" />
     <state x="380" y="221" width="540" height="524" key="StructurePopup" timestamp="1589662212712">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -204,12 +219,16 @@
     </state>
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591783693090" />
     <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1590675362817" />
-    <state x="-2560" y="542" width="2272" height="898" key="find.popup" timestamp="1591902518027">
-      <screen x="-2560" y="0" width="2560" height="1440" />
+    <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1592043298107">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1592043298107" />
+    <state x="112" y="140" width="1136" height="582" key="find.popup" timestamp="1592089697861">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632031652" />
     <state x="-2560" y="542" width="2272" height="898" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591902518027" />
-    <state x="0" y="252" width="1136" height="548" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1591635577099" />
+    <state x="112" y="140" width="1136" height="582" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1592089697861" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -226,11 +245,11 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1615" y="345" key="run.anything.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584507328" />
-    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup" timestamp="1591971905335">
+    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup" timestamp="1592120468580">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632608619" />
     <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591903706573" />
-    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1591971905335" />
+    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1592120468580" />
   </component>
 </project>

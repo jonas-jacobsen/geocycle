@@ -195,9 +195,15 @@ if (isset($_POST['submitOne'])) {
     </div>
 </div>
 <!-- Frame Modal Bottom -->
-<?php
-include("components/footer.php");
-?>
+<!-- Footer -->
+<footer class="page-footer font-small success-color-dark fixed-bottom">
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="https://www.geocycle.com/"> Geocycle GmbH</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
 
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

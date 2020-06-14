@@ -26,7 +26,8 @@ include("components/header.php");
                                 <div class="progress-bar progress-bar-info progress-bar-striped active"
                                      style="width:<?php echo $progressBarValue ?>;"></div>
                             </div>
-                            <p class="card-text"><?php echo $lang['requestFilledOutToo'] ?><span id="progressValue"><?php echo $progressValue ?></span>%
+                            <p class="card-text"><?php echo $lang['requestFilledOutToo'] ?><span
+                                        id="progressValue"><?php echo $progressValue ?></span>%
                                 <?php echo $lang['requestFilledOutTooFine'] ?></p>
                         </div>
                     </div>
@@ -103,6 +104,7 @@ include("components/header.php");
                                         </div>
                                     </div>
                                 </div>
+                                <input type="text" id="facility" name="facility" value="<?php echo $factory ?>" placeholder="<?php echo $factory ?>">
                                 <input type="hidden" name="requestId" value="<?php $requestId ?>">
                                 <button type="submit" id="submitAnsprech" name="submitAnsprech" value=""
                                         class="btn btn-light-green"><?php echo $lang['requestContactInformationButton'] ?>
@@ -232,7 +234,8 @@ include("components/header.php");
                                     <div id="dropZone">
                                         <input type="file" id="fileupload" name="attachments[]" multiple>
                                     </div>
-                                    <small id="smalltext" class="form-text text-muted mb-4"><?php echo $lang['requestDocMutedText'] ?>
+                                    <small id="smalltext"
+                                           class="form-text text-muted mb-4"><?php echo $lang['requestDocMutedText'] ?>
                                     </small>
                                     <p id="error"></p>
                                     <p id="progess"></p>
@@ -253,12 +256,14 @@ include("components/header.php");
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="erzeuger"
                                                    name="erzHae" <?php echo $radioOnErz ?> value="Erzeuger">
-                                            <label class="custom-control-label" for="erzeuger"><?php echo $lang['requestProducer'] ?></label>
+                                            <label class="custom-control-label"
+                                                   for="erzeuger"><?php echo $lang['requestProducer'] ?></label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="haendler"
                                                    name="erzHae" <?php echo $radioOnHae ?> value="Händler">
-                                            <label class="custom-control-label" for="haendler"><?php echo $lang['requestDealer'] ?></label>
+                                            <label class="custom-control-label"
+                                                   for="haendler"><?php echo $lang['requestDealer'] ?></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -292,7 +297,8 @@ include("components/header.php");
                                         <br>
                                         <i><?php echo $lang['requestIcotermsDescription'] ?><a
                                                     href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806"
-                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?></a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>.</i>
+                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?></a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>
+                                            .</i>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
@@ -579,7 +585,8 @@ include("components/header.php");
 
                                     <input id="analysisString" type="hidden" name="analysisString"
                                            placeholder="Json String of analysis-input" disabled="">
-                                    <button type="button" id="addRowButton" class="btn addParam">+ <?php echo $lang['requestAddParam'] ?>
+                                    <button type="button" id="addRowButton" class="btn addParam">
+                                        + <?php echo $lang['requestAddParam'] ?>
                                     </button>
                                     <br>
                                     <!-- für entwicklungszwecke<?php echo "parameterlistenlänge: " . $countJsonParam ?>-->
@@ -594,15 +601,16 @@ include("components/header.php");
                                     <div class="col-md-6">
                                         <label for="priceCondition"><?php echo $lang['requestFurtherInfLabelGeoOrUser'] ?></label>
                                         <select class="form-control" id="priceCondition" name="priceCondition">
-                                            <option value="0" <?php echo $preisForUser?>><?php echo $lang['requestFurtherInfpaymentUser'] ?></option>
-                                            <option value="1" <?php echo $preisForGeo?>><?php echo $lang['requestFurtherInfpaymentGeo'] ?></option>
+                                            <option value="0" <?php echo $preisForUser ?>><?php echo $lang['requestFurtherInfpaymentUser'] ?></option>
+                                            <option value="1" <?php echo $preisForGeo ?>><?php echo $lang['requestFurtherInfpaymentGeo'] ?></option>
                                         </select>
                                         <br>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-weight-hanging input-prefix"></i>
-                                            <input type="number" id="offeredPrice" class="form-control" name="offeredPrice"
+                                            <input type="number" id="offeredPrice" class="form-control"
+                                                   name="offeredPrice"
                                                    value="<?php echo $offeredPrice ?>">
                                             <label for="offeredPrice"><?php echo $lang['requestFurtherInfPriceTonn'] ?></label>
                                         </div>

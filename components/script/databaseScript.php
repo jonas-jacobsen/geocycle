@@ -21,6 +21,7 @@ $phone = $row['Phone'];
 $street = $row['Street'];
 $town = $row['Town'];
 $zip = $row['Zip'];
+$factory = htmlspecialchars($row['ClosestFactory']);
 //Anfrage
 $prodAbf = $row['ProdAbf'];
 $erzHae = $row['ErzHae'];
@@ -29,6 +30,7 @@ $producer = $row['Producer'];
 $wasteDescription = $row['WasteDescription'];
 $avv = $row['Avv'];
 
+//Preis von String in Float umwandeln  um damit rechnen zu können
 $offeredPrice = floatval($row['OfferedPrice']);
 $preisForGeo = "";
 $preisForUser = "";

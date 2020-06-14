@@ -1,8 +1,97 @@
 <!--script zur Formularverabeitung -->
-console.log(docOneCheckVar);
 //wenn Button geklickt wird, rotierender pfeil
 var rotateCircle = "<p><i class=\"fas fa-sync\"></i></p>";
 
+//funktion zur Berechnung der Entfernung des Werkes
+const beckum = "[8.0556895,51.7643485]";
+const dotternhausen = "[8.7803442, 48.2287518]";
+const hoever = "[9.8893724, 52.3517868]";
+const laegerdorf = "[9.5767891, 53.8787635]";
+
+let addresses;
+var custAdress;
+let distances;
+
+function calcDistances() {
+    let request = new XMLHttpRequest();
+
+    request.open('POST', "https://api.openrouteservice.org/v2/matrix/driving-car");
+
+    request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Authorization', '5b3ce3597851110001cf62480b008bd0ed3e434ca180a642aa491b11');
+
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            distances = JSON.parse(this.responseText);
+            getClosestFacility(distances.distances[0]);
+        }
+    };
+
+    // let adresses = [custAdress, werk1, werk2, werk3, werk4];
+    addresses = [
+        {name: "customAdress", coords: custAdress},
+        {name: "Beckum", coords: beckum},
+        {name: "Dotternhausen", coords: dotternhausen},
+        {name: "Höver", coords: hoever},
+        {name: "Lägerdorf", coords: laegerdorf},
+    ]
+
+    addressCoords = addresses.map(function (elem) {
+        return elem.coords;
+    }).join(","); // join array of all addresses to one string
+    const body = '{"locations":[' + addressCoords + '],"metrics":["distance"]}';
+
+    request.send(body);
+}
+
+function getClosestFacility(array) {
+    array.shift();
+    var i = array.indexOf(Math.min.apply(Math, array));
+
+    let facName = addresses[i + 1].name;
+    let facDist = array[i] / 1000;
+    var resultArray = [{name: facName, distance: facDist}];
+    resultArray = JSON.stringify(resultArray);
+    document.getElementById("facility").value = resultArray;
+}
+
+// get lat-long to adress
+function getLatLong() {
+    let street = document.getElementById("street").value;
+    let zip = document.getElementById("zipcode").value;
+    let town = document.getElementById("town").value;
+    custAdress = [street, zip, town].join(",")
+
+    var req = new XMLHttpRequest();
+
+    url = 'https://api.openrouteservice.org/geocode/search?api_key=5b3ce3597851110001cf62480b008bd0ed3e434ca180a642aa491b11&text=' + custAdress;
+    req.open('GET', url);
+
+    req.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+
+    req.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            var temp = JSON.parse(this.responseText);
+            var long = temp.bbox[0];
+            var lat = temp.bbox[1];
+            custAdress = '[' + long + ',' + lat + ']';
+            calcDistances();
+        }
+    };
+    req.send();
+}
+
+/* Eventlistener */
+let townField = document.getElementById('town');
+townField.addEventListener('change', getLatLong, false);
+
+//let submitAnsprechButton = document.getElementById('submitAnsprech');
+//submitAnsprechButton.addEventListener('click', getLatLong, false);
+//End Check Distance Factory
+
+
+//Änderung Panel Ansprechform
 $('#ansprech_Form').submit(function (event) {
     event.preventDefault(); //seitenreloud wird verhindert
     $('#didChangeContactPers').html(rotateCircle);
@@ -23,6 +112,7 @@ $('#ansprech_Form').submit(function (event) {
     }, 1000);
 });
 
+//Änderung Panel Request
 $('#request_Form').submit(function (event) {
     event.preventDefault(); //seitenreloud wird verhindert
     $('#didChangeRequest').html(rotateCircle);
@@ -66,7 +156,7 @@ function checkHu() {
         $(".brennstoff").css("height", "auto");
         $(".rohstoff:not(.brennstoff) input[name='value']").val(0);
         $(".brennstoff input[value='']").val("");
-        $( ".brennstoff input[value='0']").val("");
+        $(".brennstoff input[value='0']").val("");
 
     } else if (huValue < 10) {
         huResult.innerHTML = "ROHSTOFF";
@@ -77,7 +167,7 @@ function checkHu() {
         $(".rohstoff").css("height", "auto");
         $(".brennstoff:not(.rohstoff) input[name='value']").val(0);
         $(".rohstoff input[value='']").val("");
-        $( ".rohstoff input[value='0']").val("");
+        $(".rohstoff input[value='0']").val("");
 
     } else {
         huResult.innerHTML = "Hu Undefiniert";
@@ -86,7 +176,7 @@ function checkHu() {
 }
 
 //einmaliges prüfen bei Datenbankabfrage
-function initCheckHu(){
+function initCheckHu() {
     let huValue = huInput.value;
     huValue = huValue.replace(/,/gi, '.');
     huValue = huValue.replace(/[<>]/gi, '');
@@ -100,7 +190,6 @@ function initCheckHu(){
 
     } else if (huValue < 10) {
         huResult.innerHTML = "ROHSTOFF";
-        console.log(huValue);
         $(".brennstoff").css("visibility", "hidden");
         $(".brennstoff").css("height", "0");
         $(".rohstoff").css("visibility", "visible");
@@ -181,7 +270,8 @@ $('#furtherInformationForm').submit(function (event) {
         },
         success: function (dataFurthInfo) {
             $('#furtherInfoCheck').html(dataFurthInfo.furtherInfoCheck);
-            showProgressBarValue(contactPersCheckVar, requestCheckVar, dataFurthInfo.furtherInfoCheckVar, docOneCheckVar);
+            furtherInfoCheckVar = dataFurthInfo.furtherInfoCheckVar;
+            showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
         },
     });
     //set Timeout for showing Anderungen vorgenommen
