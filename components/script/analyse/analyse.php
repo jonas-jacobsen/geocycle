@@ -97,8 +97,11 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     //Ab hier HTML
     echo "<h4>Brennstoff</h4>";
     if($prodAbf=="Abfall"){
-        echo "<div class='row'><div class='col-3'>Werk in der Nähe</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
-    }    echo "<div class='row'><div class='col-3'>Heizwert</div><div class='col-3'>$untererHeizwert mj</div><div class='col-1'></div><div class='col-4'>$burnForWhat</div></div><br>";
+        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+    }   else{
+        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
+    }
+    echo "<div class='row'><div class='col-3'>Heizwert</div><div class='col-3'>$untererHeizwert mj</div><div class='col-1'></div><div class='col-4'>$burnForWhat</div></div><br>";
     echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div>";
     for ($i = 0; $i < $countJson - 1; $i++) {
         $name = $paramEval[$i]["name"];
@@ -196,7 +199,9 @@ function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount, $c
 
     echo "<h4>Rohstoff</h4>";
     if($prodAbf=="Abfall"){
-        echo "<div class='row'><div class='col-3'>Werk in der Nähe</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+    }   else{
+        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
     }
     echo "<div class='row'><div class='col-3'>Hauptbestandteil</div><div class='col-3'>$paramEval[0]</div><div class='col-1'>$iconCheckParamHigh</div><div class='col-4'>$highestParamComment</div></div>";
     echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div><br>";

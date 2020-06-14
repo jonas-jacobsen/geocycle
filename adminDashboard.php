@@ -4,7 +4,6 @@ include("components/sessionAdmin.php");
 include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");
-
 ?>
 
 <body>
@@ -15,7 +14,6 @@ include("components/headerAdmin.php");
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
-
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->

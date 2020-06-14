@@ -21,12 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/requestJs/autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/requestJs/autocomplete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/loginTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginTeam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +78,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="sqlserver" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
@@ -144,7 +141,7 @@
       <workItem from="1590701976835" duration="43855000" />
       <workItem from="1591307303666" duration="106498000" />
       <workItem from="1591951300430" duration="3737000" />
-      <workItem from="1592038656485" duration="22026000" />
+      <workItem from="1592038656485" duration="23982000" />
     </task>
     <servers />
   </component>
@@ -181,6 +178,10 @@
     <state x="-2492" y="54" key="#SSH_Configurations/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588507067163" />
     <state x="34" y="30" key="#SSH_Configurations/0.0.1280.800@0.0.1280.800" timestamp="1589040084417" />
     <state x="34" y="52" key="#SSH_Configurations/0.23.1280.777@0.23.1280.777" timestamp="1588416540986" />
+    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1592131132839">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1592131132839" />
     <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592045323257">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -214,11 +215,11 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1680" y="460" key="Vcs.Push.Dialog.v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591303085163" />
-    <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1591783693090">
-      <screen x="-2560" y="0" width="2560" height="1440" />
+    <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592133386138">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591783693090" />
-    <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1590675362817" />
+    <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1592133386138" />
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1592043298107">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

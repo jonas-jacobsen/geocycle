@@ -104,7 +104,7 @@ include("components/header.php");
                                         </div>
                                     </div>
                                 </div>
-                                <input type="text" id="facility" name="facility" value="<?php echo $factory ?>" placeholder="<?php echo $factory ?>">
+                                <input type="hidden" id="facility" name="facility" value="<?php echo $factory ?>">
                                 <input type="hidden" name="requestId" value="<?php $requestId ?>">
                                 <button type="submit" id="submitAnsprech" name="submitAnsprech" value=""
                                         class="btn btn-light-green"><?php echo $lang['requestContactInformationButton'] ?>
