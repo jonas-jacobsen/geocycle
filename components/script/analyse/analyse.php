@@ -1,4 +1,9 @@
 <?php
+/* Start to develop here. Best regards https://php-download.com/ */
+use Phpml\Classification\DecisionTree;
+use Phpml\Dataset\CsvDataset;
+require_once("vendor/autoload.php");
+
 
 function analyse($requestId, $conn)
 {
@@ -26,6 +31,7 @@ function analyse($requestId, $conn)
     $untererHeizwert = str_replace(',', '.', $paramJson[0]->value);
     //Prüfen ob es sich um einen Brenn oder Rohstoff handelt
     $materialOrBurn = checkBurnOrMaterial($untererHeizwert);
+
 
     /*Testing*/
     if ($materialOrBurn == "Rohstoff") {
@@ -81,26 +87,36 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     //Werk auf AVV nummer überprüfen
     $avvComment = "";
     $isAVVForFactory = avvChecker($closestFactory, $avv);
-    if($isAVVForFactory[0] == 1){
+    if ($isAVVForFactory[0] == 1) {
         $avvIcon = iconChecker(1);
         $avvComment = "Avv ist im nähstgelegenden Werk Zertifiziert";
-    }else{
-        if($isAVVForFactory[1] == 1){
+    } else {
+        if ($isAVVForFactory[1] == 1) {
             $avvIcon = iconChecker(1);
             $avvComment = "Avv ist nicht in nähstgelegendem Werk aber in einem anderen Werk Zertifiziert";
-        }else{
+        } else {
             $avvIcon = iconChecker(0);
             $avvComment = "Avv ist in keinem Werk Zertifiziert";
         }
     }
 
+
+    //überprüfen ob Produktions oder Abfallstatus
+
+    if ($prodAbf == "Abfall") {
+        $isAbfOrProd = 1; //Für ML-Analyse abfall
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+    } else {
+        $isAbfOrProd = 0; //Für ML-Analyse Rohstoff
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
+    }
+
+    //Ml analyse
+    //$recomendation = getRecomendation("","", "", "", "", "", $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0], $isHighestParam);
+
     //Ab hier HTML
     echo "<h4>Brennstoff</h4>";
-    if($prodAbf=="Abfall"){
-        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
-    }   else{
-        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
-    }
+    echo "$htmlProdAbf";
     echo "<div class='row'><div class='col-3'>Heizwert</div><div class='col-3'>$untererHeizwert mj</div><div class='col-1'></div><div class='col-4'>$burnForWhat</div></div><br>";
     echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div>";
     for ($i = 0; $i < $countJson - 1; $i++) {
@@ -143,21 +159,25 @@ function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount, $c
         //2 = kein Hauptbestandteil aber wirtschaftlich interessant
         //3 = kein Hauptbestandteil und wirtschaftlich nicht interessant
         case 0:
+            $isHighestParam = 1; //Für ML-Analyse
             $isEconomicHtml = "Stoff ist Hauptbestandteil aber wirtschaftlich nicht interessant, da der $paramEval[0]preis mit " . round(abs($preisProTonne), 2) . "€/Tonne teurer ist als der Vergleichspreis von " . abs($vergleichsPreis) . "€/Tonne";
             $iconCheckParamHigh = iconChecker(1);
             $highestParamComment = "Stoff ist Hauptbestandteil des Klinkers";
             break;
         case 1:
+            $isHighestParam = 1; //Für ML-Analyse
             $isEconomicHtml = "Stoff ist Hauptbestandteil und wirtschaftlich interessant, da der $paramEval[0]preis mit " . round(abs($preisProTonne), 2) . "€/Tonne günstiger ist als der Vergleichspreis von " . abs($vergleichsPreis) . "€/Tonne";
             $iconCheckParamHigh = iconChecker(1);
             $highestParamComment = "Stoff ist Hauptbestandteil des Klinkers";
             break;
         case 2:
+            $isHighestParam = 0; //Für ML-Analyse
             $isEconomicHtml = "Stoff ist kein Hauptbestandteil aber wirtschaftlich interessant, da die Zuzahlung an Geocycle mit " . abs($offeredPrice) . "€/Tonne über dem Grenzwert von 10€ liegt";
             $iconCheckParamHigh = iconChecker(0);
             $highestParamComment = "Stoff ist kein Hauptbestandteil des Klinkers";
             break;
         case 3:
+            $isHighestParam = 0; //Für ML-Analyse
             $iconCheckParamHigh = iconChecker(1);
             $highestParamComment = "Stoff ist kein Hauptbestandteil des Klinkers";
             if ($offeredPrice > 0) {
@@ -184,25 +204,34 @@ function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount, $c
     //Werk auf AVV nummer überprüfen
     $avvComment = "";
     $isAVVForFactory = avvChecker($closestFactory, $avv);
-    if($isAVVForFactory[0] == 1){
+    if ($isAVVForFactory[0] == 1) {
         $avvIcon = iconChecker(1);
-        $avvComment = "Avv ist im nähstgelegenden Werk Zertifiziert";
-    }else{
-        if($isAVVForFactory[1] == 1){
+        $avvComment = "Avv ist im nächstgelegenen Werk ".$closestFactory." Zertifiziert";
+    } else {
+        if ($isAVVForFactory[1] == 1) {
             $avvIcon = iconChecker(1);
-            $avvComment = "Avv ist nicht in nähstgelegendem Werk aber in einem anderen Werk Zertifiziert";
-        }else{
+            $avvComment = "Avv ist nicht in nächstgelegenen Werk aber in einem anderen Werk Zertifiziert";
+        } else {
             $avvIcon = iconChecker(0);
             $avvComment = "Avv ist in keinem Werk Zertifiziert";
         }
     }
 
-    echo "<h4>Rohstoff</h4>";
-    if($prodAbf=="Abfall"){
-        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
-    }   else{
-        echo "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
+    //überprüfen ob Produktions oder Abfallstatus
+    if ($prodAbf == "Abfall") {
+        $isAbfOrProd = 1; //Für ML-Analyse
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div><div class='row'><div class='col-3'>AVV-Nummer</div><div class='col-3'>$avv</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+    } else {
+        $isAbfOrProd = 0; //Für ML-Analyse
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
     }
+
+
+    //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert
+    $recomendation = getRecomendation(1,0, 0, 0, 0, 0, 1, 1, 1, $isHighestParam, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
+
+    echo "<h4>Rohstoff</h4>";
+    echo "$htmlProdAbf";
     echo "<div class='row'><div class='col-3'>Hauptbestandteil</div><div class='col-3'>$paramEval[0]</div><div class='col-1'>$iconCheckParamHigh</div><div class='col-4'>$highestParamComment</div></div>";
     echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div><br>";
     for ($i = 0; $i < $countJson; $i++) {
@@ -216,7 +245,7 @@ function buildHTMLForMaterial($offeredPrice, $paramEval, $paramJson, $amount, $c
         }
     }
     echo "<br><h4>Empfehlung:</h4>";
-    echo "<span>Annehmen / Ablehen</span><br>";
+    echo "<p>".$recomendation."</p>";
     echo "<span>Begründung:</span>";
     echo "<ul>";
     echo "<li>" . $isEconomicHtml . "</li>";
@@ -439,8 +468,12 @@ function checkEconomicConditionMaterial($offeredPrice, $highestParam, $highestVa
 function checkEconomicConditionBurn($offeredPrice)
 {
     $kohleVergPreis = 4;
-    $isEconomic = 0;
-    //ToDo: Brennwert vergleichen mit Kohlepreis;
+
+    if($offeredPrice > $kohleVergPreis){
+        $isEconomic = 0;
+    }else{
+        $isEconomic = 1;
+    }
     return $isEconomic;
 }
 
@@ -479,7 +512,6 @@ function iconChecker($result)
     }
 }
 
-
 function avvChecker($factoryName, $avv)
 {
     //avv Checker für Factory;
@@ -488,9 +520,9 @@ function avvChecker($factoryName, $avv)
     $allCert = 0; // return value 2
     $certAvvs = array(
         "Beckum" => ["020103","020104","020107","020203","020304","030101","030105","030301","030302","030307","030308","040209","040221","040222","070213","070299","080112","080114","080201","090107","090108","120105","150101","150102","150103","150105","150106","150203","160103","170201","170203","170302","190501","191201","191204","191207","191208","191210","191212"],
-        "Lägerdorf" => ["2","0202","020202","020203","0203","020304","3","0301","030101","030104","030105","0303","030301","030305","030307","030308","030309","030310","030311","4","0402","040210","040216","040221","5","0501","050103","050106","050113","050115","6","0602","060203","0605","060502","0613","061303","061305","7","0701","070104","070108","070110","070111","070112","0702","070204","070208","070210","070211","070212","070213","070214","0703","070304","070308","070310","070311","070312","0704","070404","070408","070410","0705","070504","070508","070510","070511","070512","0706","070604","070608","070610","070611","070612","0707","070704","070708","070710","070711","070712","8","080111","080113","080115","080117","080119","0803","080312","080314","0804","080409","080413","0805","080501","9","0901","090101","090103","090104","090105","10","1001","100101","100102","100103","100104","100105","100113","100114","100115","100116","100117","100118","100119","100120","100121","100122","100123","1002","100210","100211","100215","1003","100325","100326","100327","100328","1004","100409","100410","1005","100508","100509","1007","100707","100708","1008","100819","100820","1009","100905","100906","100907","100908","1010","101005","101006","101007","101008","12","1201","120105","120106","120107","120108","120109","120110","120112","120114","120116","120117","120118","120120","13","1301","130101","130104","130105","130109","130110","130111","130112","130113","1302","130204","130205","130206","130207","130208","1303","130301","130306","130307","130308","130309","130310","1304","130401","130402","130403","1305","130501","130502","130503","130506","130507","130508","1307","130701","130702","130703","1308","130801","130802","14","1406","140603","15","1501","150103","150105","150106","150110","1502","150202","150203","16","1601","160103","1607","160708","160709","1608","160801","160802","160803","160804","160805","160807","1611","161105","161106","17","1702","170201","170203","170204","1703","170301","170302","170303","1705","170503","170504","19","1902","190203","190204","190205","190206","190207","190208","190209","190210","1903","190304","190305","190306","190307","190805","1909","190902","190903","190904","190906","1911","191101","1912","191206","191207","191209","191210","191211","191212","1913","191301","191302","191303","191304","191305","191306","20","2001","200108","200113","200125","200126","200137","200138","200139","2003","200303"],
+        "Lägerdorf" => ["020202","020203","020304","030101","030104","030105","030301","030305","030307","030308","030309","030310","030311","040210","040216","040221","050103","050106","050113","050115","060203","060502","061303","061305","070104","070108","070110","070111","070112","070204","070208","070210","070211","070212","070213","070214","070304","070308","070310","070311","070312","070404","070408","070410","070504","070508","070510","070511","070512","070604","070608","070610","070611","070612","070704","070708","070710","070711","070712","080111","080113","080115","080117","080119","080312","080314","080409","080413","080501","090101","090103","090104","090105","100101","100102","100103","100104","100105","100113","100114","100115","100116","100117","100118","100119","100120","100121","100122","100123","100210","100211","100215","100325","100326","100327","100328","100409","100410","100508","100509","100707","100708","100819","100820","100905","100906","100907","100908","101005","101006","101007","101008","120105","120106","120107","120108","120109","120110","120112","120114","120116","120117","120118","120120","130101","130104","130105","130109","130110","130111","130112","130113","130204","130205","130206","130207","130208","130301","130306","130307","130308","130309","130310","130401","130402","130403","130501","130502","130503","130506","130507","130508","130701","130702","130703","130801","130802","140603","150103","150105","150106","150110","150202","150203","160103","160708","160709","160801","160802","160803","160804","160805","160807","161105","161106","170201","170203","170204","170301","170302","170303","170503","170504","190203","190204","190205","190206","190207","190208","190209","190210","190304","190305","190306","190307","190805","190902","190903","190904","190906","191101","191206","191207","191209","191210","191211","191212","191301","191302","191303","191304","191305","191306","200108","200113","200125","200126","200137","200138","200139","200303"],
         "Dotternhausen" => ["020705","030305","030310","060314","070299","070599","100117","100908","101008","120107","160103","190204","190805","191205","191210","191212"],
-        "Höver" => ["0202","020204","0203","020305","0204","020402","020403","0205","020502","0206","020603","0207","020701","020705","0301","030104","0303","030302","030305","030309","030310","030311","0402","040214","040216","040219","040220","0501","050103","050106","050109","050110","0602","060201","0605","060502","060503","0611","061101","0701","070107","070108","070109","070110","070111","070112","0702","070207","070208","070209","070210","070211","070212","070214","0703","070307","070308","070309","070310","070311","070312","0704","070408","070410","070411","070412","0705","070508","070510","070511","070512","0706","070607","070608","070609","070610","070611","070612","0707","070708","070710","070711","070712","0801","080111","080112","080113","080114","080117","0802","080201","0803","080207","080312","080313","080314","080315","0804","080409","080410","080411","1001","100102","100103","100120","100121","1002","100210","1013","101301","101304","101306","101307","101311","101312","101313","101314","1201","120102","120104","120112","120118","1305","130502","130503","1501","150110","1502","150202","1603","160306","1607","160708","160709","1701","170101","1702","170204","1703","170301","170303","1902","190204","190209","190210","1903","190305","190307","1908","190811","190812","190813","190814","1909","190901","190902","190903","190905","1911","191101","191105","191106","1912","191206","2001","200108","200125","200126","200128","200137","0201","020103","020104","020107","0203","020304","0301","030101","030105","0303","030301","030307","030308","0402","040209","040210","040215","040221","040222","0702","070213","0901","090107","090108","090110","1201","120105","1501","150101","150102","150103","150105","150106","150109","1502","150203","1601","160119","1702","170201","170203","1706","170604","1709","170904","1902","190203","190210","1905","190501","190502","190503","1908","190805","1910","191004","1912","191201","191204","191207","191208","191210","191212","2001","200101","200110","200111","200138","200139","2002","200203","2003","200301","200302","200307","1601","160103","0201","020102","0202","020202","020203","0613","061302","061303","061305","0803","080317","080318","1703","170303","1909","190904","0701","070103","070104","0702","070203","070204","0703","070303","070304","0704","070403","070404","0705","070503","070504","0706","070603","070604","070703","070704","0803","080319","1201","120107","120110","120119","1301","130101","130109","130110","130111","130112","130113","1302","130204","130205","130206","130207","130208","1303","130301","130306","130307","130308","130309","130310","1304","130401","130402","130403","1305","130506","1307","130701","130702","130703","1406","140602","140603","1902","190207","190208","2001","200113","0602","060203","0706","070601","0901","090101","090102","090103","090104","090105","1610","161002","2001","200117"],
+        "Höver" => ["020204","020305","020402","020403","020502","020603","020701","020705","030104","030302","030305","030309","030310","030311","040214","040216","040219","040220","050103","050106","050109","050110","060201","060502","060503","061101","070107","070108","070109","070110","070111","070112","070207","070208","070209","070210","070211","070212","070214","070307","070308","070309","070310","070311","070312","070408","070410","070411","070412","070508","070510","070511","070512","070607","070608","070609","070610","070611","070612","070708","070710","070711","070712","080111","080112","080113","080114","080117","080201","080207","080312","080313","080314","080315","080409","080410","080411","100102","100103","100120","100121","100210","101301","101304","101306","101307","101311","101312","101313","101314","120102","120104","120112","120118","130502","130503","150110","150202","160306","160708","160709","170101","170204","170301","170303","190204","190209","190210","190305","190307","190811","190812","190813","190814","190901","190902","190903","190905","191101","191105","191106","191206","200108","200125","200126","200128","200137","020103","020104","020107","020304","030101","030105","030301","030307","030308","040209","040210","040215","040221","040222","070213","090107","090108","090110","120105","150101","150102","150103","150105","150106","150109","150203","160119","170201","170203","170604","170904","190203","190210","190501","190502","190503","190805","191004","191201","191204","191207","191208","191210","191212","200101","200110","200111","200138","200139","200203","200301","200302","200307","160103","020102","020202","020203","061302","061303","061305","080317","080318","170303","190904","070103","070104","070203","070204","070303","070304","070403","070404","070503","070504","070603","070604","070703","070704","080319","120110","120119","130101","130110","130111","130112","130113","130204","130205","130207","130208","130301","130306","130307","130309","130310","130401","130402","130403","130506","130701","130702","130703","140602","140603","190207","190208","200113","060203","070601","090101","090102","090103","090104","090105","161002","200117"],
     );
 
     $factoryAVV = array_search($avv, $certAvvs[$factoryName]);  // checkt, ob Avv in nächstgelegenem Werk zertifiziert ist
@@ -516,6 +548,33 @@ function avvChecker($factoryName, $avv)
      ***/
     //print_r([$factCert, $allCert]);
     return [$factCert, $allCert];
+}
+
+function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert)
+{
+    $param = [$rohBrenn, $wasser, $asche, $chlor, $schwefel, $kalium, $magnesium, $natrium, $queck, $rohMainParam, $menge, $preis, $abfPro, $avvZert];
+
+    $dataset = new CsvDataset($_SERVER['DOCUMENT_ROOT'].'/Projekte/geocycle/components/script/analyse/datasetsML/data.csv', 14, true);
+    //$samples = [[1, 0, 0, 0, 0,0,1,1,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,0,1]];
+    //$labels = ['a', 'b', 'b'];
+
+    $samples = $dataset->getSamples();
+    $labels = $dataset->getTargets();
+
+    $classifier = new DecisionTree();
+    $classifier->train($samples, $labels);
+
+    $recomendation = $classifier->predict($param);
+
+    if($recomendation == "a"){
+        $result = "Annehmen";
+    }elseIf($recomendation == "b"){
+        $result = "Ablehnen";
+    }else{
+        $result = $recomendation;
+    }
+
+    return $result;
 }
 
 ?>

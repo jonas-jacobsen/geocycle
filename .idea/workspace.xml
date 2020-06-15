@@ -4,10 +4,6 @@
     <expand>
       <path>
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
       <path>
@@ -16,14 +12,22 @@
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/components/script/analyse/composer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/script/analyse/composer.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,22 +95,22 @@
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/script" />
-      <recent name="$PROJECT_DIR$/composer" />
-      <recent name="$PROJECT_DIR$/js/addons" />
-      <recent name="$PROJECT_DIR$/css/addons" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/components/script" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/js/fileUpload" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components/script/analyse/datasetsML" />
+      <recent name="$PROJECT_DIR$/components/script/analyse" />
+      <recent name="$PROJECT_DIR$/components/script" />
+      <recent name="$PROJECT_DIR$/composer" />
+      <recent name="$PROJECT_DIR$/js/addons" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -141,7 +145,8 @@
       <workItem from="1590701976835" duration="43855000" />
       <workItem from="1591307303666" duration="106498000" />
       <workItem from="1591951300430" duration="3737000" />
-      <workItem from="1592038656485" duration="23982000" />
+      <workItem from="1592038656485" duration="24907000" />
+      <workItem from="1592215881958" duration="10257000" />
     </task>
     <servers />
   </component>
@@ -166,10 +171,10 @@
     </state>
     <state x="228" y="76" key="#CLI_Interpreters/0.0.1280.800@0.0.1280.800" timestamp="1592043653627" />
     <state x="228" y="97" key="#CLI_Interpreters/0.23.1280.777@0.23.1280.777" timestamp="1592039595333" />
-    <state x="240" y="56" key="#Deployment" timestamp="1589040095861">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1618" y="133" key="#Deployment" timestamp="1592219971852">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
-    <state x="-2080" y="100" key="#Deployment/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588507068294" />
+    <state x="-1618" y="133" key="#Deployment/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592219971852" />
     <state x="240" y="56" key="#Deployment/0.0.1280.800@0.0.1280.800" timestamp="1589040095860" />
     <state x="240" y="77" key="#Deployment/0.23.1280.777@0.23.1280.777" timestamp="1588416913853" />
     <state x="34" y="30" key="#SSH_Configurations" timestamp="1589040084417">
@@ -182,9 +187,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1592131132839" />
-    <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592045323257">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1850" y="376" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592255202149">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
+    <state x="-1850" y="376" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592255202149" />
     <state x="355" y="209" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.800@0.0.1280.800" timestamp="1592045323257" />
     <state x="396" y="289" width="488" height="293" key="ComposerInitDialogKey" timestamp="1592043655089">
       <screen x="0" y="0" width="1280" height="800" />
@@ -196,11 +202,11 @@
     </state>
     <state x="-1457" y="650" key="NewPhpFileDialog/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591774138537" />
     <state x="552" y="361" key="NewPhpFileDialog/0.0.1280.800@0.0.1280.800" timestamp="1592057162367" />
-    <state x="150" y="78" key="SettingsEditor" timestamp="1592039596365">
-      <screen x="0" y="23" width="1280" height="777" />
+    <state x="-2260" y="102" key="SettingsEditor" timestamp="1592220074870">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1695" y="77" key="SettingsEditor/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591571017507" />
-    <state x="-2260" y="102" key="SettingsEditor/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584490519" />
+    <state x="-2260" y="102" key="SettingsEditor/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592220074870" />
     <state x="150" y="78" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1592039596365" />
     <state x="380" y="221" width="540" height="524" key="StructurePopup" timestamp="1589662212712">
       <screen x="0" y="0" width="1280" height="800" />
@@ -246,11 +252,11 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1615" y="345" key="run.anything.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584507328" />
-    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup" timestamp="1592120468580">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1592220234833">
+      <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632608619" />
-    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591903706573" />
+    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592220234833" />
     <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1592120468580" />
   </component>
 </project>
