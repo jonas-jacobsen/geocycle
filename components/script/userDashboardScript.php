@@ -125,7 +125,7 @@ function showCloseRequest($conn, $userId, $lang)
 
     //text falls keine Anfragen vorhanden sind
     if (mysqli_num_rows($stmtCloseRequest) < 1) {
-        echo "<p>Keine Abgeschlossen Anfragen vorhanden</p>";
+        echo "<p>Keine abgeschlossenen Anfragen vorhanden</p>";
     } else {
         echo '
     <div class="table-responsive">

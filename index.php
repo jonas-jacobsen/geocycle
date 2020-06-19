@@ -113,6 +113,7 @@ if (isset($_POST['submitOne'])) {
     <!-- Default form register -->
     <form action="" method="post" class="text-center border border-light p-5">
         <p class="h4 mb-4"><?php echo $lang['indexFormTitle'] ?></p>
+        <p mb-4"><?php echo $lang['indexFormInfoText'] ?></p>
         <!-- First name -->
         <input type="text" id="company" name="company" class="form-control mb-4"
                placeholder="<?php echo $lang['indexCompany'] ?>"

@@ -1,6 +1,7 @@
 <?php
 $lang = array(
     "indexFormTitle" => "Register your company",
+    "indexFormInfoText" => "This tool helps you sending requests for waste disposal to Geocycle.If you have already created an account, please sign in via the log-in field.If you do not have an account, register your company in order to be able to save the data of your request.",
     "indexTermsAndCondition" => "By clicking <em>Register</em> you agree to our <a href=\'\' target=\"_blank\">terms of use</a>",
     "indexCookie" => "We use cookies for our website",
     "indexCookieClose" => "Close",
@@ -48,7 +49,7 @@ $lang = array(
     "requestInfoParaList" => "<u>Note</u>: The following parameters need to be filled in manually in order for our tool to analyse them automatically. This step accelerates the process substantially. Thank you for your understanding. Also consider the <a href=\"\">waste we exclude</a>",
     "requestParamIsWhat" => "It is a",
 
-    "requestContactInformationButton" => "Save",
+    "requestContactInformationButton" => "<a class=\"info_toogle_hover\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"top\" data-content=\"You can save your information and return to your request anytime.\">Save</a>",
     "requestTown" => "Town",
     "requestZip" => "Zip",
     "requestStreetAndNumber" => "Street and Number",
