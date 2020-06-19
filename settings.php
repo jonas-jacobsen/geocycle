@@ -50,15 +50,36 @@ include("components/headerAdmin.php");
                             <p>Zum Anmelden neuer Teammitglieder benötigen diese einen Zugangscode</p>
                             <h6>Security Code ändern:</h6>
                             <form class="form-inline md-form mr-auto mb-4" id="changeSecCode" method="post">
-                                <input class="form-control mr-sm-4" name="secCode" type="text" placeholder="<?php showSecCode($conn);?>" aria-label="<?php showSecCode($conn);?>">
+                                <input class="form-control mr-sm-4" name="secCode" type="text"
+                                       placeholder="<?php showSecCode($conn); ?>"
+                                       aria-label="<?php showSecCode($conn); ?>">
                                 <button class="btn" name="changeSecCode" type="submit">Ändern</button>
                             </form>
                             <h6 class="mt-5">Security Code verschicken:</h6>
                             <form class="form-inline md-form mr-auto mb-4" id="SendSecCode" method="post">
-                                <input type="hidden" name="securCode" value="<?php showSecCode($conn);?>">
-                                <input class="form-control mr-sm-4" name="emailSecCode" type="text" placeholder="maxmustermann@gmx.de" aria-label="maxmustermann@gmx.de">
-                                <button class="btn" name="sendSecCode" value="buttonclicket" type="submit">Senden</button>
+                                <input type="hidden" name="securCode" value="<?php showSecCode($conn); ?>">
+                                <input class="form-control mr-sm-4" name="emailSecCode" type="text"
+                                       placeholder="maxmustermann@gmx.de" aria-label="maxmustermann@gmx.de">
+                                <button class="btn" name="sendSecCode" value="buttonclicket" type="submit">Senden
+                                </button>
                             </form>
+                        </div>
+                    </div><!--End card body-->
+                </div><!--End Card-->
+            </div><!--End col md -->
+
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Seiteneinstellung</h2>
+                            <p>Hier lassen sich ein Paar Änderungen des Designs durchführen</p>
+                            <!-- Default checked -->
+                            <div class="custom-control custom-switch">
+                                <input type="checkbox" onclick="myFunction()" class="custom-control-input" id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1">In den Darkmode wechseln</label>
+                            </div>
                         </div>
                     </div><!--End card body-->
                 </div><!--End Card-->
@@ -84,6 +105,14 @@ include("components/headerAdmin.php");
 
 <!-- Script for Datatable-->
 <script type="text/javascript" src="js/addons/datatables.min.js"></script>
+
+<!-- Script for Darkmode -->
+<script type="text/javascript">
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+</script>
 
 </body>
 </html>
