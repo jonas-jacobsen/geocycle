@@ -73,14 +73,14 @@ $procDescr = $row['ProcessDescription'];
 //radiobuttons Check wich one is choosen
 $radioOnPro = "";
 $radioOnAbf = "";
-if ($prodAbf == "Produktstatus") {
-    $radioOnPro = "checked";
-} elseif ($prodAbf == "Abfall") {
-    $radioOnAbf = "checked";
-} else {
-    $radioOnPro = "";
-    $radioOnAbf = "";
-}
+    if ($prodAbf == "Produktstatus") {
+        $radioOnPro = "checked";
+    } elseif ($prodAbf == "Abfall") {
+        $radioOnAbf = "checked";
+    } else {
+        $radioOnPro = "checked";
+        $radioOnAbf = "";
+    }
 
 $radioOnErz = "";
 $radioOnHae = "";
@@ -89,7 +89,7 @@ if ($erzHae == "Erzeuger") {
 } elseif ($erzHae == "Händler") {
     $radioOnHae = "checked";
 } else {
-    $radioOnErz = "";
+    $radioOnErz = "checked";
     $radioOnHae = "";
 }
 //parameterliste verabeitung auf requestSeite

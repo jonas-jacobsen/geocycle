@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Quecksilber",
+    "value": "6",
+    "check": "0",
+    "unit": "mg \/ kg",
+    "comment": ""
+  },
+  {
+    "name": "Wassergehalt",
+    "value": "5",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Chlorgehalt",
+    "value": "6",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Schwefelgehalt",
+    "value": "6",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Calciumgehalt",
+    "value": "6",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Silliciumgehalt",
+    "value": "7",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Eisengehalt",
+    "value": "8",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Aluminiumgehalt",
+    "value": "5",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Magnesiumgehalt",
+    "value": "9",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Kaliumgehalt",
+    "value": "7",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Natriumgehalt",
+    "value": "8",
+    "check": "0",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "oneValueTooHigh": 1
+  }
+]

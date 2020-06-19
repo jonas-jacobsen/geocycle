@@ -200,24 +200,24 @@ include("components/header.php");
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="produkt"
                                                    name="prodAbf" value="Produktstatus" <?php echo $radioOnPro ?>>
-                                            <label class="custom-control-label" for="produkt">Produktstatus</label>
+                                            <label class="custom-control-label" for="produkt"> <?php echo $lang['requestWhatsAboutProduct'] ?></label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="abfall"
                                                    name="prodAbf" value="Abfall" <?php echo $radioOnAbf ?>>
-                                            <label class="custom-control-label" for="abfall">Abfall</label>
+                                            <label class="custom-control-label" for="abfall"><?php echo $lang['requestWhatsAboutWaste'] ?></label>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
+                                        <div class="md-form input-with-post-icon">
+                                            <i class="fas fa-trash input-prefix"></i>
+                                            <input type="text" id="abfallbezeichnung" class="form-control"
+                                                   name="wasteDescription"
+                                                   value="<?php echo $wasteDescription ?>">
+                                            <label for="abfallbezeichnung"><?php echo $lang['requestWasteDescription'] ?></label>
+                                        </div>
                                         <div class="abfallstatus">
-                                            <div class="md-form input-with-post-icon">
-                                                <i class="fas fa-trash input-prefix"></i>
-                                                <input type="text" id="abfallbezeichnung" class="form-control"
-                                                       name="wasteDescription"
-                                                       value="<?php echo $wasteDescription ?>">
-                                                <label for="abfallbezeichnung"><?php echo $lang['requestWasteDescription'] ?></label>
-                                            </div>
                                             <div class="md-form input-with-post-icon">
                                                 <i class="fas fa-trash input-prefix"></i>
                                                 <input type="text" id="avv" class="form-control" name="avv"
@@ -295,18 +295,27 @@ include("components/header.php");
                                             <option value="DAT" <?php echo $deliveryFormDAT ?>>DAT</option>
                                         </select>
                                         <br>
-                                        <i><?php echo $lang['requestIcotermsDescription'] ?><a
-                                                    href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806"
-                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?></a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>
-                                            .</i>
+                                        <i><?php echo $lang['requestIcotermsDescription'] ?>
+                                            <a href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806"
+                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?>
+                                            </a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>
+                                        </i>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="md-form input-with-post-icon">
                                             <i class="fas fa-weight-hanging input-prefix"></i>
                                             <input type="text" id="materialQuantity" class="form-control" name="jato"
                                                    value="<?php echo $jato ?>">
                                             <label for="materialQuantity"><?php echo $lang['requestLableAmountTonne'] ?></label>
                                         </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <label for="incoterms"><?php echo $lang['requestLableWeightCondition'] ?></label>
+                                        <select class="form-control" id="incoterms" name="deliveryForm">
+                                            <option value="Jato"><?php echo $lang['requestLableSelectWeightConditionJato'] ?></option>
+                                            <option value="Saison"><?php echo $lang['requestLableSelectWeightConditionSaison'] ?></option>
+                                            <option value="Spotmenge"><?php echo $lang['requestLableSelectWeightConditionSpot'] ?></option>
+                                        </select>
                                     </div>
                                 </div>
 
@@ -686,6 +695,11 @@ include("components/header.php");
      **/
     let avvInput = document.getElementById('avv');
     autocomplete(avvInput, avvSuggs); // adds autocomplete for Parameter-Input
+
+    // popovers Initialization
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
 </script>
 
 <script type="text/javascript" src="js/requestJs/radioSelection.js"></script>

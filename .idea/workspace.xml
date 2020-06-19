@@ -22,11 +22,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/components/script/analyse/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/script/analyse/composer.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languages/de.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/de.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languages/en.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +148,8 @@
       <workItem from="1591307303666" duration="106498000" />
       <workItem from="1591951300430" duration="3737000" />
       <workItem from="1592038656485" duration="24907000" />
-      <workItem from="1592215881958" duration="10257000" />
+      <workItem from="1592215881958" duration="10462000" />
+      <workItem from="1592397154055" duration="13020000" />
     </task>
     <servers />
   </component>
@@ -221,19 +224,20 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1680" y="460" key="Vcs.Push.Dialog.v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591303085163" />
-    <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592133386138">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1107" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592409940402">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="-1107" y="481" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1592409940402" />
     <state x="-1477" y="641" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591783693090" />
     <state x="542" y="356" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1592133386138" />
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog" timestamp="1592043298107">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1592043298107" />
-    <state x="112" y="140" width="1136" height="582" key="find.popup" timestamp="1592089697861">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1920" y="370" width="1704" height="710" key="find.popup" timestamp="1592401967421">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632031652" />
+    <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1592401967421" />
     <state x="-2560" y="542" width="2272" height="898" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591902518027" />
     <state x="112" y="140" width="1136" height="582" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1592089697861" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
@@ -252,10 +256,10 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1615" y="345" key="run.anything.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584507328" />
-    <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup" timestamp="1592220234833">
-      <screen x="-2560" y="0" width="2560" height="1440" />
+    <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup" timestamp="1592408156147">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1591632608619" />
+    <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1592408156147" />
     <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592220234833" />
     <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1592120468580" />
   </component>
