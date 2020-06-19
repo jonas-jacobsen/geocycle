@@ -696,7 +696,7 @@ include("components/header.php");
     let avvInput = document.getElementById('avv');
     autocomplete(avvInput, avvSuggs); // adds autocomplete for Parameter-Input
 
-    // popovers Initialization
+    // popovers Initialization - Kommentarfelder
     $(function () {
         $('[data-toggle="popover"]').popover()
     })

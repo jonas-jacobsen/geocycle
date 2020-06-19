@@ -5,6 +5,12 @@ include("components/script/email.php");
 $userId = $_SESSION['userId'];
 $msgModalSendRequest = "";
 
+//emailadresse vom admin holen
+$sqlAdminUser = "SELECT Email AS EmailAdmin FROM adminuser WHERE TeamAllocation = 1";
+$stmtAdminUser = mysqli_query($conn, $sqlAdminUser);
+$rowAdminUser = mysqli_fetch_array($stmtAdminUser);
+$adminEmail = $rowAdminUser['EmailAdmin'];
+
 //Anfrage wurde abgesendet, wird von Offen in abgeshlossen umgewandelt
 //hier noch prüfen ob es sich um eine erneute, abgewandelte Anfrage handelt (Vorhandene Daten aus anderer Anfrage)
 $requestIsFilledOutAgain = $_POST['requestIsFilledOutAgain'];
@@ -21,8 +27,8 @@ if($requestIsFilledOutAgain == "1"){
         $msgModalSendRequest = '<div class="alert alert-success msg mt-5" role="alert">
                               Deine Anfrage mit der Id ' . $requestIdFilledOut . ' wurde erfolgreich abgeschickt!
                             </div>';
-
-        sendMailToAdmin("jonas.jacobsen1992@hotmail.de", "geocycle@adminpanel.de");
+        //Infomail an Admin schicken
+        sendMailToAdmin($adminEmail, "geocycle@adminpanel.com");
     }
 }
 

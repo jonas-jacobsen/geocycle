@@ -98,6 +98,17 @@ $errorShow = "";
 if(isset($_POST['buttonSubmit'])){
     $requestId = $_POST['requestId'];
     $textfield = $_POST['textfield'];
+
+    //user email aus DB holen
+    $sqlUserId = "SELECT userId AS id FROM userdata WHERE id = $requestId";
+    $stmtUserId = mysqli_query($conn,$sqlUserId);
+    $rowUserId= mysqli_fetch_array($stmtUserId);
+    $userIdEmail = $rowUserId['id'];
+    $sqlUserEmail = "SELECT Email AS Email FROM user WHERE id = $userIdEmail";
+    $stmtUserEmail = mysqli_query($conn,$sqlUserEmail);
+    $rowUserEmail= mysqli_fetch_array($stmtUserEmail);
+    $userEmail = $rowUserEmail['Email'];
+
     if($_POST['buttonSubmit'] == 1){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 2, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
@@ -105,7 +116,7 @@ if(isset($_POST['buttonSubmit'])){
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
         //antwortemail an User senden
-        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "angenommen", $textfield);
+        sendMailToUser($userEmail, "info@geocycle.com", "angenommen", $textfield);
     }if($_POST['buttonSubmit'] == 0){
         $sql = "UPDATE userdata SET AdminWorkInProgress = 3, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
@@ -113,7 +124,7 @@ if(isset($_POST['buttonSubmit'])){
                               Die Anfrage wurde abgelehnt!
                             </div>";
         //antwortemail an User senden
-        sendMailToTeamUser("jonas.jacobsen1992@hotmail.de", "info@geocycle.com", "abgelehnt", $textfield);
+        sendMailToUser($userEmail, "info@geocycle.com", "abgelehnt", $textfield);
     }else {
     }
 }

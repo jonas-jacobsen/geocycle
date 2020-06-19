@@ -26,7 +26,7 @@ function sendMailToTeamAdmin($to, $from){
     return $mail -> send();
 }
 
-function sendMailToTeamUser($to, $from, $msg, $textfield){
+function sendMailToUser($to, $from, $msg, $textfield){
     $mail = new PHPMailer();
     $mail ->setFrom($from);
     $mail ->addAddress($to);

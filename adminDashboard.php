@@ -4,6 +4,7 @@ include("components/sessionAdmin.php");
 include("components/config.php");
 include("components/script/adminDashboardScript.php");
 include("components/headerAdmin.php");
+include("components/script/diagrammScripts.php");
 ?>
 
 <body>
@@ -117,7 +118,6 @@ include("components/headerAdmin.php");
                     </div><!--End Card-->
                 </div><!--End col md -->
             </div><!--End row-->
-
             <!--Section: Content-->
             <section class="white-text green p-5 rounded mb-4">
                 <div class="row">
@@ -125,7 +125,7 @@ include("components/headerAdmin.php");
                     <div class="col-md-4 mb-4">
                         <div class="row">
                             <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="2"
+                                <h4 class="display-4 text-right mb-0 count-up" data-from="0" data-to="<?php echo $rowCountOpenRequest['TotalCountOpen'] ?>"
                                     data-time="2000">42</h4>
                             </div>
 
@@ -139,12 +139,12 @@ include("components/headerAdmin.php");
                     <div class="col-md-4 mb-4">
                         <div class="row">
                             <div class="col-6 pr-0">
-                                <h4 class="display-4 text-right mb-0 count1" data-from="0" data-to="50"
+                                <h4 class="display-4 text-right mb-0 count1" data-from="0" data-to="<?php echo $rowCountOpenUser['TotalCountUser'] ?>"
                                     data-time="2000">3,500</h4>
                             </div>
 
                             <div class="col-6">
-                                <p class="text-uppercase font-weight-normal mb-1">Kunden</p>
+                                <p class="text-uppercase font-weight-normal mb-1">User</p>
                                 <p class="mb-0"><i class="fas fa-user fa-2x mb-0"></i></p>
                             </div>
                         </div>
@@ -154,10 +154,9 @@ include("components/headerAdmin.php");
                         <div class="row">
                             <div class="col-6 pr-0">
                                 <h4 class="display-4 text-right"><span class="d-flex justify-content-end"><span
-                                                class="count2" data-from="0" data-to="85"
+                                                class="count2" data-from="0" data-to="<?php echo $acceptedPercent ?>"
                                                 data-time="2000">0</span> %</span></h4>
                             </div>
-
                             <div class="col-6">
                                 <p class="text-uppercase font-weight-normal mb-1">Erfolgreich angenommen</p>
                                 <p class="mb-0"><i class="fas fa-smile fa-2x mb-0"></i></p>
