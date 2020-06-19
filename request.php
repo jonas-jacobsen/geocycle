@@ -360,7 +360,7 @@ include("components/header.php");
                                         <!-- PFLICHT FELDER -->
                                         <!-- Unterer Heizwert -->
                                         <div class="ing-row" id="row0">
-                                            <input type="text" name="param" value="Unterer Heizwert" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListUH'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $unterHo ?>"
                                                    autocomplete="off"
@@ -376,7 +376,7 @@ include("components/header.php");
 
                                         <!-- Wassergehalt -->
                                         <div class="ing-row brennstoff rohstoff" id="row1">
-                                            <input type="text" name="param" value="Wassergehalt" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListWasser'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $wassergehalt ?>"
                                                    autocomplete="off"
@@ -393,7 +393,7 @@ include("components/header.php");
 
                                         <!-- Aschegehalt -->
                                         <div class="ing-row brennstoff" id="row2">
-                                            <input type="text" name="param" value="Aschegehalt" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListAsche'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $aschegehalt ?>"
                                                    autocomplete="off"
@@ -410,7 +410,7 @@ include("components/header.php");
 
                                         <!-- Chlor -->
                                         <div class="ing-row brennstoff rohstoff" id="row3">
-                                            <input type="text" name="param" value="Chlor" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListChlor'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $chlor ?>"
                                                    autocomplete="off"
@@ -427,7 +427,7 @@ include("components/header.php");
 
                                         <!-- Schwefel -->
                                         <div class="ing-row brennstoff rohstoff" id="row4">
-                                            <input type="text" name="param" value="Schwefel" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListSchwefel'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $schwefel ?>"
                                                    autocomplete="off"
@@ -444,7 +444,7 @@ include("components/header.php");
 
                                         <!-- Quecksilber -->
                                         <div class="ing-row brennstoff rohstoff" id="row5">
-                                            <input type="text" name="param" value="Quecksilber" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListQueck'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $quecksilber ?>"
                                                    autocomplete="off"
@@ -463,7 +463,7 @@ include("components/header.php");
 
                                         <!-- Calcium -->
                                         <div class="ing-row rohstoff" id="row6">
-                                            <input type="text" name="param" value="Calcium" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListCalcium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $calcium ?>"
                                                    autocomplete="off"
@@ -481,7 +481,7 @@ include("components/header.php");
 
                                         <!-- Silizium -->
                                         <div class="ing-row rohstoff" id="row7">
-                                            <input type="text" name="param" value="Silizium" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListSilicium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $silicium ?>"
                                                    autocomplete="off"
@@ -500,7 +500,7 @@ include("components/header.php");
 
                                         <!-- Eisen -->
                                         <div class="ing-row rohstoff" id="row8">
-                                            <input type="text" name="param" value="Eisen" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListEisen'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $eisen ?>"
                                                    autocomplete="off"
@@ -518,7 +518,7 @@ include("components/header.php");
 
                                         <!-- Magnesium -->
                                         <div class="ing-row rohstoff" id="row9">
-                                            <input type="text" name="param" value="Magnesium" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListMagnesium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $magnesium ?>"
                                                    autocomplete="off"
@@ -536,7 +536,7 @@ include("components/header.php");
 
                                         <!-- Kaliumoxid -->
                                         <div class="ing-row rohstoff" id="row10">
-                                            <input type="text" name="param" value="Kaliumoxid" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListKaliumoxid'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $kalium ?>"
                                                    autocomplete="off"
@@ -554,7 +554,7 @@ include("components/header.php");
 
                                         <!-- Natriumoxid -->
                                         <div class="ing-row rohstoff" id="row11">
-                                            <input type="text" name="param" value="Natriumoxid" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListNatriumoxid'] ?>Natriumoxid" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $natrium ?>"
                                                    autocomplete="off"
@@ -572,7 +572,7 @@ include("components/header.php");
 
                                         <!-- Aluminium -->
                                         <div class="ing-row rohstoff" id="row12">
-                                            <input type="text" name="param" value="Aluminium" disabled=""/>
+                                            <input type="text" name="param" value="<?php echo $lang['requestParamListAluminium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $aluminium ?>"
                                                    autocomplete="off"

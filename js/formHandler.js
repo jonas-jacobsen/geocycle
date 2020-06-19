@@ -354,7 +354,6 @@ $(function () {
 });
 
 //Progressbar überprüfen bei Ajax-Caall
-
 function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar) {
     docOneCheckVarTmp = 0;
     if (docOneCheckVar == 3) {
