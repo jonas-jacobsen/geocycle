@@ -11,16 +11,18 @@ function showNewRequest($conn)
         $town = $dataAllRequest['Town'];
         $weight = $dataAllRequest['JaTo'];
         $avv = $dataAllRequest['Avv'];
+        $description = $dataAllRequest['WasteDescription'];
+        $abPro = $dataAllRequest['ProdAbf'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $requestDate = $dataAllRequest['IncomingRequestDate'];
         $producer = $dataAllRequest['Producer'];
         echo '
         <tr id="rowWithId' . $requestId . '">
             <td>' . $requestId . '</td>
-            <td>' . $name . '</td>
-            <td>' . $town . '</td>
-            <td>' . $weight . '</td>
+            <td>' . $description . '</td>
+            <td>' . $abPro . '</td>
             <td>' . $avv . '</td>
+            <td>' . $weight . '</td>
             <td>' . $deliveryForm . '</td>
             <td>' . $requestDate . '</td>
             <td>
@@ -50,6 +52,7 @@ function showAllRequest($conn)
         $town = $dataAllRequest['Town'];
         $weight = $dataAllRequest['JaTo'];
         $avv = $dataAllRequest['Avv'];
+        $description = $dataAllRequest['WaistDescription'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $requestDate = $dataAllRequest['IncomingRequestDate'];
         $allocation = $dataAllRequest['Allocation'];

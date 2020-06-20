@@ -199,12 +199,18 @@ include("components/headerAdmin.php");
 <script type="text/javascript">
     $(document).ready(function () {
         $('#dtBasicExample').DataTable({
-            "scrollX": true
+            "scrollX": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/German.json"
+            }
         });
     });
     $(document).ready(function () {
         $('#acceptedRequest').DataTable({
-            "scrollX": true
+            "scrollX": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/German.json"
+            }
         });
     });
 

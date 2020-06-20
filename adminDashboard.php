@@ -59,13 +59,13 @@ include("components/script/diagrammScripts.php");
                                 <tr>
                                     <th class="th-sm">Anfrage ID
                                     </th>
-                                    <th class="th-sm">Name
+                                    <th class="th-sm">Beschreibung
                                     </th>
-                                    <th class="th-sm">Ort
-                                    </th>
-                                    <th class="th-sm">Menge
+                                    <th class="th-sm">Abfall oder Produktstatus
                                     </th>
                                     <th class="th-sm">AVV
+                                    </th>
+                                    <th class="th-sm">Menge
                                     </th>
                                     <th class="th-sm">Anlieferform
                                     </th>
@@ -199,10 +199,16 @@ include("components/script/diagrammScripts.php");
 <script type="text/javascript">
     $(document).ready(function () {
         $('#dtBasicExample').DataTable({
-            "scrollX": true
+            "scrollX": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/German.json"
+            }
         });
         $('#allRequests').DataTable({
-            "scrollX": true
+            "scrollX": true,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/German.json"
+            }
         });
     });
 
