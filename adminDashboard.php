@@ -18,7 +18,7 @@ include("components/script/diagrammScripts.php");
             <!--Grid row-->
             <div class="row wow fadeIn">
                 <!--Grid column-->
-                <div class="col-lg-6 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <!--Card-->
                     <div class="card">
                         <!-- Card header -->
@@ -30,17 +30,30 @@ include("components/script/diagrammScripts.php");
                     </div>
                     <!--/.Card-->
                 </div>
+                <!-- End Grid column-->
                 <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-6 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-4 mb-4">
                     <!--Card-->
                     <div class="card">
                         <!-- Card header -->
-                        <div class="card-header white">Brennstoff / Rohstoff</div>
+                        <div class="card-header white">Produkt- / Abfallstatus</div>
                         <!--Card content-->
                         <div class="card-body">
                             <canvas id="pieChart"></canvas>
+                        </div>
+                    </div>
+                    <!--/.Card-->
+                </div>
+                <!--End Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-4 mb-4">
+                    <!--Card-->
+                    <div class="card">
+                        <!-- Card header -->
+                        <div class="card-header white">AVV</div>
+                        <!--Card content-->
+                        <div class="card-body">
+                            <canvas id="pieChartAVV"></canvas>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -187,6 +200,14 @@ include("components/script/diagrammScripts.php");
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+<!-- variablen for Charts-->
+<script type="text/javascript">
+    //Variablen für Diagramme
+    var avvLables = [<?php echo $avvPiechartLables ?>];
+
+    //Piechart Abfall/Produkt
+    var prodAbfData = [<?php echo $totalProd ?>,<?php echo $totalAbf ?>];
+</script>
 <!-- script for Charts -->
 <script type="text/javascript" src="js/charts/charts.js"></script>
 <!-- Script for Datatable-->

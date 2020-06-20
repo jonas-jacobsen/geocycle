@@ -53,9 +53,26 @@ var ctxD = document.getElementById("pieChart").getContext('2d');
 var myLineChart = new Chart(ctxD, {
     type: 'doughnut',
     data: {
-        labels: ["Brennstoff", "Rohstoff"],
+        labels: ["Produktstatus", "Abfallstatus"],
         datasets: [{
-            data: [300, 50],
+            data: prodAbfData,
+            backgroundColor: ["#F7464A", "#46BFBD"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
+        }]
+    },
+    options: {
+        responsive: true
+    }
+});
+
+//doughnut AVV
+var ctxDAVV = document.getElementById("pieChartAVV").getContext('2d');
+var myLineChartAVV = new Chart(ctxDAVV, {
+    type: 'doughnut',
+    data: {
+        labels: avvLables,
+        datasets: [{
+            data: [300, 50, 50],
             backgroundColor: ["#F7464A", "#46BFBD"],
             hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
         }]
