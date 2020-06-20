@@ -52,7 +52,8 @@ function showAllRequest($conn)
         $town = $dataAllRequest['Town'];
         $weight = $dataAllRequest['JaTo'];
         $avv = $dataAllRequest['Avv'];
-        $description = $dataAllRequest['WaistDescription'];
+        $abPro = $dataAllRequest['ProdAbf'];
+        $description = $dataAllRequest['WasteDescription'];
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $requestDate = $dataAllRequest['IncomingRequestDate'];
         $allocation = $dataAllRequest['Allocation'];
@@ -69,10 +70,10 @@ function showAllRequest($conn)
         echo '
         <tr class="rowId' . $requestId . ' ' . $backgroudstyle . '">
             <td>' . $requestId . '</td>
-            <td>' . $name . '</td>
-            <td>' . $town . '</td>
-            <td>' . $weight . '</td>
+            <td>' . $description . '</td>
+            <td>' . $abPro . '</td>
             <td>' . $avv . '</td>
+            <td>' . $weight . '</td>
             <td>' . $requestDate . '</td>
             <td id="allocationValue' . $requestId . '">' . $allocation . '</td>
             <td>

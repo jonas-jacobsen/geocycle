@@ -5,7 +5,7 @@ var lineChart = new Chart(ctx, {
         labels: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
         datasets: [{
             label: 'Gesamt Anzahl',
-            data: [12, 19, 3, 5, 2, 3, 7, 30, 25, 17, 9, 13, 17],
+            data: [jan, feb, mae, apr, mai, jun, jul, aug, sep, okt, nov, dec],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 99, 132, 0.2)',

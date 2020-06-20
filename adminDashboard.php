@@ -108,13 +108,13 @@ include("components/script/diagrammScripts.php");
                                 <tr>
                                     <th class="th-sm">Anfrage ID
                                     </th>
-                                    <th class="th-sm">Name
+                                    <th class="th-sm">Beschreibung
                                     </th>
-                                    <th class="th-sm">Ort
-                                    </th>
-                                    <th class="th-sm">Menge
+                                    <th class="th-sm">Abfall oder Produktstatus
                                     </th>
                                     <th class="th-sm">AVV
+                                    </th>
+                                    <th class="th-sm">Menge
                                     </th>
                                     <th class="th-sm">Anfrageeingang
                                     </th>
@@ -202,9 +202,10 @@ include("components/script/diagrammScripts.php");
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <!-- variablen for Charts-->
 <script type="text/javascript">
-    //Variablen für Diagramme
+    //Variablen für Monatsdiagramm
+    var jan = <?php echo $totalJan ?>;var feb = <?php echo $totalFeb ?>; var mae = <?php echo $totalMae ?>; var apr = <?php echo $totalApr ?>; var mai = <?php echo $totalMai ?>; var jun = <?php echo $totalJun ?>; var jul = <?php echo $totalJul ?>; var aug = <?php echo $totalAug ?>; var sep = <?php echo $totalSep ?>; var okt = <?php echo $totalOkt ?>; var nov = <?php echo $totalNov ?>; var dec = <?php echo $totalDec ?>;
+    //Variablen für AVV
     var avvLables = [<?php echo $avvPiechartLables ?>];
-
     //Piechart Abfall/Produkt
     var prodAbfData = [<?php echo $totalProd ?>,<?php echo $totalAbf ?>];
 </script>
