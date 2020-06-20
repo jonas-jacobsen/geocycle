@@ -24,7 +24,6 @@
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/diagrammScripts.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/diagrammScripts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/charts/charts.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/charts/charts.js" afterDir="false" />
     </list>
@@ -146,7 +145,7 @@
       <workItem from="1591951300430" duration="3737000" />
       <workItem from="1592038656485" duration="24907000" />
       <workItem from="1592215881958" duration="10462000" />
-      <workItem from="1592397154055" duration="32930000" />
+      <workItem from="1592397154055" duration="33746000" />
     </task>
     <servers />
   </component>

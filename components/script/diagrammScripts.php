@@ -22,16 +22,16 @@ $rowCountAllRequest  = mysqli_fetch_array($stmtCountAllRequest);
 $acceptedPercent = intval($rowCountAcceptedRequest['TotalAcceptedRequest']/$rowCountAllRequest['TotalRequest']*100);
 
 //PiechartAVV
-$sqlAllAVV = "SELECT AVV AS avv FROM userdata";
+$sqlAllAVV = "SELECT Avv, COUNT(*) AS count FROM userdata WHERE AVV != '' GROUP BY Avv";
 $stmtAllAVV  = mysqli_query($conn, $sqlAllAVV);
 $rowAllAVV = mysqli_fetch_array($stmtAllAVV);
 $avvPiechartLables = '';
+$avvPiechartData = NULL;
 while ($rowAllAVV = mysqli_fetch_array($stmtAllAVV)) {
-    if($rowAllAVV['avv'] != ""){
-        $avvPiechartLables.= '"'.$rowAllAVV["avv"].'",';
-    }else{}
+        $avvPiechartLables.= '"'.$rowAllAVV["Avv"].'",';
+        $avvPiechartData .= $rowAllAVV["count"]."," ;
 }
-$avvPiechartLables;
+echo $avvPiechartData;
 
 //Chart Roh-Brenn
 //Produktstatus
@@ -46,7 +46,7 @@ $rowCountAbf = mysqli_fetch_array($stmtCountAbf);
 $totalAbf = intval($rowCountAbf['TotalProd']);
 
 
-//anzahl anfragen Monate
+//anzahl Anfragen der jeweiligen Monate
 $sqlMonthJan = "SELECT COUNT(*) AS TotalCount FROM userdata WHERE MONTH(IncomingRequestDate) = 1";
 $stmtCountJan = mysqli_query($conn, $sqlMonthJan);
 $rowCountJan  = mysqli_fetch_array($stmtCountJan);
@@ -106,4 +106,5 @@ $sqlMonthDec = "SELECT COUNT(*) AS TotalCount FROM userdata WHERE MONTH(Incoming
 $stmtCountDec = mysqli_query($conn, $sqlMonthDec);
 $rowCountDec  = mysqli_fetch_array($stmtCountDec);
 $totalDec = intval($rowCountDec['TotalCount']);
+
 ?>

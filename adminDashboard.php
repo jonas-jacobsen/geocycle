@@ -159,7 +159,7 @@ include("components/script/diagrammScripts.php");
                             </div>
 
                             <div class="col-6">
-                                <p class="text-uppercase font-weight-normal mb-1">User</p>
+                                <p class="text-uppercase font-weight-normal mb-1">Nutzer</p>
                                 <p class="mb-0"><i class="fas fa-user fa-2x mb-0"></i></p>
                             </div>
                         </div>
@@ -206,6 +206,7 @@ include("components/script/diagrammScripts.php");
     var jan = <?php echo $totalJan ?>;var feb = <?php echo $totalFeb ?>; var mae = <?php echo $totalMae ?>; var apr = <?php echo $totalApr ?>; var mai = <?php echo $totalMai ?>; var jun = <?php echo $totalJun ?>; var jul = <?php echo $totalJul ?>; var aug = <?php echo $totalAug ?>; var sep = <?php echo $totalSep ?>; var okt = <?php echo $totalOkt ?>; var nov = <?php echo $totalNov ?>; var dec = <?php echo $totalDec ?>;
     //Variablen für AVV
     var avvLables = [<?php echo $avvPiechartLables ?>];
+    var avvData = [<?php echo $avvPiechartData ?>];
     //Piechart Abfall/Produkt
     var prodAbfData = [<?php echo $totalProd ?>,<?php echo $totalAbf ?>];
 </script>
