@@ -73,6 +73,13 @@ function showAllRequest($conn)
             <td>' . $requestDate . '</td>
             <td id="allocationValue' . $requestId . '">' . $allocation . '</td>
             <td>
+                <div style="width: 100px; text-align: center">
+                    <button class="buttonChangeCategory" id="' . $requestId . '" value="1" type="button">1</button>
+                    <button class="buttonChangeCategory" id="' . $requestId . '" value="2" type="button">2</button>
+                    <button class="buttonChangeCategory" id="' . $requestId . '" value="3" type="button">3</button>
+                </div>
+            </td>
+            <td>
                 <form id="shoeAll' . $requestId . '" method="get" action="selectedRequest.php">
                     <input type="hidden" name="selectedRequest" value="' . $requestId . '">
                     <button type="submit" id="btnShowAll' . $requestId . '" class="btn btn-light-green">Anzeigen</button>

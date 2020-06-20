@@ -107,6 +107,8 @@ include("components/script/diagrammScripts.php");
                                     </th>
                                     <th class="th-sm">Zugewiesen an
                                     </th>
+                                    <th class="th-sm">Zuweisung ändern
+                                    </th>
                                     <th class="th-sm"></th>
                                 </tr>
                                 </thead>
