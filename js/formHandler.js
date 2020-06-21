@@ -149,7 +149,6 @@ function checkHu() {
     huValue = huValue.replace(/[<>]/gi, '');
     if (huValue >= 10) {
         huResult.innerHTML = "BRENNSTOFF";
-        console.log(huValue);
         $(".rohstoff").css("visibility", "hidden");
         $(".rohstoff").css("height", "0");
         $(".brennstoff").css("visibility", "visible");
@@ -160,7 +159,6 @@ function checkHu() {
 
     } else if (huValue < 10) {
         huResult.innerHTML = "ROHSTOFF";
-        console.log(huValue);
         $(".brennstoff").css("visibility", "hidden");
         $(".brennstoff").css("height", "0");
         $(".rohstoff").css("visibility", "visible");
@@ -171,7 +169,6 @@ function checkHu() {
 
     } else {
         huResult.innerHTML = "Hu Undefiniert";
-        console.log(huValue);
     }
 }
 
@@ -182,7 +179,6 @@ function initCheckHu() {
     huValue = huValue.replace(/[<>]/gi, '');
     if (huValue >= 10) {
         huResult.innerHTML = "BRENNSTOFF";
-        console.log(huValue);
         $(".rohstoff").css("visibility", "hidden");
         $(".rohstoff").css("height", "0");
         $(".brennstoff").css("visibility", "visible");
@@ -350,6 +346,50 @@ $(function () {
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $("#progess").html("Hochgeladen zu " + progress + "%");
         showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoCheckVar, docOneCheckVar);
+    });
+});
+
+//FileUpload 2
+$(function () {
+    var files = $("#files");
+    $("#fileuploadFurtherDocs").fileupload({
+        type: 'POST',
+        url: 'request.php',
+        dropZone: '#dropZoneFutherDocs',
+        dataType: 'json',
+        autoUpload: false
+    }).on('fileuploadadd', function (e, data) {
+        var fileTypeAllowed = /.\.(jpg|png|jpeg|pdf)$/i;
+        var fileName = data.originalFiles[0]['name'];
+        var fileSize = data.originalFiles[0]['size'];
+
+        if (!fileTypeAllowed.test(fileName)) {
+            $("#errorFurtherDocs").html("Dateityp nicht unterstützt");
+        } else if (fileSize > 5000000) {
+            $("#errorFurtherDocs").html("Datei zu groß! Max 500 kb");
+        } else {
+            $("#errorFurtherDocs").html('');
+            data.submit();
+        }
+    }).on('fileuploaddone', function (e, data) {
+        var fileName = data.originalFiles[0]['name'];
+        var status = data.jqXHR.responseJSON.status;
+        var msg = data.jqXHR.responseJSON.msg;
+        if (status == 1) {
+            var path = data.jqXHR.responseJSON.path;
+            var newFileId = data.jqXHR.responseJSON.newFileId;
+            if (path.indexOf('.pdf') == -1) {
+                icon = "imgIcon.png";
+            } else {
+                icon = "pdfIcon.png";
+            }
+            $("#einbindenFurherDocs").fadeIn().append('<div id="' + newFileId + '"><div class="view overlay hm-green-slight"><figure><a href="' + path + '" target="_blank"><img style="width: 100%" src="assets/images/' + icon + '"/></a><div class="mask flex-center"><p class="white-text"><a href="' + path + '" target="_blank">Anzeigen</a></p></div></figure></div><div style="text-align: center"><p>' + fileName + '</p><input type="hidden" name="deleteFileId" value="' + newFileId + '"><button type="button" id="' + newFileId + '" class="btn btn-outline-danger waves-effect delete"><i class="far fa-trash-alt"></i></button></div></div>');
+        } else {
+            $("#errorFurtherDocs").html(msg);
+        }
+    }).on('fileuploadprogressall', function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $("#progessFurtherDocs").html("Hochgeladen zu " + progress + "%");
     });
 });
 

@@ -35,7 +35,6 @@
         width: 0%;
     }
 }
-
 /* End Dashboard Progressbar*/
 
 /*Change Formular loader */
@@ -173,7 +172,9 @@ input[type=submit] {
         width: 100%;
         z-index: 9999;
     }
-
+    .sideprogress{
+        display: none!important;
+    }
     .sidecard {
         width: 100%;
         font-weight: 400;
@@ -204,6 +205,9 @@ input[type=submit] {
     }
 }
 
+.sideprogress{
+    display: none;
+}
 
 /* sticky Sidebar */
 @media (min-width: 767px) {
@@ -218,7 +222,6 @@ input[type=submit] {
     .sidecard {
         width: 200px;
         border: 0;
-
     }
 
     .sidecard-body {
@@ -228,6 +231,10 @@ input[type=submit] {
 
     .sidecard-body .col-sm-4 {
         text-align: right;
+    }
+    .sideprogress{
+        margin: .375rem;
+        width: 218px;
     }
 }
 

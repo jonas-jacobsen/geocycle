@@ -5,7 +5,6 @@ include("components/config.php");
 include("components/script/databaseScript.php");
 include("components/header.php");
 ?>
-
 <body>
 <div class="container-for-admin">
     <!--Main Navigation-->
@@ -17,7 +16,7 @@ include("components/header.php");
         <div class="container-fluid mt-5">
             <!--Grid row-->
 
-            <div class="row wow fadeIn">
+            <div class="row wow fadeIn progressbar">
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
@@ -116,13 +115,23 @@ include("components/header.php");
                 </div>
                 <!--Grid column-->
                 <div class="sidebar">
+                    <div class="sideprogress">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info progress-bar-striped active"
+                                         style="width:<?php echo $progressBarValue ?>;"></div>
+                                </div>
+                                <p class="card-text"><span id="progressValue"><?php echo $progressValue ?></span>%
+                                    <?php echo $lang['requestFilledOutTooFine'] ?></p>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
                     <!--Grid column (checkliste)-->
                     <div class="col-md-4 mb-4">
                         <!--Card-->
                         <div class="sidecard mb-4">
-                            <!-- Card header -->
-                            <div class="sidecard-header">
-                            </div>
                             <!--Card content-->
                             <div class="sidecard-body">
                                 <div class="row">
@@ -200,12 +209,14 @@ include("components/header.php");
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="produkt"
                                                    name="prodAbf" value="Produktstatus" <?php echo $radioOnPro ?>>
-                                            <label class="custom-control-label" for="produkt"> <?php echo $lang['requestWhatsAboutProduct'] ?></label>
+                                            <label class="custom-control-label"
+                                                   for="produkt"> <?php echo $lang['requestWhatsAboutProduct'] ?></label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="abfall"
                                                    name="prodAbf" value="Abfall" <?php echo $radioOnAbf ?>>
-                                            <label class="custom-control-label" for="abfall"><?php echo $lang['requestWhatsAboutWaste'] ?></label>
+                                            <label class="custom-control-label"
+                                                   for="abfall"><?php echo $lang['requestWhatsAboutWaste'] ?></label>
                                         </div>
                                     </div>
 
@@ -242,7 +253,7 @@ include("components/header.php");
                                     <div class="existingFiles">
                                         <p><?php echo $lang['requestDocLoadDoc'] ?>:</p>
                                         <div class="gallery">
-                                            <?php showFiles($conn, $requestId, $userId); ?>
+                                            <?php showFiles($conn, $requestId, $userId, "docs"); ?>
                                             <div id="einbinden"></div>
                                         </div>
                                     </div>
@@ -297,7 +308,7 @@ include("components/header.php");
                                         <br>
                                         <i><?php echo $lang['requestIcotermsDescription'] ?>
                                             <a href="https://www.stuttgart.ihk24.de/fuer-unternehmen/international/internationales-wirtschaftsrecht/internationale-liefergeschaefte/incoterms/incoterms-2010-684806"
-                                                    target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?>
+                                               target="_blank"><?php echo $lang['requestIcotermsDescriptionTwo'] ?>
                                             </a> <?php echo $lang['requestIcotermsDescriptionThree'] ?>
                                         </i>
                                     </div>
@@ -360,7 +371,8 @@ include("components/header.php");
                                         <!-- PFLICHT FELDER -->
                                         <!-- Unterer Heizwert -->
                                         <div class="ing-row" id="row0">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListUH'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListUH'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $unterHo ?>"
                                                    autocomplete="off"
@@ -376,7 +388,8 @@ include("components/header.php");
 
                                         <!-- Wassergehalt -->
                                         <div class="ing-row brennstoff rohstoff" id="row1">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListWasser'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListWasser'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $wassergehalt ?>"
                                                    autocomplete="off"
@@ -393,7 +406,8 @@ include("components/header.php");
 
                                         <!-- Aschegehalt -->
                                         <div class="ing-row brennstoff" id="row2">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListAsche'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListAsche'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $aschegehalt ?>"
                                                    autocomplete="off"
@@ -410,7 +424,8 @@ include("components/header.php");
 
                                         <!-- Chlor -->
                                         <div class="ing-row brennstoff rohstoff" id="row3">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListChlor'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListChlor'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $chlor ?>"
                                                    autocomplete="off"
@@ -427,7 +442,8 @@ include("components/header.php");
 
                                         <!-- Schwefel -->
                                         <div class="ing-row brennstoff rohstoff" id="row4">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListSchwefel'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListSchwefel'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $schwefel ?>"
                                                    autocomplete="off"
@@ -444,7 +460,8 @@ include("components/header.php");
 
                                         <!-- Quecksilber -->
                                         <div class="ing-row brennstoff rohstoff" id="row5">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListQueck'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListQueck'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $quecksilber ?>"
                                                    autocomplete="off"
@@ -463,7 +480,8 @@ include("components/header.php");
 
                                         <!-- Calcium -->
                                         <div class="ing-row rohstoff" id="row6">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListCalcium'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListCalcium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $calcium ?>"
                                                    autocomplete="off"
@@ -481,7 +499,8 @@ include("components/header.php");
 
                                         <!-- Silizium -->
                                         <div class="ing-row rohstoff" id="row7">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListSilicium'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListSilicium'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $silicium ?>"
                                                    autocomplete="off"
@@ -500,7 +519,8 @@ include("components/header.php");
 
                                         <!-- Eisen -->
                                         <div class="ing-row rohstoff" id="row8">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListEisen'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListEisen'] ?>" disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $eisen ?>"
                                                    autocomplete="off"
@@ -518,7 +538,9 @@ include("components/header.php");
 
                                         <!-- Magnesium -->
                                         <div class="ing-row rohstoff" id="row9">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListMagnesium'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListMagnesium'] ?>"
+                                                   disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $magnesium ?>"
                                                    autocomplete="off"
@@ -536,7 +558,9 @@ include("components/header.php");
 
                                         <!-- Kaliumoxid -->
                                         <div class="ing-row rohstoff" id="row10">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListKaliumoxid'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListKaliumoxid'] ?>"
+                                                   disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $kalium ?>"
                                                    autocomplete="off"
@@ -554,7 +578,9 @@ include("components/header.php");
 
                                         <!-- Natriumoxid -->
                                         <div class="ing-row rohstoff" id="row11">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListNatriumoxid'] ?>Natriumoxid" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListNatriumoxid'] ?>Natriumoxid"
+                                                   disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $natrium ?>"
                                                    autocomplete="off"
@@ -572,7 +598,9 @@ include("components/header.php");
 
                                         <!-- Aluminium -->
                                         <div class="ing-row rohstoff" id="row12">
-                                            <input type="text" name="param" value="<?php echo $lang['requestParamListAluminium'] ?>" disabled=""/>
+                                            <input type="text" name="param"
+                                                   value="<?php echo $lang['requestParamListAluminium'] ?>"
+                                                   disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $aluminium ?>"
                                                    autocomplete="off"
@@ -654,12 +682,46 @@ include("components/header.php");
                     <!--/.Card-->
                 </div>
                 <!--Grid column (End Weitere Details)-->
+
+                <div class="col-md-8 mb-4">
+                    <!--Card-->
+                    <div class="card">
+                        <!--Card content-->
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4><?php echo $lang['furtherDocTitle'] ?></h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <span class="didChangeFurtherDocs" id="didChangeFurtherDocs"></span>
+                                </div>
+                            </div>
+                            <p><?php echo $lang['furtherDocParagraph'] ?></p>
+                            <!-- Ab hier uploadbereich -->
+                            <div class="furtherDocs">
+                                <div id="dropZoneFutherDocs">
+                                    <input type="file" id="fileuploadFurtherDocs" name="attachmentsFurtherDocs[]"
+                                           multiple>
+                                </div>
+                                <p id="errorFurtherDocs"></p>
+                                <p id="progessFurtherDocs"></p>
+                                <div class="existingFiles">
+                                    <p><?php echo $lang['requestDocLoadDoc'] ?>:</p>
+                                    <div class="gallery">
+                                        <?php showFiles($conn, $requestId, $userId, "furtherDocs"); ?>
+                                        <div id="einbindenFurherDocs"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End uploadbereich -->
+                        </div>
+                    </div>
+                </div>
             </div>
         </div> <!-- End Container Float -->
         <!--Grid row-->
     </main>
     <!--Main layout-->
-
 </div>
 <?php include("components/footer.php") ?>
 
@@ -700,6 +762,27 @@ include("components/header.php");
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
+
+    //script für Änderung der Styles der Processbar
+    /*$(function () {
+        $(document).scroll(function () {
+            var $progress = $(".progressbar");
+            $progress.toggleClass('scrolled', $(this).scrollTop() > $progress.height());
+        });
+    });*/
+
+    $(window).scroll(function () {
+        var scroll = $(window).scrollTop();
+
+        //>=, not <=
+        if (scroll >= 170) {
+            $(".sideprogress").show();
+        }
+        if (scroll <= 170) {
+            $(".sideprogress").hide();
+        }
+    }); //missing );
+
 </script>
 
 <script type="text/javascript" src="js/requestJs/radioSelection.js"></script>

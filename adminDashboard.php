@@ -50,7 +50,7 @@ include("components/script/diagrammScripts.php");
                     <!--Card-->
                     <div class="card">
                         <!-- Card header -->
-                        <div class="card-header white">AVV</div>
+                        <div class="card-header white">AVV Top 10</div>
                         <!--Card content-->
                         <div class="card-body">
                             <canvas id="pieChartAVV"></canvas>

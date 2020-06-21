@@ -312,7 +312,7 @@ if (isset($_FILES['attachments'])) {
         $path = $targetFile;
         //$msg = array("status" => 1, "msg" => "Dokument wurde hochgeladen", "path" => $targetFile);
         //Insert Path of the File into db DocOne
-        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId', RequestId = '$requestId'";
+        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId', RequestId = '$requestId', DocType = 'docs'";
         $result = mysqli_query($conn, $sql_insert_Doc);
     }
 
@@ -330,11 +330,58 @@ if (isset($_FILES['attachments'])) {
     );
     exit(json_encode($jsonArray));
 }
+//Fileupload 2
+if (isset($_FILES['attachmentsFurtherDocs'])) {
 
+    //erstelle Folder für User id
+    $folderUser = "uploads/" . $userId . "/";
+
+    //erstelle Folder für Request
+    $folder = "uploads/" . $userId . "/" . $requestId . "/";
+
+    //Prüfen ob Ordner für User vorhanden ist
+    if (!file_exists($folderUser)) {
+        mkdir($folderUser);
+    }
+    //Prüfen ob Ordner für Request vorhanden ist
+    if (!file_exists($folder)) {
+        mkdir($folder);
+    }
+
+    $msg = "";
+    $targetFile = $folder . basename($_FILES['attachmentsFurtherDocs']['name'][0]);
+    if (file_exists($targetFile)) {
+        $msg = "Dokument existiert schon!";
+        $status = 0;
+        $path = "";
+    } elseif (move_uploaded_file($_FILES['attachmentsFurtherDocs']['tmp_name'][0], $targetFile)) {
+        $msg = "Dokument wurde hochgeladen";
+        $status = 1;
+        $path = $targetFile;
+        //$msg = array("status" => 1, "msg" => "Dokument wurde hochgeladen", "path" => $targetFile);
+        //Insert Path of the File into db DocOne
+        $sql_insert_Doc = "INSERT INTO docOne SET Path = '$targetFile', UserId = '$userId', RequestId = '$requestId', DocType = 'furtherDocs'";
+        $result = mysqli_query($conn, $sql_insert_Doc);
+    }
+
+    //Neue FileId aus Datenbank ziehen für Ajax operationen
+    $sqlSelectUploadedId = "SELECT id FROM docOne ORDER BY id DESC LIMIT 1";
+    $stmt = mysqli_query($conn, $sqlSelectUploadedId);
+    $row = mysqli_fetch_array($stmt);
+    $newFileId = $row['id'];
+
+    $jsonArray = array(
+        'msg' => $msg,
+        'status' => $status,
+        'path' => $path,
+        'newFileId' => $newFileId,
+    );
+    exit(json_encode($jsonArray));
+}
 //show Files
-function showFiles($conn, $requestId, $userId)
+function showFiles($conn, $requestId, $userId, $docType)
 {
-    $sql_show_files = "SELECT * FROM docOne WHERE RequestId = $requestId";
+    $sql_show_files = "SELECT * FROM docOne WHERE RequestId = $requestId AND DocType = '$docType'";
     $statement_show_fiels = mysqli_query($conn, $sql_show_files);
     while ($rowPath = mysqli_fetch_array($statement_show_fiels)) {
         $filePath = $rowPath['Path'];
@@ -373,3 +420,7 @@ function showFiles($conn, $requestId, $userId)
 }
 
 ?>
+
+
+
+

@@ -22,7 +22,7 @@ $rowCountAllRequest  = mysqli_fetch_array($stmtCountAllRequest);
 $acceptedPercent = intval($rowCountAcceptedRequest['TotalAcceptedRequest']/$rowCountAllRequest['TotalRequest']*100);
 
 //PiechartAVV
-$sqlAllAVV = "SELECT Avv, COUNT(*) AS count FROM userdata WHERE AVV != '' GROUP BY Avv";
+echo $sqlAllAVV = "SELECT Avv, COUNT(*) AS count FROM userdata WHERE AVV != '' GROUP BY Avv LIMIT 10";
 $stmtAllAVV  = mysqli_query($conn, $sqlAllAVV);
 $rowAllAVV = mysqli_fetch_array($stmtAllAVV);
 $avvPiechartLables = '';

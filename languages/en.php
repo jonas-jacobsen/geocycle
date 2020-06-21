@@ -104,5 +104,9 @@ $lang = array(
     "requestFurtherInfSave" => "Save",
     "requestAddParam" => " Add Value",
 
+    "furtherDocTitle" => "Futher Documents",
+    "furtherDocParagraph" => "Here you can upload further documents that are necessary for your request.",
+
+
 );
 ?>
