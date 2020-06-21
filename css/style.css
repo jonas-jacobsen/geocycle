@@ -126,6 +126,9 @@ input[type=submit] {
     color: #fff;
     cursor: pointer;
 }
+#requestIsFilledOutAgain{
+    width: 218px;
+}
 
 .autocomplete-items {
     position: relative;

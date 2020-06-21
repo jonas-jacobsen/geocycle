@@ -401,18 +401,22 @@ function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoC
         if (countNumber == 3) {
             $('.progress-bar').css('width', '100%');
             $('#progressValue').html('100');
+            $('#progressValueSide').html('100');
             $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
         } else if (countNumber == 2) {
             $('.progress-bar').css('width', '66%');
             $('#progressValue').html('66');
+            $('#progressValueSide').html('66');
             $('#filledOut').html("");
         } else if (countNumber == 1) {
             $('.progress-bar').css('width', '33%');
             $('#progressValue').html('33');
+            $('#progressValueSide').html('33');
             $('#filledOut').html("");
         } else {
             $('.progress-bar').css('width', '0%');
             $('#progressValue').html('0');
+            $('#progressValueSide').html('0');
             $('#filledOut').html("");
         }
     } else {
@@ -420,22 +424,27 @@ function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoC
         if (countNumber == 4) {
             $('.progress-bar').css('width', '100%');
             $('#progressValue').html('100');
+            $('#progressValueSide').html('100');
             $('#filledOut').html('<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>');
         } else if (countNumber == 3) {
             $('.progress-bar').css('width', '75%');
             $('#progressValue').html('75');
+            $('#progressValueSide').html('75');
             $('#filledOut').html("");
         } else if (countNumber == 2) {
             $('.progress-bar').css('width', '50%');
             $('#progressValue').html('50');
+            $('#progressValueSide').html('50');
             $('#filledOut').html("");
         } else if (countNumber == 1) {
             $('.progress-bar').css('width', '25%');
             $('#progressValue').html('25');
+            $('#progressValueSide').html('25');
             $('#filledOut').html("");
         } else {
             $('.progress-bar').css('width', '0%');
             $('#progressValue').html('0');
+            $('#progressValueSide').html('0');
             $('#filledOut').html("");
         }
     }

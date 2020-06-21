@@ -122,7 +122,7 @@ include("components/header.php");
                                     <div class="progress-bar progress-bar-info progress-bar-striped active"
                                          style="width:<?php echo $progressBarValue ?>;"></div>
                                 </div>
-                                <p class="card-text"><span id="progressValue"><?php echo $progressValue ?></span>%
+                                <p class="card-text"><span id="progressValueSide"><?php echo $progressValue ?></span>%
                                     <?php echo $lang['requestFilledOutTooFine'] ?></p>
                             </div>
                         </div>
