@@ -236,7 +236,9 @@ input[type=submit] {
         text-align: right;
     }
     .sideprogress{
-        margin: .375rem;
+        margin-left: .375rem;
+        margin-right: .375rem;
+        margin-bottom: .375rem;
         width: 218px;
     }
 }
@@ -423,6 +425,22 @@ input[type=submit] {
     margin-top: -9px;
 }
 
+/* Styles für a href link auf card*/
+#ansprech_Form {
+    scroll-margin-top: 90px;
+}
+#request_Form{
+    scroll-margin-top: 90px;
+}
+#furtherInformationForm {
+    scroll-margin-top: 90px;
+}
+#didChangeFiles {
+    scroll-margin-top: 70px;
+}
+.targetLink{
+    color: #2e2e2e;
+}
 
 /*Darkmode*/
 .dark-mode {

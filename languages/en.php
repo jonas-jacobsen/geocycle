@@ -57,10 +57,10 @@ $lang = array(
     "requestSurname" => "Surname",
     "requestFirstname" => "Firstname",
 
-    "requestChecklistContactPerson" => "Contact Person",
-    "requestChecklistRequest" => "Request",
+    "requestChecklistContactPerson" => "<a href='#ansprech_Form' class='targetLink'>Contact Person</a>",
+    "requestChecklistRequest" => "<a href='#request_Form' class='targetLink'>Request</a>",
     "requestChecklistDocuments" => "Documents",
-    "requestChecklistFurtherInfo" => "Further Information",
+    "requestChecklistFurtherInfo" => "<a href='#furtherInformationForm' class='targetLink'>Further Information</a>",
     "requestChecklistButton" => "Send Request",
     "requestChecklistButtonAgain" => "Send Request again",
     "requestWasteDescription" => "<a class=\"info_toogle_hover\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"top\" data-content=\"Please choose the term that applies to your material the most.We do not request a standardized waste or product term here.\">Waste- or Productdescription</a>",
