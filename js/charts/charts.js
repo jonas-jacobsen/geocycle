@@ -73,8 +73,8 @@ var myLineChartAVV = new Chart(ctxDAVV, {
         labels: avvLables,
         datasets: [{
             data: avvData,
-            backgroundColor: ["#F7464A", "#46BFBD"],
-            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1"]
+            backgroundColor: ["#F7464A", "#46bfbd","#4699bf","#4676bf","#6646bf","#5935bf","#4b25b8","#a211ac", "#bb2c82", "#c63e69"],
+            hoverBackgroundColor: ["#FF5A5E", "#5AD3D1","#4e9ec2", "#5786ce","#795ad2","#6d47d9","#5931cb","#b32cbb", "#c63e90", "#d0527a"]
         }]
     },
     options: {

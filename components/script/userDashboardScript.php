@@ -1,5 +1,4 @@
 <?php
-
 include("components/script/email.php");
 
 $userId = $_SESSION['userId'];
@@ -14,12 +13,11 @@ $adminEmail = $rowAdminUser['EmailAdmin'];
 //Anfrage wurde abgesendet, wird von Offen in abgeshlossen umgewandelt
 //hier noch prüfen ob es sich um eine erneute, abgewandelte Anfrage handelt (Vorhandene Daten aus anderer Anfrage)
 $requestIsFilledOutAgain = $_POST['requestIsFilledOutAgain'];
-if($requestIsFilledOutAgain == "1"){
+if ($requestIsFilledOutAgain == "1") {
     $sqlRequestAgain = "INSERT INTO userdata SET UserId = $userId, OpenRequest = 0";
     mysqli_query($conn, $sqlRequestAgain);
 } else if (isset($_POST['requestIsFilledOut'])) {
     if ($_POST['requestIsFilledOut'] == 1) {
-
         //komplet neue Anfrage
         $requestIdFilledOut = $_POST['requestId'];
         $sqlChangeFromOpenToClose = "UPDATE userdata SET OpenRequest = 1, AdminWorkInProgress = 1, Allocation = 0, IncomingRequestDate = CURRENT_DATE WHERE id = $requestIdFilledOut";
@@ -29,6 +27,7 @@ if($requestIsFilledOutAgain == "1"){
                             </div>';
         //Infomail an Admin schicken
         sendMailToAdmin($adminEmail, "geocycle@adminpanel.com");
+
     }
 }
 
@@ -71,19 +70,19 @@ function showOpenRequest($conn, $userId, $lang)
         <table id="dtBasicExample" class="table" width="100%">
             <thead>
                 <tr>
-                    <th class="th-sm">'.$lang["userTableRequestId"].'
+                    <th class="th-sm">' . $lang["userTableRequestId"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestName"].'
+                    <th class="th-sm">' . $lang["userTableRequestName"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestTown"].'
+                    <th class="th-sm">' . $lang["userTableRequestTown"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestAmount"].'
+                    <th class="th-sm">' . $lang["userTableRequestAmount"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestAVV"].'
+                    <th class="th-sm">' . $lang["userTableRequestAVV"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestDeliveryForm"].'
+                    <th class="th-sm">' . $lang["userTableRequestDeliveryForm"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestProducer"].'
+                    <th class="th-sm">' . $lang["userTableRequestProducer"] . '
                     </th>
                     <th class="th-sm">
                     </th>
@@ -112,7 +111,7 @@ function showOpenRequest($conn, $userId, $lang)
                     <td>
                         <form id="1" method="post" action="request.php">
                             <input type="hidden" name="requestId" value="' . $requestId . '">
-                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">'.$lang['userDashboardViewRequest'].'</button>
+                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">' . $lang['userDashboardViewRequest'] . '</button>
                         </form>
                     </td>
                 </tr>';
@@ -138,19 +137,19 @@ function showCloseRequest($conn, $userId, $lang)
         <table id="dtBasicExample" class="table" width="100%">
             <thead>
                 <tr>
-                    <th class="th-sm">'.$lang["userTableRequestId"].'
+                    <th class="th-sm">' . $lang["userTableRequestId"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestName"].'
+                    <th class="th-sm">' . $lang["userTableRequestName"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestTown"].'
+                    <th class="th-sm">' . $lang["userTableRequestTown"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestAmount"].'
+                    <th class="th-sm">' . $lang["userTableRequestAmount"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestAVV"].'
+                    <th class="th-sm">' . $lang["userTableRequestAVV"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestDeliveryForm"].'
+                    <th class="th-sm">' . $lang["userTableRequestDeliveryForm"] . '
                     </th>
-                    <th class="th-sm">'.$lang["userTableRequestProducer"].'
+                    <th class="th-sm">' . $lang["userTableRequestProducer"] . '
                     </th>
                     <th class="th-sm">
                     </th>
@@ -171,15 +170,15 @@ function showCloseRequest($conn, $userId, $lang)
 
             //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, Angenommen: Grün, Abgelehnt: Rot
             $backgroudstyle = "";
-            if ($adminWorkInprogress == 2){
+            if ($adminWorkInprogress == 2) {
                 $backgroudstyle = "angenommen";
-            } elseif ($adminWorkInprogress == 3){
+            } elseif ($adminWorkInprogress == 3) {
                 $backgroudstyle = "abgelehnt";
-            }else{
+            } else {
                 $backgroudstyle = "";
             }
             echo '
-                <tr class="'.$backgroudstyle.'">
+                <tr class="' . $backgroudstyle . '">
                     <td>' . $requestId . '</td>
                     <td>' . $name . '</td>
                     <td>' . $town . '</td>
@@ -190,7 +189,7 @@ function showCloseRequest($conn, $userId, $lang)
                     <td>
                         <form id="1" method="post" action="request.php">
                             <input type="hidden" name="requestId" value="' . $requestId . '">
-                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">'.$lang['userDashboardViewRequest'].'</button>
+                            <button type="submit" id="submitOne" name="submitOne" value="0" class="btn btn-light-green">' . $lang['userDashboardViewRequest'] . '</button>
                         </form>
                     </td>
                 </tr>';

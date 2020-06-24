@@ -225,6 +225,7 @@ input[type=submit] {
     .sidecard {
         width: 200px;
         border: 0;
+        margin-left: 15px;
     }
 
     .sidecard-body {
@@ -236,10 +237,8 @@ input[type=submit] {
         text-align: right;
     }
     .sideprogress{
-        margin-left: .375rem;
-        margin-right: .375rem;
         margin-bottom: .375rem;
-        width: 218px;
+        margin-left: 15px;
     }
 }
 
@@ -468,4 +467,3 @@ input[type=submit] {
 .dark-mode img{
     -webkit-filter: invert(100%) !important;
 }
-

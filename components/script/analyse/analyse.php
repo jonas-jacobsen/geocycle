@@ -34,7 +34,7 @@ function analyse($requestId, $conn)
     //Prüfen ob es sich um einen Brenn oder Rohstoff handelt
     $materialOrBurn = checkBurnOrMaterial($untererHeizwert);
 
-
+    $dataforCSV = NULL;
     /*Testing*/
     if ($materialOrBurn == "Rohstoff") {
         $paramEvalMain = checkParamMaterialMain($paramJson);
@@ -104,8 +104,7 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     }
 
 
-    //überprüfen ob Produktions oder Abfallstatus
-
+    //überprüfen ob Produktions oder Abfallstatusw
     if ($prodAbf == "Abfall") {
         $isAbfOrProd = 1; //Für ML-Analyse abfall
         $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
@@ -120,7 +119,7 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     echo "<h4>Brennstoff</h4>";
     echo "$htmlProdAbf";
     echo "<div class='row'><div class='col-3'>Heizwert</div><div class='col-3'>$untererHeizwert mj</div><div class='col-1'></div><div class='col-4'>$burnForWhat</div></div>";
-    echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div><br>";
+    echo "<div class='row'><div class='col-3'>Menge</div><div class='col-3'>$amount JaTo</div><div class='col-1'>$iconCheckAmount</div><div class='col-4'>$htmlAmount</div></div>";
     echo "<h5>Beurteilte Parameter</h5>";
     for ($i = 0; $i < $countJson - 1; $i++) {
         $name = $paramEval[$i]["name"];
@@ -240,6 +239,7 @@ function buildHTMLForMaterial($offeredPrice, $paramEvalMain, $paramEval, $paramJ
 
     //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert
     $recomendation = getRecomendation(1, 0, 0, 0, 0, 0, 1, 1, 1, $isHighestParam, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
+
     echo "<h4>Rohstoff</h4>";
     echo "$htmlProdAbf";
     echo "<div class='row'><div class='col-3'>Hauptbestandteil</div><div class='col-3'>$paramEvalMain[0]</div><div class='col-1'>$iconCheckParamHigh</div><div class='col-4'>$highestParamComment</div></div>";
@@ -723,8 +723,9 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
 {
     $param = [$rohBrenn, intval($wasser), intval($asche), intval($chlor), intval($schwefel), intval($kalium), intval($magnesium), intval($natrium), intval($queck), intval($rohMainParam), intval($menge), intval($preis), intval($abfPro), intval($avvZert)];
 
-    echo "for Troubleshooting: ";
-    print_r(json_encode($param));
+    //Values für CSV zwischenSpeichern
+    $_SESSION['valuesForCSV'] = json_encode($param);
+
 
     $dataset = new CsvDataset($_SERVER['DOCUMENT_ROOT'] . '/Projekte/geocycle/components/script/analyse/datasetsML/data.csv', 14, true);
     //$samples = [[1, 0, 0, 0, 0,0,1,1,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,0,1]];

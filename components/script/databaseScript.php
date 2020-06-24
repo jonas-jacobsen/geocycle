@@ -1,4 +1,5 @@
 <?php
+
 //Prüfen ob neue oder Vorhandene RequestId in SesssionV Variable. ALte RequestId in $_Post variable
 if (isset($_POST['requestId'])) {
     $requestId = $_POST['requestId'];
@@ -73,14 +74,14 @@ $procDescr = $row['ProcessDescription'];
 //radiobuttons Check wich one is choosen
 $radioOnPro = "";
 $radioOnAbf = "";
-    if ($prodAbf == "Produktstatus") {
-        $radioOnPro = "checked";
-    } elseif ($prodAbf == "Abfall") {
-        $radioOnAbf = "checked";
-    } else {
-        $radioOnPro = "checked";
-        $radioOnAbf = "";
-    }
+if ($prodAbf == "Produktstatus") {
+    $radioOnPro = "checked";
+} elseif ($prodAbf == "Abfall") {
+    $radioOnAbf = "checked";
+} else {
+    $radioOnPro = "checked";
+    $radioOnAbf = "";
+}
 
 $radioOnErz = "";
 $radioOnHae = "";
@@ -111,19 +112,22 @@ $kalium = "";
 $natrium = "";
 $aluminium = "";
 
-$unterHo = $paramJson[0]->value;
-$wassergehalt = $paramJson[1]->value;
-$aschegehalt = $paramJson[2]->value;
-$chlor = $paramJson[3]->value;
-$schwefel = $paramJson[4]->value;
-$quecksilber = $paramJson[5]->value;
-$calcium = $paramJson[6]->value;
-$silicium = $paramJson[7]->value;
-$eisen = $paramJson[8]->value;
-$magnesium = $paramJson[9]->value;
-$kalium = $paramJson[10]->value;
-$natrium = $paramJson[11]->value;
-$aluminium = $paramJson[12]->value;
+if (isset($paramJson)) {
+    $unterHo = $paramJson[0]->value;
+    $wassergehalt = $paramJson[1]->value;
+    $aschegehalt = $paramJson[2]->value;
+    $chlor = $paramJson[3]->value;
+    $schwefel = $paramJson[4]->value;
+    $quecksilber = $paramJson[5]->value;
+    $calcium = $paramJson[6]->value;
+    $silicium = $paramJson[7]->value;
+    $eisen = $paramJson[8]->value;
+    $magnesium = $paramJson[9]->value;
+    $kalium = $paramJson[10]->value;
+    $natrium = $paramJson[11]->value;
+    $aluminium = $paramJson[12]->value;
+}
+
 $rowContent = "";
 $countJsonParam = count($paramJson);
 
@@ -235,9 +239,9 @@ if ($row['ProdAbf'] == "Abfall") {
         $progressBarValue = "100%";
         $progressValue = "100";
         if ($row['OpenRequest'] == 1) {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">'.$lang["requestChecklistButtonAgain"].'</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">' . $lang["requestChecklistButtonAgain"] . '</button>';
         } else {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">'.$lang["requestChecklistButton"].'</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">' . $lang["requestChecklistButton"] . '</button>';
         }
     } elseif ($countNumbers == 2) {
         $progressBarValue = "66%";

@@ -12,8 +12,8 @@ if (isset($_POST['submit'])) {
             //$sql = "UPDATE user SET lastlogin=" . time() . " WHERE name='$_POST[user]'AND passwort='$_POST[passwort]'";
             //mysqli_query($db, $sql);
             $row = mysqli_fetch_array($result);
-            $_SESSION ['adminId'] = $row['id'];
-            $_SESSION ['teamAllocation'] = $row['TeamAllocation'];
+            $_SESSION['adminId'] = $row['id'];
+            $_SESSION['teamAllocation'] = $row['TeamAllocation'];
             if($row['TeamAllocation'] == 1){
                 header('Location: adminDashboard.php');
             } else {

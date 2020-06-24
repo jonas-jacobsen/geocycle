@@ -579,7 +579,7 @@ include("components/header.php");
                                         <!-- Natriumoxid -->
                                         <div class="ing-row rohstoff" id="row11">
                                             <input type="text" name="param"
-                                                   value="<?php echo $lang['requestParamListNatriumoxid'] ?>Natriumoxid"
+                                                   value="<?php echo $lang['requestParamListNatriumoxid'] ?>"
                                                    disabled=""/>
                                             <input type="text" name="value" placeholder="Messwert"
                                                    value="<?php echo $natrium ?>"
@@ -777,11 +777,14 @@ include("components/header.php");
         //>=, not <=
         if (scroll >= 170) {
             $(".sideprogress").show();
+            var sidebarWidth = $("#output").width();
+            $(".sideprogress").css("width",sidebarWidth)
         }
         if (scroll <= 170) {
             $(".sideprogress").hide();
         }
     }); //missing );
+
 
 </script>
 

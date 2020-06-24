@@ -3,6 +3,7 @@
 //include("components/session.php");
 include("components/config.php");
 include("components/headerAdmin.php");
+include("components/script/analyse/analyse.php");
 
 $requestId = $_GET['selectedRequest'];
 $sqlSelectRequest = "SELECT * FROM userdata WHERE id = $requestId";
@@ -11,6 +12,19 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
 
+if($rowRequest['Producer'] == ""){
+    $producer = "Anfragender ist Produzent";
+}else{
+    $producer = $rowRequest['Producer'];
+}
+
+//Preisberechnung Zuzahlung für Geo oder User
+$offeredPrice = $rowRequest['OfferedPrice'];
+if($offeredPrice < 0){
+    $offeredPriceHtml = "Kosten für Geo: ".abs($offeredPrice)."€";
+}else{
+    $offeredPriceHtml = "Kosten für Kunden: ".$offeredPrice."€";
+}
 //alle dokuemnte Anzeigen
 function showFiles($conn, $requestId, $userId)
 {
@@ -68,7 +82,10 @@ function showFiles($conn, $requestId, $userId)
                                 <div class="col-md-6">
                                     <h4>Anfrage <?php echo $rowRequest['id'] ?></h4>
                                 </div>
+
                             </div>
+                            <!--Analyse funktionaufrufen -->
+                            <?php analyse($requestId, $conn)?>
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <h5>Status:</h5>
@@ -189,6 +206,7 @@ function showFiles($conn, $requestId, $userId)
                                     </div>
                                 </div>
                                 <div class="row mb-4">
+                                    <input type="hidden" name="listForCSV" value="<?php echo $_SESSION['valuesForCSV'] ?>">
                                     <div class="col-6" style="text-align: left">
                                         <button type="submit" name="buttonSubmit" value="1" class="btn btn-outline-success waves-effect">Annehmen
                                         </button>
@@ -245,6 +263,10 @@ function showFiles($conn, $requestId, $userId)
 <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
+<script type="text/javascript">
+    var paramValuesForCSV = $("#paramListForCSV").val();
+    console.log(paramValuesForCSV);
+</script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
 <!-- Bootstrap core JavaScript -->

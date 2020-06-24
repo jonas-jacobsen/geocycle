@@ -4,19 +4,20 @@ include("components/script/email.php");
 $allocation = "";
 $teamname = "";
 $getAllocation = $_SESSION['teamAllocation'];
-if($getAllocation == 2){
+if ($getAllocation == 2) {
     $allocation = 1;
-}elseif ($getAllocation == 3){
+} elseif ($getAllocation == 3) {
     $allocation = 2;
-}elseif ($getAllocation == 4){
+} elseif ($getAllocation == 4) {
     $allocation = 3;
 }
 $teamname = $allocation;
 
-function showAllRequestForTeam($conn, $allocation) {
+function showAllRequestForTeam($conn, $allocation)
+{
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 1";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
-    while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
+    while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {
         $requestId = $dataAllRequest['id'];
         $name = $dataAllRequest['Surname'];
         $town = $dataAllRequest['Town'];
@@ -27,36 +28,37 @@ function showAllRequestForTeam($conn, $allocation) {
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
         $backgroudstyle = "";
-        if ($adminWorkInprogress == 2){
+        if ($adminWorkInprogress == 2) {
             $backgroudstyle = "angenommen";
-        } elseif ($adminWorkInprogress == 3){
+        } elseif ($adminWorkInprogress == 3) {
             $backgroudstyle = "abgelehnt";
-        }else{
+        } else {
             $backgroudstyle = "";
         }
         echo '
         <tr>
-            <td>'.$requestId.'</td>
-            <td>'.$name.'</td>
-            <td>'.$town.'</td>
-            <td>'.$weight.'</td>
-            <td>'.$avv.'</td>
-            <td>'.$deliveryForm.'</td>
-            <td>'.$producer.'</td>
+            <td>' . $requestId . '</td>
+            <td>' . $name . '</td>
+            <td>' . $town . '</td>
+            <td>' . $weight . '</td>
+            <td>' . $avv . '</td>
+            <td>' . $deliveryForm . '</td>
+            <td>' . $producer . '</td>
             <td>
-                <form id="shoeAll'.$requestId.'" method="get" action="selectedRequestTeam.php">
-                    <input type="hidden" name="selectedRequest" value="'.$requestId.'">
-                    <button type="submit" id="btnShowAll'.$requestId.'" class="btn btn-light-green">Anzeigen</button>
+                <form id="shoeAll' . $requestId . '" method="get" action="selectedRequestTeam.php">
+                    <input type="hidden" name="selectedRequest" value="' . $requestId . '">
+                    <button type="submit" id="btnShowAll' . $requestId . '" class="btn btn-light-green">Anzeigen</button>
                 </form>
             </td>
         </tr>';
     }
 }
 
-function showAllAcceptedRequestForTeam($conn, $allocation) {
+function showAllAcceptedRequestForTeam($conn, $allocation)
+{
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 2";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
-    while($dataAllRequest = mysqli_fetch_array($stmtAllRequest)){
+    while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {
         $requestId = $dataAllRequest['id'];
         $name = $dataAllRequest['Surname'];
         $town = $dataAllRequest['Town'];
@@ -67,26 +69,26 @@ function showAllAcceptedRequestForTeam($conn, $allocation) {
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
         $backgroudstyle = "";
-        if ($adminWorkInprogress == 2){
+        if ($adminWorkInprogress == 2) {
             $backgroudstyle = "angenommen";
-        } elseif ($adminWorkInprogress == 3){
+        } elseif ($adminWorkInprogress == 3) {
             $backgroudstyle = "abgelehnt";
-        }else{
+        } else {
             $backgroudstyle = "";
         }
         echo '
-        <tr class="'.$backgroudstyle.'">
-            <td>'.$requestId.'</td>
-            <td>'.$name.'</td>
-            <td>'.$town.'</td>
-            <td>'.$weight.'</td>
-            <td>'.$avv.'</td>
-            <td>'.$deliveryForm.'</td>
-            <td>'.$producer.'</td>
+        <tr class="' . $backgroudstyle . '">
+            <td>' . $requestId . '</td>
+            <td>' . $name . '</td>
+            <td>' . $town . '</td>
+            <td>' . $weight . '</td>
+            <td>' . $avv . '</td>
+            <td>' . $deliveryForm . '</td>
+            <td>' . $producer . '</td>
             <td>
-                <form id="shoeAll'.$requestId.'" method="get" action="selectedRequestTeam.php">
-                    <input type="hidden" name="selectedRequest" value="'.$requestId.'">
-                    <button type="submit" id="btnShowAll'.$requestId.'" class="btn btn-light-green">Anzeigen</button>
+                <form id="shoeAll' . $requestId . '" method="get" action="selectedRequestTeam.php">
+                    <input type="hidden" name="selectedRequest" value="' . $requestId . '">
+                    <button type="submit" id="btnShowAll' . $requestId . '" class="btn btn-light-green">Anzeigen</button>
                 </form>
             </td>
         </tr>';
@@ -95,38 +97,85 @@ function showAllAcceptedRequestForTeam($conn, $allocation) {
 
 //Formular verarbeiten
 $errorShow = "";
-if(isset($_POST['buttonSubmit'])){
+if (isset($_POST['buttonSubmit'])) {
     $requestId = $_POST['requestId'];
     $textfield = $_POST['textfield'];
 
+    //liste für csv mit neuen werten vorbereiten
+    $listForCSV = $_POST['listForCSV'];
+    //[]zeichen aus dem String löschen
+    $listForCSV = str_replace('[', '', $listForCSV);
+    $listForCSV = str_replace(']', '', $listForCSV);
+    //String in Array umwandeln
+    $listForCSV = explode(",", $listForCSV);
+
     //user email aus DB holen
     $sqlUserId = "SELECT userId AS id FROM userdata WHERE id = $requestId";
-    $stmtUserId = mysqli_query($conn,$sqlUserId);
-    $rowUserId= mysqli_fetch_array($stmtUserId);
+    $stmtUserId = mysqli_query($conn, $sqlUserId);
+    $rowUserId = mysqli_fetch_array($stmtUserId);
     $userIdEmail = $rowUserId['id'];
     $sqlUserEmail = "SELECT Email AS Email FROM user WHERE id = $userIdEmail";
-    $stmtUserEmail = mysqli_query($conn,$sqlUserEmail);
-    $rowUserEmail= mysqli_fetch_array($stmtUserEmail);
+    $stmtUserEmail = mysqli_query($conn, $sqlUserEmail);
+    $rowUserEmail = mysqli_fetch_array($stmtUserEmail);
     $userEmail = $rowUserEmail['Email'];
 
-    if($_POST['buttonSubmit'] == 1){
+    if ($_POST['buttonSubmit'] == 1) {
         $sql = "UPDATE userdata SET AdminWorkInProgress = 2, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
         $errorShow = "<div class=\"alert alert-success msg mt-5 \" role=\"alert\">
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
+        //an das Array für die ML-CSV, die 1 für angenommen anhängen
+        $listForCSV[14] = "a";
+        addDataToCSV($listForCSV);
         //antwortemail an User senden
         sendMailToUser($userEmail, "info@geocycle.com", "angenommen", $textfield);
-    }if($_POST['buttonSubmit'] == 0){
+    } elseif ($_POST['buttonSubmit'] == 0) {
         $sql = "UPDATE userdata SET AdminWorkInProgress = 3, CompletedRequestDate = CURRENT_DATE WHERE id = '$requestId'";
         $stmt = mysqli_query($conn, $sql);
         $errorShow = "<div class=\"alert alert-danger msg mt-5\" role=\"alert\">
                               Die Anfrage wurde abgelehnt!
                             </div>";
+        //an das Array für die ML-CSV, die 0 für abgelehnt anhängen
+        $listForCSV[14] = "b";
+        addDataToCSV($listForCSV);
         //antwortemail an User senden
         sendMailToUser($userEmail, "info@geocycle.com", "abgelehnt", $textfield);
-    }else {
+    } else {
+
     }
+}
+
+function addDataToCSV($listForCSV)
+{
+    //funktion zum Hinzufügen von Daten zur csv
+    function readcsv($filename)
+    {
+        $rows = array();
+        foreach (file($filename, FILE_IGNORE_NEW_LINES) as $line) {
+            $rows[] = str_getcsv($line);
+        }
+        return $rows;
+    }
+    //funktion zum Schreiben von neuen Daten in die vorhandene csv
+    function writecsv($filename, $rows)
+    {
+        $file = fopen($filename, 'w');
+        foreach ($rows as $row) {
+            fputcsv($file, $row);
+        }
+        fclose($file);
+    }
+
+    $link = $_SERVER['DOCUMENT_ROOT'] . '/Projekte/geocycle/components/script/analyse/datasetsML/data.csv';
+
+    $list = readcsv($link);
+    //Array mit neuen Values
+    $list[] = array("rohBrenn" => $listForCSV[0], "wasser" => $listForCSV[1], "asche" => $listForCSV[2], "chlor" => $listForCSV[3], "schwefel" => $listForCSV[4], "queck" => $listForCSV[5], "kalium" => $listForCSV[6], "magnesium" => $listForCSV[7], "natrium" => $listForCSV[8], "rohMainParam" => $listForCSV[9], "menge" => $listForCSV[10], "preis" => $listForCSV[11], "abfPro" => $listForCSV[12], "avvZert" => $listForCSV[13], "Lables" => $listForCSV[14]);
+
+    //Add funktion aufrufen
+    writecsv($link, $list);
+    //END funktion zum Hinzufügen von Daten zur csv
 }
 
 ?>

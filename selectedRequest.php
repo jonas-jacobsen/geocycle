@@ -12,13 +12,12 @@ $stmtSelectRequest = mysqli_query($conn, $sqlSelectRequest);
 $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
+
 if($rowRequest['Producer'] == ""){
     $producer = "Anfragender ist Produzent";
 }else{
     $producer = $rowRequest['Producer'];
 }
-
-
 
 //Preisberechnung Zuzahlung für Geo oder User
 $offeredPrice = $rowRequest['OfferedPrice'];
@@ -65,19 +64,6 @@ function showFiles($conn, $requestId, $userId)
     }
 }
 
-//Formular verarbeiten
-$errorMessage= "";
-if(isset($_POST['buttonSubmit'])){
-    if($_POST['buttonSubmit'] == 1){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 2 WHERE id = '$requestId'";
-        $errorMessage = "Anfrage mit der Id '$requestId' wurde erfolgreich angenommen";
-    }if($_POST['buttonSubmit'] == 0){
-        $sql = "UPDATE userdata SET AdminWorkInProgress = 3 WHERE id = '$requestId'";
-        $errorMessage = "Anfrage mit der Id '$requestId' wurde  abgelehnt";
-    }else {
-    }
-    $stmt = mysqli_query($conn, $sql);
-}
 
 ?>
 <div class="container-for-admin">
@@ -87,7 +73,6 @@ if(isset($_POST['buttonSubmit'])){
     <!--Main layout-->
     <main class="pt-5 mx-lg-5">
         <div class="container-fluid mt-5">
-            <?php echo $errorMessage ?>
             <!--Grid row-->
 
             <div class="row wow fadeIn">
@@ -163,83 +148,6 @@ if(isset($_POST['buttonSubmit'])){
                                     <div id="einbinden"></div>
                                 </div>
                             </div>
-                            <hr>
-                            <h4>Anfrage beantworten</h4>
-                            <form method="post" action="#">
-                                <div class="row mb-4">
-                                    <div class="col-sm-6">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked1"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked1">Standard Absage
-                                                Nr.
-                                                1</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked2"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked2">Standard Absage
-                                                Nr.
-                                                2</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked3"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked3">Standard Absage
-                                                Nr.
-                                                3</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked7"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked7">Keine Auswahl
-                                                3</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked4"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked4">Standard Absage
-                                                Nr.
-                                                4</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked5"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked5">Standard Absage
-                                                Nr.
-                                                5</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked6"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked6">Standard Absage
-                                                Nr.
-                                                6</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-12">
-                                        <!--Material textarea-->
-                                        <div class="md-form">
-                                            <textarea id="form7" class="md-textarea form-control" rows="5"></textarea>
-                                            <label for="form7">Freitext für Zu- oder Absage</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-6" style="text-align: left">
-                                        <button type="submit" name="buttonSubmit" value="1" class="btn btn-outline-success waves-effect">Annehmen
-                                        </button>
-                                    </div>
-                                    <div class="col-md-6" style="text-align: right">
-                                        <button type="submit" name="buttonSubmit" value="0" class="btn btn-outline-danger waves-effect">Ablehnen
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                     <!--/.Card-->
