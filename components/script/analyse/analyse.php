@@ -92,11 +92,11 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     $isAVVForFactory = avvChecker($closestFactory, $avv);
     if ($isAVVForFactory[0] == 1) {
         $avvIcon = iconChecker(1);
-        $avvComment = "Avv ist im nähstgelegenden Werk Zertifiziert";
+        $avvComment = "Avv ist im nächstgelegenen Werk Zertifiziert";
     } else {
         if ($isAVVForFactory[1] == 1) {
             $avvIcon = iconChecker(1);
-            $avvComment = "Avv ist nicht in nähstgelegendem Werk aber in einem anderen Werk Zertifiziert";
+            $avvComment = "Avv ist nicht in nächstgelegenem Werk aber in einem anderen Werk Zertifiziert";
         } else {
             $avvIcon = iconChecker(0);
             $avvComment = "Avv ist in keinem Werk Zertifiziert";
@@ -107,13 +107,13 @@ function buildHTMLForBurn($paramEval, $amount, $offeredPrice, $untererHeizwert, 
     //überprüfen ob Produktions oder Abfallstatusw
     if ($prodAbf == "Abfall") {
         $isAbfOrProd = 1; //Für ML-Analyse abfall
-        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nächstgelegenes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
     } else {
         $isAbfOrProd = 0; //Für ML-Analyse Rohstoff
-        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nächstgelegenes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
     }
-    //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert
-    $recomendation = getRecomendation(0, $paramEval[1]["check"], $paramEval[2]["check"], $paramEval[3]["check"], $paramEval[4]["check"], $paramEval[0]["check"], 0, 0, 0, 0, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
+    //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $calcium, $silizium, $natrium, $aluminium $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro,
+    $recomendation = getRecomendation(0, $paramEval[1]["check"], $paramEval[2]["check"], $paramEval[3]["check"], $paramEval[4]["check"], $paramEval[0]["check"], 0, 0, 0, 0, 0, 0, 0, 0, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
 
     //Ab hier HTML
     echo "<h4>Brennstoff</h4>";
@@ -231,15 +231,27 @@ function buildHTMLForMaterial($offeredPrice, $paramEvalMain, $paramEval, $paramJ
     //überprüfen ob Produktions oder Abfallstatus
     if ($prodAbf == "Abfall") {
         $isAbfOrProd = 1; //Für ML-Analyse
-        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div><div class='row'><div class='col-3'>AVV-Nummer</div><div class='col-3'>$avv</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nächstgelegenes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div><div class='row'><div class='col-3'>AVV-Nummer</div><div class='col-3'>$avv</div><div class='col-1'>$avvIcon</div><div class='col-4'>$avvComment</div></div>";
     } else {
         $isAbfOrProd = 0; //Für ML-Analyse
-        $htmlProdAbf = "<div class='row'><div class='col-3'>Nähstgelegendes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
+        $htmlProdAbf = "<div class='row'><div class='col-3'>Nächstgelegenes Werk</div><div class='col-3'>$closestFactory</div><div class='col-1'></div><div class='col-4'></div></div>";
     }
 
-    //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert
-    $recomendation = getRecomendation(1, 0, 0, 0, 0, 0, 1, 1, 1, $isHighestParam, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
+    $wassergehalt = $paramEval[1]['check'];
+    $chlorgehalt = $paramEval[2]['check'];
+    $schwefelgehalt = $paramEval[3]['check'];
+    $calciumgehalt = $paramEval[4]['check'];
+    $siliziumgehalt = $paramEval[5]['check'];
+    $eisengehalt = $paramEval[6]['check'];
+    $aluminiumgehalt = $paramEval[7]['check'];
+    $magnesiumgehalt = $paramEval[8]['check'];
+    $kaliumgehalt = $paramEval[9]['check'];
+    $natriumgehalt = $paramEval[10]['check'];
 
+
+
+    //Ml analyse $rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert
+    $recomendation = getRecomendation(1, $wassergehalt, 0, $chlorgehalt, $schwefelgehalt, 0, $calciumgehalt, $siliziumgehalt, $eisengehalt, $aluminiumgehalt, $kaliumgehalt,$magnesiumgehalt,$natriumgehalt, $isHighestParam, $checkIsAmountGood, $isEconomic, $isAbfOrProd, $isAVVForFactory[0]);
     echo "<h4>Rohstoff</h4>";
     echo "$htmlProdAbf";
     echo "<div class='row'><div class='col-3'>Hauptbestandteil</div><div class='col-3'>$paramEvalMain[0]</div><div class='col-1'>$iconCheckParamHigh</div><div class='col-4'>$highestParamComment</div></div>";
@@ -337,7 +349,12 @@ function checkParamBurn($paramJson)
     $paramEval = array();
     $checkIfOneTooHigh = 0;
     if ($quecksilbergehalt <= $paramLimit["quecksilber"]) {
-        $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "1", "unit" => "mg / kg", "comment" => "");
+        $tmp = array(
+            "name" => "Quecksilber",
+            "value" => "$quecksilbergehalt",
+            "check" => "1",
+            "unit" => "mg / kg",
+            "comment" => "");
         array_push($paramEval, $tmp);
     } else {
         $tmp = array("name" => "Quecksilber", "value" => "$quecksilbergehalt", "check" => "0", "unit" => "mg / kg", "comment" => "");
@@ -719,15 +736,15 @@ function avvChecker($factoryName, $avv)
     return [$factCert, $allCert];
 }
 
-function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert)
+function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck, $calcium, $silizium, $eisen, $aluminium, $kalium, $magnesium, $natrium, $rohMainParam, $menge, $preis, $abfPro, $avvZert)
 {
-    $param = [$rohBrenn, intval($wasser), intval($asche), intval($chlor), intval($schwefel), intval($kalium), intval($magnesium), intval($natrium), intval($queck), intval($rohMainParam), intval($menge), intval($preis), intval($abfPro), intval($avvZert)];
+    $param = [$rohBrenn, intval($wasser), intval($asche), intval($chlor), intval($schwefel), intval($queck), intval($calcium), intval($silizium), intval($eisen), intval($aluminium), intval($kalium), intval($magnesium), intval($natrium), intval($rohMainParam), intval($menge), intval($preis), intval($abfPro), intval($avvZert)];
 
     //Values für CSV zwischenSpeichern
     $_SESSION['valuesForCSV'] = json_encode($param);
 
 
-    $dataset = new CsvDataset($_SERVER['DOCUMENT_ROOT'] . '/Projekte/geocycle/components/script/analyse/datasetsML/data.csv', 14, true);
+    $dataset = new CsvDataset($_SERVER['DOCUMENT_ROOT'] . '/Projekte/geocycle/components/script/analyse/datasetsML/data.csv', 18, true);
     //$samples = [[1, 0, 0, 0, 0,0,1,1,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,0,1]];
     //$labels = ['a', 'b', 'b'];
 

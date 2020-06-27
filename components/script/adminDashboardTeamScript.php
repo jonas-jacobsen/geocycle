@@ -126,7 +126,7 @@ if (isset($_POST['buttonSubmit'])) {
                               Die Anfrage wurde erfolgreich angenommen!
                             </div>";
         //an das Array für die ML-CSV, die 1 für angenommen anhängen
-        $listForCSV[14] = "a";
+        $listForCSV[18] = "a";
         addDataToCSV($listForCSV);
         //antwortemail an User senden
         sendMailToUser($userEmail, "info@geocycle.com", "angenommen", $textfield);
@@ -137,7 +137,7 @@ if (isset($_POST['buttonSubmit'])) {
                               Die Anfrage wurde abgelehnt!
                             </div>";
         //an das Array für die ML-CSV, die 0 für abgelehnt anhängen
-        $listForCSV[14] = "b";
+        $listForCSV[18] = "b";
         addDataToCSV($listForCSV);
         //antwortemail an User senden
         sendMailToUser($userEmail, "info@geocycle.com", "abgelehnt", $textfield);
@@ -171,7 +171,7 @@ function addDataToCSV($listForCSV)
 
     $list = readcsv($link);
     //Array mit neuen Values
-    $list[] = array("rohBrenn" => $listForCSV[0], "wasser" => $listForCSV[1], "asche" => $listForCSV[2], "chlor" => $listForCSV[3], "schwefel" => $listForCSV[4], "queck" => $listForCSV[5], "kalium" => $listForCSV[6], "magnesium" => $listForCSV[7], "natrium" => $listForCSV[8], "rohMainParam" => $listForCSV[9], "menge" => $listForCSV[10], "preis" => $listForCSV[11], "abfPro" => $listForCSV[12], "avvZert" => $listForCSV[13], "Lables" => $listForCSV[14]);
+    $list[] = array("rohBrenn" => $listForCSV[0], "wasser" => $listForCSV[1], "asche" => $listForCSV[2], "chlor" => $listForCSV[3], "schwefel" => $listForCSV[4], "queck" => $listForCSV[5], "calcium" => $listForCSV[6], "silizium" => $listForCSV[7], "eisen"=> $listForCSV[8], "aluminium" => $listForCSV[9], "kalium" => $listForCSV[10], "magnesium" => $listForCSV[11], "natrium" => $listForCSV[12], "rohMainParam" => $listForCSV[13], "menge" => $listForCSV[14], "preis" => $listForCSV[15], "abfPro" => $listForCSV[16], "avvZert" => $listForCSV[17], "Lables" => $listForCSV[18]);
 
     //Add funktion aufrufen
     writecsv($link, $list);

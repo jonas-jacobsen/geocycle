@@ -1,29 +1,82 @@
-Array ( [
-  0
-] => 0 [
-  1
-] => 1 [
-  2
-] => 1 [
-  3
-] => 1 [
-  4
-] => 1 [
-  5
-] => 0 [
-  6
-] => 0 [
-  7
-] => 0 [
-  8
-] => 1 [
-  9
-] => 0 [
-  10
-] => 1 [
-  11
-] => 0 [
-  12
-] => 0 [
-  13
-] => 0 )
+[
+  {
+    "name": "Quecksilber",
+    "value": "6",
+    "check": "0",
+    "unit": "mg \/ kg",
+    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+  },
+  {
+    "name": "Wassergehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Chlorgehalt",
+    "value": "6",
+    "check": "0",
+    "unit": " % ",
+    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+  },
+  {
+    "name": "Schwefelgehalt",
+    "value": "6",
+    "check": "0",
+    "unit": " % ",
+    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+  },
+  {
+    "name": "Calciumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Silliciumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Eisengehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Aluminiumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Magnesiumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Kaliumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "name": "Natriumgehalt",
+    "value": "6",
+    "check": "1",
+    "unit": " % ",
+    "comment": ""
+  },
+  {
+    "oneValueTooHigh": 3
+  }
+]
