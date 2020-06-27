@@ -23,10 +23,8 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.json" beforeDir="false" afterPath="$PROJECT_DIR$/test.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/requestJs/autocomplete.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/requestJs/autocomplete.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +145,7 @@
       <workItem from="1592038656485" duration="24907000" />
       <workItem from="1592215881958" duration="10462000" />
       <workItem from="1592397154055" duration="65051000" />
-      <workItem from="1593021502463" duration="14406000" />
+      <workItem from="1593021502463" duration="14825000" />
     </task>
     <servers />
   </component>

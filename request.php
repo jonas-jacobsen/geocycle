@@ -231,7 +231,7 @@ include("components/header.php");
                                         <div class="abfallstatus">
                                             <div class="md-form input-with-post-icon">
                                                 <i class="fas fa-trash input-prefix"></i>
-                                                <input type="text" id="avv" class="form-control" name="avv"
+                                                <input type="text" id="avv" class="form-control" name="avv" autocomplete="off"
                                                        value="<?php echo $avv ?>">
                                                 <label for="avv"><?php echo $lang['requestWasteDescriptionAVV'] ?></label>
                                             </div>
