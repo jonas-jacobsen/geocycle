@@ -12,6 +12,8 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
 
+
+
 if($rowRequest['Producer'] == ""){
     $producer = "Anfragender ist Produzent";
 }else{
@@ -21,7 +23,7 @@ if($rowRequest['Producer'] == ""){
 //Preisberechnung Zuzahlung für Geo oder User
 $offeredPrice = $rowRequest['OfferedPrice'];
 if($offeredPrice < 0){
-    $offeredPriceHtml = "Kosten für Geo: ".abs($offeredPrice)."€";
+    $offeredPriceHtml = "<u>Kosten</u> für Geocycle: ".abs($offeredPrice)."€";
 }else{
     $offeredPriceHtml = "Kosten für Kunden: ".$offeredPrice."€";
 }
@@ -82,7 +84,9 @@ function showFiles($conn, $requestId, $userId)
                                 <div class="col-md-6">
                                     <h4>Anfrage <?php echo $rowRequest['id'] ?></h4>
                                 </div>
-
+                                <div class="col-md-6" style="text-align: right">
+                                    <button onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
+                                </div>
                             </div>
                             <!--Analyse funktionaufrufen -->
                             <?php analyse($requestId, $conn)?>
@@ -96,8 +100,8 @@ function showFiles($conn, $requestId, $userId)
                                     <?php echo $rowRequest['ErzHae'] ?>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>Gewicht: </h5>
-                                    <?php echo $rowRequest['JaTo'] ?> Jato
+                                    <h5>Menge: </h5>
+                                    <?php echo $rowRequest['JaTo']." ". $rowRequest['WeightForm'] ?>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -118,6 +122,14 @@ function showFiles($conn, $requestId, $userId)
                                 <div class="col-md-4">
                                     <h5>Anlieferform: </h5>
                                     <?php echo $rowRequest['DeliveryForm'] ?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Lieferkondition:</h5>
+                                    <?echo $rowRequest['Avv']?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Preis:</h5>
+                                    <?echo $offeredPriceHtml?>
                                 </div>
                             </div>
                             <hr>
@@ -147,21 +159,21 @@ function showFiles($conn, $requestId, $userId)
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked1"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked1">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked1">Standard Absage
                                                 Nr.
                                                 1</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked2"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked2">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked2">Standard Absage
                                                 Nr.
                                                 2</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked3"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked3">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked3">Standard Absage
                                                 Nr.
                                                 3</label>
                                         </div>
@@ -176,21 +188,21 @@ function showFiles($conn, $requestId, $userId)
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked4"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked4">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked4">Standard Absage
                                                 Nr.
                                                 4</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked5"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked5">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked5">Standard Absage
                                                 Nr.
                                                 5</label>
                                         </div>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" class="custom-control-input" id="defaultUnchecked6"
                                                    name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked6">Standart Absage
+                                            <label class="custom-control-label" for="defaultUnchecked6">Standard Absage
                                                 Nr.
                                                 6</label>
                                         </div>

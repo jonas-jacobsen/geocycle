@@ -5,16 +5,16 @@ include("../config.php");
 $prodAbf = htmlspecialchars($_POST['prodAbf']);
 $erzHae = htmlspecialchars($_POST['erzHae']);
 $jato = htmlspecialchars($_POST['jato']);
+$weightForm = htmlspecialchars($_POST['weightForm']);
 $producer = htmlspecialchars($_POST['producer']);
 $wasteDescription = htmlspecialchars($_POST['wasteDescription']);
 $avv = htmlspecialchars($_POST['avv']);
 $deliveryForm = htmlspecialchars($_POST['deliveryForm']);
 
-
 $userId = $_SESSION['userId'];
 $requestId = $_SESSION['requestId'];
 
-$sql = "UPDATE userdata SET ProdAbf = '$prodAbf', ErzHae = '$erzHae', Jato = '$jato', Producer = '$producer', WasteDescription = '$wasteDescription', Avv = '$avv', DeliveryForm = '$deliveryForm' WHERE id = $requestId";
+$sql = "UPDATE userdata SET ProdAbf = '$prodAbf', ErzHae = '$erzHae', Jato = '$jato', WeightForm = '$weightForm',Producer = '$producer', WasteDescription = '$wasteDescription', Avv = '$avv', DeliveryForm = '$deliveryForm' WHERE id = $requestId";
 
 $statement = mysqli_query($conn, $sql);
 

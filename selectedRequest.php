@@ -22,7 +22,7 @@ if($rowRequest['Producer'] == ""){
 //Preisberechnung Zuzahlung für Geo oder User
 $offeredPrice = $rowRequest['OfferedPrice'];
 if($offeredPrice < 0){
-    $offeredPriceHtml = "Kosten für Geo: ".abs($offeredPrice)."€";
+    $offeredPriceHtml = "<u>Kosten</u> für Geocycle: ".abs($offeredPrice)."€";
 }else{
     $offeredPriceHtml = "Kosten für Kunden: ".$offeredPrice."€";
 }
@@ -101,8 +101,8 @@ function showFiles($conn, $requestId, $userId)
                                     <?php echo $rowRequest['ErzHae'] ?>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>Gewicht: </h5>
-                                    <?php echo $rowRequest['JaTo'] ?> Jato
+                                    <h5>Menge: </h5>
+                                    <?php echo $rowRequest['JaTo'] ." ". $rowRequest['WeightForm']?>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -125,8 +125,12 @@ function showFiles($conn, $requestId, $userId)
                                     <?php echo $rowRequest['DeliveryForm'] ?>
                                 </div>
                                 <div class="col-md-4">
-                                    <h5>Preis: </h5>
-                                    <?php echo  $offeredPriceHtml?>
+                                    <h5>Lieferkondition:</h5>
+                                    <?echo $rowRequest['Avv']?>
+                                </div>
+                                <div class="col-md-4">
+                                    <h5>Preis:</h5>
+                                    <?echo $offeredPriceHtml?>
                                 </div>
                             </div>
                             <hr>

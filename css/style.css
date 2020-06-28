@@ -1,7 +1,16 @@
-/*Navbar*/
-.navbar {
-    /*damit die Navbar beim ausklappen die checkliste überdeckt*/
-    z-index: 99999!important;
+/*Styles für flexiblen footer auf der userdasboardseite*/
+html, body {
+    height: 100%;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+.container-for-admin {
+    flex: 1 0 auto;
+}
+.footer {
+    flex-shrink: 0;
 }
 /*Dashboard progressbar*/
 .progress .progress-bar {

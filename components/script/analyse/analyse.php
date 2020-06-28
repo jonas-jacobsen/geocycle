@@ -743,7 +743,6 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
     //Values für CSV zwischenSpeichern
     $_SESSION['valuesForCSV'] = json_encode($param);
 
-
     $dataset = new CsvDataset($_SERVER['DOCUMENT_ROOT'] . '/Projekte/geocycle/components/script/analyse/datasetsML/data.csv', 18, true);
     //$samples = [[1, 0, 0, 0, 0,0,1,1,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,1,1], [1, 0, 0, 0, 0,0,0,0,1,0,1]];
     //$labels = ['a', 'b', 'b'];
@@ -756,6 +755,8 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
 
     $recomendation = $classifier->predict($param);
 
+    echo $recomendation;
+
     if ($recomendation == "a") {
         $result = "Annehmen";
     } elseif ($recomendation == "b") {
@@ -763,7 +764,6 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
     } else {
         $result = $recomendation;
     }
-
     return $result;
 }
 

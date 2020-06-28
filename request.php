@@ -321,8 +321,8 @@ include("components/header.php");
                                         </div>
                                     </div>
                                     <div class="col-md-2">
-                                        <label for="incoterms"><?php echo $lang['requestLableWeightCondition'] ?></label>
-                                        <select class="form-control" id="incoterms" name="deliveryForm">
+                                        <label for="weightForm"><?php echo $lang['requestLableWeightCondition'] ?></label>
+                                        <select class="form-control" id="weightForm" name="weightForm">
                                             <option value="Jato"><?php echo $lang['requestLableSelectWeightConditionJato'] ?></option>
                                             <option value="Saison"><?php echo $lang['requestLableSelectWeightConditionSaison'] ?></option>
                                             <option value="Spotmenge"><?php echo $lang['requestLableSelectWeightConditionSpot'] ?></option>
