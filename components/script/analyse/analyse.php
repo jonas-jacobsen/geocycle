@@ -755,8 +755,6 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
 
     $recomendation = $classifier->predict($param);
 
-    echo $recomendation;
-
     if ($recomendation == "a") {
         $result = "Annehmen";
     } elseif ($recomendation == "b") {

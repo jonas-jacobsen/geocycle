@@ -22,14 +22,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/css/print/print.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/print/print.min.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/adminDashboardTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/adminDashboardTeam.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/headerAdmin.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/headerAdmin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/adminDashboardTeamScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/analyse.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/analyse.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/analyse/datasetsML/data.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateRequestAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateRequestAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/userDashboardScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/userDashboardScript.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/request.php" beforeDir="false" afterPath="$PROJECT_DIR$/request.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requestBackup.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectedRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js/formHandler.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/formHandler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languages/de.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/de.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/languages/en.php" beforeDir="false" afterPath="$PROJECT_DIR$/languages/en.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/loginTeam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/selectedRequestTeam.php" beforeDir="false" afterPath="$PROJECT_DIR$/selectedRequestTeam.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/userDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/userDashboard.php" afterDir="false" />
     </list>
@@ -44,9 +53,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -102,19 +111,19 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/components/script/analyse/datasetsML" />
-      <recent name="$PROJECT_DIR$/components/script/analyse" />
-      <recent name="$PROJECT_DIR$/components/script" />
-      <recent name="$PROJECT_DIR$/composer" />
-      <recent name="$PROJECT_DIR$/js/addons" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/js" />
       <recent name="$PROJECT_DIR$/components/script" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/js/fileUpload" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/css/print" />
+      <recent name="$PROJECT_DIR$/js/print" />
+      <recent name="$PROJECT_DIR$/components/script/analyse/datasetsML" />
+      <recent name="$PROJECT_DIR$/components/script/analyse" />
+      <recent name="$PROJECT_DIR$/components/script" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -153,7 +162,8 @@
       <workItem from="1592215881958" duration="10462000" />
       <workItem from="1592397154055" duration="65051000" />
       <workItem from="1593021502463" duration="16539000" />
-      <workItem from="1593279168488" duration="5853000" />
+      <workItem from="1593279168488" duration="14901000" />
+      <workItem from="1593693812017" duration="7731000" />
     </task>
     <servers />
   </component>
@@ -165,7 +175,13 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="false" />
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -238,11 +254,11 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="0" y="0" key="com.jetbrains.php.config.phpInfo.PhpInfo.PhpInfoDialog/0.0.1280.800@0.0.1280.800" timestamp="1592043298107" />
-    <state x="0" y="252" width="1136" height="548" key="find.popup" timestamp="1592773662816">
-      <screen x="0" y="0" width="1280" height="800" />
+    <state x="-1920" y="370" width="1704" height="710" key="find.popup" timestamp="1593695252037">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1592401967421" />
-    <state x="-2560" y="542" width="2272" height="898" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1591902518027" />
+    <state x="-1920" y="370" width="1704" height="710" key="find.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1593695252037" />
+    <state x="-2326" y="470" width="2272" height="898" key="find.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1593604057855" />
     <state x="0" y="252" width="1136" height="548" key="find.popup/0.0.1280.800@0.0.1280.800" timestamp="1592773662816" />
     <state x="277" y="117" key="ftp.server.browser" timestamp="1588416643637">
       <screen x="0" y="23" width="1280" height="777" />

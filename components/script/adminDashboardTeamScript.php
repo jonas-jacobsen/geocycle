@@ -18,6 +18,7 @@ function showAllRequestForTeam($conn, $allocation)
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 1";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {
+        $userId = $dataAllRequest['userId'];
         $requestId = $dataAllRequest['id'];
         $name = $dataAllRequest['Surname'];
         $town = $dataAllRequest['Town'];
@@ -26,6 +27,11 @@ function showAllRequestForTeam($conn, $allocation)
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $producer = $dataAllRequest['Producer'];
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
+        //Unternehmensname aus userdb holen
+        $sqlCompany = "SELECT Company FROM user WHERE id = '$userId'";
+        $stmtCompany= mysqli_query($conn, $sqlCompany);
+        $rowCompany= mysqli_fetch_array($stmtCompany);
+        $company = $rowCompany['Company'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
         $backgroudstyle = "";
         if ($adminWorkInprogress == 2) {
@@ -38,7 +44,7 @@ function showAllRequestForTeam($conn, $allocation)
         echo '
         <tr>
             <td>' . $requestId . '</td>
-            <td>' . $name . '</td>
+            <td>' . $company . '</td>
             <td>' . $town . '</td>
             <td>' . $weight . '</td>
             <td>' . $avv . '</td>
@@ -59,6 +65,7 @@ function showAllAcceptedRequestForTeam($conn, $allocation)
     $sqlAllRequest = "SELECT * FROM userdata WHERE OpenRequest = 1 AND Allocation = $allocation AND AdminWorkInProgress = 2";
     $stmtAllRequest = mysqli_query($conn, $sqlAllRequest);
     while ($dataAllRequest = mysqli_fetch_array($stmtAllRequest)) {
+        $userId = $dataAllRequest['userId'];
         $requestId = $dataAllRequest['id'];
         $name = $dataAllRequest['Surname'];
         $town = $dataAllRequest['Town'];
@@ -67,6 +74,11 @@ function showAllAcceptedRequestForTeam($conn, $allocation)
         $deliveryForm = $dataAllRequest['DeliveryForm'];
         $producer = $dataAllRequest['Producer'];
         $adminWorkInprogress = $dataAllRequest['AdminWorkInProgress'];
+        //Unternehmensname aus userdb holen
+        $sqlCompany = "SELECT Company FROM user WHERE id = '$userId'";
+        $stmtCompany= mysqli_query($conn, $sqlCompany);
+        $rowCompany= mysqli_fetch_array($stmtCompany);
+        $company = $rowCompany['Company'];
         //überprüfen welchen Status die Anfrage hat: In arbeit: Weiß, angenommen: Grün, Abgelehnt: Rot
         $backgroudstyle = "";
         if ($adminWorkInprogress == 2) {
@@ -79,7 +91,7 @@ function showAllAcceptedRequestForTeam($conn, $allocation)
         echo '
         <tr class="' . $backgroudstyle . '">
             <td>' . $requestId . '</td>
-            <td>' . $name . '</td>
+            <td>' . $company . '</td>
             <td>' . $town . '</td>
             <td>' . $weight . '</td>
             <td>' . $avv . '</td>

@@ -4,7 +4,7 @@ include("components/script/email.php");
 $userId = $_SESSION['userId'];
 $msgModalSendRequest = "";
 
-//emailadresse vom admin holen
+//emailadresse vom admin holen damit dieser Per benachrichtig werden kann, wenn eine neue Anfrage vom User abgeschickt wurde
 $sqlAdminUser = "SELECT Email AS EmailAdmin FROM adminuser WHERE TeamAllocation = 1";
 $stmtAdminUser = mysqli_query($conn, $sqlAdminUser);
 $rowAdminUser = mysqli_fetch_array($stmtAdminUser);
@@ -33,7 +33,7 @@ if ($requestIsFilledOutAgain == "1") {
 
 
 //check ob das erste mal angemeldet
-$sqlIsNew = "SELECT isNew FROM user WHERE id = '$userId'";
+$sqlIsNew = "SELECT isNew, Company FROM user WHERE id = '$userId'";
 $stmtIsNew = mysqli_query($conn, $sqlIsNew);
 $rowIsnew = mysqli_fetch_array($stmtIsNew);
 
@@ -45,6 +45,9 @@ if ($modalShow == 0) {
 } else {
 
 }
+
+
+
 //Button neue Anfrage
 if (isset($_POST['newRequest'])) {
     $sqlNewRequest = "INSERT INTO userdata SET UserId = $userId, OpenRequest = 0";

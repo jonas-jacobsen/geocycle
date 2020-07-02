@@ -60,7 +60,7 @@ include("components/headerAdmin.php");
                                 <tr>
                                     <th class="th-sm">Anfrage ID
                                     </th>
-                                    <th class="th-sm">Name
+                                    <th class="th-sm">Unternehmen
                                     </th>
                                     <th class="th-sm">Ort
                                     </th>
@@ -95,7 +95,7 @@ include("components/headerAdmin.php");
                                 <tr>
                                     <th class="th-sm">Anfrage ID
                                     </th>
-                                    <th class="th-sm">Name
+                                    <th class="th-sm">Unternehmen
                                     </th>
                                     <th class="th-sm">Ort
                                     </th>

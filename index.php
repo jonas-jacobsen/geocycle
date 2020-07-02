@@ -2,6 +2,15 @@
 session_start();
 include("components/config.php");
 
+//Prüfen ob cookieModal gezeigt werden soll
+if(empty($_SESSION['showCookies'])){
+    $cookieModal =  "$('#frameModalBottom').modal('show');";
+    $_SESSION['showCookies'] = 1;
+}else{
+    $cookieModal = "";
+}
+
+
 /*Login */
 if (isset($_POST['submit'])) {
     if ($_POST['email'] != "" && $_POST['password'] != "") {
@@ -49,7 +58,6 @@ if (isset($_POST['submitOne'])) {
         $errorMessage = '<div class="alert alert-danger" role="alert">Emailadresse und Passwort eingeben</div>';
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -189,7 +197,7 @@ if (isset($_POST['submitOne'])) {
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <script type="text/javascript">
-    $('#frameModalBottom').modal('show');
+   <?php echo $cookieModal?>
 </script>
 </body>
 </html>

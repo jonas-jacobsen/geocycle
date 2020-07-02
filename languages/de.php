@@ -103,6 +103,11 @@ $lang = array(
     "requestFurtherInfSave" => "Speichern",
     "requestAddParam" => " Wert hinzufügen",
 
+    "requestSubmitButton" => "Anfrage Abschicken",
+    "requestSubmitButtonRed" => "<a class=\"info_toogle_hover\" data-toggle=\"popover\" data-trigger=\"hover\" data-placement=\"bottom\" data-content=\"Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann\">Anfrage Abschicken</a>",
+
+    "requestSubmitButtonAgain" => "Anfrage erneut Abschicken",
+
     "furtherDocTitle" => "Weitere Dokumente",
     "furtherDocParagraph" => "Hier können Sie weitere Dokumente hochladen, die für Ihre Anfrage notwendig sind.",
 

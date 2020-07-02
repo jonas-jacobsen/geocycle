@@ -246,15 +246,15 @@ if ($row['ProdAbf'] == "Abfall") {
     } elseif ($countNumbers == 2) {
         $progressBarValue = "66%";
         $progressValue = "66";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     } elseif ($countNumbers == 1) {
         $progressBarValue = "33%";
         $progressValue = "33";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     } else {
         $progressBarValue = "0%";
         $progressValue = "0";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     }
 } else {
     $countNumbers = $contactPersCheckVar + $requestCheckVar + $furtherInfoCheckVar + $docOneCheckVar;
@@ -262,29 +262,28 @@ if ($row['ProdAbf'] == "Abfall") {
         $progressBarValue = "100%";
         $progressValue = "100";
         if ($row['OpenRequest'] == 1) {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">Anfrage erneut Abschicken</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOutAgain" name="requestIsFilledOutAgain" value="1" class="btn btn-outline-success waves-effect">'.$lang['requestSubmitButtonAgain'].'</button>';
         } else {
-            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">Anfrage Abschicken</button>';
+            $buttonRequestFilledOut = '<button type="submit" id="requestIsFilledOut" name="requestIsFilledOut" value="1" class="btn btn-outline-success waves-effect">'.$lang['requestSubmitButton'].'</button>';
         }
     } elseif ($countNumbers == 3) {
         $progressBarValue = "75%";
         $progressValue = "75";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     } elseif ($countNumbers == 2) {
         $progressBarValue = "50%";
         $progressValue = "50";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     } elseif ($countNumbers == 1) {
         $progressBarValue = "25%";
         $progressValue = "25";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     } else {
         $progressBarValue = "0%";
         $progressValue = "0";
-        $buttonRequestFilledOut = "";
+        $buttonRequestFilledOut = '<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect ">'.$lang['requestSubmitButtonRed'].'</button>';
     }
 }
-
 
 //Fileupload
 if (isset($_FILES['attachments'])) {

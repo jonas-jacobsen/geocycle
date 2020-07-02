@@ -12,27 +12,35 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
 
+//Unternehmen aus DB laden
+$sqlComapny = "SELECT Company AS Company FROM user WHERE id = $userIdFromRequest";
+$stmtCompany = mysqli_query($conn, $sqlComapny);
+$rowCompany = mysqli_fetch_array($stmtCompany);
 
 
-if($rowRequest['Producer'] == ""){
+if ($rowRequest['Producer'] == "") {
     $producer = "Anfragender ist Produzent";
-}else{
+} else {
     $producer = $rowRequest['Producer'];
 }
 
 //Preisberechnung Zuzahlung für Geo oder User
 $offeredPrice = $rowRequest['OfferedPrice'];
-if($offeredPrice < 0){
-    $offeredPriceHtml = "<u>Kosten</u> für Geocycle: ".abs($offeredPrice)."€";
-}else{
-    $offeredPriceHtml = "Kosten für Kunden: ".$offeredPrice."€";
+if ($offeredPrice < 0) {
+    $offeredPriceHtml = "<u>Kosten</u> für Geocycle: " . abs($offeredPrice) . "€";
+} else {
+    $offeredPriceHtml = "Kosten für Kunden: " . $offeredPrice . "€";
 }
+
+//variable für html-code für Druck von PDFs
+$printFiles = "";
 //alle dokuemnte Anzeigen
 function showFiles($conn, $requestId, $userId)
 {
     $sql_show_files = "SELECT * FROM docOne WHERE RequestId = $requestId";
     $statement_show_fiels = mysqli_query($conn, $sql_show_files);
     while ($rowPath = mysqli_fetch_array($statement_show_fiels)) {
+        $docsForPrint = "";
         $filePath = $rowPath['Path'];
         $fileName = explode("uploads/$userId/$requestId", $filePath);
         $fileId = $rowPath['id'];
@@ -61,7 +69,10 @@ function showFiles($conn, $requestId, $userId)
             </div>  
         </div>
         ';
+
+        //$docsForPrint .= '<iframe name="'.$filePath.'" width="100%" height="500px" src="' . $filePath . '"></iframe>';
     }
+    return $docsForPrint;
 }
 
 ?>
@@ -82,14 +93,16 @@ function showFiles($conn, $requestId, $userId)
                         <div class="card-body">
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <h4>Anfrage <?php echo $rowRequest['id'] ?></h4>
+                                    <h4><?php echo $rowCompany['Company']?></h4>
+                                    <h5>Anfrage-ID: <?php echo $rowRequest['id']?></h5>
                                 </div>
                                 <div class="col-md-6" style="text-align: right">
-                                    <button onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
+                                    <button id="printHiddenDiv" onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i
+                                                class="fas fa-print"></i></button>
                                 </div>
                             </div>
                             <!--Analyse funktionaufrufen -->
-                            <?php analyse($requestId, $conn)?>
+                            <?php analyse($requestId, $conn) ?>
                             <div class="row mb-4">
                                 <div class="col-md-4">
                                     <h5>Status:</h5>
@@ -101,7 +114,7 @@ function showFiles($conn, $requestId, $userId)
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Menge: </h5>
-                                    <?php echo $rowRequest['JaTo']." ". $rowRequest['WeightForm'] ?>
+                                    <?php echo $rowRequest['JaTo'] . " " . $rowRequest['WeightForm'] ?>
                                 </div>
                             </div>
                             <div class="row mb-4">
@@ -125,11 +138,11 @@ function showFiles($conn, $requestId, $userId)
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Lieferkondition:</h5>
-                                    <?echo $rowRequest['Avv']?>
+                                    <? echo $rowRequest['Avv'] ?>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Preis:</h5>
-                                    <?echo $offeredPriceHtml?>
+                                    <? echo $offeredPriceHtml ?>
                                 </div>
                             </div>
                             <hr>
@@ -143,93 +156,110 @@ function showFiles($conn, $requestId, $userId)
                                     <?php echo $rowRequest['ProcessDescription'] ?>
                                 </div>
                             </div>
-                            <hr>
+                            <hr id="printHiddenDiv">
                             <div class="existingFiles">
                                 <h5>Dokumente</h5><br>
                                 <div class="gallery">
-                                    <?php showFiles($conn, $RequestIdFromUser, $userIdFromRequest); ?>
+                                    <?php $docsForPrint = showFiles($conn, $RequestIdFromUser, $userIdFromRequest); ?>
                                     <div id="einbinden"></div>
                                 </div>
                             </div>
-                            <hr>
-                            <h4>Anfrage beantworten</h4>
-                            <form action="adminDashboardTeam.php" method="post">
-                                <div class="row mb-4">
-                                    <div class="col-sm-6">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked1"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked1">Standard Absage
-                                                Nr.
-                                                1</label>
+                            <hr id="printHiddenDiv">
+                            <div id="docForPrint">
+                                <?php echo $docsForPrint ?>
+                            </div>
+
+                            <div id="printHiddenDiv">
+                                <h4>Anfrage beantworten</h4>
+                                <form action="adminDashboardTeam.php" method="post">
+                                    <div class="row mb-4">
+                                        <div class="col-sm-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked1"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked1">Standard
+                                                    Absage
+                                                    Nr.
+                                                    1</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked2"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked2">Standard
+                                                    Absage
+                                                    Nr.
+                                                    2</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked3"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked3">Standard
+                                                    Absage
+                                                    Nr.
+                                                    3</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked7"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked7">Keine
+                                                    Auswahl
+                                                    3</label>
+                                            </div>
                                         </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked2"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked2">Standard Absage
-                                                Nr.
-                                                2</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked3"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked3">Standard Absage
-                                                Nr.
-                                                3</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked7"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked7">Keine Auswahl
-                                                3</label>
+                                        <div class="col-sm-6">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked4"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked4">Standard
+                                                    Absage
+                                                    Nr.
+                                                    4</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked5"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked5">Standard
+                                                    Absage
+                                                    Nr.
+                                                    5</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="defaultUnchecked6"
+                                                       name="defaultExampleRadios">
+                                                <label class="custom-control-label" for="defaultUnchecked6">Standard
+                                                    Absage
+                                                    Nr.
+                                                    6</label>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6">
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked4"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked4">Standard Absage
-                                                Nr.
-                                                4</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked5"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked5">Standard Absage
-                                                Nr.
-                                                5</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="defaultUnchecked6"
-                                                   name="defaultExampleRadios">
-                                            <label class="custom-control-label" for="defaultUnchecked6">Standard Absage
-                                                Nr.
-                                                6</label>
+                                    <div class="row mb-4">
+                                        <div class="col-md-12">
+                                            <!--Material textarea-->
+                                            <div class="md-form">
+                                                <textarea id="form7" class="md-textarea form-control" rows="5"
+                                                          name="textfield"></textarea>
+                                                <label for="form7">Freitext für Zu- oder Absage</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <div class="col-md-12">
-                                        <!--Material textarea-->
-                                        <div class="md-form">
-                                            <textarea id="form7" class="md-textarea form-control" rows="5" name="textfield"></textarea>
-                                            <label for="form7">Freitext für Zu- oder Absage</label>
+                                    <div class="row mb-4">
+                                        <input type="hidden" name="listForCSV"
+                                               value="<?php echo $_SESSION['valuesForCSV'] ?>">
+                                        <div class="col-6" style="text-align: left">
+                                            <button type="submit" name="buttonSubmit" value="1"
+                                                    class="btn btn-outline-success waves-effect">Annehmen
+                                            </button>
+                                        </div>
+                                        <div class="col-6" style="text-align: right">
+                                            <button type="submit" name="buttonSubmit" value="0"
+                                                    class="btn btn-outline-danger waves-effect">Ablehnen
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row mb-4">
-                                    <input type="hidden" name="listForCSV" value="<?php echo $_SESSION['valuesForCSV'] ?>">
-                                    <div class="col-6" style="text-align: left">
-                                        <button type="submit" name="buttonSubmit" value="1" class="btn btn-outline-success waves-effect">Annehmen
-                                        </button>
-                                    </div>
-                                    <div class="col-6" style="text-align: right">
-                                        <button type="submit" name="buttonSubmit" value="0" class="btn btn-outline-danger waves-effect">Ablehnen
-                                        </button>
-                                    </div>
-                                </div>
-                                <input type="hidden" name="requestId" value="<?php echo $requestId?>">
-                            </form>
+                                    <input type="hidden" name="requestId" value="<?php echo $requestId ?>">
+                                </form>
+                            </div>
                         </div>
                     </div>
                     <!--/.Card-->
@@ -277,7 +307,6 @@ function showFiles($conn, $requestId, $userId)
 <!-- Bootstrap tooltips -->
 <script type="text/javascript">
     var paramValuesForCSV = $("#paramListForCSV").val();
-    console.log(paramValuesForCSV);
 </script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

@@ -407,20 +407,25 @@ function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoC
             $('.progress-bar').css('width', '66%');
             $('#progressValue').html('66');
             $('#progressValueSide').html('66');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         } else if (countNumber == 1) {
             $('.progress-bar').css('width', '33%');
             $('#progressValue').html('33');
             $('#progressValueSide').html('33');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         } else {
             $('.progress-bar').css('width', '0%');
             $('#progressValue').html('0');
             $('#progressValueSide').html('0');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         }
     } else {
         countNumber = contactPersCheckVar + requestCheckVar + furtherInfoCheckVar + docOneCheckVar;
+        console.log("countNmb: "+countNumber);
+        console.log("contact: "+contactPersCheckVar);
+        console.log("request: "+requestCheckVar);
+        console.log("further: "+furtherInfoCheckVar);
+        console.log("doc: "+docOneCheckVar);
         if (countNumber == 4) {
             $('.progress-bar').css('width', '100%');
             $('#progressValue').html('100');
@@ -430,22 +435,22 @@ function showProgressBarValue(contactPersCheckVar, requestCheckVar, furtherInfoC
             $('.progress-bar').css('width', '75%');
             $('#progressValue').html('75');
             $('#progressValueSide').html('75');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         } else if (countNumber == 2) {
             $('.progress-bar').css('width', '50%');
             $('#progressValue').html('50');
             $('#progressValueSide').html('50');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         } else if (countNumber == 1) {
             $('.progress-bar').css('width', '25%');
             $('#progressValue').html('25');
             $('#progressValueSide').html('25');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         } else {
             $('.progress-bar').css('width', '0%');
             $('#progressValue').html('0');
             $('#progressValueSide').html('0');
-            $('#filledOut').html("");
+            $('#filledOut').html('<button type="button" id="requestIsNotFilledOut" name="requestIsNotFilledOut" value="1" class="btn btn-outline-danger waves-effect "><a class="info_toogle_hover" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Bitte Füllen Sie alle Felder aus, damit die Anfrage abgeschickt werden kann">Anfrage Abschicken</a></button>');
         }
     }
 }

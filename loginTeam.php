@@ -216,7 +216,7 @@ if (isset($_POST['submitOne'])) {
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
 <script type="text/javascript">
-    $('#frameModalBottom').modal('show');
+    //$('#frameModalBottom').modal('show');
 </script>
 </body>
 </html>

@@ -27,7 +27,6 @@ include("components/header.php");
 
             <!-- Links -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
                 <!-- Left
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -39,7 +38,11 @@ include("components/header.php");
                 -->
                 <!-- Right -->
                 <ul class="navbar-nav ml-auto nav-flex-icons">
-
+                    <li class="nav-item">
+                        <a href="userDashboard.php" class="nav-link waves-effect">
+                            <?php echo $rowIsnew['Company']?>
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a href="userDashboard.php" class="nav-link waves-effect">
                             <i class="fas fa-folder-open"></i>
