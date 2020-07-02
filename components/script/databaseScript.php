@@ -140,7 +140,7 @@ for ($i = 13; $i < $countJsonParam; $i++) {
 $contactPersCheck = "";
 $contactPersCheckVar = 0;
 
-if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip']) {
+if ($row['Firstname'] && $row['Surname'] && $row['Street'] && $row['Town'] && $row['Zip'] && $row['Phone']) {
     $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $contactPersCheckVar = 1;
 } else {

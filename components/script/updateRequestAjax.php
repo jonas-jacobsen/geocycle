@@ -23,6 +23,18 @@ $sql_all = "SELECT * FROM userdata WHERE id = $requestId";
 $statement = mysqli_query($conn, $sql_all);
 $data = mysqli_fetch_array($statement);
 
+//überprüfen ob dokumente vorhanden
+
+ $sqlFiles = "SELECT * FROM docOne WHERE RequestId = $requestId";
+$stmtFiles = mysqli_query($conn, $sqlFiles);
+
+if(mysqli_num_rows($stmtFiles) < 1){
+    $docOneheckVar = 0;
+}else{
+    $docOneheckVar = 1;
+}
+
+
 if ($data['ProdAbf']) {
     if ($data['ProdAbf'] == "Produktstatus") {
         if ($data['ErzHae']) {

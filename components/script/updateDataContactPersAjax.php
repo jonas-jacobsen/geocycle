@@ -20,7 +20,7 @@ $sql_all = "SELECT * FROM userdata WHERE id = $requestId";
 $statement = mysqli_query($conn, $sql_all);
 
 $data = mysqli_fetch_array($statement);
-if ($data['Firstname'] && $data['Surname'] && $data['Street'] && $data['Town'] && $data['Zip']) {
+if ($data['Firstname'] && $data['Surname'] && $data['Street'] && $data['Town'] && $data['Zip'] && $data['Phone']) {
     $contactPersCheck = "<i class=\"far fa-check-circle green-text\"></i>";
     $contactPersCheckVar = 1;
 } else {
