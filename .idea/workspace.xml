@@ -23,9 +23,9 @@
   <component name="ChangeListManager">
     <list default="true" id="67452f99-b03b-4b7e-bdb4-e3cd0d01f932" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/databaseScript.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/databaseScript.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateDataContactPersAjax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/script/updateRequestAjax.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/updateRequestAjax.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/modal.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/modal.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/script/email.php" beforeDir="false" afterPath="$PROJECT_DIR$/components/script/email.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/userDashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/userDashboard.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +148,7 @@
       <workItem from="1592397154055" duration="65051000" />
       <workItem from="1593021502463" duration="16539000" />
       <workItem from="1593279168488" duration="14901000" />
-      <workItem from="1593693812017" duration="9101000" />
+      <workItem from="1593693812017" duration="13021000" />
     </task>
     <servers />
   </component>
@@ -261,12 +261,12 @@
       <screen x="-2560" y="0" width="2560" height="1440" />
     </state>
     <state x="-1615" y="345" key="run.anything.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1588584507328" />
-    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup" timestamp="1592647702992">
+    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup" timestamp="1593809664189">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="-1210" y="248" width="1005" height="508" key="search.everywhere.popup/0.0.1280.800/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1592408156147" />
     <state x="-1615" y="331" width="670" height="676" key="search.everywhere.popup/0.0.1280.800/-2560.0.2560.1440@-2560.0.2560.1440" timestamp="1592220234833" />
-    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1592647702992" />
+    <state x="473" y="184" width="670" height="376" key="search.everywhere.popup/0.0.1280.800@0.0.1280.800" timestamp="1593809664189" />
     <state x="457" y="274" key="webDeployment.PermissionsDialog" timestamp="1592859028178">
       <screen x="0" y="0" width="1280" height="800" />
     </state>

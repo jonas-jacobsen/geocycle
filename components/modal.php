@@ -14,7 +14,10 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div><h4><i class="fas fa-exclamation animated rotateIn"></i> Informationen zur Nutzung von diesem Tool</h4></div>
+                <div><h4><i class="fas fa-exclamation animated rotateIn"></i> Informationen zur Nutzung dieses Anfragetools</h4></div>
+                <p>Sie befinden sich hier auf Ihrer Dashboard-Seite. Mit Klick auf den Button <u>Neue Anfrage erstellen</u>, können Sie eine neue Anfrage erföffnen. Sie müssen die Anfrage nicht direkt abschicken, sondern können diese auch Zwischenpeichern und eine weitere Eröffnen.</p>
+                <p>Alle Anfragen die noch nicht abgeschickt wurden, finden Sie in der Tabelle <u>Offene Anfragen</u>. Mit klick auf <u>Anzeigen</u>, können Sie die jeweilige Anfrage anzeigen und weiter bearbeiten.</p>
+                <p>Wenn Sie eine Anfrage abgeschickt haben, erscheint diese in der Tabelle <u>Abgeschlossene Anfragen</u>. Sie werden per Email benachrichtig sobald wir Ihrer Anfrage bearbeitet haben. Wenn Ihre Anfrage von uns angenommen wird, wird die Anfrage einen grünen Hintergrund bekommen. Sollte Ihrer Anfrage abgeleht werden, erscheint die Anfrage mit einem roten Hintergrund.</p>
             </div>
             <div class="modal-footer justify-content-right">
                 <button type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">Schließen</button>
