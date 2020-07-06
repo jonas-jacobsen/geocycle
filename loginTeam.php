@@ -75,7 +75,7 @@ if (isset($_POST['submitOne'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Geocycle</title>
+    <title>2CupsSolution</title>
     <link rel="shortcut icon" href="https://www.geocycle.com/sites/geocycle/files/geo_favicon.ico" type="image/vnd.microsoft.icon" />
 
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
@@ -94,7 +94,7 @@ if (isset($_POST['submitOne'])) {
 
 <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
     <a class="navbar-brand" href="#">
-        <img src="assets/logo/logo.png" height="30" alt="mdb logo">
+        <img src="assets/logo/2cups-logo.png" height="40" alt="mdb logo">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">

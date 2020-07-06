@@ -22,7 +22,7 @@ $rowCountAllRequest  = mysqli_fetch_array($stmtCountAllRequest);
 $acceptedPercent = intval($rowCountAcceptedRequest['TotalAcceptedRequest']/$rowCountAllRequest['TotalRequest']*100);
 
 //PiechartAVV
-echo $sqlAllAVV = "SELECT Avv, COUNT(*) AS count FROM userdata WHERE AVV != '' GROUP BY Avv LIMIT 10";
+$sqlAllAVV = "SELECT Avv, COUNT(*) AS count FROM userdata WHERE AVV != '' GROUP BY Avv LIMIT 10";
 $stmtAllAVV  = mysqli_query($conn, $sqlAllAVV);
 $rowAllAVV = mysqli_fetch_array($stmtAllAVV);
 $avvPiechartLables = '';
@@ -31,7 +31,6 @@ while ($rowAllAVV = mysqli_fetch_array($stmtAllAVV)) {
         $avvPiechartLables.= '"'.$rowAllAVV["Avv"].'",';
         $avvPiechartData .= $rowAllAVV["count"]."," ;
 }
-echo $avvPiechartData;
 
 //Chart Roh-Brenn
 //Produktstatus

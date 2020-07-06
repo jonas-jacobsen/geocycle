@@ -103,7 +103,7 @@ include("components/script/diagrammScripts.php");
                     <div class="card">
                         <div class="card-body">
                             <h2>Alle Anfragen</h2>
-                            <table id="allRequests" class="table" width="100%"style="margin-bottom: 0px;">
+                            <table id="allRequests" class="table" width="100%" style="margin-bottom: 0px;">
                                 <thead>
                                 <tr>
                                     <th class="th-sm">Anfrage ID

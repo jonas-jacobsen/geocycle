@@ -337,7 +337,6 @@ input[type=submit] {
     margin-top: -40px;
 }
 
-
 /*Admin Dashboard*/
 .pagination .page-item.active .page-link {
     background-color: green !important;
@@ -357,6 +356,8 @@ input[type=submit] {
     vertical-align: middle;
     isplay: inline-block;
     font-weight: 400;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 .buttonChangeCategory:hover {

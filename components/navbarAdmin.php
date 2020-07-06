@@ -6,7 +6,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="#">
-                <img src="assets/logo/logo.png" height="30" alt="mdb logo">
+                <img src="assets/logo/2cups-logo.png" height="40" alt="mdb logo">
             </a>
 
             <!-- Collapse -->

@@ -11,12 +11,12 @@ $stmtSelectRequest = mysqli_query($conn, $sqlSelectRequest);
 $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
+$name = $rowRequest["Firstname"].' '.$rowRequest["Surname"].",\n";
 
 //Unternehmen aus DB laden
-$sqlComapny = "SELECT Company AS Company FROM user WHERE id = $userIdFromRequest";
+$sqlComapny = "SELECT Company, Email FROM user WHERE id = $userIdFromRequest";
 $stmtCompany = mysqli_query($conn, $sqlComapny);
 $rowCompany = mysqli_fetch_array($stmtCompany);
-
 
 if ($rowRequest['Producer'] == "") {
     $producer = "Anfragender ist Produzent";
@@ -171,65 +171,45 @@ function showFiles($conn, $requestId, $userId)
 
                             <div id="printHiddenDiv">
                                 <h4>Anfrage beantworten</h4>
-                                <form action="adminDashboardTeam.php" method="post">
+                                <form action="adminDashboardTeam.php" id="replyBox" method="post">
                                     <div class="row mb-4">
                                         <div class="col-sm-6">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked1"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked1">Standard
-                                                    Absage
-                                                    Nr.
-                                                    1</label>
+                                                       name="defaultExampleRadios" value="Ein oder mehrere Parameter sind nicht im gewünschten Bereich. ">
+                                                <label class="custom-control-label" for="defaultUnchecked1">Ein oder mehrere Parameter sind nicht im gewünschten Bereich.</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked2"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked2">Standard
-                                                    Absage
-                                                    Nr.
-                                                    2</label>
+                                                       name="defaultExampleRadios" value="Die Stoffmenge ist zu gering. ">
+                                                <label class="custom-control-label" for="defaultUnchecked2">Die Stoffmenge ist zu gering.</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked3"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked3">Standard
-                                                    Absage
-                                                    Nr.
-                                                    3</label>
+                                                       name="defaultExampleRadios" value="">
+                                                <label class="custom-control-label" for="defaultUnchecked3"></label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked7"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked7">Keine
-                                                    Auswahl
-                                                    3</label>
+                                                       name="defaultExampleRadios" value="Keinen Standardtext auswählen. ">
+                                                <label class="custom-control-label" for="defaultUnchecked7">Keinen Standardtext auswählen.</label>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked4"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked4">Standard
-                                                    Absage
-                                                    Nr.
-                                                    4</label>
+                                                       name="defaultExampleRadios" value="Keine Kapazitäten in den Werken frei. ">
+                                                <label class="custom-control-label" for="defaultUnchecked4">Keine Kapazitäten in den Werken frei.</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked5"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked5">Standard
-                                                    Absage
-                                                    Nr.
-                                                    5</label>
+                                                       name="defaultExampleRadios" value="Weitere Analysen notwendig. ">
+                                                <label class="custom-control-label" for="defaultUnchecked5">Weitere Analysen notwendig.</label>
                                             </div>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" class="custom-control-input" id="defaultUnchecked6"
-                                                       name="defaultExampleRadios">
-                                                <label class="custom-control-label" for="defaultUnchecked6">Standard
-                                                    Absage
-                                                    Nr.
-                                                    6</label>
+                                                       name="defaultExampleRadios" value="Angaben Fehlen. Bitte in der Anfrage ergänzen. ">
+                                                <label class="custom-control-label" for="defaultUnchecked6">Angaben Fehlen. Bitte in der Anfrage ergänzen.</label>
                                             </div>
                                         </div>
                                     </div>
@@ -237,8 +217,7 @@ function showFiles($conn, $requestId, $userId)
                                         <div class="col-md-12">
                                             <!--Material textarea-->
                                             <div class="md-form">
-                                                <textarea id="form7" class="md-textarea form-control" rows="5"
-                                                          name="textfield"></textarea>
+                                                <textarea id="form7" class="md-textarea form-control" rows="5" name="textfield">Hallo <?php echo $name?></textarea>
                                                 <label for="form7">Freitext für Zu- oder Absage</label>
                                             </div>
                                         </div>
@@ -283,7 +262,7 @@ function showFiles($conn, $requestId, $userId)
                                 <?php echo $rowRequest['Phone'] ?>
                                 <hr>
                                 <i class="fas fa-user"></i> Emailadresse<br>
-                                <?php echo $rowRequest['Phone'] ?>
+                                <?php echo $rowCompany['Email'] ?>
                                 <hr>
                                 <i class="fas fa-home"></i> Addresse<br>
                                 <?php echo $rowRequest['Street'] . " " . $rowRequest['Zip'] . " " . $rowRequest['Town'] ?>
@@ -306,7 +285,21 @@ function showFiles($conn, $requestId, $userId)
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->
 <script type="text/javascript">
+
+    //for debugging
     var paramValuesForCSV = $("#paramListForCSV").val();
+
+    $(document).ready(function(){
+
+        $('#replyBox').change(function(){
+            selected_value = $("input[name='defaultExampleRadios']:checked").val();
+            $('#form7').append(selected_value);
+        });
+    });
+
+
+
+
 </script>
 <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>

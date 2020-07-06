@@ -155,7 +155,7 @@ include("components/header.php");
 
 <script type="text/javascript">
     //Modal nur nach dem ersten Anmelden anzeigen,
-    //Modal Code befindet sich in components/modal.php
+    //Modal-Code befindet sich in components/modal.php
     var modalShow = <?php echo $modalShow?>;
     if (modalShow == 0) {
         $('#fullHeightModalRight').modal('show');

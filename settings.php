@@ -20,32 +20,6 @@ include("components/headerAdmin.php");
                 <div class="col-md-12 mb-4">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Teamuser</h2>
-                            <table id="teammembers" class="table" width="100%" style="margin-bottom: 0px;">
-                                <thead>
-                                <tr>
-                                    <th class="th-sm">id
-                                    </th>
-                                    <th class="th-sm">Email
-                                    </th>
-                                    <th class="th-sm">Teamzuweisung
-                                    </th>
-                                    <th class="th-sm"></th>
-                                </tr>
-                                </thead>
-                                <?php showAllTeammembers($conn) ?>
-                                </tbody>
-                            </table>
-                        </div><!--End card body-->
-                    </div><!--End Card-->
-                </div><!--End col md -->
-            </div><!--End row-->
-
-            <!--Grid row-->
-            <div class="row wow fadeIn">
-                <div class="col-md-12 mb-4">
-                    <div class="card">
-                        <div class="card-body">
                             <h2>Security Code <i class="fas fa-shield-alt"></i></h2>
                             <p>Zum Anmelden neuer Teammitglieder benötigen diese einen Zugangscode</p>
                             <h6>Security Code ändern:</h6>
@@ -77,18 +51,43 @@ include("components/headerAdmin.php");
                             <p>Hier lassen sich ein Paar Änderungen des Designs durchführen</p>
                             <!-- Default checked -->
                             <div class="custom-control custom-switch">
-                                <input type="checkbox" onclick="myFunction()" class="custom-control-input" id="customSwitch1">
+                                <input type="checkbox" onclick="myFunction()" class="custom-control-input"
+                                       id="customSwitch1">
                                 <label class="custom-control-label" for="customSwitch1">In den Darkmode wechseln</label>
                             </div>
                         </div>
                     </div><!--End card body-->
                 </div><!--End Card-->
             </div><!--End col md -->
-        </div><!--End row-->
 
-</div><!--container-fluid mt-5-->
-</main>
-</div>
+            <!--Grid row-->
+            <div class="row wow fadeIn">
+                <div class="col-md-12 mb-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Teamuser</h2>
+                            <table id="teammembers" class="table" width="100%" style="margin-bottom: 0px;">
+                                <thead>
+                                <tr>
+                                    <th class="th-sm">id
+                                    </th>
+                                    <th class="th-sm">Email
+                                    </th>
+                                    <th class="th-sm">Teamzuweisung
+                                    </th>
+                                    <th class="th-sm"></th>
+                                </tr>
+                                </thead>
+                                <?php showAllTeammembers($conn) ?>
+                                </tbody>
+                            </table>
+                        </div><!--End card body-->
+                    </div><!--End Card-->
+                </div><!--End col md -->
+            </div><!--End row-->
+        </div><!--End container-fluid mt-5-->
+    </main>
+</div><!--Endcontainer-for-admin-->
 
 <!-- Footer anzeigen -->
 <?php include("components/footer.php") ?>

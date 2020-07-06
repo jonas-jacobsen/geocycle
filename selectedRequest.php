@@ -13,6 +13,11 @@ $rowRequest = mysqli_fetch_array($stmtSelectRequest);
 $RequestIdFromUser = $rowRequest['id'];
 $userIdFromRequest = $rowRequest['userId'];
 
+//Unternehmen und email aus DB laden
+$sqlComapny = "SELECT Company, Email FROM user WHERE id = $userIdFromRequest";
+$stmtCompany = mysqli_query($conn, $sqlComapny);
+$rowCompany = mysqli_fetch_array($stmtCompany);
+
 if($rowRequest['Producer'] == ""){
     $producer = "Anfragender ist Produzent";
 }else{
@@ -84,10 +89,11 @@ function showFiles($conn, $requestId, $userId)
                         <div class="card-body">
                             <div class="row mb-4">
                                 <div class="col-md-6">
-                                    <h1>Anfrage <?php echo $rowRequest['id'] ?></h1>
+                                    <h4><?php echo $rowCompany['Company']?></h4>
+                                    <h5>Anfrage-ID: <?php echo $rowRequest['id']?></h5>
                                 </div>
                                 <div class="col-md-6" style="text-align: right">
-                                    <button onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
+                                    <button id="printHiddenDiv" onclick="{window.print()}" class="btn btn-outline-success waves-effect"><i class="fas fa-print"></i></button>
                                 </div>
                             </div>
                             <?php analyse($requestId, $conn)?>
@@ -144,7 +150,7 @@ function showFiles($conn, $requestId, $userId)
                                     <?php echo $rowRequest['ProcessDescription'] ?>
                                 </div>
                             </div>
-                            <hr>
+                            <hr id="printHiddenDiv">
                             <div class="existingFiles">
                                 <h5>Dokumente</h5><br>
                                 <div class="gallery">
@@ -175,7 +181,7 @@ function showFiles($conn, $requestId, $userId)
                                 <?php echo $rowRequest['Phone'] ?>
                                 <hr>
                                 <i class="fas fa-user"></i> Emailadresse<br>
-                                <?php echo $rowRequest['Phone'] ?>
+                                <?php echo $rowCompany['Email'] ?>
                                 <hr>
                                 <i class="fas fa-home"></i> Addresse<br>
                                 <?php echo $rowRequest['Street'] . " " . $rowRequest['Zip'] . " " . $rowRequest['Town'] ?>

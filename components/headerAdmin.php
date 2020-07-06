@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Geocycle - Adminpanel</title>
+    <title>2CupsSolution</title>
     <link rel="shortcut icon" href="https://www.geocycle.com/sites/geocycle/files/geo_favicon.ico" type="image/vnd.microsoft.icon" />
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
     <!-- print css -->
