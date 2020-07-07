@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>2CupsSolution</title>
-    <link rel="shortcut icon" href="https://www.geocycle.com/sites/geocycle/files/geo_favicon.ico" type="image/vnd.microsoft.icon" />
+    <title>2Cups Solution</title>
+    <link rel="shortcut icon" href="assets/logo/favicon.ico" type="image/vnd.microsoft.icon" />
     <link rel="stylesheet" type="text/css" href="css/style.css" media="screen"/>
     <!-- print css -->
     <link rel="stylesheet" type="text/css" media="print" href="css/print/print.css">

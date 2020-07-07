@@ -1,82 +1,72 @@
 [
   {
-    "name": "Quecksilber",
-    "value": "6",
-    "check": "0",
-    "unit": "mg \/ kg",
-    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+    "param": "Unterer Heizwert",
+    "units": "mj\/kg",
+    "value": "8,50"
   },
   {
-    "name": "Wassergehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Wassergehalt",
+    "units": "% OS",
+    "value": "2,30"
   },
   {
-    "name": "Chlorgehalt",
-    "value": "6",
-    "check": "0",
-    "unit": " % ",
-    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+    "param": "Aschegehalt",
+    "units": "% TS",
+    "value": "0"
   },
   {
-    "name": "Schwefelgehalt",
-    "value": "6",
-    "check": "0",
-    "unit": " % ",
-    "comment": "Der Wert \u00fcberschreitet den Grenzwert"
+    "param": "Chlor",
+    "units": "% TS",
+    "value": "0,00"
   },
   {
-    "name": "Calciumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Schwefel",
+    "units": "% TS",
+    "value": "1,00"
   },
   {
-    "name": "Silliciumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Quecksilber",
+    "units": "mg\/kg",
+    "value": "0,0001"
   },
   {
-    "name": "Eisengehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Calcium",
+    "units": "% OS",
+    "value": "0,34"
   },
   {
-    "name": "Aluminiumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Silizium",
+    "units": "% OS",
+    "value": "1,49"
   },
   {
-    "name": "Magnesiumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Eisen",
+    "units": "% OS",
+    "value": "1,00"
   },
   {
-    "name": "Kaliumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Magnesium",
+    "units": "% OS",
+    "value": "2,00"
   },
   {
-    "name": "Natriumgehalt",
-    "value": "6",
-    "check": "1",
-    "unit": " % ",
-    "comment": ""
+    "param": "Kaliumoxid",
+    "units": "% OS",
+    "value": "4,00"
   },
   {
-    "oneValueTooHigh": 3
+    "param": "Natriumoxid",
+    "units": "% OS",
+    "value": "0,0001"
+  },
+  {
+    "param": "Aluminium",
+    "units": "% OS",
+    "value": "7,314"
+  },
+  {
+    "param": "Aschegehalt",
+    "units": "mj\/kg",
+    "value": "0,001"
   }
 ]

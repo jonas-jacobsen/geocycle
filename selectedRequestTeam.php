@@ -138,7 +138,7 @@ function showFiles($conn, $requestId, $userId)
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Lieferkondition:</h5>
-                                    <? echo $rowRequest['Avv'] ?>
+                                    <? echo $rowRequest['DeliveryForm'] ?>
                                 </div>
                                 <div class="col-md-4">
                                     <h5>Preis:</h5>

@@ -764,5 +764,4 @@ function getRecomendation($rohBrenn, $wasser, $asche, $chlor, $schwefel, $queck,
     }
     return $result;
 }
-
 ?>
